@@ -39,7 +39,7 @@ export default function Layout({
             <Image className="w-96 m-auto" src={Avatar} alt="Me" />
           </div>
         ) : (
-          <div className="sm:h-72 flex flex-col justify z-10 mx-auto max-w-5xl w-full">
+          <div className="sm:h-72 flex flex-col justify z-10 mx-auto max-w-6xl w-full">
             <div className="mt-20 mb-5 capitalize">
               <span>Home</span>
               <span className="mx-5">&gt;</span>

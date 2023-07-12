@@ -17,7 +17,7 @@ export default function Layout({
   home?: boolean;
 }) {
   return (
-    <div className="smooth-scroll dark-mode bg-white-100 min-h-screen font-rubik transition duration-200 dark:bg-gray-900 flex flex-col mx-auto max-w-5xl w-full">
+    <div className="smooth-scroll dark-mode bg-white-100 min-h-screen font-rubik transition duration-200 dark:bg-gray-900 flex flex-col mx-auto max-w-6xl w-full">
       <Header type="" />
       <main>{children}</main>
       <Footer />

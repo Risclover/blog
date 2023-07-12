@@ -52,11 +52,11 @@ export default function Layout({
         <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-gray-900 flex flex-col bg-white">
           <Header>
             {home ? (
-              <div className="mx-auto max-w-5xl sm:h-72 flex flex-col justify-end">
+              <div className="mx-auto max-w-6xl sm:h-72 flex flex-col justify-end">
                 <Image className="w-96 mx-auto" src={Avatar} alt="Me" />
               </div>
             ) : (
-              <div className="sm:h-72 flex flex-col justify z-10 mx-auto max-w-5xl w-full">
+              <div className="sm:h-72 flex flex-col justify z-10 mx-auto max-w-6xl w-full">
                 <div className="mt-20 mb-5 capitalize">
                   <Link href="/" className="text-white">
                     Home
@@ -81,7 +81,7 @@ export default function Layout({
               bg === "grey" ? "bg-gray-100" : "bg-white"
             } w-full dark:bg-gray-900`}
           >
-            <div className="mx-auto max-w-5xl">{children}</div>
+            <div className="mx-auto max-w-6xl">{children}</div>
           </main>
         </Providers>
       </div>

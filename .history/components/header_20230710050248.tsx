@@ -13,7 +13,7 @@ export const Header = (props: Props) => {
   console.log("path:", router.pathname);
   console.log("asPath:", router.asPath);
   return (
-    <header className="mx-auto max-w-5xl w-full flex flex-col text-slate-50 bg-slate-800">
+    <header className="mx-auto max-w-6xl w-full flex flex-col text-slate-50 bg-slate-800">
       {router.pathname === "/" && (
         <div className="sm:h-72 flex flex-col justify-end">
           <Image className="w-96 m-auto" src={Avatar} alt="Me" />

@@ -5,7 +5,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { getCategories, getCategoryPosts } from "lib/categories";
 
 export default function Category({
-    id,
+  id,
   categoryData,
 }: {
   categoryData: {
@@ -19,7 +19,7 @@ export default function Category({
   return (
     <Layout>
       <div className="w-full h-full bg-gray-100 dark:bg-gray-900 min-h-screen pt-16 sm:pt-32 px-8 pb-16">
-        <div className="lg:max-w-5xl w-full m-auto">
+        <div className="lg:max-w-6xl w-full m-auto">
           <h1 className="text-[38px] font-bold ml-8 mb-4 dark:text-gray-50">
             {id}
           </h1>
