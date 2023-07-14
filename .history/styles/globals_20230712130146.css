@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&family=Leckerli+One&family=Pacifico&family=Patrick+Hand&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.categories-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 32px;
+}
+
+.category-box {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.toc {
+  position: sticky;
+  top: 148px;
+  max-height: calc(100vh - 148px);
+  overflow: auto;
+  padding-bottom: 16px;
+  margin-left: 70px;
+  margin-top: 4px;
+}
+
+.blog-post h2 {
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+main p {
+  margin-bottom: 30px;
+}
+
+main ul,
+main li {
+  list-style-type: disc;
+}
+
+main li {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 563px) {
+  .categories-page {
+    grid-template-columns: 1fr;
+  }
+}
+
+@layer utilities {
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    font: inherit;
+  }
+
+  #root,
+  #__next {
+    isolation: isolate;
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing {
+      @apply box-border;
+    }
+    -webkit-font-smoothing {
+      @apply antialiased;
+    }
+  }
+  * {
+    margin {
+      @apply m-0;
+    }
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    line-height {
+      @apply leading-normal;
+    }
+
+    min-height {
+      @apply min-h-screen;
+    }
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display {
+      @apply block;
+    }
+    max-width {
+      @apply max-w-full;
+    }
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap {
+      @apply break-words;
+    }
+  }
+
+  h2 {
+    font-size {
+      @apply text-3xl;
+    }
+    font-weight {
+      @apply font-bold;
+    }
+    color {
+      @apply text-sky-700;
+    }
+    margin-top {
+      @apply mt-16;
+    }
+    margin-bottom {
+      @apply mb-8;
+    }
+  }
+
+  ul {
+    list-style-type {
+      @apply list-disc;
+    }
+  }
+}
