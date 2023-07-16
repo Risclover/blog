@@ -1,6 +1,4 @@
 import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
-import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { getCategories, getCategoryPosts } from "lib/categories";
 import { HiMiniArrowRight } from "react-icons/hi2";

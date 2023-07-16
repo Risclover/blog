@@ -4,15 +4,7 @@ import { getCategories } from "lib/categories";
 import { getSortedPostsData } from "lib/posts";
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import { useEffect } from "react";
 import { HiMiniArrowRight } from "react-icons/hi2";
-
-const testing = `<div>
-<h1> PrismJS Tutorial </h1>
-<p>
-Prism is a lightweight, extensible syntax highlighter, built with modern web standards in mind.
-</p>
-</div>`;
 
 export default function Home({
   allPostsData,
@@ -91,7 +83,6 @@ export default function Home({
                 </div>
               </Link>
             ))}
-            <Code code={testing} language="html" />
           </div>
         </section>
       </main>

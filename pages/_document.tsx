@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+
 function setInitialColorMode() {
   function getInitialColorMode() {
     const preference = window.localStorage.getItem("theme");

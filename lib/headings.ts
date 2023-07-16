@@ -43,7 +43,7 @@ function getHeadings(root: any) {
  * Add an "id" attribute to the heading elements based on their content
  */
 function addID(node: any, nodes: any) {
-  const id = node.children.map((c) => c.value).join("");
+  const id = node.children.map((c: any) => c.value).join("");
   nodes[id] = (nodes[id] || 0) + 1;
   node.data = node.data || {
     hProperties: {
