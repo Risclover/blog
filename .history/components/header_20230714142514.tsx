@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 import { Around } from "@theme-toggles/react";
 import Image from "next/image";
@@ -18,6 +20,8 @@ export const Header = (props: Props) => {
   };
 
   const [isDarkMode, setIsDarkMode] = useState<Boolean | undefined>(undefined);
+
+  console.log("is dark mode:", <Around />);
 
   const handleToggle = (e: any) => {
     setIsDarkMode(!isDarkMode);

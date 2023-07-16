@@ -47,7 +47,7 @@ export default function Post({
   });
 
   return (
-    <Layout postData={postData}>
+    <>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -62,7 +62,7 @@ export default function Post({
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

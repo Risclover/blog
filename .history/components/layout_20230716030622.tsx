@@ -31,7 +31,7 @@ export default function Layout({
 }) {
   console.log("postData:", postData);
   return (
-    <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-gray-900 flex flex-col bg-white">
+    <div className="smooth-scroll dark-mode min-h-screen font-rubik text-slate-900 dark:bg-gray-900 flex flex-col bg-white">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link href="styles/prism.css" rel="stylesheet" />

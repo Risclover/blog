@@ -44,7 +44,7 @@ export default function Post({
         heading.classList.add("text-2xl", "font-bold", "mt-16", "mb-8");
       }
     });
-  });
+  }, []);
 
   return (
     <Layout postData={postData}>
@@ -62,7 +62,6 @@ export default function Post({
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
       </div>
-    </Layout>
   );
 }
 

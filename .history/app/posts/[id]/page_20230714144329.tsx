@@ -44,10 +44,9 @@ export default function Post({
         heading.classList.add("text-2xl", "font-bold", "mt-16", "mb-8");
       }
     });
-  });
 
   return (
-    <Layout postData={postData}>
+    <>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -62,7 +61,7 @@ export default function Post({
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 
@@ -85,3 +84,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   };
 };
+
+export async function generateStaticParams(): Promise<PostProps["params"][]> {
+  const postData = await getPostData(params?.id as string);
+  const mdxContent = extractHeadings(`posts/${params?.id}.md`);
+  return {
+    props: {
+      postData,
+      fileContent: mdxContent,
+    },
+  };
+}

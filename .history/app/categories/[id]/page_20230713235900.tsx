@@ -21,7 +21,7 @@ export default function Category({
   }[];
 }) {
   return (
-    <Layout home>
+    <Layout home bg="grey">
       <div className="w-full h-full bg-gray-100 dark:bg-gray-900 min-h-screen pt-16 sm:pt-32 px-8 pb-16">
         <div className="lg:max-w-6xl w-full m-auto">
           <h1 className="text-[38px] font-bold ml-8 mb-4 dark:text-gray-50 capitalize">
@@ -56,7 +56,6 @@ export default function Category({
           </div>
         </div>
       </div>
-    </Layout>
   );
 }
 

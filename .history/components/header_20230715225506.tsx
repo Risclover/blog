@@ -19,6 +19,8 @@ export const Header = (props: Props) => {
 
   const [isDarkMode, setIsDarkMode] = useState<Boolean | undefined>(undefined);
 
+  console.log("is dark mode:", <Around />);
+
   const handleToggle = (e: any) => {
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle("dark", !isDarkMode);

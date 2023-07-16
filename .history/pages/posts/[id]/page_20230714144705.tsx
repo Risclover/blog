@@ -22,32 +22,30 @@ export default function Post({
 }) {
   const headingsRef = useRef(null);
 
-  useEffect(() => {
-    const headings: any = document.querySelectorAll("h2, h3");
+  const headings: any = document.querySelectorAll("h2, h3");
 
-    headings.forEach((heading: any) => {
-      heading.setAttribute(
-        "id",
-        heading.textContent.toLowerCase().split(" ").join("-")
+  headings.forEach((heading: any) => {
+    heading.setAttribute(
+      "id",
+      heading.textContent.toLowerCase().split(" ").join("-")
+    );
+
+    if (heading.nodeName.toLowerCase() === "h2")
+      heading.classList.add(
+        "text-3xl",
+        "font-bold",
+        "mt-16",
+        "text-sky-700",
+        "mb-8"
       );
 
-      if (heading.nodeName.toLowerCase() === "h2")
-        heading.classList.add(
-          "text-3xl",
-          "font-bold",
-          "mt-16",
-          "text-sky-700",
-          "mb-8"
-        );
-
-      if (heading.nodeName.toLowerCase() === "h3") {
-        heading.classList.add("text-2xl", "font-bold", "mt-16", "mb-8");
-      }
-    });
+    if (heading.nodeName.toLowerCase() === "h3") {
+      heading.classList.add("text-2xl", "font-bold", "mt-16", "mb-8");
+    }
   });
 
   return (
-    <Layout postData={postData}>
+    <>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -62,7 +60,7 @@ export default function Post({
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 
@@ -85,3 +83,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   };
 };
+
+export async function generateStaticParams(): Promise<PostProps["params"][]> {
+  const postData = await getPostData(params?.id as string);
+  const mdxContent = extractHeadings(`posts/${params?.id}.md`);
+  return {
+    props: {
+      postData,
+      fileContent: mdxContent,
+    },
+  };
+}

@@ -47,7 +47,7 @@ export default function Post({
   });
 
   return (
-    <Layout postData={postData}>
+    <Layout >
       <Head>
         <title>{postData.title}</title>
       </Head>
