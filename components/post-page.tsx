@@ -1,13 +1,10 @@
-"use client";
-
-import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import { getAllPostIds, getPostData } from "../lib/posts";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { getCategories } from "lib/categories";
 import { extractHeadings } from "extract-md-headings";
 import TableOfContents from "@/components/tableofcontents";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export default function Post({
   postData,
