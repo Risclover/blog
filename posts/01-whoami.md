@@ -6,6 +6,8 @@ category: Personal
 slug: 01-whoami
 ---
 
+## Introduction
+
 Welcome to my blog! I'm Sara, your hostess for the evening and the voice behind said blog. This space is all about my adventures as a software engineer. I'll be sharing my thoughts, experiences, and insights on everything related to the world of coding. From my day-to-day projects to my takes on the latest trends, I aim to cover it all.
 
 I hail from sunny California. Over the years, I've developed a serious passion for software engineering, and I am over the moon about it; finally, after spending the better part of a decade searching for what I want to do for the rest of my life, I feel that I've found my true calling, and the idea that I can get paid for doing what I love is an absolute dream come true.
@@ -18,16 +20,13 @@ I'm a friendly soul who's always up for a chat. Don't hesitate to reach out if y
 
 ### Some random code
 
-```
-import React from 'react';
-import range from 'lodash.range';
+```javascript
+import React from "react";
+import range from "lodash.range";
 
-import styles from './PrideFlag.module.css';
+import styles from "./PrideFlag.module.css";
 
-function PrideFlag({
-  numOfColumns = 10,
-  staggeredDelay = 100,
-}) {
+function PrideFlag({ numOfColumns = 10, staggeredDelay = 100 }) {
   return (
     <div className={styles.flag}>
       {range(numOfColumns).map((columnIndex) => (
@@ -35,7 +34,7 @@ function PrideFlag({
           key={columnIndex}
           className={styles.column}
           style={{
-            animationDelay: columnIndex * staggeredDelay + 'ms',
+            animationDelay: columnIndex * staggeredDelay + "ms",
           }}
         />
       ))}

@@ -8,6 +8,9 @@ import Avatar from "../public/images/avatar2.png";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { Providers } from "./providers";
+import useLocalStorage from "use-local-storage";
+import { useState } from "react";
+import Nav from "./nav";
 
 const name = "[Your Name]";
 export const siteTitle = "Next.js Sample Website";
@@ -29,12 +32,12 @@ export default function Layout({
     category: string;
   };
 }) {
-  console.log("postData:", postData);
+  const [theme, setTheme] = useState("okaidia");
+
   return (
-    <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-gray-900 flex flex-col bg-white">
+    <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-slate-950 flex flex-col bg-white">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <link href="styles/prism.css" rel="stylesheet" />
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"
@@ -47,18 +50,42 @@ export default function Layout({
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="preload"
+          href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css"
+          as="script"
+        />
+        <link
+          rel="preload"
+          href="https://unpkg.com/prismjs@0.0.1/themes/prism-coy.css"
+          as="script"
+        />
+        <link
+          rel="preload"
+          href="https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css"
+          as="script"
+        />
+        <link
+          rel="preload"
+          href="https://unpkg.com/prismjs@0.0.1/themes/prism-funky.css"
+          as="script"
+        />
+        <link
+          href={`https://unpkg.com/prismjs@0.0.1/themes/prism-${theme}.css`}
+          rel="stylesheet"
+        />
+        <Script src="storage.js" />
       </Head>
-      <Script src="public/prism.js" />
-      <Script src="storage.js" />
       <Providers>
+        <Nav />
         <Header>
           {home ? (
-            <div className="mx-auto max-w-6xl sm:h-72 flex flex-col justify-end">
+            <div className="mx-auto max-w-6xl flex flex-col justify-end mt-12">
               <Image className="w-96 mx-auto" src={Avatar} alt="Me" />
             </div>
           ) : (
-            <div className="sm:h-72 flex flex-col justify-end z-10 mx-auto max-w-6xl w-full px-12">
-              <div className="mt-20 mb-5 text-slate-50 capitalize">
+            <div className="flex flex-col justify-end z-10 mx-auto max-w-6xl w-full lg:px-12 px-6 lg:mt-20 mt-6 pb-8 lg:pb-14">
+              <div className="mb-2 text-slate-50 capitalize text-sm lg:text-[16px]">
                 <Link href="/" className="text-white hover:text-gray-400">
                   Home
                 </Link>
@@ -70,19 +97,21 @@ export default function Layout({
                   {postData?.category}
                 </Link>
               </div>
-              <div className="text-2xl sm:text-4xl font-medium leading-snug">
+              <div className="text-2xl lg:text-4xl font-medium leading-snug">
                 {postData?.title}
               </div>
-              <div className="mt-2 text-medium sm:text-lg font-normal pb-14 text-slate-400">
-                {postData?.subtitle}
-              </div>
+              {postData?.subtitle && postData?.subtitle.length > 0 && (
+                <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
+                  {postData?.subtitle}
+                </div>
+              )}
             </div>
           )}
         </Header>
         <main
           className={`${
             bg === "grey" ? "bg-gray-100" : "bg-white"
-          } dark:bg-gray-900`}
+          } dark:bg-gray-950`}
         >
           {children}
         </main>

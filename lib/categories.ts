@@ -35,13 +35,10 @@ export function getCategoryPosts(id: string) {
 
     const category = matterResult.data;
 
-    console.log("HELLO", category);
-
     if (category.category.toLowerCase() === id) {
       posts.push(matterResult.data);
     }
   });
 
-  console.log("POSTS", posts);
   return posts;
 }

@@ -2,11 +2,13 @@
 title: Cloning Reddit's Live Chat Feature
 subtitle: Using WebSockets to create Reddit's live messaging feature.
 date: 06/30/23
-preview: In today's fast-paced online community landscape, real-time interaction has become the lifeblood of user engagement. As the creator and developer of Ribbit, a comprehensive and pixel-perfect replica of Reddit, I knew that the app couldn't be complete until I had at least captured the captivating experience of live communication offered by the popular platform. My long-standing ambition of integrating a live chat feature within Ribbit finally came to fruition just last week, and I am excited to break down and discuss this process in detail. Join me as we take a deep dive into the code that powers Ribbit's live chat feature and discuss the project in its entirety, from the initial planning stages all the way to its completion.
+preview: Join me as we take a deep dive into the code that powers Ribbit's live chat feature and discuss the project in its entirety, from the initial planning stages all the way to its completion.
 category: Tutorial
 toc: Tech Stack and Tools/Initial Planning and Research
 slug: first-post
 ---
+
+## Introduction
 
 In this post, I go over the process of replicating Reddit's live chat feature from initial research all the way to completion. I recently managed to build this for my pixel-perfect Reddit clone, Ribbit, and wanted to document the process for anyone who might find it useful.
 
@@ -38,6 +40,9 @@ To illustrate the feature's intricacies, I created a GIF demonstrating its diffe
 - When a user sends multiple messages in a row (with each message sent less than 60 seconds after the previous), they are grouped together, omitting redundant user information.
   - Hovering over a grouped message reveals the time it was sent.
 - Each message has buttons that appear on hover, allowing reactions or actions like deleting or reporting a message.
+
+### Testing
+
 - Deleting a message doesn't actually delete it, but instead updates its content to "[message deleted]", and changes the font color to a light grey.
 - Before a message can be deleted, the user is asked to confirm this decision via a message deletion confirmation overlay.
 - Clicking the "Create Chat" button opens a "New Chat" overlay where users can search and select other users to start a chat.

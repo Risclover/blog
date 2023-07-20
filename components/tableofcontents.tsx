@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { PiArrowFatUpDuotone } from "react-icons/pi";
 
 type Props = {
   headingsRef: any;
@@ -19,8 +20,8 @@ function useHighlighted() {
     };
 
     observer.current = new IntersectionObserver(handleObserver, {
-      rootMargin: "0% 0% -10% 0px",
-      threshold: 1,
+      rootMargin: "10% 0% -50% 0%",
+      threshold: 0,
     });
 
     const elements = document.querySelectorAll("h2, h3, h4");
@@ -34,34 +35,77 @@ function useHighlighted() {
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="toc min-w-fit ml-20 hidden lg:block">
-      <h1 className="uppercase font-medium tracking-widest mb-1 text-lg text-slate-900 dark:text-gray-50">
+      <h1 className="uppercase font-medium text-[18px] tracking-widest mb-1 text-slate-900 dark:text-gray-50 mb-[16px]">
         Table of Contents
       </h1>
-      <hr />
       <ul>
         {props.headings.map(
           (heading: { slug: string; title: string; level: number }) => (
-            <a
-              href={`#${heading.slug}`}
-              className={`heading-${heading.level} ${
-                activeId === heading.slug ? "text-sky-900" : ""
-              }`}
-            >
-              <li
-                className={
-                  activeId === heading.slug
-                    ? "text-sky-700 mt-[10px] text-[15px] hover:text-sky-700"
-                    : "text-slate-900 dark:text-gray-50 mt-[10px] text-[15px] hover:text-sky-700"
-                }
-              >
-                {heading.title}
-              </li>
+            <a href={`#${heading.slug}`}>
+              {heading.level === 2 ? (
+                <li
+                  className={`${
+                    activeId === heading.slug
+                      ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
+                      : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
+                  } mt-[10px]`}
+                >
+                  {heading.title}
+                </li>
+              ) : heading.level === 3 ? (
+                <li className="mt-0">
+                  <ul className="mb-0 ml-1">
+                    <li
+                      className={`${
+                        activeId === heading.slug
+                          ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
+                          : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
+                      } text-sm mt-[3px]`}
+                    >
+                      {heading.title}
+                    </li>
+                  </ul>
+                </li>
+              ) : heading.level === 4 ? (
+                <li className="mt-0">
+                  <ul className="mb-0">
+                    <li>
+                      <ul className="mb-0 ml-3">
+                        <li
+                          className={`${
+                            activeId === heading.slug
+                              ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
+                              : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
+                          } text-xs mt-[3px]`}
+                        >
+                          {heading.title}
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              ) : (
+                ""
+              )}
             </a>
           )
         )}
       </ul>
+      <button
+        className="mt-6 text-sm text-gray-900 hover:text-indigo-600 flex dark:text-gray-50 dark:hover:text-indigo-300"
+        onClick={scrollToTop}
+      >
+        Back to Top <PiArrowFatUpDuotone className="ml-1 mt-[2px]" />
+      </button>
     </div>
   );
 }

@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Around } from "@theme-toggles/react";
-import Link from "next/link";
-import useLocalStorage from "use-local-storage";
-import DarkModeToggle from "./DarkModeToggle";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export const Header = (props: Props) => {
+const DarkModeToggle: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleToggle = () => {
@@ -34,10 +27,14 @@ export const Header = (props: Props) => {
   }, [isDarkMode]);
 
   return (
-    <header className="w-full flex flex-col text-slate-50 bg-slate-900 ">
-      {props.children}
-    </header>
+    <button onClick={handleToggle} className="flex items-center justify-center">
+      {isDarkMode ? (
+        <BsSunFill className="text-gray-50 text-[24px]" />
+      ) : (
+        <BsMoonFill className="text-gray-50 text-[24px]" />
+      )}
+    </button>
   );
 };
 
-export default Header;
+export default DarkModeToggle;
