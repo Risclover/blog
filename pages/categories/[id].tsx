@@ -10,14 +10,18 @@ export default function Category({
 }: {
   id: string;
   categoryData: {
-    title: string;
-    date: string;
-    subtitle: string;
-    preview: string;
-    category: string;
-    slug: string;
+    data: {
+      title: string;
+      date: string;
+      subtitle: string;
+      preview: string;
+      category: string;
+      slug: string;
+    };
+    postId: string;
   }[];
 }) {
+  console.log("CAT DATA:", categoryData);
   return (
     <Layout home>
       <div className="w-full h-full bg-gray-200 dark:bg-slate-950 min-h-screen pt-16 sm:pt-32 px-8 pb-16">
@@ -28,16 +32,16 @@ export default function Category({
           <div className="categories-page">
             {categoryData.map(
               (post, i) =>
-                post?.category.toLowerCase() === id && (
-                  <Link href={`/posts/${categoryData[i].slug}`}>
+                post?.data.category.toLowerCase() === id && (
+                  <Link key={i} href={`/posts/${post?.postId}`}>
                     <div className="category-box cursor-pointer group h-full dark:bg-gray-800 dark:text-gray-50">
                       <div className="mb-3">
                         <h2 className="text-[22px] font-bold text-gray-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mb-1 dark:text-gray-50">
-                          {post.title}
+                          {post.data.title}
                         </h2>
                         <span className="text-slate-700 dark:text-slate-400 leading-7 font-medium text-[17px]">
-                          {post?.subtitle !== "No subtitle given" &&
-                            post.subtitle}
+                          {post?.data.subtitle !== "No subtitle given" &&
+                            post.data.subtitle}
                         </span>
                       </div>
                       <p className="leading-7 text-[#0a0c10] dark:text-gray-50">

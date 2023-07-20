@@ -9,7 +9,6 @@ export function getCategories() {
   return fileNames.map((fileName) => {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
-    const postId = fileName.replace(/\.md$/, "");
 
     const matterResult = matter(fileContents);
 
@@ -18,7 +17,7 @@ export function getCategories() {
     return {
       params: {
         id: category.category.toLowerCase(),
-        postId,
+        postId: fileName.replace(/\.md$/, ""),
       },
     };
   });
@@ -26,7 +25,11 @@ export function getCategories() {
 
 export function getCategoryPosts(id: string) {
   const fileNames = fs.readdirSync(postsDirectory);
-  let posts: any[] = [];
+  let posts: {
+    data: { [key: string]: string };
+    postId: string;
+  }[] = [];
+
   fileNames.map((fileName) => {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -36,9 +39,13 @@ export function getCategoryPosts(id: string) {
     const category = matterResult.data;
 
     if (category.category.toLowerCase() === id) {
-      posts.push(matterResult.data);
+      posts.push({
+        data: matterResult.data,
+        postId: fileName.replace(/\.md$/, ""),
+      });
     }
   });
 
+  console.log("posts", posts);
   return posts;
 }

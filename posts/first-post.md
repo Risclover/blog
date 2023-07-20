@@ -12,7 +12,7 @@ slug: first-post
 
 In this post, I go over the process of replicating Reddit's live chat feature from initial research all the way to completion. I recently managed to build this for my pixel-perfect Reddit clone, Ribbit, and wanted to document the process for anyone who might find it useful.
 
-> Note: This walkthrough assumes decent understanding of the languages and technologies utilized. The full tech > stack is listed below. I do, however, go into some detail regarding WebSockets.
+> This walkthrough assumes decent understanding of the languages and technologies utilized. The full tech stack is listed below. I do, however, go into some detail regarding WebSockets.
 
 ## Tech Stack and Tools
 

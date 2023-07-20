@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
 
 type Props = {
-  headingsRef: any;
+  headingsRef: HTMLHeadingElement;
   headings: { slug: string; title: string; level: number }[];
 };
 
@@ -56,8 +56,11 @@ export default function MobileTableofContents(props: Props) {
         <div className="bg-white border-b border-slate-800 dark:bg-gray-950 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm text-white py-4 dark:border-slate-800 px-6 lg:px-12 lg:hidden">
           <ul>
             {props.headings.map(
-              (heading: { slug: string; title: string; level: number }) => (
-                <a href={`#${heading.slug}`}>
+              (
+                heading: { slug: string; title: string; level: number },
+                idx: number
+              ) => (
+                <a key={idx} href={`#${heading.slug}`}>
                   {heading.level === 2 ? (
                     <li
                       className={`${

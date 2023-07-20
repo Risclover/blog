@@ -1,5 +1,9 @@
 import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import {
+  getAllPostIds,
+  getPostData,
+  getSortedPostsData,
+} from "../../lib/posts";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { getCategories } from "lib/categories";
@@ -10,12 +14,22 @@ import MobileTableofContents from "@/components/mobiletoc";
 import markdownToHtml from "lib/markdown";
 
 export default function Post({
+  allPostsData,
   postData,
   fileContent,
   content,
 }: {
+  allPostsData: {
+    date: string;
+    title: string;
+    category: string;
+    subtitle: string;
+    slug: string;
+  }[];
+
   fileContent: { slug: string; title: string; level: number }[];
-  content: any;
+  content: string;
+
   postData: {
     title: string;
     date: string;
@@ -26,10 +40,13 @@ export default function Post({
 }) {
   const headingsRef = useRef(null);
 
-  useEffect(() => {
-    const headings: any = document.querySelectorAll("h2, h3, h4");
+  console.log("POST DATA:", postData);
 
-    headings.forEach((heading: any) => {
+  useEffect(() => {
+    const headings: NodeListOf<Element> =
+      document.querySelectorAll("h2, h3, h4");
+
+    headings.forEach((heading: Element) => {
       heading.setAttribute(
         "id",
         heading.textContent.toLowerCase().split(" ").join("-")
@@ -63,14 +80,14 @@ export default function Post({
     function initCodeCopy() {
       const codeBlocks = document.querySelectorAll('code[class*="language-"]');
 
-      codeBlocks.forEach((block: any) => {
-        const lang = parseLanguage(block);
+      codeBlocks.forEach((block: Element) => {
+        const lang: string | undefined = parseLanguage(block);
         const referenceEl = block.parentElement;
-        const parent = block.parentElement.parentElement;
+        const parent = block.parentElement?.parentElement;
 
         const wrapper = document.createElement("div");
         wrapper.className = "code-wrapper";
-        parent.insertBefore(wrapper, referenceEl);
+        parent?.insertBefore(wrapper, referenceEl);
         wrapper.append(block.parentElement);
 
         const copyBtn = document.createElement("button");
@@ -81,15 +98,16 @@ export default function Post({
         wrapper.insertAdjacentElement("beforeend", copyBtn);
       });
 
-      function parseLanguage(block: HTMLElement) {
+      function parseLanguage(block: HTMLElement): string | undefined {
         const className = block.className;
         if (className.startsWith("language")) {
           const [prefix, lang] = className.split("-");
+          console.log("prefix:", prefix);
           return lang;
         }
       }
 
-      function copy(e: any) {
+      function copy(e: React.BaseSyntheticEvent<HTMLButtonElement>) {
         const btn = e.currentTarget;
         const lang = btn.dataset.lang;
 
@@ -158,11 +176,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const allPostsData = getSortedPostsData();
   const postData = await getPostData(params?.id as string);
   const content = await markdownToHtml(postData.contentHtml || "");
   const mdxContent = extractHeadings(`posts/${params?.id}.md`);
   return {
     props: {
+      allPostsData,
       postData,
       fileContent: mdxContent,
       content,

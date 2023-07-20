@@ -23,6 +23,7 @@ export default function Home({
     };
   }[];
 }) {
+  console.log("ALL POSTS DATA:", allPostsData[0]);
   let categoriesList: any = {};
   for (let category of categories) {
     if (categoriesList[category.params.id] == 0) {
@@ -36,13 +37,13 @@ export default function Home({
 
   return (
     <Layout home>
-      <main className="px-6 sm:px-12 py-24 font-sans flex flex-col min-h-screen h-full lg:max-w-6xl w-full m-auto">
+      <div className="px-6 sm:px-12 py-24 font-sans flex flex-col min-h-screen h-full lg:max-w-6xl w-full m-auto relative">
         <h2 className="uppercase text-base font-medium tracking-widest text-pink-500 mb-9">
           Categories
         </h2>
         <div className="flex flex-wrap mb-[64px]">
-          {Array.from(categoriesSet).map((category) => (
-            <Link href={`/categories/${category}`}>
+          {Array.from(categoriesSet).map((category, idx) => (
+            <Link key={idx} href={`/categories/${category}`}>
               <div className="flex justify-center items-center mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-sky-100 text-black dark:bg-slate-700 dark:text-white hover:bg-sky-200 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer">
                 {category.slice(0, 1).toUpperCase() + category.slice(1)}
               </div>
@@ -54,8 +55,9 @@ export default function Home({
             Latest and Greatest
           </h2>
           <div className="grid grid-cols-1 gap-1 grid-flow-row">
-            {allPostsData.map(({ id, date, title, subtitle, preview }) => (
+            {allPostsData.map(({ id, date, title, subtitle, preview }, idx) => (
               <Link
+                key={idx}
                 href={`/posts/${id}`}
                 className="container py-2 mb-12 group cursor-pointer"
               >
@@ -85,7 +87,7 @@ export default function Home({
             ))}
           </div>
         </section>
-      </main>
+      </div>
     </Layout>
   );
 }

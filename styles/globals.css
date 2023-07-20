@@ -12,7 +12,7 @@ body * {
 }
 
 blockquote {
-  padding: 40px;
+  padding: 20px 30px;
   background: #eef8ff;
   border-radius: 10px;
   margin-top: 40px;
@@ -29,6 +29,14 @@ blockquote {
 
 blockquote p:first-of-type {
   margin-top: 0;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.5s ease;
 }
 
 .content p:first-of-type {

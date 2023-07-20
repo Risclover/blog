@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { PiArrowFatUpDuotone } from "react-icons/pi";
 
 type Props = {
-  headingsRef: any;
+  headingsRef: HTMLHeadingElement;
   headings: { slug: string; title: string; level: number }[];
 };
 
@@ -49,8 +49,11 @@ export default function TableofContents(props: Props) {
       </h1>
       <ul>
         {props.headings.map(
-          (heading: { slug: string; title: string; level: number }) => (
-            <a href={`#${heading.slug}`}>
+          (
+            heading: { slug: string; title: string; level: number },
+            idx: number
+          ) => (
+            <a key={idx} href={`#${heading.slug}`}>
               {heading.level === 2 ? (
                 <li
                   className={`${

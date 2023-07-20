@@ -25,11 +25,7 @@ Before diving into any project, it is crucial to spend time on research and plan
 
 To illustrate the feature's intricacies, I created a GIF demonstrating its different aspects. Let's take a closer look and identify some key elements.
 
-<center>
-
-![](./6ek5EavVy4.gif)
-
-</center>
+<img src="/images/6ek5EavVy4.gif" />
 
 By studying these details, we gain a comprehensive understanding of the feature and can ensure a faithful recreation.
 

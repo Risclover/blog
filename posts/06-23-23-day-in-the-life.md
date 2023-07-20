@@ -4,6 +4,7 @@ subtitle: Working a full-time job to get a full-time job
 date: 06/20/23
 description: In the fast-paced and ever-evolving world of software engineering, being unemployed doesn't mean a software engineer's journey comes to a halt. Instead, it becomes a relentless pursuit of growth and competitiveness. Join us as we dive into the daily life of me, an unemployed software engineer, exploring the challenges I face and the proactive steps I take to navigate a demanding job market.
 category: Personal
+slug: day-in-the-life
 ---
 
 ## Introduction

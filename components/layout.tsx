@@ -11,6 +11,7 @@ import { Providers } from "./providers";
 import useLocalStorage from "use-local-storage";
 import { useState } from "react";
 import Nav from "./nav";
+import BackToTop from "./backtotop";
 
 const name = "[Your Name]";
 export const siteTitle = "Next.js Sample Website";
@@ -111,9 +112,10 @@ export default function Layout({
         <main
           className={`${
             bg === "grey" ? "bg-gray-100" : "bg-white"
-          } dark:bg-gray-950`}
+          } dark:bg-gray-950 relative`}
         >
           {children}
+          <BackToTop />
         </main>
       </Providers>
     </div>
