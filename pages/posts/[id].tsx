@@ -6,10 +6,9 @@ import {
 } from "../../lib/posts";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { getCategories } from "lib/categories";
 import { extractHeadings } from "extract-md-headings";
 import TableOfContents from "@/components/tableofcontents";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import MobileTableofContents from "@/components/mobiletoc";
 import markdownToHtml from "lib/markdown";
 

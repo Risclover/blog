@@ -1,14 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Header from "./header";
 import Avatar from "../public/images/avatar2.png";
 import Script from "next/script";
-import { ThemeProvider } from "next-themes";
 import { Providers } from "./providers";
-import useLocalStorage from "use-local-storage";
 import { useState } from "react";
 import Nav from "./nav";
 import BackToTop from "./backtotop";

@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Around } from "@theme-toggles/react";
-import Link from "next/link";
-import useLocalStorage from "use-local-storage";
-import DarkModeToggle from "./DarkModeToggle";
 
 type Props = {
   children: React.ReactNode;
@@ -10,10 +6,6 @@ type Props = {
 
 export const Header = (props: Props) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const handleToggle = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
 
   useEffect(() => {
     const storedMode = localStorage.getItem("theme");
