@@ -129,7 +129,13 @@ li {
 .code-wrapper {
   position: relative;
   margin: 0 auto;
+  background: inherit;
 }
+
+.remark-highlight {
+  background: inherit;
+}
+
 .copy-button {
   display: flex;
   align-items: center;
