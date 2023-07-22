@@ -14,7 +14,7 @@ export default function Home({
     title: string;
     id: string;
     subtitle: string;
-    preview: string;
+    description: string;
   }[];
   categories: {
     params: {
@@ -22,7 +22,6 @@ export default function Home({
     };
   }[];
 }) {
-  console.log("ALL POSTS DATA:", allPostsData[0]);
   let categoriesList: any = {};
   for (let category of categories) {
     if (categoriesList[category.params.id] == 0) {
@@ -54,36 +53,38 @@ export default function Home({
             Latest and Greatest
           </h2>
           <div className="grid grid-cols-1 gap-1 grid-flow-row">
-            {allPostsData.map(({ id, date, title, subtitle, preview }, idx) => (
-              <Link
-                key={idx}
-                href={`/posts/${id}`}
-                className="container py-2 mb-12 group cursor-pointer"
-              >
-                <div key={id}>
-                  <h3 className="text-[22px] font-bold leading-8 text-gray-950 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 dark:text-gray-50">
-                    {title}
-                  </h3>
-                  {subtitle !== "No subtitle given" && (
-                    <div className="text-slate-500 text-[17px] leading-8 font-medium dark:text-slate-400">
-                      {subtitle}
-                    </div>
-                  )}
+            {allPostsData.map(
+              ({ id, date, title, subtitle, description }, idx) => (
+                <Link
+                  key={idx}
+                  href={`/posts/${id}`}
+                  className="container py-2 mb-12 group cursor-pointer"
+                >
+                  <div key={id}>
+                    <h3 className="text-[22px] font-bold leading-8 text-gray-950 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 dark:text-gray-50">
+                      {title}
+                    </h3>
+                    {subtitle !== "No subtitle given" && (
+                      <div className="text-slate-500 text-[17px] leading-8 font-medium dark:text-slate-400">
+                        {subtitle}
+                      </div>
+                    )}
 
-                  {preview !== "No description given" && (
-                    <div className="mt-4 font-normal text-gray-900 text-base leading-7 dark:text-gray-50">
-                      {preview}
+                    {description !== "No description given" && (
+                      <div className="mt-4 font-normal text-gray-900 text-base leading-7 dark:text-gray-50">
+                        {description}
+                      </div>
+                    )}
+                    <div className="mt-4 font-bold text-neutral-900 text-base flex items-center dark:text-gray-50">
+                      <span className="mr-1">Read more</span>
+                      <span className="text-lg text-indigo-600 dark:text-indigo-400 hidden group-hover:block">
+                        <HiMiniArrowRight />
+                      </span>
                     </div>
-                  )}
-                  <div className="mt-4 font-bold text-neutral-900 text-base flex items-center dark:text-gray-50">
-                    <span className="mr-1">Read more</span>
-                    <span className="text-lg text-indigo-600 dark:text-indigo-400 hidden group-hover:block">
-                      <HiMiniArrowRight />
-                    </span>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              )
+            )}
           </div>
         </section>
       </div>

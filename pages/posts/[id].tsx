@@ -13,22 +13,10 @@ import MobileTableofContents from "@/components/mobiletoc";
 import markdownToHtml from "lib/markdown";
 
 export default function Post({
-  allPostsData,
   postData,
   fileContent,
-  content,
 }: {
-  allPostsData: {
-    date: string;
-    title: string;
-    category: string;
-    subtitle: string;
-    slug: string;
-  }[];
-
   fileContent: { slug: string; title: string; level: number }[];
-  content: string;
-
   postData: {
     title: string;
     date: string;
@@ -38,8 +26,6 @@ export default function Post({
   };
 }) {
   const headingsRef = useRef(null);
-
-  console.log("POST DATA:", postData);
 
   useEffect(() => {
     const headings: NodeListOf<Element> =

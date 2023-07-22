@@ -46,6 +46,5 @@ export function getCategoryPosts(id: string) {
     }
   });
 
-  console.log("posts", posts);
   return posts;
 }

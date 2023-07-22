@@ -14,14 +14,13 @@ export default function Category({
       title: string;
       date: string;
       subtitle: string;
-      preview: string;
+      description: string;
       category: string;
       slug: string;
     };
     postId: string;
   }[];
 }) {
-  console.log("CAT DATA:", categoryData);
   return (
     <Layout home>
       <div className="w-full h-full bg-gray-200 dark:bg-slate-950 min-h-screen pt-16 sm:pt-32 px-8 pb-16">
@@ -45,7 +44,7 @@ export default function Category({
                         </span>
                       </div>
                       <p className="leading-7 text-[#0a0c10] dark:text-gray-50">
-                        {post.preview}
+                        {post.data.description}
                       </p>
                       <div className="pt-4 leading-7 text-gray-900 font-bold flex items-center dark:text-gray-50">
                         Read more{" "}

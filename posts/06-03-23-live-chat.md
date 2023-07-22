@@ -1,5 +1,6 @@
 ---
 title: Cloning Reddit's Live Chat Feature
+subtitle: Using WebSockets to create Reddit's live messaging feature.
 date: 06/03/23
 description: Join me as we take a deep dive into the code that powers Ribbit's live chat feature and discuss the project in its entirety, from the initial planning stages all the way to its completion.
 category: Tutorial
