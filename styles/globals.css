@@ -20,6 +20,8 @@ blockquote {
   border-left: 4px solid blue;
   font-style: italic;
   font-size: 18px;
+  max-width: 688px;
+  width: 100%;
 }
 
 .dark blockquote {
@@ -29,6 +31,13 @@ blockquote {
 
 blockquote p:first-of-type {
   margin-top: 0;
+}
+
+.blog-post {
+  width: 100%;
+}
+.content {
+  width: 100%;
 }
 
 .back-to-top {
@@ -75,7 +84,6 @@ blockquote p:first-of-type {
 .toc {
   position: sticky;
   top: calc(20px + 68px);
-  height: fit-content;
   max-height: calc(100vh - 148px);
   overflow: auto;
   padding-bottom: 16px;
@@ -120,6 +128,7 @@ li {
 
 .code-wrapper {
   position: relative;
+  margin: 0 auto;
 }
 .copy-button {
   display: flex;
@@ -293,3 +302,19 @@ h6 {
     }
   }
 }
+
+@media (min-width: 1024px) {
+  .blog-post,
+  .content {
+    max-width: 688px;
+    width: 100%;
+  }
+}
+/*
+@media (max-width: 420px) and (min-width: 1px) {
+  .content {
+    margin: 0 auto;
+    width: calc(100vw - 50%);
+    padding: 20px;
+  }
+} */

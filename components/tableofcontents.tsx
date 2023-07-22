@@ -43,7 +43,7 @@ export default function TableofContents(props: Props) {
   };
 
   return (
-    <div className="toc min-w-fit ml-20 hidden lg:block">
+    <div className="toc ml-20 hidden lg:block">
       <h1 className="uppercase font-medium text-[18px] tracking-widest mb-1 text-slate-900 dark:text-gray-50 mb-[16px]">
         Table of Contents
       </h1>
