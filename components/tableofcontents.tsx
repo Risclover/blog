@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { PiArrowFatUpDuotone } from "react-icons/pi";
 
 type Props = {
-  headingsRef: HTMLHeadingElement;
+  headingsRef: any;
   headings: { slug: string; title: string; level: number }[];
 };
 

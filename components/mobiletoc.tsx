@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
 
 type Props = {
-  headingsRef: HTMLHeadingElement;
+  headingsRef: any;
   headings: { slug: string; title: string; level: number }[];
 };
 

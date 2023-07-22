@@ -31,7 +31,7 @@ export default function Post({
     const headings: NodeListOf<Element> =
       document.querySelectorAll("h2, h3, h4");
 
-    headings.forEach((heading: Element) => {
+    headings.forEach((heading: any) => {
       heading.setAttribute(
         "id",
         heading.textContent.toLowerCase().split(" ").join("-")
@@ -72,8 +72,8 @@ export default function Post({
     function initCodeCopy() {
       const codeBlocks = document.querySelectorAll('code[class*="language-"]');
 
-      codeBlocks.forEach((block: Element) => {
-        const lang: string | undefined = parseLanguage(block);
+      codeBlocks.forEach((block: any) => {
+        const lang: any = parseLanguage(block);
         const referenceEl = block.parentElement;
         const parent = block.parentElement?.parentElement;
 
@@ -121,7 +121,7 @@ export default function Post({
 
       const copyButtons = document.querySelectorAll(".copy-button");
 
-      copyButtons.forEach((btn) => {
+      copyButtons.forEach((btn: any) => {
         btn.addEventListener("click", copy);
       });
     }
