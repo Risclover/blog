@@ -77,6 +77,13 @@ export default function Post({
   }, []);
 
   useEffect(() => {
+    let links = document.querySelectorAll(".content a");
+    links.forEach((link) => {
+      link.setAttribute("target", "_blank");
+    });
+  }, []);
+
+  useEffect(() => {
     function initCodeCopy() {
       const codeBlocks = document.querySelectorAll('code[class*="language-"]');
 
@@ -168,7 +175,7 @@ export default function Post({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds();
-  console.log(getCategories());
+
   return {
     paths,
     fallback: false,

@@ -72,7 +72,7 @@ export default function TableofContents(props: Props) {
                         activeId === heading.slug
                           ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
                           : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                      } text-sm mt-[3px]`}
+                      } mt-[3px]`}
                     >
                       {heading.title}
                     </li>
@@ -82,13 +82,13 @@ export default function TableofContents(props: Props) {
                 <li className="mt-0">
                   <ul className="mb-0">
                     <li>
-                      <ul className="mb-0 ml-3">
+                      <ul className="mb-0  ml-3">
                         <li
                           className={`${
                             activeId === heading.slug
                               ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
                               : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                          } text-xs mt-[3px]`}
+                          } mt-[3px]`}
                         >
                           {heading.title}
                         </li>

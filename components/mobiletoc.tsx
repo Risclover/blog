@@ -34,16 +34,21 @@ function useHighlighted() {
 
 export default function MobileTableofContents(props: Props) {
   const { activeId } = useHighlighted();
-  const [isOpen, setIsOpen] = useState(true);
+  const containerRef = useRef(null);
 
-  const toggleToc = () => {
-    setIsOpen((prevOpen) => !prevOpen);
+  const [isOpen, setIsOpen] = useState(true);
+  const [shouldCloseOnScroll, setShouldCloseOnScroll] = useState(true);
+
+  const toggleToC = () => {
+    setIsOpen(!isOpen);
   };
+
   return (
     <div className="mobile-toc top-[60px] sticky z-10">
       <div
         className={`border-b border-slate-800 dark:text-white px-6 lg:px-12 py-3 w-full block lg:hidden flex  items-center bg-white dark:bg-gray-950 dark:bg-opacity-90 backdrop-blur-sm text-slate-900 cursor-pointer`}
-        onClick={toggleToc}
+        onClick={toggleToC}
+        ref={containerRef}
       >
         {isOpen ? (
           <GoChevronDown className="mr-2" />
@@ -68,7 +73,7 @@ export default function MobileTableofContents(props: Props) {
                           ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
                           : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
                       } mt-[10px] list-none`}
-                      onClick={toggleToc}
+                      onClick={toggleToC}
                     >
                       {heading.title}
                     </li>
@@ -80,8 +85,8 @@ export default function MobileTableofContents(props: Props) {
                             activeId === heading.slug
                               ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
                               : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                          } text-sm mt-[3px] list-none`}
-                          onClick={toggleToc}
+                          } mt-[3px] list-none`}
+                          onClick={toggleToC}
                         >
                           {heading.title}
                         </li>
@@ -97,8 +102,8 @@ export default function MobileTableofContents(props: Props) {
                                 activeId === heading.slug
                                   ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
                                   : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                              } text-xs mt-[3px] list-none`}
-                              onClick={toggleToc}
+                              } mt-[3px] list-none`}
+                              onClick={toggleToC}
                             >
                               {heading.title}
                             </li>

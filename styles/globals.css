@@ -45,8 +45,21 @@ blockquote p:first-of-type {
 
 .content img {
   border-radius: 8px;
-  margin-bottom: 40px;
+  margin: 40px auto;
 }
+
+.content a {
+  color: #4f4ef5;
+}
+
+.dark .content a {
+  color: #a5b4fc;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
 .categories-page {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -134,11 +147,6 @@ main li {
 
 .mobile-toc li > ul li {
   margin-left: 20px;
-  font-size: 15px;
-}
-
-.mobile-toc li > ul li > ul li {
-  font-size: 14px;
 }
 
 .mobile-toc li:hover {
