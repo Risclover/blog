@@ -12,7 +12,7 @@ function transformNode(node: any, output: any, indexMap: any) {
   if (node.depth === 2) {
     output.push(transformedNode);
     indexMap[node.depth] = transformedNode;
-  } else {
+  } else if (node.depth !== 1) {
     const parent = indexMap[node.depth - 1];
     if (parent) {
       parent.children.push(transformedNode);
@@ -36,6 +36,7 @@ function getHeadings(root: any) {
     transformNode(node, output, indexMap);
   });
 
+  console.log("OUTPUT:", output);
   return output;
 }
 

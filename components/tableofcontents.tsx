@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { PiArrowFatUpDuotone } from "react-icons/pi";
 
@@ -35,6 +36,8 @@ function useHighlighted() {
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();
 
+  console.log("headings:", props.headings);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -52,55 +55,53 @@ export default function TableofContents(props: Props) {
           (
             heading: { slug: string; title: string; level: number },
             idx: number
-          ) => (
-            <a key={idx} href={`#${heading.slug}`}>
-              {heading.level === 2 ? (
-                <li
-                  className={`${
-                    activeId === heading.slug
-                      ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
-                      : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                  } mt-[10px]`}
-                >
-                  {heading.title}
-                </li>
-              ) : heading.level === 3 ? (
-                <li className="mt-0">
-                  <ul className="mb-0 ml-1">
-                    <li
-                      className={`${
-                        activeId === heading.slug
-                          ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
-                          : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                      } mt-[3px]`}
-                    >
-                      {heading.title}
-                    </li>
-                  </ul>
-                </li>
-              ) : heading.level === 4 ? (
-                <li className="mt-0">
-                  <ul className="mb-0">
-                    <li>
-                      <ul className="mb-0  ml-3">
-                        <li
-                          className={`${
-                            activeId === heading.slug
-                              ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
-                              : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                          } mt-[3px]`}
-                        >
-                          {heading.title}
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              ) : (
-                ""
-              )}
-            </a>
-          )
+          ) =>
+            heading.level !== 1 &&
+            (heading.level === 2 ? (
+              <li
+                className={`${
+                  activeId === heading.slug
+                    ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
+                    : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
+                } mt-[10px]`}
+              >
+                <Link href={`#${heading.slug}`}>{heading.title}</Link>{" "}
+              </li>
+            ) : heading.level === 3 ? (
+              <li className="mt-0">
+                <ul className="mb-0 ml-1">
+                  <li
+                    className={`${
+                      activeId === heading.slug
+                        ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
+                        : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
+                    } mt-[3px]`}
+                  >
+                    <Link href={`#${heading.slug}`}>{heading.title}</Link>{" "}
+                  </li>
+                </ul>
+              </li>
+            ) : heading.level === 4 ? (
+              <li className="mt-0">
+                <ul className="mb-0">
+                  <li>
+                    <ul className="mb-0  ml-3">
+                      <li
+                        className={`${
+                          activeId === heading.slug
+                            ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
+                            : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
+                        } mt-[3px]`}
+                      >
+                        <Link href={`#${heading.slug}`}>{heading.title}</Link>{" "}
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              ""
+            ))
         )}
       </ul>
       <button

@@ -97,7 +97,7 @@ Next, we have the `ChatThread` model to represent the chat thread between two us
 ```python
 from .db import db
 
-# user_chat_threads
+"""user_chat_threads"""
 
 class ChatThread(db.Model):
     __tablename__ = 'chat_threads'
@@ -122,7 +122,9 @@ Finally, we have the `ChatMessage` model:
 ```python
 from .db import db
 
-# user_chat_threads and ChatThread
+"""
+user_chat_threads and ChatThread
+"""
 
 class ChatMessage(db.Model):
     __tablename__ = 'chat_messages'
