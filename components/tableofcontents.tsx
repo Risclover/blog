@@ -45,6 +45,16 @@ export default function TableofContents(props: Props) {
     });
   };
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*\#/, "");
+    const elem = document.getElementById(targetId);
+    elem?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="toc ml-20 hidden lg:block">
       <h1 className="uppercase font-medium text-[18px] tracking-widest mb-1 text-slate-900 dark:text-gray-50 mb-[16px]">
@@ -65,7 +75,13 @@ export default function TableofContents(props: Props) {
                     : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
                 } mt-[10px]`}
               >
-                <Link href={`#${heading.slug}`}>{heading.title}</Link>{" "}
+                <Link
+                  className="scroll-smooth"
+                  href={`#${heading.slug}`}
+                  onClick={handleScroll}
+                >
+                  {heading.title}
+                </Link>{" "}
               </li>
             ) : heading.level === 3 ? (
               <li className="mt-0">
@@ -77,7 +93,9 @@ export default function TableofContents(props: Props) {
                         : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
                     } mt-[3px]`}
                   >
-                    <Link href={`#${heading.slug}`}>{heading.title}</Link>{" "}
+                    <Link href={`#${heading.slug}`} onClick={handleScroll}>
+                      {heading.title}
+                    </Link>{" "}
                   </li>
                 </ul>
               </li>
@@ -93,7 +111,9 @@ export default function TableofContents(props: Props) {
                             : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
                         } mt-[3px]`}
                       >
-                        <Link href={`#${heading.slug}`}>{heading.title}</Link>{" "}
+                        <Link href={`#${heading.slug}`} onClick={handleScroll}>
+                          {heading.title}
+                        </Link>{" "}
                       </li>
                     </ul>
                   </li>

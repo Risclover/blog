@@ -38,10 +38,19 @@ export default function MobileTableofContents(props: Props) {
   const containerRef = useRef(null);
 
   const [isOpen, setIsOpen] = useState(true);
-  const [shouldCloseOnScroll, setShouldCloseOnScroll] = useState(true);
 
   const toggleToC = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*\#/, "");
+    const elem = document.getElementById(targetId);
+    elem?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -76,7 +85,9 @@ export default function MobileTableofContents(props: Props) {
                     } mt-[10px] list-none`}
                     onClick={toggleToC}
                   >
-                    <Link href={`#${heading.slug}`}>{heading.title}</Link>
+                    <Link href={`#${heading.slug}`} onClick={handleScroll}>
+                      {heading.title}
+                    </Link>
                   </li>
                 ) : heading.level === 3 ? (
                   <li className="mt-0 list-none">
@@ -89,7 +100,9 @@ export default function MobileTableofContents(props: Props) {
                         } mt-[3px] list-none`}
                         onClick={toggleToC}
                       >
-                        <Link href={`#${heading.slug}`}>{heading.title}</Link>
+                        <Link href={`#${heading.slug}`} onClick={handleScroll}>
+                          {heading.title}
+                        </Link>
                       </li>
                     </ul>
                   </li>
@@ -106,7 +119,10 @@ export default function MobileTableofContents(props: Props) {
                             } mt-[3px] list-none`}
                             onClick={toggleToC}
                           >
-                            <Link href={`#${heading.slug}`}>
+                            <Link
+                              href={`#${heading.slug}`}
+                              onClick={handleScroll}
+                            >
                               {heading.title}
                             </Link>
                           </li>

@@ -104,6 +104,12 @@ li {
   list-style-type: none;
 }
 
+li a {
+  height: 100% !important;
+  width: 100%;
+  line-height: calc(1em + 0.725rem);
+}
+
 .content p {
   margin-top: 30px;
 }
@@ -184,23 +190,23 @@ li {
   transition: color 0ms ease 0s;
 }
 
-h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  scroll-margin-top: 129px;
+  padding-top: 230px;
+  margin-top: -200px;
 }
 
 @media (min-width: 1020px) {
-  h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    scroll-margin-top: 80px !important;
+    padding-top: 130px;
+    margin-top: -130px;
   }
 }
 
@@ -283,9 +289,6 @@ h6 {
     color {
       @apply text-sky-700;
     }
-    margin-top {
-      @apply mt-16;
-    }
   }
 
   h4 {
@@ -295,10 +298,6 @@ h6 {
 
     font-weight {
       @apply font-bold;
-    }
-
-    margin-top {
-      @apply mt-16;
     }
   }
 
