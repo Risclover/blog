@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import { useState } from "react";
 import Nav from "./nav";
 import BackToTop from "./backtotop";
+import { useRouter } from "next/router";
 
 const name = "[Your Name]";
 export const siteTitle = "Next.js Sample Website";
@@ -24,6 +25,8 @@ export default function Layout({
   postData?: {
     date: string;
     title: string;
+    subcategory: string;
+    categoryUrl: string;
     contentHtml: string;
     subtitle: string;
     category: string;
@@ -31,8 +34,10 @@ export default function Layout({
 }) {
   const [theme, setTheme] = useState("okaidia");
 
+  const router = useRouter();
+
   return (
-    <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-slate-950 flex flex-col bg-white">
+    <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-slate-800 flex flex-col bg-white relative">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -75,40 +80,46 @@ export default function Layout({
       </Head>
       <Providers>
         <Nav />
-        <Header>
-          {home ? (
-            <div className="mx-auto max-w-6xl flex flex-col justify-end mt-12">
-              <Image className="w-96 mx-auto" src={Avatar} alt="Me" />
-            </div>
-          ) : (
-            <div className="flex flex-col justify-end z-10 mx-auto max-w-6xl w-full lg:px-12 px-6 lg:mt-20 mt-6 pb-8 lg:pb-14">
-              <div className="mb-2 text-slate-50 capitalize text-sm lg:text-[16px]">
-                <Link href="/" className="text-white hover:text-gray-400">
-                  Home
-                </Link>
-                <span className="mx-5">&gt;</span>
-                <Link
-                  href={`/categories/${postData?.category.toLowerCase()}`}
-                  className="hover:text-gray-400"
-                >
-                  {postData?.category}
-                </Link>
+        {router.pathname !== "/" && (
+          <Header>
+            {home ? (
+              <div className="mx-auto max-w-6xl flex flex-col justify-end mt-12">
+                <Image className="w-96 mx-auto" src={Avatar} alt="Me" />
               </div>
-              <div className="text-2xl lg:text-4xl font-medium leading-snug">
-                {postData?.title}
-              </div>
-              {postData?.subtitle && postData?.subtitle.length > 0 && (
-                <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
-                  {postData?.subtitle}
+            ) : (
+              <div className="flex flex-col justify-end z-10 mx-auto max-w-6xl w-full lg:px-12 px-6 lg:mt-20 mt-6 pb-8 lg:pb-14">
+                <div className="mb-2 text-slate-50 capitalize text-sm lg:text-[16px]">
+                  <Link href="/" className="text-white hover:text-gray-400">
+                    Home
+                  </Link>
+                  <span className="mx-5">&gt;</span>
+                  <Link
+                    href={`${
+                      postData?.subcategory
+                        ? postData?.categoryUrl
+                        : `/categories/${postData?.category.toLowerCase()}`
+                    }`}
+                    className="hover:text-gray-400"
+                  >
+                    {postData?.category}
+                  </Link>
                 </div>
-              )}
-            </div>
-          )}
-        </Header>
+                <div className="text-2xl lg:text-4xl font-medium leading-snug">
+                  {postData?.title}
+                </div>
+                {postData?.subtitle && postData?.subtitle.length > 0 && (
+                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
+                    {postData?.subtitle}
+                  </div>
+                )}
+              </div>
+            )}
+          </Header>
+        )}
         <main
           className={`${
             bg === "grey" ? "bg-gray-100" : "bg-white"
-          } dark:bg-gray-950 relative`}
+          } dark:bg-slate-950 relative`}
         >
           {children}
           <BackToTop />

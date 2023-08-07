@@ -3,6 +3,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { getCategories, getCategoryPosts } from "lib/categories";
 import { HiMiniArrowRight } from "react-icons/hi2";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Category({
   id,
@@ -33,7 +34,13 @@ export default function Category({
               (post, i) =>
                 post?.data.category.toLowerCase() === id && (
                   <Link key={i} href={`/posts/${post?.postId}`}>
-                    <div className="category-box cursor-pointer group h-full dark:bg-gray-800 dark:text-gray-50">
+                    <motion.div
+                      whileHover={{
+                        scale: 1.05,
+                        transition: { duration: 0.05 },
+                      }}
+                      className="category-box cursor-pointer group h-full dark:bg-gray-800 dark:text-gray-50"
+                    >
                       <div className="mb-3">
                         <h2 className="text-[22px] font-bold text-gray-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mb-1 dark:text-gray-50">
                           {post.data.title}
@@ -50,7 +57,7 @@ export default function Category({
                         Read more{" "}
                         <HiMiniArrowRight className="ml-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:block hidden" />
                       </div>
-                    </div>
+                    </motion.div>
                   </Link>
                 )
             )}

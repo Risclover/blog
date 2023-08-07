@@ -43,7 +43,7 @@
     "types.d.ts",
     "public/storage.js",
     ".next/types/**/*.ts"
-  ]
+, "components/comparisonslider.js"  ]
   // "exclude": ["node_modules"]
   ,
   "exclude": [

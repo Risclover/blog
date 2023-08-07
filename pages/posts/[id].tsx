@@ -26,7 +26,6 @@ export default function Post({
   };
 }) {
   const headingsRef = useRef(null);
-
   useEffect(() => {
     const headings: NodeListOf<Element> =
       document.querySelectorAll("h2, h3, h4");
@@ -44,17 +43,18 @@ export default function Post({
           heading.classList.add(
             "text-3xl",
             "font-bold",
+            "mt-16",
             "text-indigo-600",
             "dark:text-indigo-300",
             "mb-8"
           );
 
         if (heading.nodeName.toLowerCase() === "h3") {
-          heading.classList.add("text-2xl", "font-bold", "mb-8");
+          heading.classList.add("text-2xl", "font-bold", "mt-16", "mb-8");
         }
 
         if (heading.nodeName.toLowerCase() === "h4") {
-          heading.classList.add("text-xl", "font-bold", "mb-8");
+          heading.classList.add("text-xl", "font-bold", "mt-16", "mb-8");
         }
       }
     });
@@ -141,7 +141,7 @@ export default function Post({
       )}
       <div
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 lg:py-20 flex flex-row-reverse dark:text-gray-50"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 fit-content lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50"
       >
         {fileContent.length > 0 && (
           <TableOfContents headings={fileContent} headingsRef={headingsRef} />

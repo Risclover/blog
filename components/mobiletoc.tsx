@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
 
@@ -38,19 +37,10 @@ export default function MobileTableofContents(props: Props) {
   const containerRef = useRef(null);
 
   const [isOpen, setIsOpen] = useState(true);
+  const [shouldCloseOnScroll, setShouldCloseOnScroll] = useState(true);
 
   const toggleToC = () => {
     setIsOpen(!isOpen);
-  };
-
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    const href = e.currentTarget.href;
-    const targetId = href.replace(/.*\#/, "");
-    const elem = document.getElementById(targetId);
-    elem?.scrollIntoView({
-      behavior: "smooth",
-    });
   };
 
   return (
@@ -68,48 +58,28 @@ export default function MobileTableofContents(props: Props) {
         Table of Contents
       </div>
       {isOpen && (
-        <div className="bg-white border-b border-slate-800 dark:bg-gray-950 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm text-white py-4 dark:border-slate-800 px-6 lg:px-12 lg:hidden">
+        <div className="mobile-toc-scroll bg-white border-b border-slate-800 dark:bg-gray-950 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm text-white py-4 dark:border-slate-800 px-6 lg:px-12 lg:hidden">
           <ul>
             {props.headings.map(
               (
                 heading: { slug: string; title: string; level: number },
                 idx: number
               ) =>
-                heading.level !== 1 &&
-                (heading.level === 2 ? (
-                  <li
-                    className={`${
-                      activeId === heading.slug
-                        ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
-                        : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                    } mt-[10px] list-none`}
-                    onClick={toggleToC}
-                  >
-                    <Link href={`#${heading.slug}`} onClick={handleScroll}>
-                      {heading.title}
-                    </Link>
-                  </li>
-                ) : heading.level === 3 ? (
-                  <li className="mt-0 list-none">
-                    <ul className="mb-0">
+                heading.level !== 1 && (
+                  <a key={idx} href={`#${heading.slug}`}>
+                    {heading.level === 2 ? (
                       <li
                         className={`${
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
                             : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                        } mt-[3px] list-none`}
+                        } mt-[10px] list-none`}
                         onClick={toggleToC}
                       >
-                        <Link href={`#${heading.slug}`} onClick={handleScroll}>
-                          {heading.title}
-                        </Link>
+                        {heading.title}
                       </li>
-                    </ul>
-                  </li>
-                ) : heading.level === 4 ? (
-                  <li className="mt-0 list-none">
-                    <ul className="mb-0">
-                      <li className="list-none">
+                    ) : heading.level === 3 ? (
+                      <li className="mt-0 list-none">
                         <ul className="mb-0">
                           <li
                             className={`${
@@ -119,20 +89,34 @@ export default function MobileTableofContents(props: Props) {
                             } mt-[3px] list-none`}
                             onClick={toggleToC}
                           >
-                            <Link
-                              href={`#${heading.slug}`}
-                              onClick={handleScroll}
-                            >
-                              {heading.title}
-                            </Link>
+                            {heading.title}
                           </li>
                         </ul>
                       </li>
-                    </ul>
-                  </li>
-                ) : (
-                  ""
-                ))
+                    ) : heading.level === 4 ? (
+                      <li className="mt-0 list-none">
+                        <ul className="mb-0">
+                          <li className="list-none">
+                            <ul className="mb-0">
+                              <li
+                                className={`${
+                                  activeId === heading.slug
+                                    ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
+                                    : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
+                                } mt-[3px] list-none`}
+                                onClick={toggleToC}
+                              >
+                                {heading.title}
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    ) : (
+                      ""
+                    )}
+                  </a>
+                )
             )}
           </ul>
         </div>
