@@ -140,7 +140,12 @@ export default function Ribbit() {
     },
     { id: 19, slug: "messaging", title: "Messaging", level: 3 },
     { id: 20, slug: "notifications", title: "Notifications", level: 3 },
-    { id: 21, slug: "live-chat", title: "Live Chat (socket.io)", level: 3 },
+    {
+      id: 21,
+      slug: "live-chat",
+      title: "Live Chat (Using Socket.io)",
+      level: 3,
+    },
     { id: 22, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
     { id: 23, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
     {
@@ -148,6 +153,18 @@ export default function Ribbit() {
       slug: "ribbit-vs-reddit",
       title: "Ribbit vs. Reddit: A Direct Comparison",
       level: 2,
+    },
+    {
+      id: 25,
+      slug: "homepage",
+      title: "Homepage",
+      level: 3,
+    },
+    {
+      id: 26,
+      slug: "messages",
+      title: "Messages",
+      level: 3,
     },
   ];
 
@@ -162,7 +179,7 @@ export default function Ribbit() {
         className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start"
       >
         <TableofContents headings={fileContent} headingsRef={headingsRef} />
-        <div className="content">
+        <div className="max-w-6xl w-full mx-auto">
           <h2
             id="introduction"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8"
@@ -187,7 +204,7 @@ export default function Ribbit() {
               </h3>
             </div>
             <div className="px-[30px] py-[10px]">
-              <ul className="quickfacts break-normal">
+              <ul className="quickfacts break-normal mb-0">
                 <li>
                   <strong>Project title:</strong> Ribbit
                 </li>
@@ -671,9 +688,13 @@ export default function Ribbit() {
             the right. Likewise, to show more of the Reddit image, drag the
             slider to the left.
           </div>
-          <h3 className="text-2xl font-bold mt-16 mb-8">Homepage</h3>
+          <h3 id="homepage" className="text-2xl font-bold mt-16 mb-8">
+            Homepage
+          </h3>
           <ComparisonSlider topImage={topImage} bottomImage={bottomImage} />
-          <h3 className="text-2xl font-bold mt-16 mb-8">Messages</h3>
+          <h3 id="messages" className="text-2xl font-bold mt-16 mb-8">
+            Messages
+          </h3>
           <ComparisonSlider
             topImage={ribbitComparison2}
             bottomImage={redditComparison2}

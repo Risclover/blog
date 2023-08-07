@@ -41,6 +41,13 @@ export default function MobileTableofContents(props: Props) {
 
   const toggleToC = () => {
     setIsOpen(!isOpen);
+    const tocElement = document.querySelector(".mobile-toc-scroll");
+
+    if (tocElement?.classList.contains("open")) {
+      tocElement.classList.remove("open");
+    } else {
+      tocElement?.classList.add("open");
+    }
   };
 
   return (
@@ -58,7 +65,11 @@ export default function MobileTableofContents(props: Props) {
         Table of Contents
       </div>
       {isOpen && (
-        <div className="mobile-toc-scroll bg-white border-b border-slate-800 dark:bg-gray-950 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm text-white py-4 dark:border-slate-800 px-6 lg:px-12 lg:hidden">
+        <div
+          className={`${
+            isOpen && "open"
+          } mobile-toc-scroll bg-white border-b border-slate-800 dark:bg-gray-950 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm text-white py-4 dark:border-slate-800 px-6 lg:px-12 lg:hidden`}
+        >
           <ul>
             {props.headings.map(
               (

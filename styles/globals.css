@@ -358,7 +358,8 @@ img {
 }
 
 .mobile-toc-scroll {
-  max-height: calc(100vh - (109px));
+  /* max-height: calc(100vh - (109px)); */
+  max-height: 200px;
   overflow-y: auto;
 }
 
@@ -540,8 +541,16 @@ li a {
   margin-left: 5px;
 }
 
-.mobile-toc {
-  overflow: hidden;
+.mobile-toc-scroll {
+  visibility: hidden;
+  transition: visibility 0.5s ease, max-height 0.5s ease;
+  max-height: 0;
+  overflow: auto;
+}
+
+.mobile-toc-scroll.open {
+  visibility: visible;
+  max-height: 600px;
 }
 
 .mobile-toc li {
