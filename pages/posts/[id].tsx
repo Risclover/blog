@@ -128,6 +128,7 @@ export default function Post({
     initCodeCopy();
   }, []);
 
+  console.log("file content:", fileContent);
   return (
     <Layout postData={postData}>
       <Head>

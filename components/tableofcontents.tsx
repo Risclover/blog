@@ -35,8 +35,6 @@ function useHighlighted() {
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();
 
-  console.log("headings:", props.headings);
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -45,7 +43,7 @@ export default function TableofContents(props: Props) {
   };
 
   return (
-    <div className="toc ml-10 hidden w-auto inline-block lg:block">
+    <div className="toc ml-10 hidden w-auto inline-block lg:block min-w-fit">
       <h1 className="uppercase font-medium text-[18px] tracking-widest mb-1 text-slate-900 dark:text-gray-50 mb-[16px]">
         Table of Contents
       </h1>

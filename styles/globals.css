@@ -12,7 +12,7 @@ body * {
 }
 
 * {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 130px;
   scroll-behavior: smooth;
 }
 
@@ -329,7 +329,7 @@ img {
 }
 
 .quickfacts-div {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .quickfacts-div li {
@@ -579,7 +579,7 @@ li a {
 
 @media (min-width: 1020px) {
   :target {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 90px;
   }
 }
 
