@@ -43,7 +43,7 @@ export default function Contact({}: Props) {
   };
 
   return (
-    <div className="contact">
+    <div id="contact" className="contact">
       <h2 className="text-4xl font-bold">Let's talk!</h2>
       <div className="flex flex-col lg:flex-row mt-14 gap-12">
         <div data-aos="fade-up" className="flex flex-col lg:max-w-lg w-full">

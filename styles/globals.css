@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+[data-color-scheme="dark"] {
+  color-scheme: dark;
+}
+
+[data-color-scheme="light"] {
+  color-scheme: light;
+}
+
 body * {
   transition-property: background-color, border-color, opacity, box-shadow,
     transform, filter, -webkit-backdrop-filter;
@@ -165,7 +173,7 @@ img {
   max-width: 100%;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 15px rgb(0 0 0 / 25%);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .comparison-item {
@@ -344,6 +352,20 @@ img {
   max-height: 600px;
 }
 
+.projects-dropdown {
+  visibility: hidden;
+  transition: visibility 0.5s ease, max-height 0.5s ease;
+  max-height: 0;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.projects-dropdown.open {
+  visibility: visible;
+  max-height: 500px;
+}
+
 .quickfacts-list {
   visibility: hidden;
   transition: visibility 0.5s ease, max-height 0.5s ease;
@@ -456,19 +478,44 @@ img {
 
 .toc {
   position: sticky;
-  top: calc(20px + 68px);
-  max-height: calc(100vh - 148px);
-  overflow: auto;
-  padding-bottom: 16px;
+  top: calc(20px + 78px);
+  /* max-height: calc(100vh - 148px); */
+  overflow: hidden;
+  /* padding-bottom: 16px; */
   border-radius: 8px;
 }
 
-pre {
-  white-space: pre-wrap; /* Since CSS 2.1 */
-  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  word-wrap: break-word; /* Internet Explorer 5.5+ */
+.toc-ul {
+  overflow-y: auto;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--top-mask-size, 0),
+    black calc(100% - var(--bottom-mask-size, 0)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--top-mask-size, 0),
+    black calc(100% - var(--bottom-mask-size, 0)),
+    transparent 100%
+  );
+  --top-mask-size: 0px;
+  --bottom-mask-size: 0px;
+  padding-right: 10px;
+}
+
+.toc-ul.is-top-overflowing {
+  --top-mask-size: 48px !important;
+}
+
+.toc-ul.is-bottom-overflowing {
+  --bottom-mask-size: 48px !important;
+}
+
+.toc-ul::-webkit-scrollbar-thumb {
+  visibility: hidden;
 }
 
 ul,
@@ -541,6 +588,11 @@ li a {
   margin-left: 5px;
 }
 
+.projects-dropdown {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
 .mobile-toc-scroll {
   visibility: hidden;
   transition: visibility 0.5s ease, max-height 0.5s ease;
@@ -550,7 +602,7 @@ li a {
 
 .mobile-toc-scroll.open {
   visibility: visible;
-  max-height: 600px;
+  max-height: 50vh;
 }
 
 .mobile-toc li {

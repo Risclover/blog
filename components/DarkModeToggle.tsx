@@ -6,6 +6,38 @@ const DarkModeToggle: React.FC = () => {
 
   const handleToggle = () => {
     setIsDarkMode((prevMode) => !prevMode);
+
+    let tocElement: any = document.querySelector(".toc-ul");
+    let mobileElement: any = document.querySelector(".mobile-toc-scroll");
+
+    if (tocElement) {
+      tocElement.style.overflow = "hidden";
+      tocElement.setAttribute(
+        "data-color-scheme",
+        isDarkMode ? "light" : "dark"
+      );
+      tocElement.style.overflow = "";
+    }
+
+    if (mobileElement) {
+      mobileElement.style.overflow = "hidden";
+      mobileElement.setAttribute(
+        "data-color-scheme",
+        isDarkMode ? "light" : "dark"
+      );
+      mobileElement.style.overflow = "";
+    }
+
+    document.documentElement.style.overflow = "hidden";
+
+    document.body.clientWidth;
+
+    document.documentElement.setAttribute(
+      "data-color-scheme",
+      isDarkMode ? "light" : "dark"
+    );
+
+    document.documentElement.style.overflow = "";
   };
 
   useEffect(() => {

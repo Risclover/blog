@@ -12,62 +12,10 @@ import Image from "next/image";
 import VideoPlayer from "@/components/VideoPlayer/videoplayer";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
-// ---
-
-// title: Ribbit
-// subtitle: A feature-rich fullstack pixel-perfect clone of Reddit/
-
-// ---
-
-// <Layout>
-// # Ribbit
-
-// Ribbit is a pixel-perfect clone of Reddit and is my biggest project to date. It includes an entire list of features including User Accounts, Communities, Subscriptions, Posts, Comments, and Votes, but that is only scratching the surface of all that Ribbit offers. Refer to the Quick Facts section below for the full list of features. I built Ribbit from scratch entirely on my own, including the frontend, the backend, and the design of the website. My goal was to build a recreation of Reddit that stayed as true to the original as possible, and although I personally think I still have a little bit of work to do to achieve its full potential, Ribbit is well on its way in that regard!
-
-// ## Quick Facts
-
-// - **Title**: Ribbit
-// - **Tech stack**: React, Redux, Flask, SQLAlchemy, socket.io
-// - **Features**:
-//   - User accounts
-//   - User profiles
-//   - Communities
-//   - Community rules
-//   - Community subscriptions
-//   - Posts
-//   - Post votes
-//   - Comments
-//   - Comment votes
-//   - Search
-//   - Static messages
-//   - Notifications
-//   - Live chat
-//   - Followers
-//   - Favorite communities
-//   - Favorite users
-//   - Recently viewed posts
-// - **Code Repo**: https://www.github.com/Risclover/ribbit
-// - **Live Demo**: https://ribbit-app.herokuapp.com
-
-// ## About Ribbit
-
-// ### Ribbit vs. Reddit
-
-// What follows is a small collection of screenshots from Ribbit overlayed with screenshots of equivalent pages or components from Reddit to compare the two sites with each other. You can drag the sliders over the images to show more of a photo (drag the slider towards the right to show more of the image on the left, and drag the slider towards the left to show more of the image on the right).
-
-// <Ribbit />
-// </Layout>
-
 export default function Ribbit() {
-  const [showPreview, setShowPreview] = useState(false);
   const [showFeatures, setShowFeatures] = useState(false);
   const [headingsList, setHeadingsList] = useState<any>([]);
   const headingsRef = useRef(null);
-  const headings: { id: string; slug: string; title: string; level: number }[] =
-    [
-      { id: "1", slug: "hello", title: "Hello", level: 2 },
-      { id: "2", slug: "bye", title: "Bye", level: 3 },
-    ];
 
   useEffect(() => {
     const headings = document.querySelectorAll("h2, h3, h4");
@@ -175,11 +123,12 @@ export default function Ribbit() {
       </Head>
       <MobileTableofContents headings={fileContent} headingsRef={headingsRef} />
       <div
+        id="about"
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
       >
         <TableofContents headings={fileContent} headingsRef={headingsRef} />
-        <div className="max-w-6xl w-full mx-auto">
+        <div className="max-w-6xl font-wotfard text-lg w-full mx-auto">
           <h2
             id="introduction"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8"
@@ -197,8 +146,8 @@ export default function Ribbit() {
             features, including live chat using Socket.io, image uploads using
             AWS S3, and an extensive messaging system.
           </div>
-          <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mt-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-800 mx-auto">
-            <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-900">
+          <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mt-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
+            <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
               <h3 className="text-2xl font-bold font-rubik leading-0 mt-1">
                 Quick Facts
               </h3>
@@ -526,16 +475,13 @@ export default function Ribbit() {
             posts, and users based on keywords and relevant criteria. The search
             feature enhances content discoverability and user satisfaction.
           </div>
-          <div className="mb-40">
+          <div className="mb-20">
             <img
               src="/images/projects/ribbit/ribbit-favorite.png"
               className="schema-img max-w-[219px] mx-auto lg:mr-20 lg:ml-10 lg:float-left my-10 lg:my-0"
               alt="Ribbit favorites"
             />
-            <h3
-              id="favorite-users"
-              className="text-2xl font-bold mb-8 mt-16 lg:pt-14"
-            >
+            <h3 id="favorite-users" className="text-2xl font-bold mb-8 mt-16">
               Favorite Users
             </h3>
             <div className="font-wotfard text-lg mt-7">

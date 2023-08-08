@@ -4,11 +4,23 @@ import { useEffect, useState } from "react";
 import { PiCaretDownFill } from "react-icons/pi";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Projects from "./projects";
 
 export default function Nav() {
+  const [dropdownStatus, setDropdownStatus] = useState<string>("");
+  const [menu, setMenu] = useState<Boolean>(false);
+
   useEffect(() => {
     Aos.init({ duration: 800 });
   }, []);
+
+  const handleMenu = () => {
+    if (dropdownStatus === "open ") {
+      setDropdownStatus("");
+    } else {
+      setDropdownStatus("open ");
+    }
+  };
   return (
     <div
       className={`navbar py-3 flex items-center text-4xl text-gray-900 bg-slate-900 z-50 w-full sticky top-0 lg:py-4`}
@@ -27,14 +39,18 @@ export default function Nav() {
                 About
               </Link>
             </div>
-            <div className="ml-10 text-[16px] font-wotfard text-gray-50 flex items-center">
+            <div className="ml-10 text-[16px] font-wotfard text-gray-50 flex items-center relative">
               <Link
                 href="/#projects"
                 className="hover:text-gray-400 transition-colors duration-300"
               >
                 Projects
               </Link>{" "}
-              <PiCaretDownFill className="ml-2 hover:text-gray-400 cursor-pointer transition-colors duration-300" />
+              <PiCaretDownFill
+                className="ml-2 hover:text-gray-400 cursor-pointer transition-colors duration-300"
+                onClick={handleMenu}
+              />
+              <Projects dropdownStatus={dropdownStatus} />
             </div>
             <div className="ml-10 text-[16px] font-wotfard text-gray-50">
               <Link
