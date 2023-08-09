@@ -6,10 +6,16 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Projects from "./projects";
 import { ClickAwayListener } from "@mui/base";
+import Hamburger from "hamburger-react";
+import MobileMenu from "./mobilemenu";
 
-export default function Nav() {
+type Props = {
+  menu: boolean;
+  setMenu: any;
+};
+
+export default function Nav({ menu, setMenu }: Props) {
   const [dropdownStatus, setDropdownStatus] = useState<string>("");
-  const [menu, setMenu] = useState<Boolean>(false);
 
   useEffect(() => {
     Aos.init({ duration: 800 });
@@ -21,6 +27,10 @@ export default function Nav() {
     } else {
       setDropdownStatus("open ");
     }
+  };
+
+  const handleMobileMenu = () => {
+    setMenu(!menu);
   };
 
   return (
@@ -71,7 +81,18 @@ export default function Nav() {
             </div>
           </div>
         </div>
-        <DarkModeToggle />
+        <div className="hidden sm:block text-[20px]">
+          <DarkModeToggle />
+        </div>
+        <div className="block sm:hidden">
+          <Hamburger
+            color="white"
+            size={20}
+            rounded
+            onToggle={handleMobileMenu}
+            toggled={menu}
+          />
+        </div>
       </div>
     </div>
   );

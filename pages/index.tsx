@@ -45,7 +45,10 @@ const Blog = (props: Props) => {
 
   return (
     <Layout home>
-      <div className="frontpage dark:text-gray-50 font-sans flex flex-col min-h-screen h-full w-full m-auto">
+      <div
+        className="frontpage dark:text-gray-50 font-sans flex flex-col min-h-screen h-full w-full m-auto"
+        id="about"
+      >
         <section className="lg:max-w-6xl mx-auto px-6 lg:px-12 flex flex-col py-20">
           <Image
             data-aos="zoom-in"
@@ -272,11 +275,10 @@ const Blog = (props: Props) => {
           </div>
         </div>
         <div className="lg:max-w-6xl text-slate-900 dark:text-gray-50 mx-auto px-2 sm:px-6 lg:px-12 py-20">
-          <div className="w-full">
+          <div className="w-full" id="projects">
             <h2
               data-aos="fade-up"
               className="text-4xl font-bold leading-8 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 mb-8"
-              id="projects"
             >
               Projects
             </h2>

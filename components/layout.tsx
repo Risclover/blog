@@ -9,6 +9,8 @@ import { useState } from "react";
 import Nav from "./nav";
 import BackToTop from "./backtotop";
 import { useRouter } from "next/router";
+import MobileMenu from "./mobilemenu";
+import { ClickAwayListener } from "@mui/base";
 
 const name = "[Your Name]";
 export const siteTitle = "Next.js Sample Website";
@@ -33,6 +35,7 @@ export default function Layout({
   };
 }) {
   const [theme, setTheme] = useState("okaidia");
+  const [menu, setMenu] = useState(false);
 
   const router = useRouter();
 
@@ -79,7 +82,10 @@ export default function Layout({
         <Script src="storage.js" />
       </Head>
       <Providers>
-        <Nav />
+        <ClickAwayListener onClickAway={() => setMenu(false)}>
+          <MobileMenu menu={menu} setMenu={setMenu} />
+        </ClickAwayListener>
+        <Nav menu={menu} setMenu={setMenu} />
         {router.pathname !== "/" && (
           <Header>
             {home ? (
