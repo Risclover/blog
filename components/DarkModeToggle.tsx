@@ -55,7 +55,7 @@ const DarkModeToggle: React.FC = () => {
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    localStorage.setItem("theme", isDarkMode ? "light" : "dark");
   }, [isDarkMode]);
 
   return (

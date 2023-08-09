@@ -20,7 +20,7 @@ export default function Post({
   postData: {
     title: string;
     date: string;
-    contentHtml: string;
+    contentHtml?: any;
     subtitle: string;
     category: string;
   };

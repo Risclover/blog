@@ -14,7 +14,7 @@ const Projects = (props: Props) => {
 
   return (
     <div
-      className={`projects-dropdown ${props.dropdownStatus}border-t-4 dark:border-slate-800 border-blue-300 w-[200px] bg-white absolute top-[40px] left-[0px] text-black overflow-hidden flex flex-col dark:bg-slate-700 dark:text-gray-50`}
+      className={`projects-dropdown ${props.dropdownStatus}border-t-4 dark:border-slate-950 border-indigo-400 w-[200px] bg-white absolute top-[40px] left-[0px] text-black overflow-hidden flex flex-col dark:bg-slate-800 dark:text-gray-50`}
     >
       <Link
         href="/projects/ribbit"

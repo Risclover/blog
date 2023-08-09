@@ -23,11 +23,11 @@ export default function Layout({
   home?: boolean;
   bg?: string;
   postData?: {
-    date: string;
+    date?: string;
     title: string;
-    subcategory: string;
-    categoryUrl: string;
-    contentHtml: string;
+    subcategory?: string;
+    categoryUrl?: string;
+    contentHtml?: any;
     subtitle: string;
     category: string;
   };

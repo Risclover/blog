@@ -30,7 +30,6 @@ export default function Ribbit() {
         },
       ])
     );
-    console.log("headings:", headingsList);
   }, []);
 
   const handleFeatures = () => {
