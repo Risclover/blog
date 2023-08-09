@@ -52,7 +52,7 @@ export default function Contact({}: Props) {
             up! Messages sent through this contact form are sent straight to my
             email address. You can also find me via my social links below.
           </div>
-          <div className="flex gap-12 mt-14 w-full">
+          <div className="sm:flex gap-12 mt-14 w-full">
             <div>
               <ul className="flex flex-col gap-1">
                 <li>
@@ -93,7 +93,7 @@ export default function Contact({}: Props) {
                 </li>
               </ul>
             </div>
-            <div className="flex flex-col ml-4">
+            <div className="flex flex-col mt-8 sm:mt-0 sm:ml-4">
               <div className="uppercase mb-1 text-sm font-semibold">
                 Email me directly
               </div>

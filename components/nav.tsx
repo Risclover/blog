@@ -32,7 +32,7 @@ export default function Nav() {
           <div className="text-3xl font-logo min-w-fit text-gray-50">
             <Link href="/">Sara Dunlop</Link>
           </div>
-          <div className="flex mt-2">
+          <div className="flex mt-2 hidden sm:flex">
             <div className="ml-12 text-[16px] font-wotfard text-gray-50">
               <Link
                 href="/"

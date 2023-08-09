@@ -64,7 +64,7 @@ const Blog = (props: Props) => {
           >
             Hello! I'm <span className="text-pink-500">Sara Dunlop</span>.
           </h2>
-          <div className="font-wotfard text-slate-900 text-lg font-medium leading-8 font-wotfard dark:text-gray-50 mb-16">
+          <div className="font-wotfard text-slate-900 text-normal md:text-lg font-medium leading-6 md:leading-8 font-wotfard dark:text-gray-50 mb-16">
             <p data-aos="fade-up" data-aos-delay={800}>
               I am a{" "}
               <span className="text-pink-500">fullstack software engineer</span>{" "}
@@ -107,7 +107,7 @@ const Blog = (props: Props) => {
               data-aos="zoom-in"
               data-aos-delay={400}
             >
-              <div className="resume-btn dark:bg-indigo-400 rounded-full border border-2 text-[16px] border-transparent px-4 py-1 bg-indigo-600 font-wotfard transition text-gray-50 mt-6 cursor-pointer w-fit">
+              <div className="resume-btn dark:bg-indigo-400 rounded-full border border-2 text-[16px] border-transparent px-4 py-1 bg-indigo-600 font-wotfard transition text-gray-50 mt-6 cursor-pointer w-fit leading-8">
                 Download resume
               </div>
             </a>
@@ -271,7 +271,7 @@ const Blog = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="lg:max-w-6xl text-slate-900 dark:text-gray-50 mx-auto px-6 lg:px-12 py-20">
+        <div className="lg:max-w-6xl text-slate-900 dark:text-gray-50 mx-auto px-2 sm:px-6 lg:px-12 py-20">
           <div className="w-full">
             <h2
               data-aos="fade-up"
@@ -283,21 +283,17 @@ const Blog = (props: Props) => {
             <div
               data-aos="fade-up"
               data-aos-delay={200}
-              className="mt-4 text-lg font-wotfard"
+              className="mt-4 text-normal md:text-lg font-wotfard"
             >
               Click on a project to go to its Project Details page, where you
               can find all of its available information (including links to code
               repositories and live demos).
             </div>
-            <div
-              data-aos="fade-up"
-              data-aos-delay={400}
-              className="projects w-full"
-            >
+            <div data-aos="fade-up" data-aos-delay={400} className="projects">
               {projects.map((project, i) => (
                 <Link className="hover:no-underline" href={`${project.url}`}>
                   <div
-                    className="hover:no-underline flex flex-col"
+                    className="hover:no-underline w-full flex flex-col"
                     data-aos="fade-up"
                   >
                     <div className="project rounded group w-full overflow-hidden cursor-pointer">
@@ -306,7 +302,7 @@ const Blog = (props: Props) => {
                     <div className="text-2xl font-wotfard font-bold mt-6 mb-4 dark:text-[#a5b4fc] text-[#4f4ef5]">
                       {project.name}
                     </div>
-                    <div className="text-lg font-wotfard">
+                    <div className="text-normal md:text-lg font-wotfard">
                       {project.description}
                     </div>
                   </div>

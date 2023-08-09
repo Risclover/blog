@@ -138,7 +138,7 @@ blockquote {
   transform: translate(-50%, -50%);
 }
 
-section {
+.frontpage section {
   min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
@@ -409,11 +409,11 @@ img {
 
 .projects {
   display: grid;
-  padding: 20px;
   margin: 0 auto;
   margin-top: 40px;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: 80px;
+  grid-gap: 50px;
+  padding: 10px;
 }
 
 .custom-video-player {
@@ -768,3 +768,11 @@ li a {
     padding: 20px;
   }
 } */
+
+@media (max-width: 450px) {
+  .projects {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* grid-gap: 80px; */
+    padding: 0;
+  }
+}

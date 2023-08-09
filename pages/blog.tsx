@@ -36,7 +36,7 @@ export default function Home({
 
   return (
     <Layout home>
-      <div className="px-6 sm:px-12 py-24 dark:text-gray-50 font-sans flex flex-col min-h-screen h-full lg:max-w-6xl w-full m-auto relative">
+      <div className="px-6 sm:px-12 py-24 dark:text-gray-50 font-sans flex flex-col lg:max-w-6xl w-full m-auto relative">
         <h2 className="uppercase text-base font-medium tracking-widest text-pink-500 mb-9">
           Categories
         </h2>
