@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
+import { useTheme } from "next-themes";
 
 const DarkModeToggle: React.FC = () => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleToggle = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+    setTheme(theme === "dark" ? "light" : "dark");
 
     let tocElement: any = document.querySelector(".toc-ul");
     let mobileElement: any = document.querySelector(".mobile-toc-scroll");
@@ -14,7 +17,7 @@ const DarkModeToggle: React.FC = () => {
       tocElement.style.overflow = "hidden";
       tocElement.setAttribute(
         "data-color-scheme",
-        isDarkMode ? "light" : "dark"
+        theme === "light" ? "light" : "dark"
       );
       tocElement.style.overflow = "";
     }
@@ -23,7 +26,7 @@ const DarkModeToggle: React.FC = () => {
       mobileElement.style.overflow = "hidden";
       mobileElement.setAttribute(
         "data-color-scheme",
-        isDarkMode ? "light" : "dark"
+        theme === "light" ? "light" : "dark"
       );
       mobileElement.style.overflow = "";
     }
@@ -34,7 +37,7 @@ const DarkModeToggle: React.FC = () => {
 
     document.documentElement.setAttribute(
       "data-color-scheme",
-      isDarkMode ? "light" : "dark"
+      theme === "light" ? "light" : "dark"
     );
 
     document.documentElement.style.overflow = "";
@@ -47,22 +50,31 @@ const DarkModeToggle: React.FC = () => {
     ).matches;
 
     if (storedMode) {
-      setIsDarkMode(storedMode === "dark");
+      setIsDarkMode(storedMode === "light");
     } else {
       setIsDarkMode(prefersDarkMode);
     }
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
-    localStorage.setItem("theme", isDarkMode ? "light" : "dark");
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme === "dark" ? "dark" : "light");
   }, [isDarkMode]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <button onClick={handleToggle} className="flex items-center justify-center">
-      {isDarkMode ? (
+      {theme === "dark" && (
         <BsSunFill className="text-gray-50 text-[20px] hover:text-yellow-500 transition-colors duration-300" />
-      ) : (
+      )}
+      {theme === "light" && (
         <BsMoonFill className="text-gray-50 text-[20px] hover:text-yellow-500 transition-colors duration-300" />
       )}
     </button>

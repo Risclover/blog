@@ -127,7 +127,7 @@ const Blog = (props: Props) => {
             >
               Frontend
             </h2>
-            <div className="skills-row flex items-center justify-center my-4">
+            <div className="skills-row flex my-4">
               <div
                 data-aos="flip-right"
                 className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
