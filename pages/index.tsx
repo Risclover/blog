@@ -67,7 +67,7 @@ const Blog = (props: Props) => {
           >
             Hello! I'm <span className="text-pink-500">Sara Dunlop</span>.
           </h2>
-          <div className="font-wotfard text-slate-900 text-normal md:text-lg font-medium leading-6 md:leading-8 font-wotfard dark:text-gray-50 mb-16">
+          <div className="font-wotfard text-slate-900 text-lg font-medium leading-8 font-wotfard dark:text-gray-50 mb-16">
             <p data-aos="fade-up" data-aos-delay={800}>
               I am a{" "}
               <span className="text-pink-500">fullstack software engineer</span>{" "}
@@ -285,7 +285,7 @@ const Blog = (props: Props) => {
             <div
               data-aos="fade-up"
               data-aos-delay={200}
-              className="mt-4 text-normal md:text-lg font-wotfard"
+              className="mt-4 text-lg font-wotfard"
             >
               Click on a project to go to its Project Details page, where you
               can find all of its available information (including links to code
@@ -304,7 +304,7 @@ const Blog = (props: Props) => {
                     <div className="text-2xl font-wotfard font-bold mt-6 mb-4 dark:text-[#a5b4fc] text-[#4f4ef5]">
                       {project.name}
                     </div>
-                    <div className="text-normal md:text-lg font-wotfard">
+                    <div className="text-lg font-wotfard">
                       {project.description}
                     </div>
                   </div>

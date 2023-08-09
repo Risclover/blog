@@ -485,7 +485,7 @@ img {
 .toc {
   position: sticky;
   top: calc(20px + 78px);
-  /* max-height: calc(100vh - 148px); */
+  max-height: calc(100vh - 200px);
   overflow: hidden;
   /* padding-bottom: 16px; */
   border-radius: 8px;
@@ -778,9 +778,11 @@ li a {
 }
 
 @media (min-width: 1024px) {
+  .content.content-with-toc {
+    max-width: 688px;
+  }
   .blog-post,
   .content {
-    max-width: 688px;
     width: 100%;
   }
 }

@@ -95,7 +95,7 @@ export default function TableofContents(props: Props) {
                         activeId === heading.slug
                           ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
                           : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                      } mt-[10px]`}
+                      } mt-[10px] leading-6`}
                     >
                       {heading.title}
                     </li>

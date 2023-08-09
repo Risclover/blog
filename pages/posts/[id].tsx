@@ -149,7 +149,9 @@ export default function Post({
         )}
         <div className="blog-post text-slate-900 font-medium text-lg leading-8 font-wotfard dark:text-gray-50">
           <div
-            className="content"
+            className={`${
+              fileContent.length > 0 ? "content content-with-toc" : "content"
+            }`}
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
         </div>
