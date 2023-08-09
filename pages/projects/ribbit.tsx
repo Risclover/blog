@@ -3,6 +3,8 @@ import topImage from "../../public/images/comparison-ribbit-1.png";
 import bottomImage from "../../public/images/comparison-reddit-1.png";
 import ribbitComparison2 from "../../public/images/projects/ribbit/comparison-ribbit-2.png";
 import redditComparison2 from "../../public/images/projects/ribbit/comparison-reddit-2.png";
+import ribbitComparison3 from "../../public/images/projects/ribbit/comparison-ribbit-3.png";
+import redditComparison3 from "../../public/images/projects/ribbit/comparison-reddit-3.png";
 import Layout from "@/components/layout";
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
@@ -112,6 +114,12 @@ export default function Ribbit() {
       id: 26,
       slug: "messages",
       title: "Messages",
+      level: 3,
+    },
+    {
+      id: 27,
+      slug: "comparison-communities",
+      title: "Communities",
       level: 3,
     },
   ];
@@ -644,6 +652,16 @@ export default function Ribbit() {
           <ComparisonSlider
             topImage={ribbitComparison2}
             bottomImage={redditComparison2}
+          />
+          <h3
+            id="comparison-communities"
+            className="text-2xl font-bold mt-16 mb-8"
+          >
+            Communities
+          </h3>
+          <ComparisonSlider
+            topImage={ribbitComparison3}
+            bottomImage={redditComparison3}
           />
         </div>
       </div>

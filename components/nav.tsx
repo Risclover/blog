@@ -1,10 +1,11 @@
 import Link from "next/link";
 import DarkModeToggle from "./DarkModeToggle";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PiCaretDownFill } from "react-icons/pi";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Projects from "./projects";
+import { ClickAwayListener } from "@mui/base";
 
 export default function Nav() {
   const [dropdownStatus, setDropdownStatus] = useState<string>("");
@@ -21,6 +22,7 @@ export default function Nav() {
       setDropdownStatus("open ");
     }
   };
+
   return (
     <div
       className={`navbar py-3 flex items-center text-4xl text-gray-900 bg-slate-900 z-50 w-full sticky top-0 lg:py-4`}
@@ -46,13 +48,20 @@ export default function Nav() {
               >
                 Projects
               </Link>{" "}
-              <PiCaretDownFill
-                className="ml-2 hover:text-gray-400 cursor-pointer transition-colors duration-300"
-                onClick={handleMenu}
-              />
-              <Projects dropdownStatus={dropdownStatus} />
+              <ClickAwayListener onClickAway={() => setDropdownStatus("")}>
+                <div
+                  className="ml-2 p-1 cursor-pointer hover:text-gray-400 transition-colors duration-300"
+                  onClick={handleMenu}
+                >
+                  <PiCaretDownFill />{" "}
+                  <Projects
+                    dropdownStatus={dropdownStatus}
+                    setDropdownStatus={setDropdownStatus}
+                  />
+                </div>
+              </ClickAwayListener>
             </div>
-            <div className="ml-10 text-[16px] font-wotfard text-gray-50">
+            <div className="ml-6 text-[16px] font-wotfard text-gray-50">
               <Link
                 href={`/blog`}
                 className="hover:text-gray-400 transition-colors duration-300"

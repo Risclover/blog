@@ -21,7 +21,7 @@ const Blog = (props: Props) => {
       hero_img: "/images/ribbit-screen-full.png",
       tech_stack: "React, Redux, Flask, flask-sqlalchemy",
       description:
-        "A feature-rich pixel-perfect clone of Reddit built from React, Redux, Flask, and SQLAlchemy. Includes over 11 working features.",
+        "A feature-rich pixel-perfect clone of the social media site Reddit.com",
       url: "/projects/ribbit",
     },
     {

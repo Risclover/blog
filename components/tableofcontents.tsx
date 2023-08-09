@@ -35,8 +35,6 @@ function useHighlighted() {
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();
 
-  const [isScrollable, setIsScrollable] = useState();
-
   useEffect(() => {
     function setClasses(el: any) {
       const isScrollable = el.scrollHeight > el.clientHeight;
@@ -66,6 +64,12 @@ export default function TableofContents(props: Props) {
 
   const scrollToTop = () => {
     window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    let toc = document.querySelector(".toc-ul");
+    toc?.scrollTo({
       top: 0,
       behavior: "smooth",
     });

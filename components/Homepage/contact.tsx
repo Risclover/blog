@@ -19,7 +19,7 @@ export default function Contact({}: Props) {
     }
   }, [name, email, message]);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: any) => {
     e.preventDefault();
     emailjs
       .sendForm(
@@ -44,6 +44,31 @@ export default function Contact({}: Props) {
 
   return (
     <div id="contact" className="contact">
+      <svg
+        class="_1IHNP4dWxy7U5QgxQxi5If"
+        width="1821"
+        height="283"
+        viewBox="0 0 1821 283"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_2660_632712)">
+          <path
+            d="M3025.95 118.337C3266.52 166.378 3558.75 170.416 3737.36 10.3669C3915.98 -149.683 3977.84 -352.145 3977.84 -352.145L-1003.56 -3153.19L-2982.2 -644.204C-2793.39 -416.675 -2314.26 -0.0620003 -1908.19 -153.832C-1400.6 -346.044 -1285.84 -181.163 -1113.53 -60.7893C-941.226 59.5848 -682.031 74.0078 -382.757 -66.3239C-83.4834 -206.656 520.033 475.612 1135.3 216.276C1557.45 38.3353 1689.92 -190.512 1953.87 -188.296C2217.81 -186.081 2725.23 58.2852 3025.95 118.337Z"
+            fill="#FF9999"
+          ></path>
+          <path
+            opacity="0.7"
+            d="M3242.16 164.238C3492.92 218.39 3737.98 115.535 3829.16 57.338C3920.35 -0.858859 4078.81 -186.192 4078.81 -186.192L-1031.4 -3253.8L-3007.16 -743.085C-2804.71 -507.363 -2295.74 -72.8347 -1879.48 -220.494C-1359.17 -405.068 -1235.32 -234.732 -1053.16 -108.442C-871 17.8472 -601.951 38.186 -295.98 -98.1257C9.99124 -234.437 655.794 473.214 1285.7 222.665C1717.9 50.7538 1848.36 -179.298 2121.97 -171.282C2395.57 -163.266 2928.73 96.5485 3242.16 164.238Z"
+            fill="#FB133A"
+          ></path>
+        </g>
+        <defs>
+          <clipPath id="clip0_2660_632712">
+            <rect width="1821" height="283" fill="white"></rect>
+          </clipPath>
+        </defs>
+      </svg>
       <h2 className="text-4xl font-bold">Let's talk!</h2>
       <div className="flex flex-col lg:flex-row mt-14 gap-12">
         <div data-aos="fade-up" className="flex flex-col lg:max-w-lg w-full">
