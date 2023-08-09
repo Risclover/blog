@@ -12,6 +12,10 @@
   color-scheme: light;
 }
 
+body {
+  background: #0f172a;
+}
+
 body * {
   transition-property: background-color, border-color, opacity, box-shadow,
     transform, filter, -webkit-backdrop-filter;

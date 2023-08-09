@@ -40,7 +40,7 @@ const Blog = (props: Props) => {
   ];
 
   useEffect(() => {
-    Aos.init({ duration: 800 });
+    Aos.init({ duration: 800, disable: window.innerWidth < 768 });
   }, []);
 
   return (
