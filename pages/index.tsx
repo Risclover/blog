@@ -278,7 +278,7 @@ const Blog = (props: Props) => {
           <div className="w-full" id="projects">
             <h2
               data-aos="fade-up"
-              className="text-4xl font-bold leading-8 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 mb-8"
+              className="text-4xl font-bold leading-8 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 mb-8 px-4 sm:px-0"
             >
               Projects
             </h2>

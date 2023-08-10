@@ -801,7 +801,7 @@ li a {
 
 @media (max-width: 450px) {
   .projects {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: auto;
     /* grid-gap: 80px; */
     padding: 0;
   }

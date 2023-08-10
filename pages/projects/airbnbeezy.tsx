@@ -183,14 +183,14 @@ function Airbnbeezy({}: Props) {
                 <li>
                   <strong>Github Repo:</strong>{" "}
                   <a
-                    href="https://www.github.com/Risclover/ribbit"
+                    href="https://www.github.com/Risclover/airbnbeezy"
                     target="_blank"
                     className="text-indigo-600 dark:text-indigo-300 hover:underline hidden sm:inline"
                   >
-                    https://www.github.com/Risclover/ribbit
+                    https://www.github.com/Risclover/airbnbeezy
                   </a>
                   <a
-                    href="https://www.github.com/Risclover/ribbit"
+                    href="https://www.github.com/Risclover/airbnbeezy"
                     target="_blank"
                     className="text-indigo-600 dark:text-indigo-300 hover:underline inline sm:hidden"
                   >
@@ -200,14 +200,14 @@ function Airbnbeezy({}: Props) {
                 <li>
                   <strong>Live demo:</strong>{" "}
                   <a
-                    href="https://ribbit-app.herokuapp.com"
+                    href="https://air-bnbeezy.herokuapp.com"
                     target="_blank"
                     className="text-indigo-600 dark:text-indigo-300 hover:underline hidden sm:inline"
                   >
-                    https://www.ribbit-app.herokuapp.com
+                    https://www.air-bnbeezy.herokuapp.com
                   </a>
                   <a
-                    href="https://ribbit-app.herokuapp.com"
+                    href="https://air-bnbeezy.herokuapp.com"
                     target="_blank"
                     className="text-indigo-600 dark:text-indigo-300 hover:underline inline sm:hidden"
                   >
