@@ -36,6 +36,7 @@ const Blog = (props: Props) => {
       hero_img: "/images/reduncrate-screen.png",
       tech_stack: "React, Redux, Flask, flask-sqlalchemy",
       description: "A perfect copy of Uncrate.com",
+      url: "/projects/reduncrate",
     },
   ];
 
