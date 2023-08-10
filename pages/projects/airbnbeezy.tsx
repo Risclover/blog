@@ -1,20 +1,15 @@
-import ComparisonSlider from "@/components/comparisonslider";
-import topImage from "../../public/images/comparison-ribbit-1.png";
-import bottomImage from "../../public/images/comparison-reddit-1.png";
-import ribbitComparison2 from "../../public/images/projects/ribbit/comparison-ribbit-2.png";
-import redditComparison2 from "../../public/images/projects/ribbit/comparison-reddit-2.png";
-import ribbitComparison3 from "../../public/images/projects/ribbit/comparison-ribbit-3.png";
-import redditComparison3 from "../../public/images/projects/ribbit/comparison-reddit-3.png";
+import VideoPlayer from "@/components/VideoPlayer/videoplayer";
 import Layout from "@/components/layout";
-import { useEffect, useRef, useState } from "react";
-import Head from "next/head";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
+import Head from "next/head";
 import Image from "next/image";
-import VideoPlayer from "@/components/VideoPlayer/videoplayer";
+import React, { useRef, useState } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
-export default function Ribbit() {
+type Props = {};
+
+function Airbnbeezy({}: Props) {
   const [showFeatures, setShowFeatures] = useState(false);
   const headingsRef = useRef(null);
 
@@ -129,15 +124,18 @@ export default function Ribbit() {
             Introduction
           </h2>
           <div className="font-wotfard text-lg">
-            Ribbit is a sophisticated web application developed to replicate the
-            core functionalities of Reddit, a popular social news aggregation
-            site and discussion platform. This project serves as a showcase of
-            my expertise in software engineering and full-stack web development,
-            utilizing a tech stack comprising of Flask, SQLAlchemy, React, and
-            Redux. Ribbit aims to provide users with a comprehensive social
-            experience by incorporating a wide array of features, including live
-            chat using socket.io, image uploads using AWS S3, and an extensive
-            content submission system.
+            Airbnbeezy is a remarkable web application that mirrors the core
+            functionalities of Airbnb, a prominent online marketplace for
+            lodging and travel experiences. Crafted meticulously by a solo
+            developer (myself), this project encompasses a testament to my
+            expertise in software engineering and full-stack web development. By
+            leveraging a tech stack comprising React, Redux, Express, and
+            Sequelize, Airbnbeezy brings to life a platform that enables users
+            to discover accommodations, make bookings, leave reviews, and enjoy
+            a seamless travel planning experience. The integration of AWS S3 for
+            image uploads, Google Maps API for location services, and user
+            authentication further elevates the application's utility and
+            user-friendliness.
           </div>
           <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mt-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
             <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
@@ -148,15 +146,15 @@ export default function Ribbit() {
             <div className="px-[30px] py-[10px]">
               <ul className="quickfacts break-normal mb-0">
                 <li>
-                  <strong>Project title:</strong> Ribbit
+                  <strong>Project title:</strong> Airbnbeezy
                 </li>
                 <li>
-                  <strong>Description:</strong> A feature-rich pixel-perfect
-                  clone of Reddit.
+                  <strong>Description:</strong> An Airbnb clone with a focus on
+                  UI.
                 </li>
                 <li>
-                  <strong>Tech stack:</strong> React, Redux, Flask, SQLAlchemy,
-                  socket.io, and various libraries and tools.
+                  <strong>Tech stack:</strong> React, Redux, Express, and
+                  Sequelize
                 </li>
                 <li onClick={handleFeatures} className="cursor-pointer w-fit">
                   <div className="flex items-center">
@@ -174,22 +172,11 @@ export default function Ribbit() {
                   <div className="quickfacts-list flex flex-wrap">
                     <ul className="flex flex-wrap flex-col h-[100%] sm:max-h-[350px] inner-ul">
                       <li>Users</li>
-                      <li>Communities</li>
-                      <li>Subscriptions</li>
-                      <li>Posts</li>
-                      <li>Comments</li>
-                      <li>Community rules</li>
-                      <li>Post votes</li>
-                      <li>Comment votes</li>
-                      <li>Search</li>
-                      <li>Recently viewed posts</li>
-                      <li>Followers</li>
-                      <li>Favorite users</li>
-                      <li>Favorite communities</li>
-                      <li>Messages</li>
-                      <li>Notifications</li>
-                      <li>Live chat</li>
+                      <li>Listings</li>
+                      <li>Bookings</li>
+                      <li>Reviews</li>
                       <li>Image uploads</li>
+                      <li>Interactive maps (Google Maps API)</li>
                     </ul>
                   </div>
                 </li>
@@ -237,20 +224,21 @@ export default function Ribbit() {
             Project Goals
           </h2>
           <div className="font-wotfard text-lg mt-7">
-            The primary objectives for Ribbit were as follows:
+            The primary objectives that steered the development of Airbnbeezy
+            are outlined below:
           </div>
           <ol>
             <li>
-              <strong>Functionality replication:</strong> The core focus was on
-              replicating Reddit's essential features, including user
-              management, community creation, content submission, voting,
-              commenting, and user interactions.
+              <strong>Functionality replication:</strong> The foremost goal was
+              to replicate Airbnb's core features, enabling users to search for
+              accommodations, view detailed listings, make bookings, and post
+              reviews.
             </li>
             <li>
-              <strong>Database design:</strong> Designing an efficient and
-              scalable database schema using SQLAlchemy to store user data,
-              posts, comments, votes for posts and comments, and other
-              information.
+              <strong>Database design:</strong> The design and implementation of
+              a robust and efficient database schema using Sequelize aimed to
+              ensure optimal storage and retrieval of user, property, booking,
+              and review data.
             </li>
             <img
               className="schema-img my-20 mx-auto"
@@ -258,23 +246,34 @@ export default function Ribbit() {
               alt="schema"
             />
             <li>
-              <strong>User interface (UI) design:</strong> Crafting an intuitive
-              and visually appealing user interface with React and Redux to
-              enhance the overall user experience and ensure ease of navigation.
+              <strong>User-centric UI design:</strong> The user interface (UI)
+              design focused on creating an intuitive, visually pleasing, and
+              responsive layout to provide a delightful user experience.
             </li>
             <li>
-              <strong>User authentication and authorization:</strong>{" "}
-              Implementing a robust user authentication system with Flask and
-              JWT to ensure secure access to the application's features.
+              <strong>Secure user authentication:</strong> Implementing a secure
+              user authentication and authorization system to safeguard user
+              data and provide controlled access to application features.
             </li>
             <li>
-              <strong>Real-time features:</strong> Integrating socket.io to
-              provide real-time user interactions through the live chat feature.
+              <strong>Seamless image uploads (AWS S3):</strong> The integration
+              of AWS S3 for image uploads guarantees a smooth process of
+              uploading, storing, and displaying property images.
             </li>
             <li>
-              <strong>Image uploads (AWS S3):</strong> Integrating AWS S3 for
-              seamless image uploads and storage for user profiles and community
-              content.
+              <strong>Streamlined booking process:</strong> Developing a
+              simplified and efficient booking process for users to easily
+              select dates, make payments, and receive booking confirmations.
+            </li>
+            <li>
+              <strong>Empowering user reviews:</strong> Enabling users to leave
+              reviews for properties, fostering transparency and aiding other
+              users in making informed decisions.
+            </li>
+            <li>
+              <strong>Location services (Google Maps API):</strong> Leveraging
+              the Google Maps API to provide accurate property locations and
+              assist users in understanding the surrounding area.
             </li>
           </ol>
           <h2
@@ -284,42 +283,42 @@ export default function Ribbit() {
             Tech Stack
           </h2>
           <div className="font-wotfard text-lg mt-7">
-            To achieve the goals for Ribbit, a robust tech stack was chosen,
-            combining the best tools and technologies:
+            The technological choices underpinning Airbnbeezy's development are
+            a testament to creating a robust and efficient application:
           </div>
           <ul className="project-ul">
             <li>
-              <strong>Frontend:</strong>{" "}
-              <span className="text-pink-500">React.js</span>,{" "}
-              <span className="text-pink-500">Redux</span> for state management,
-              and <span className="text-pink-500">socket.io</span> for real-time
-              features.
+              <strong>Frontend:</strong> Utilizing{" "}
+              <span className="text-pink-500">React.js</span> and{" "}
+              <span className="text-pink-500">Redux</span> for state management
+              ensured a dynamic and responsive user interface.
             </li>
             <li>
               <strong>Backend:</strong>{" "}
-              <span className="text-pink-500">Flask</span>, a lightweight Python
-              web framework for handling HTTP requests, authentication, and data
-              processing.
+              <span className="text-pink-500">Express</span>, a minimalist
+              Node.js web application framework, facilitated routing, server
+              setup, and API development.
             </li>
             <li>
               <strong>Database:</strong>{" "}
-              <span className="text-pink-500">SQLAlchemy</span>, a Python SQL
-              toolkit, for efficient database interactions and data storage.
+              <span className="text-pink-500">Sequelize</span>, a promise-based
+              Node.js ORM, enabled interactions with the MySQL database,
+              ensuring data integrity and efficiency.
             </li>
             <li>
               <strong>User authentication:</strong>{" "}
-              <span className="text-pink-500">JSON Web Tokens (JWT)</span> for
-              secure user authentication and authorization.
+              <span className="text-pink-500">JSON Web Tokens (JWT)</span> were
+              employed to secure user authentication and manage user sessions.
             </li>
             <li>
-              <strong>Real-time features (live chat):</strong>{" "}
-              <span className="text-pink-500">Socket.io</span> for real-time
-              communication between users and live chat functionality.
+              <strong>Image uploads (AWS S3):</strong> The integration with{" "}
+              <span className="text-pink-500">AWS S3</span> allowed for
+              efficient and secure storage of property images.
             </li>
             <li>
-              <strong>Image uploads (AWS S3):</strong> Integration with{" "}
-              <span className="text-pink-500">AWS S3</span> for image uploads
-              and secure storage.
+              <strong>Location services (Google Maps API):</strong> Integration
+              with the <span className="text-pink-500">Google Maps API</span>{" "}
+              provided accurate and interactive property locations.
             </li>
             <li>
               <strong>Version control:</strong>{" "}
@@ -335,17 +334,15 @@ export default function Ribbit() {
             Features
           </h2>
           <div className="font-woftard text-lg mt-7">
-            Ribbit offers a rich array of features designed to create an
-            immersive and engaging social experience.
+            Airbnbeezy is a feature-rich application designed to offer an
+            immersive and convenient travel planning experience:
           </div>
           <h3 id="users" className="text-2xl font-bold mb-8 mt-16">
             Users
           </h3>
           <div className="font-wotfard text-lg mt-7">
-            The application allows users to sign up for new accounts, log in to
-            existing accounts, and manage their profiles. Users can update
-            profile information including a profile picture and bio to
-            personalize their presence on the platform.
+            Users can register new accounts and log in to access personalized
+            features and bookings.
           </div>
           <Image
             src="/images/projects/ribbit/ribbit-userprofile.png"
@@ -616,42 +613,10 @@ export default function Ribbit() {
               project's size and specifications.
             </li>
           </ol>
-          <h2
-            id="ribbit-vs-reddit"
-            className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mt-16 mb-8"
-          >
-            Ribbit vs. Reddit: A Direct Comparison
-          </h2>
-          <div className="font-wotfard text-lg mt-7">
-            To illustrate how close - or different - various aspects of Ribbit
-            are to/from their Reddit equivalents, I have some image comparison
-            sliders here. To show more of the Ribbit image, drag the slider to
-            the right. Likewise, to show more of the Reddit image, drag the
-            slider to the left.
-          </div>
-          <h3 id="homepage" className="text-2xl font-bold mt-16 mb-8">
-            Homepage
-          </h3>
-          <ComparisonSlider topImage={topImage} bottomImage={bottomImage} />
-          <h3 id="messages" className="text-2xl font-bold mt-16 mb-8">
-            Messages
-          </h3>
-          <ComparisonSlider
-            topImage={ribbitComparison2}
-            bottomImage={redditComparison2}
-          />
-          <h3
-            id="comparison-communities"
-            className="text-2xl font-bold mt-16 mb-8"
-          >
-            Communities
-          </h3>
-          <ComparisonSlider
-            topImage={ribbitComparison3}
-            bottomImage={redditComparison3}
-          />
         </div>
       </div>
     </Layout>
   );
 }
+
+export default Airbnbeezy;

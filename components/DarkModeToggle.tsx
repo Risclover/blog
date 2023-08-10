@@ -71,10 +71,9 @@ const DarkModeToggle: React.FC = () => {
 
   return (
     <button onClick={handleToggle} className="flex items-center justify-center">
-      {theme === "dark" && (
+      {theme === "dark" ? (
         <BsSunFill className="text-gray-50 hover:text-yellow-500 transition-colors duration-300" />
-      )}
-      {theme === "light" && (
+      ) : (
         <BsMoonFill className="text-gray-50 hover:text-yellow-500 transition-colors duration-300" />
       )}
     </button>
