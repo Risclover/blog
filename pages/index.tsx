@@ -28,8 +28,8 @@ const Blog = (props: Props) => {
       name: "Airbnbeezy",
       hero_img: "/images/airbnbeezy-screen.jpg",
       tech_stack: "React, Redux, Express, Sequelize",
-      description:
-        "A pixel-perfect replication of Airbnb with advanced CSS and styling techniques built with React, Redux, Express, and Sequelize.",
+      description: "An Airbnb clone with a focus on UI.",
+      url: "/projects/airbnbeezy",
     },
     {
       name: "Reduncrate",

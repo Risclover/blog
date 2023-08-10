@@ -10,12 +10,15 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
-import Image from "next/image";
 import VideoPlayer from "@/components/VideoPlayer/videoplayer";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
+import "yet-another-react-lightbox/styles.css";
+import ImageModal from "@/components/imagemodal";
 
 export default function Ribbit() {
   const [showFeatures, setShowFeatures] = useState(false);
+  const [open, setOpen] = useState(true);
+
   const headingsRef = useRef(null);
 
   const handleFeatures = () => {
@@ -131,13 +134,23 @@ export default function Ribbit() {
           <div className="font-wotfard text-lg">
             Ribbit is a sophisticated web application developed to replicate the
             core functionalities of Reddit, a popular social news aggregation
-            site and discussion platform. This project serves as a showcase of
-            my expertise in software engineering and full-stack web development,
-            utilizing a tech stack comprising of Flask, SQLAlchemy, React, and
-            Redux. Ribbit aims to provide users with a comprehensive social
-            experience by incorporating a wide array of features, including live
-            chat using socket.io, image uploads using AWS S3, and an extensive
-            content submission system.
+            site and discussion platform.{" "}
+          </div>
+
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-main-shorter.png"
+            imgAlt="Ribbit homepage"
+            title="Ribbit Homepage"
+            description={`The homepage of Ribbit, which shows the user's main feed.`}
+          />
+          <div className="font-wotfard text-lg">
+            This project serves as a showcase of my expertise in software
+            engineering and full-stack web development, utilizing a tech stack
+            comprising of Flask, SQLAlchemy, React, and Redux. Ribbit aims to
+            provide users with a comprehensive social experience by
+            incorporating a wide array of features, including live chat using
+            socket.io, image uploads using AWS S3, and an extensive content
+            submission system.
           </div>
           <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mt-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
             <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
@@ -252,10 +265,11 @@ export default function Ribbit() {
               posts, comments, votes for posts and comments, and other
               information.
             </li>
-            <img
-              className="schema-img my-20 mx-auto"
-              src="/images/ribbit-schema.png"
-              alt="schema"
+            <ImageModal
+              imgSrc="/images/ribbit-schema.png"
+              imgAlt="Schema"
+              title="Database schema design"
+              description="The very first database schema design I created for Ribbit, back when I knew nothing and had yet to write any code."
             />
             <li>
               <strong>User interface (UI) design:</strong> Crafting an intuitive
@@ -347,24 +361,22 @@ export default function Ribbit() {
             profile information including a profile picture and bio to
             personalize their presence on the platform.
           </div>
-          <Image
-            src="/images/projects/ribbit/ribbit-userprofile.png"
-            alt="Ribbit user profile"
-            width={1000}
-            height={1000}
-            className="schema-img max-w-[900px] mx-auto my-10"
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-userprofile.png"
+            imgAlt="Ribbit - User Profile"
+            title="Ribbit: User Profile"
+            description="The current user's profile, which includes buttons for changing the user's image and banner, and redirecting to the Settings page, as well as the Followers section, which opens the Followers list when clicked."
           />
           <div className="font-wotfard text-lg mt-7">
             Users who wish to briefly visit Ribbit for the purposes of demoing
             the application can use the demo login feature, offered as a button
             at the top of the "Log In" window.
           </div>
-          <Image
-            src="/images/projects/ribbit/ribbit-login.png"
-            alt="Ribbit login"
-            width={1000}
-            height={1000}
-            className="schema-img max-w-[400px] mx-auto my-10"
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-login.png"
+            imgAlt="Ribbit Log In"
+            title="Ribbit login window"
+            description="Ribbit's login window, which includes a button that, when clicked, logs the user into the Demo account."
           />
           <h3 id="communities" className="text-2xl font-bold mb-8 mt-16">
             Communities
@@ -378,12 +390,11 @@ export default function Ribbit() {
             as the community's image and 'About' section), and have the power to
             delete the community.
           </div>
-          <Image
-            src="/images/projects/ribbit/ribbit-community.png"
-            alt="Ribbit user profile"
-            width={1000}
-            height={1000}
-            className="schema-img max-w-[900px] mx-auto my-10"
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-community.png"
+            imgAlt="Ribbit community"
+            title="Ribbit: Community page"
+            description="A community page."
           />
           <h3 id="subscriptions" className="text-2xl font-bold mb-8 mt-16">
             Subscriptions
@@ -457,10 +468,11 @@ export default function Ribbit() {
             will appear on the user's main feed. This enables users to engage
             with content from users they find interesting or influential.
           </div>
-          <img
-            src="/images/projects/ribbit/ribbit-followers.png"
-            className="schema-img max-w-[390px] mx-auto my-10"
-            alt="Ribbit followers"
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-followers.png"
+            imgAlt="Ribbit followers"
+            title="Ribbit Followers"
+            description="The current user's followed users."
           />
           <h3 id="search" className="text-2xl font-bold mb-8 mt-16">
             Search
@@ -470,33 +482,31 @@ export default function Ribbit() {
             posts, and users based on keywords and relevant criteria. The search
             feature enhances content discoverability and user satisfaction.
           </div>
-          <div className="mb-20">
-            <img
-              src="/images/projects/ribbit/ribbit-favorite.png"
-              className="schema-img max-w-[219px] mx-auto lg:mr-20 lg:ml-10 lg:float-left my-10 lg:my-0"
-              alt="Ribbit favorites"
-            />
-            <h3 id="favorite-users" className="text-2xl font-bold mb-8 mt-16">
-              Favorite Users
-            </h3>
-            <div className="font-wotfard text-lg mt-7">
-              Users can mark followed users as favorites, making it easier to
-              access their content. The favorite users feature streamlines the
-              process of following specific users and viewing their
-              contributions.
-            </div>
-            <h3
-              id="favorite-communities"
-              className="text-2xl font-bold mb-8 mt-16"
-            >
-              Favorite Communities
-            </h3>
-            <div className="font-wotfard text-lg mt-7">
-              Users can also mark subscribed communities as favorites for quick
-              access to their preferred content. Favorite communities enhance
-              the user experience by allowing quick navigation to frequently
-              visited communities.
-            </div>
+          <h3 id="favorite-users" className="text-2xl font-bold mb-8 mt-16">
+            Favorite Users
+          </h3>
+          <div className="font-wotfard text-lg mt-7">
+            Users can mark followed users as favorites, making it easier to
+            access their content. The favorite users feature streamlines the
+            process of following specific users and viewing their contributions.
+          </div>
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-favorite.png"
+            imgAlt="Ribbit favorites"
+            title="Ribbit: Favorites"
+            description="Ribbit's left nav dropdown menu, "
+          />
+          <h3
+            id="favorite-communities"
+            className="text-2xl font-bold mb-8 mt-16"
+          >
+            Favorite Communities
+          </h3>
+          <div className="font-wotfard text-lg mt-7">
+            Users can also mark subscribed communities as favorites for quick
+            access to their preferred content. Favorite communities enhance the
+            user experience by allowing quick navigation to frequently visited
+            communities.
           </div>
           <h3
             id="recently-viewed-posts"
@@ -510,10 +520,11 @@ export default function Ribbit() {
             returning to interesting content that users might want to revisit or
             engage with further.
           </div>
-          <img
-            src="/images/projects/ribbit/ribbit-recentlyviewed.png"
-            className="schema-img max-w-[330px] mx-auto my-10"
-            alt="Ribbit: Recently viewed posts"
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-recentlyviewed.png"
+            imgAlt="Ribbit: Recently Viewed Posts"
+            title="Ribbit: Recently Viewed Posts"
+            description="The recently viewed posts section on feed pages on Ribbit"
           />
           <h3 id="messaging" className="text-2xl font-bold mb-8 mt-16">
             Messaging
@@ -522,10 +533,11 @@ export default function Ribbit() {
             The comprehensive messaging system allows users to send private
             messages to other users within the platform.
           </div>
-          <img
-            src="/images/projects/ribbit/ribbit-messages.png"
-            className="schema-img max-w-[700px] mx-auto my-10"
-            alt="Ribbit messages"
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-messages.png"
+            imgAlt="Ribbit messages"
+            title="Ribbit: Messages"
+            description="The 'Messages' inbox in Ribbit's messaging section"
           />
           <h3 id="notifications" className="text-2xl font-bold mb-8 mt-16">
             Notifications

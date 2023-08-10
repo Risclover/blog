@@ -1,4 +1,5 @@
 import VideoPlayer from "@/components/VideoPlayer/videoplayer";
+import ImageModal from "@/components/imagemodal";
 import Layout from "@/components/layout";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
@@ -29,9 +30,8 @@ function Airbnbeezy({}: Props) {
     category: "Projects",
     categoryUrl: "/#projects",
     subcategory: "Project Details",
-    title: "Ribbit",
-    subtitle:
-      "A feature-rich pixel-perfect clone of the social media site Reddit.com",
+    title: "Airbnbeezy",
+    subtitle: "An Airbnb clone with a focus on UI.",
   };
 
   const fileContent = [
@@ -40,68 +40,18 @@ function Airbnbeezy({}: Props) {
     { id: 3, slug: "tech-stack", title: "Tech Stack", level: 2 },
     { id: 4, slug: "features", title: "Features", level: 2 },
     { id: 5, slug: "users", title: "Users", level: 3 },
-    { id: 6, slug: "communities", title: "Communities", level: 3 },
-    { id: 7, slug: "subscriptions", title: "Subscriptions", level: 3 },
-    { id: 8, slug: "community-rules", title: "Community Rules", level: 3 },
-    { id: 9, slug: "posts", title: "Posts", level: 3 },
-    { id: 10, slug: "comments", title: "Comments", level: 3 },
-    { id: 11, slug: "post-votes", title: "Post Votes", level: 3 },
-    { id: 12, slug: "comment-votes", title: "Comment Votes", level: 3 },
+    { id: 6, slug: "property-listings", title: "Property Listings", level: 3 },
     {
-      id: 13,
-      slug: "image-uploads",
-      title: "Image Uploads (AWS S3)",
+      id: 7,
+      slug: "interactive-maps",
+      title: "Interactive Maps",
       level: 3,
     },
-    { id: 14, slug: "followers", title: "Followers", level: 3 },
-    { id: 15, slug: "search", title: "Search", level: 3 },
-    { id: 16, slug: "favorite-users", title: "Favorite Users", level: 3 },
-    {
-      id: 17,
-      slug: "favorite-communities",
-      title: "Favorite Communities",
-      level: 3,
-    },
-    {
-      id: 18,
-      slug: "recently-viewed-posts",
-      title: "Recently Viewed Posts",
-      level: 3,
-    },
-    { id: 19, slug: "messaging", title: "Messaging", level: 3 },
-    { id: 20, slug: "notifications", title: "Notifications", level: 3 },
-    {
-      id: 21,
-      slug: "live-chat",
-      title: "Live Chat (Using Socket.io)",
-      level: 3,
-    },
-    { id: 22, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
-    { id: 23, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
-    {
-      id: 24,
-      slug: "ribbit-vs-reddit",
-      title: "Ribbit vs. Reddit: A Direct Comparison",
-      level: 2,
-    },
-    {
-      id: 25,
-      slug: "homepage",
-      title: "Homepage",
-      level: 3,
-    },
-    {
-      id: 26,
-      slug: "messages",
-      title: "Messages",
-      level: 3,
-    },
-    {
-      id: 27,
-      slug: "comparison-communities",
-      title: "Communities",
-      level: 3,
-    },
+    { id: 8, slug: "booking-process", title: "Booking Process", level: 3 },
+    { id: 9, slug: "image-uploads", title: "Image Uploads", level: 3 },
+    { id: 10, slug: "user-reviews", title: "User Reviews", level: 3 },
+    { id: 11, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
+    { id: 12, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
   ];
 
   return (
@@ -128,8 +78,17 @@ function Airbnbeezy({}: Props) {
             functionalities of Airbnb, a prominent online marketplace for
             lodging and travel experiences. Crafted meticulously by a solo
             developer (myself), this project encompasses a testament to my
-            expertise in software engineering and full-stack web development. By
-            leveraging a tech stack comprising React, Redux, Express, and
+            expertise in software engineering and full-stack web development.
+          </div>
+          <ImageModal
+            imgSrc="/images/projects/airbnbeezy/airbnbeezy-home.png"
+            imgAlt="Airbnbeezy: Home"
+            title="Airbnbeezy: Home"
+            description="Homepage of Airbnbeezy"
+          />
+          <div className="font-wotfard text-lg">
+            {" "}
+            By leveraging a tech stack comprising React, Redux, Express, and
             Sequelize, Airbnbeezy brings to life a platform that enables users
             to discover accommodations, make bookings, leave reviews, and enjoy
             a seamless travel planning experience. The integration of AWS S3 for
@@ -327,6 +286,13 @@ function Airbnbeezy({}: Props) {
               version control and code management.
             </li>
           </ul>
+          <ImageModal
+            imgSrc="/images/projects/airbnbeezy/airbnbeezy-edit-listing.png"
+            imgAlt="Airbnbeezy edit listing page"
+            title="Airbnbeezy: Edit Listing Page"
+            description="Users who post listings can edit the listing details from this page."
+          />
+          {/* FEATURES */}
           <h2
             id="features"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8 mt-16"
@@ -342,201 +308,68 @@ function Airbnbeezy({}: Props) {
           </h3>
           <div className="font-wotfard text-lg mt-7">
             Users can register new accounts and log in to access personalized
-            features and bookings.
+            features and bookings. Registered users have profiles displaying
+            their bookings, reviews, and account information. Secure
+            authentication ensures user data protection and controlled access to
+            features.
           </div>
-          <Image
-            src="/images/projects/ribbit/ribbit-userprofile.png"
-            alt="Ribbit user profile"
-            width={1000}
-            height={1000}
-            className="schema-img max-w-[900px] mx-auto my-10"
+          <h3 id="property-listings" className="text-2xl font-bold mb-8 mt-16">
+            Property Listings
+          </h3>
+          <div className="font-wotfard text-lg mt-7">
+            Properties are displayed with detailed information, images, pricing,
+            and availability calendars. Users have the ability to post their own
+            listings with full customization, including images.
+          </div>
+          <ImageModal
+            imgSrc="/images/projects/airbnbeezy/airbnbeezy-listing.png"
+            imgAlt="Airbnbeezy listing page"
+            title="Airbnbeezy: Listing Page"
+            description="An example of one of the many listing pages on Airbnbeezy"
           />
+          <h3 id="interactive-maps" className="text-2xl font-bold mb-8 mt-16">
+            Interactive Maps (Google Maps API)
+          </h3>
           <div className="font-wotfard text-lg mt-7">
-            Users who wish to briefly visit Ribbit for the purposes of demoing
-            the application can use the demo login feature, offered as a button
-            at the top of the "Log In" window.
+            Property locations are displayed on interactive maps, enabling users
+            to see what the surrounding area is like, and to use the map to
+            explore the neighborhood.
           </div>
-          <Image
-            src="/images/projects/ribbit/ribbit-login.png"
-            alt="Ribbit login"
-            width={1000}
-            height={1000}
-            className="schema-img max-w-[400px] mx-auto my-10"
+          <ImageModal
+            imgSrc="/images/projects/airbnbeezy/airbnbeezy-map.png"
+            imgAlt="Airbnbeezy map"
+            title="Airbnbeezy: Interactive Map"
+            description="Each listing page on Airbnbeezy has an interactive map, courtesy of Google Maps API."
           />
-          <h3 id="communities" className="text-2xl font-bold mb-8 mt-16">
-            Communities
+          <h3 id="booking-process" className="text-2xl font-bold mb-8 mt-16">
+            Booking Process
           </h3>
           <div className="font-wotfard text-lg mt-7">
-            Referred to as 'subreddits' on Reddit, users have the ability to
-            create new communities dedicated to specific topics or interests.
-            Community creators can define rules and guidelines for their
-            respective communities, ensuring a safe and respectful environment
-            for all members. They can also customize community information (such
-            as the community's image and 'About' section), and have the power to
-            delete the community.
+            Users can select available dates and receive booking confirmations.
+            Extensive validation ensures that only valid and available dates are
+            selected by users. Users can view and manage past and current
+            bookings.
           </div>
-          <Image
-            src="/images/projects/ribbit/ribbit-community.png"
-            alt="Ribbit user profile"
-            width={1000}
-            height={1000}
-            className="schema-img max-w-[900px] mx-auto my-10"
+          <ImageModal
+            imgSrc="/images/projects/airbnbeezy/airbnbeezy-reserve.png"
+            imgAlt="Airbnbeezy: Reservation"
+            title="Airbnbeezy: Reservation Form"
+            description="The form to make a reservation on a listing on Airbnbeezy's listings pages"
           />
-          <h3 id="subscriptions" className="text-2xl font-bold mb-8 mt-16">
-            Subscriptions
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            Users can subscribe to their favorite communities, which adds the
-            community's posts to the user's front page feed, and makes it easily
-            accessible by adding it to both the navigation dropdown and the
-            'Communities' list on the post creation page. Subscriptions also
-            enable users to stay engaged with their areas of interest.
-          </div>
-          <h3 id="community-rules" className="text-2xl font-bold mb-8 mt-16">
-            Community Rules
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            Community creators can establish rules and guidelines for their
-            respective communities. These rules help maintain a positive
-            community environment by setting standards for content and behavior.
-          </div>
-          <h3 id="posts" className="text-2xl font-bold mb-8 mt-16">
-            Posts
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            Users can submit various types of content, such as links, images,
-            and text-based posts, to existing communities. Posting allows users
-            to share information, express opinions, and contribute to the
-            community.
-          </div>
-          <VideoPlayer src="/images/projects/ribbit/ribbit-post.mp4" />
-          <h3 id="comments" className="text-2xl font-bold mb-8 mt-16">
-            Comments
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            Users can engage in discussions by leaving comments on posts.
-            Comments facilitate conversations and allow users to express their
-            thoughts on various topics.
-          </div>
-          <VideoPlayer src="/images/projects/ribbit/ribbit-comment.mp4" />
-
-          <h3 id="post-votes" className="text-2xl font-bold mb-8 mt-16">
-            Post Votes
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            The voting system allows users to upvote or downvote posts,
-            influencing their visibility and popularity within the community.
-            Voting promotes the best content and determines what gains
-            visibility.
-          </div>
-          <h3 id="comment-votes" className="text-2xl font-bold mb-8 mt-16">
-            Comment Votes
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            Similarly, users can vote on comments, promoting thoughtful and
-            relevant discussions. Comment voting allows users to express
-            agreement or disagreement with specific comments.
-          </div>
           <h3 id="image-uploads" className="text-2xl font-bold mb-8 mt-16">
             Image Uploads (AWS S3)
           </h3>
           <div className="font-wotfard text-lg mt-7">
-            The platform integrates with AWS S3 to enable users to upload images
-            for their profiles and communities. Community owners can set rules
-            for image uploads to ensure that content aligns with community
-            guidelines.
+            Property owners can upload images of their listings, enhancing the
+            visual appeal and attractiveness of properties. All users can upload
+            a profile image, personalizing their profile for other users to see.
           </div>
-          <h3 id="followers" className="text-2xl font-bold mb-8 mt-16">
-            Followers
+          <h3 id="user-reviews" className="text-2xl font-bold mb-8 mt-16">
+            User Reviews
           </h3>
           <div className="font-wotfard text-lg mt-7">
-            Users can follow other users to stay updated on their posts, which
-            will appear on the user's main feed. This enables users to engage
-            with content from users they find interesting or influential.
-          </div>
-          <img
-            src="/images/projects/ribbit/ribbit-followers.png"
-            className="schema-img max-w-[390px] mx-auto my-10"
-            alt="Ribbit followers"
-          />
-          <h3 id="search" className="text-2xl font-bold mb-8 mt-16">
-            Search
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            A powerful search functionality allows users to find communities,
-            posts, and users based on keywords and relevant criteria. The search
-            feature enhances content discoverability and user satisfaction.
-          </div>
-          <div className="mb-20">
-            <img
-              src="/images/projects/ribbit/ribbit-favorite.png"
-              className="schema-img max-w-[219px] mx-auto lg:mr-20 lg:ml-10 lg:float-left my-10 lg:my-0"
-              alt="Ribbit favorites"
-            />
-            <h3 id="favorite-users" className="text-2xl font-bold mb-8 mt-16">
-              Favorite Users
-            </h3>
-            <div className="font-wotfard text-lg mt-7">
-              Users can mark followed users as favorites, making it easier to
-              access their content. The favorite users feature streamlines the
-              process of following specific users and viewing their
-              contributions.
-            </div>
-            <h3
-              id="favorite-communities"
-              className="text-2xl font-bold mb-8 mt-16"
-            >
-              Favorite Communities
-            </h3>
-            <div className="font-wotfard text-lg mt-7">
-              Users can also mark subscribed communities as favorites for quick
-              access to their preferred content. Favorite communities enhance
-              the user experience by allowing quick navigation to frequently
-              visited communities.
-            </div>
-          </div>
-          <h3
-            id="recently-viewed-posts"
-            className="text-2xl font-bold mb-8 mt-16"
-          >
-            Recently Viewed Posts
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            A section for recently viewed posts helps users keep track of the
-            content they have interacted with recently. The feature aids in
-            returning to interesting content that users might want to revisit or
-            engage with further.
-          </div>
-          <img
-            src="/images/projects/ribbit/ribbit-recentlyviewed.png"
-            className="schema-img max-w-[330px] mx-auto my-10"
-            alt="Ribbit: Recently viewed posts"
-          />
-          <h3 id="messaging" className="text-2xl font-bold mb-8 mt-16">
-            Messaging
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            The comprehensive messaging system allows users to send private
-            messages to other users within the platform.
-          </div>
-          <img
-            src="/images/projects/ribbit/ribbit-messages.png"
-            className="schema-img max-w-[700px] mx-auto my-10"
-            alt="Ribbit messages"
-          />
-          <h3 id="notifications" className="text-2xl font-bold mb-8 mt-16">
-            Notifications
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            Users receive notifications for new messages, post replies, and new
-            followers.
-          </div>
-          <h3 id="live-chat" className="text-2xl font-bold mb-8 mt-16">
-            Live Chat (using socket.io)
-          </h3>
-          <div className="font-wotfard text-lg mt-7">
-            The live chat feature enables real-time discussions between
-            community members, enhancing user engagement.
+            Users can leave reviews for properties they have booked, offering
+            valuable insights to future travelers.
           </div>
           <h2
             id="challenges-faced"
@@ -545,32 +378,42 @@ function Airbnbeezy({}: Props) {
             Challenges Faced
           </h2>
           <div className="">
-            Developing Ribbit presented several challenges that demanded
-            innovative solutions.
+            The journey of building Airbnbeezy was accompanied by several
+            challenges, each fostering learning and growth:
           </div>
           <ol>
             <li>
-              <strong>Real-time features:</strong> Implementing real-time
-              features such as live chat and notifications required
-              understanding websockets and designing efficient event-driven
-              systems.
+              <strong>Integration of external APIs:</strong> Incorporating the
+              Google Maps API to accurately display property locations required
+              understanding its usage and ensuring seamless integration.
             </li>
             <li>
-              <strong>Image uploads and storage:</strong> Integrating AWS S3 for
-              image uploads and secure storage demanded proper configuration and
-              secure handling of user-uploaded content.
+              <strong>Complex booking logic:</strong> Developing the booking
+              process involved managing available dates, user selections, and
+              real-time updates while maintaining data consistency.
             </li>
             <li>
-              <strong>Scalability</strong>: Designing a scalable architecture to
-              handle increased user activity, messaging, and live chat
-              interactions was a critical consideration.
+              <strong>Image uploads with AWS S3:</strong> Properly configuring
+              AWS S3 for secure image uploads and handling user-generated
+              content was crucial.
             </li>
             <li>
-              <strong>Messaging system:</strong> Building a comprehensive
-              messaging system with proper authentication, authorization, and
-              secure communication required careful planning and implementation.
+              <strong>Database relationships:</strong> Establishing
+              relationships between users, properties, bookings, and reviews in
+              Sequelize demanded careful schema design and understanding of
+              associations.
+            </li>
+            <li>
+              <strong>Advanced styling:</strong> Several components required
+              advanced knowledge
             </li>
           </ol>
+          <ImageModal
+            imgSrc="/images/projects/airbnbeezy/airbnbeezy-manage-listings.png"
+            imgAlt="Airbnbeezy manage listings page"
+            title="Airbnbeezy: Manage Listings"
+            description="Users can view their listings on this listings management page."
+          />
           <h2
             id="lessons-learned"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mt-16 mb-8"
