@@ -7,10 +7,12 @@ import prism from "remark-prism";
 
 const projectsDirectory = path.join(process.cwd(), "projects");
 
+console.log("PROJECTS DIRECTORY:", projectsDirectory);
+
 export function getProjectsData() {
   const fileNames = fs.readdirSync(projectsDirectory);
   const allProjectsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
+    const id = fileName.replace(/\.tsx$/, "");
     const fullPath = path.join(projectsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
@@ -40,7 +42,7 @@ export function getAllProjectIds() {
 }
 
 export async function getProjectData(id: string) {
-  const fullPath = path.join(projectsDirectory, `${id}.md`);
+  const fullPath = path.join(projectsDirectory, `${id}.tsx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const matterResult = matter(fileContents);
   const processedContent = await remark()

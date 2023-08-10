@@ -6,7 +6,7 @@ import redditComparison2 from "../../public/images/projects/ribbit/comparison-re
 import ribbitComparison3 from "../../public/images/projects/ribbit/comparison-ribbit-3.png";
 import redditComparison3 from "../../public/images/projects/ribbit/comparison-reddit-3.png";
 import Layout from "@/components/layout";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Head from "next/head";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
@@ -17,9 +17,30 @@ import ImageModal from "@/components/imagemodal";
 
 export default function Ribbit() {
   const [showFeatures, setShowFeatures] = useState(false);
-  const [open, setOpen] = useState(true);
-
   const headingsRef = useRef(null);
+  const [linkName, setLinkName] = useState("");
+  const [secondLinkName, setSecondLinkName] = useState("");
+
+  const onResize = () => {
+    const width = window.innerWidth;
+
+    if (width < 600) {
+      setLinkName("Link");
+      setSecondLinkName("Link");
+    } else {
+      setLinkName("https://ribbit-app.herokuapp.com");
+      setSecondLinkName("https://www.github.com/Risclover/ribbit");
+    }
+  };
+
+  useLayoutEffect(() => {
+    onResize();
+  }, []);
+
+  useLayoutEffect(() => {
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const handleFeatures = () => {
     setShowFeatures(!showFeatures);
@@ -211,16 +232,9 @@ export default function Ribbit() {
                   <a
                     href="https://www.github.com/Risclover/ribbit"
                     target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline hidden sm:inline"
+                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
                   >
-                    https://www.github.com/Risclover/ribbit
-                  </a>
-                  <a
-                    href="https://www.github.com/Risclover/ribbit"
-                    target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline sm:hidden"
-                  >
-                    Link
+                    {secondLinkName}
                   </a>
                 </li>
                 <li>
@@ -228,16 +242,9 @@ export default function Ribbit() {
                   <a
                     href="https://ribbit-app.herokuapp.com"
                     target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline hidden sm:inline"
+                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
                   >
-                    https://www.ribbit-app.herokuapp.com
-                  </a>
-                  <a
-                    href="https://ribbit-app.herokuapp.com"
-                    target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline sm:hidden"
-                  >
-                    Link
+                    {linkName}
                   </a>
                 </li>
               </ul>

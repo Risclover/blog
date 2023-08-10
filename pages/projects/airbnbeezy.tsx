@@ -5,7 +5,7 @@ import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
 type Props = {};
@@ -13,6 +13,29 @@ type Props = {};
 function Airbnbeezy({}: Props) {
   const [showFeatures, setShowFeatures] = useState(false);
   const headingsRef = useRef(null);
+  const [linkName, setLinkName] = useState("");
+  const [secondLinkName, setSecondLinkName] = useState("");
+
+  const onResize = () => {
+    const width = window.innerWidth;
+
+    if (width < 600) {
+      setLinkName("Link");
+      setSecondLinkName("Link");
+    } else {
+      setLinkName("https://air-bnbeezy.herokuapp.com");
+      setSecondLinkName("https://www.github.com/Risclover/airbnbeezy");
+    }
+  };
+
+  useLayoutEffect(() => {
+    onResize();
+  }, []);
+
+  useLayoutEffect(() => {
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const handleFeatures = () => {
     setShowFeatures(!showFeatures);
@@ -144,16 +167,9 @@ function Airbnbeezy({}: Props) {
                   <a
                     href="https://www.github.com/Risclover/airbnbeezy"
                     target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline hidden sm:inline"
+                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
                   >
-                    https://www.github.com/Risclover/airbnbeezy
-                  </a>
-                  <a
-                    href="https://www.github.com/Risclover/airbnbeezy"
-                    target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline sm:hidden"
-                  >
-                    Link
+                    {secondLinkName}
                   </a>
                 </li>
                 <li>
@@ -161,16 +177,9 @@ function Airbnbeezy({}: Props) {
                   <a
                     href="https://air-bnbeezy.herokuapp.com"
                     target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline hidden sm:inline"
+                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
                   >
-                    https://www.air-bnbeezy.herokuapp.com
-                  </a>
-                  <a
-                    href="https://air-bnbeezy.herokuapp.com"
-                    target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline sm:hidden"
-                  >
-                    Link
+                    {linkName}
                   </a>
                 </li>
               </ul>
