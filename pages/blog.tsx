@@ -4,9 +4,8 @@ import { getSortedPostsData } from "lib/posts";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { HiMiniArrowRight } from "react-icons/hi2";
-import Blog from "./blog";
 
-export default function Home({
+export default function Blog({
   allPostsData,
   categories,
 }: {
@@ -16,6 +15,7 @@ export default function Home({
     id: string;
     subtitle: string;
     description: string;
+    tags: string[];
   }[];
   categories: {
     params: {

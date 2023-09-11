@@ -30,6 +30,8 @@ export function getSortedPostsData() {
         category: string;
         subtitle: string;
         slug: string;
+        description?: string;
+        tags: string[];
       }),
     };
   });
@@ -78,6 +80,7 @@ export async function getPostData(id: string) {
       category: string;
       subtitle: string;
       slug: string;
+      tags: string[];
     }),
   };
 }

@@ -54,7 +54,7 @@ function Reduncrate({}: Props) {
     subcategory: "Project Details",
     title: "Reduncrate",
     subtitle:
-      "A replication of the ecommerce site Uncrate.com created in a collaboration of 4 engineers.",
+      "A replication of the ecommerce site Uncrate.com created as a collaboration from a small team of engineers.",
   };
 
   const fileContent = [

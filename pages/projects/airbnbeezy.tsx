@@ -206,12 +206,14 @@ function Airbnbeezy({}: Props) {
               <strong>Database design:</strong> The design and implementation of
               a robust and efficient database schema using Sequelize aimed to
               ensure optimal storage and retrieval of user, property, booking,
-              and review data.
+              and review data. The very first version of this schema is shown
+              below.
             </li>
-            <img
-              className="schema-img my-20 mx-auto"
-              src="/images/ribbit-schema.png"
-              alt="schema"
+            <ImageModal
+              imgSrc="/images/projects/airbnbeezy/airbnbeezy-schema.png"
+              imgAlt="Airbnbeezy database schema"
+              title="Airbnbeezy: Database schema (v. 1)"
+              description="A very early version of the database schema design"
             />
             <li>
               <strong>User-centric UI design:</strong> The user interface (UI)

@@ -3,6 +3,8 @@ title: whoami
 date: 06/20/23
 preview: Hello! I'm Sara, and this is a little introduction to me, the author of this here blog.
 category: Personal
+subtitle: A bit about me, the person behind this blog and portfolio.
+description: Hi there! I'm Sara, and since this website is all about me, I figured I'd give a little introduction as to who I am.
 slug: 01-whoami
 ---
 

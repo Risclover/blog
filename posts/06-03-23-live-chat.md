@@ -1,14 +1,17 @@
 ---
-title: Cloning Reddit's Live Chat Feature
-subtitle: Using WebSockets to create Reddit's live messaging feature.
+title: "Replicating Reddit: Live Chat Pt. 1"
+subtitle: Using React, Redux, Flask, SQLAlchemy, and WebSockets (flask-socketio) to create Reddit's live messaging feature.
 date: 06/21/23
 description: Join me as we take a deep dive into the code that powers Ribbit's live chat feature and discuss the project in its entirety, from the initial planning stages all the way to its completion.
 category: Tutorial
+tags:
+  - Replicating Reddit
+  - Testing
 ---
 
 ## Introduction
 
-In [today's](https://www.google.com) fast-paced online community landscape, real-time interaction has become the lifeblood of user engagement. As the creator and developer of Ribbit, a comprehensive and pixel-perfect replica of Reddit, I knew that the app couldn't be complete until I had at least captured the captivating experience of live communication offered by the popular platform. My long-standing ambition of integrating a live chat feature within Ribbit finally came to fruition just last week, and I am excited to break down and discuss this process in detail. Join me as we take a deep dive into the code that powers Ribbit's live chat feature and discuss the project in its entirety, from the initial planning stages all the way to its completion.
+In today's fast-paced online community landscape, real-time interaction has become the lifeblood of user engagement. As the creator and developer of Ribbit, a comprehensive and pixel-perfect replica of Reddit, I knew that the app couldn't be complete until I had at least captured the captivating experience of live communication offered by the popular platform. My long-standing ambition of integrating a live chat feature within Ribbit finally came to fruition just last week, and I am excited to break down and discuss this process in detail. Join me as we take a deep dive into the code that powers Ribbit's live chat feature and discuss the project in its entirety, from the initial planning stages all the way to its completion.
 
 It's important to note that this blog post assumes a basic understanding of the languages and technologies employed in the project, which are listed below. However, the project also utilizes flask-socketio, which is one technology that we will explore in greater detail.
 
@@ -26,7 +29,7 @@ Before diving into any project, it is crucial to spend time on research and plan
 
 To illustrate the feature's intricacies, I created a GIF demonstrating its different aspects. Let's take a closer look and identify some key elements.
 
-<img src="/images/6ek5EavVy4.gif" />
+<img src="/images/6ek5EavVy4.gif" class="mt-20" />
 
 By studying these details, we gain a comprehensive understanding of the feature and can ensure a faithful recreation.
 
@@ -504,7 +507,7 @@ def fake_delete_message(id):
     return message.to_dict()
 ```
 
-## WebSockets Backend
+### WebSockets
 
 Our last backend task is to create the `flask-socketio` endpoints needed to turn our chat feature into a live chat feature. First, let's briefly cover what WebSockets are and why they are used for real-time communication.
 
@@ -614,3 +617,144 @@ There are two `emit()` statements because we need one for sending a message and 
 Lastly, we'll implement the events to join and leave chat rooms.
 
 And with that, we complete our backend code! Note that I haven't mentioned or shown things like registering our chat_thread_routes blueprint or adding our models to the `models/__init__.py` file. As I mentioned in the beginning, this post assumes that you've used Flask and SQLAlchemy before. If you are using this as a guide, just don't forget to handle those details.
+
+## Redux
+
+```javascript
+const LOAD_CHAT_THREADS = "chat_threads/LOAD_CHAT_THREADS";
+const LOAD_CHAT_THREAD = "chat_threads/LOAD_CHAT_THREAD";
+
+const loadChatThreads = (chatThreads) => {
+  return {
+    type: LOAD_CHAT_THREADS,
+    chatThreads,
+  };
+};
+
+const loadChatThread = (chatThread) => {
+  return {
+    type: LOAD_CHAT_THREAD,
+    chatThread,
+  };
+};
+
+export const getUserChatThreads = () => async (dispatch) => {
+  const response = await fetch("/api/chat_threads");
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadChatThreads(data));
+    return data;
+  }
+};
+
+export const getChatThread = (chatThreadId) => async (dispatch) => {
+  const response = await fetch(`/api/chat_threads/${chatThreadId}`);
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadChatThread(data));
+    return data;
+  }
+};
+
+export const createChatThread = (receiverId) => async (dispatch) => {
+  const response = await fetch("/api/chat_threads", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ receiverId: receiverId }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadChatThread(data));
+    return data;
+  }
+};
+
+export const createChatMessage = (payload) => async (dispatch) => {
+  const { content, receiverId, chatThreadId } = payload;
+  const response = await fetch(`/api/chat_threads/${chatThreadId}/messages`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      content: content,
+      receiver_id: receiverId,
+    }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
+export const fakeDeleteMessage = (messageId) => async (dispatch) => {
+  const response = await fetch(`/api/chat_threads/messages/${messageId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+};
+
+export const readAllMessages = (threadId) => async (dispatch) => {
+  const response = await fetch(`/api/chat_threads/${threadId}/read`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+};
+
+export const createReaction = (payload) => async (dispatch) => {
+  const { messageId, emoji } = payload;
+
+  const response = await fetch(
+    `/api/chat_threads/messages/${messageId}/reactions`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ emoji }),
+    }
+  );
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+};
+
+const initialState = {};
+
+export default function chatThreadReducer(state = initialState, action) {
+  switch (action.type) {
+    case LOAD_CHAT_THREADS:
+      if (action.chatThreads && action.chatThreads.ChatThreads) {
+        return action.chatThreads.ChatThreads.reduce(
+          (chatThreads, chatThread) => {
+            chatThreads[chatThread.id] = chatThread;
+            return chatThreads;
+          },
+          {}
+        );
+      }
+      return state;
+    case LOAD_CHAT_THREAD:
+      return { ...state, [action.chatThread.id]: action.chatThread };
+    default:
+      return state;
+  }
+}
+```

@@ -19,6 +19,16 @@ const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+      config.resolve.fallback.tls = false;
+      config.resolve.fallback.net = false;
+      config.resolve.fallback.child_process = false;
+    }
+
+    return config;
+  },
 };
 
 // Merge MDX config with Next.js config

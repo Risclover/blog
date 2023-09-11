@@ -19,7 +19,7 @@ export default function Nav({ menu, setMenu }: Props) {
 
   useEffect(() => {
     Aos.init({ duration: 800 });
-  }, []);
+  }, []);                                                                                                                                                                                                                                                  
 
   const handleMenu = () => {
     if (dropdownStatus === "open ") {

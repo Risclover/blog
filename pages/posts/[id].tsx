@@ -23,8 +23,10 @@ export default function Post({
     contentHtml?: any;
     subtitle: string;
     category: string;
+    tags: string[];
   };
 }) {
+  console.log("POST DATA:", postData);
   const headingsRef = useRef(null);
   useEffect(() => {
     const headings: NodeListOf<Element> =
@@ -140,6 +142,9 @@ export default function Post({
           headingsRef={headingsRef}
         />
       )}
+      {postData.tags.map((tag) => (
+        <div>{tag.toLowerCase()}</div>
+      ))}
       <div
         ref={headingsRef}
         className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 fit-content lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50"
@@ -171,6 +176,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPostsData = getSortedPostsData();
+
+  console.log("ALL POSTS DATA:", allPostsData);
   const postData = await getPostData(params?.id as string);
   const content = await markdownToHtml(postData.contentHtml || "");
   const mdxContent = extractHeadings(`posts/${params?.id}.md`);

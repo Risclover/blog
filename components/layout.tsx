@@ -110,9 +110,9 @@ export default function Layout({
                     {postData?.category}
                   </Link>
                 </div>
-                <div className="text-2xl lg:text-4xl font-medium leading-snug">
+                <h1 className="text-2xl lg:text-4xl font-medium leading-snug">
                   {postData?.title}
-                </div>
+                </h1>
                 {postData?.subtitle && postData?.subtitle.length > 0 && (
                   <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
                     {postData?.subtitle}
