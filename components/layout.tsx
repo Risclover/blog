@@ -19,6 +19,7 @@ export default function Layout({
   children,
   home,
   postData,
+  projectData,
   bg,
 }: {
   children: React.ReactNode;
@@ -32,6 +33,10 @@ export default function Layout({
     contentHtml?: any;
     subtitle: string;
     category: string;
+  };
+  projectData?: {
+    title: string;
+    subtitle: string;
   };
 }) {
   const [theme, setTheme] = useState("okaidia");
@@ -99,6 +104,10 @@ export default function Layout({
                     Home
                   </Link>
                   <span className="mx-5">&gt;</span>
+                  {postData?.category && postData.category.length > 0 && (
+                    <Link href="/blog">Blog</Link>
+                  )}
+                  <span className="mx-5">&gt;</span>
                   <Link
                     href={`${
                       postData?.subcategory
@@ -111,11 +120,16 @@ export default function Layout({
                   </Link>
                 </div>
                 <h1 className="text-2xl lg:text-4xl font-medium leading-snug">
-                  {postData?.title}
+                  {postData?.title || projectData?.title}
                 </h1>
                 {postData?.subtitle && postData?.subtitle.length > 0 && (
                   <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
                     {postData?.subtitle}
+                  </div>
+                )}
+                {projectData?.subtitle && projectData?.subtitle.length > 0 && (
+                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
+                    {projectData?.subtitle}
                   </div>
                 )}
               </div>

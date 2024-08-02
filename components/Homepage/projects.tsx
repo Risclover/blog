@@ -61,7 +61,7 @@ export default function Projects({}: Props) {
                 <div className="text-2xl font-wotfard font-bold mt-6 mb-4 dark:text-[#a5b4fc] text-[#4f4ef5]">
                   {project.name}
                 </div>
-                <div className="text-lg font-wotfard">
+                <div className="text-lg font-wotfard dark:text-[#ffffff]">
                   {project.description}
                 </div>
               </div>

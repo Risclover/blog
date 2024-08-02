@@ -35,6 +35,8 @@ function useHighlighted() {
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();
 
+  useEffect(() => {});
+
   useEffect(() => {
     function setClasses(el: any) {
       const isScrollable = el.scrollHeight > el.clientHeight;

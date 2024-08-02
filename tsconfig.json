@@ -43,7 +43,7 @@
     "types.d.ts",
     "public/storage.js",
     ".next/types/**/*.ts"
-, "components/comparisonslider.js"  ]
+, "components/comparisonslider.js", "pages/projects/[id].mdx", "pages/projects/ribbit-new.mdx"  ]
   // "exclude": ["node_modules"]
   ,
   "exclude": [

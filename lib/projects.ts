@@ -12,7 +12,7 @@ console.log("PROJECTS DIRECTORY:", projectsDirectory);
 export function getProjectsData() {
   const fileNames = fs.readdirSync(projectsDirectory);
   const allProjectsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.tsx$/, "");
+    const id = fileName.replace(/\.md$/, "");
     const fullPath = path.join(projectsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
@@ -42,7 +42,7 @@ export function getAllProjectIds() {
 }
 
 export async function getProjectData(id: string) {
-  const fullPath = path.join(projectsDirectory, `${id}.tsx`);
+  const fullPath = path.join(projectsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const matterResult = matter(fileContents);
   const processedContent = await remark()

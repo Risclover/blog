@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
+import useScrolling from "./useScrolling";
 
 type Props = {
   headingsRef: any;
@@ -36,19 +37,25 @@ export default function MobileTableofContents(props: Props) {
   const { activeId } = useHighlighted();
   const containerRef = useRef(null);
 
+  const scroll = useScrolling();
   const [isOpen, setIsOpen] = useState(true);
-  const [shouldCloseOnScroll, setShouldCloseOnScroll] = useState(true);
 
   const toggleToC = () => {
     setIsOpen(!isOpen);
-    const tocElement = document.querySelector(".mobile-toc-scroll");
-
-    if (tocElement?.classList.contains("open")) {
-      tocElement.classList.remove("open");
-    } else {
-      tocElement?.classList.add("open");
-    }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scroll) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [scroll, useScrolling]);
 
   return (
     <div className="mobile-toc top-[72px] sticky z-10">

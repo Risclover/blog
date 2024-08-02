@@ -26,8 +26,8 @@ export default function Post({
     tags: string[];
   };
 }) {
-  console.log("POST DATA:", postData);
   const headingsRef = useRef(null);
+
   useEffect(() => {
     const headings: NodeListOf<Element> =
       document.querySelectorAll("h2, h3, h4");
@@ -130,7 +130,6 @@ export default function Post({
     initCodeCopy();
   }, []);
 
-  console.log("file content:", fileContent);
   return (
     <Layout postData={postData}>
       <Head>
@@ -142,9 +141,9 @@ export default function Post({
           headingsRef={headingsRef}
         />
       )}
-      {postData.tags.map((tag) => (
-        <div>{tag.toLowerCase()}</div>
-      ))}
+      {postData.tags &&
+        postData.tags.length > 0 &&
+        postData.tags.map((tag) => <div>{tag.toLowerCase()}</div>)}
       <div
         ref={headingsRef}
         className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 fit-content lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50"

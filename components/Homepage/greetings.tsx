@@ -54,7 +54,7 @@ export default function Greetings({}: Props) {
           natural love for learning, and I know how to play well with others. I
           am ready to break into this industry at full force, so if you're in
           need of an engineer on your team,{" "}
-          <a href="#contact" className="hover:underline">
+          <a href="#contact" className="text-indigo-400">
             let's have a chat
           </a>
           !

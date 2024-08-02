@@ -268,14 +268,7 @@ from app.models import db, User, ChatThread, ChatMessage
 Following this, we need to name our route:
 
 ```python
-# Import statements
-
-# ...
-
 chat_thread_routes = Blueprint("chat_threads", __name__)
-
-
-
 ```
 
 Now we can use `@chat_thread_routes.route` to add our views to `chat_threads`.

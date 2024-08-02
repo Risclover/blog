@@ -7,6 +7,9 @@ import prism from "remark-prism";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
+console.log("PATH:", path);
+console.log("POSTS DIRECTORY:", process.cwd());
+
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
@@ -35,6 +38,7 @@ export function getSortedPostsData() {
       }),
     };
   });
+
   // Sort posts by date
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
