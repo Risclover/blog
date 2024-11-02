@@ -23,6 +23,7 @@ export default function Post({
     contentHtml?: any;
     subtitle: string;
     category: string;
+    subcategory?: string;
     tags: string[];
   };
 }) {

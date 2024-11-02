@@ -42,7 +42,6 @@ type Props = {};
 const postData = {
   category: "Projects",
   categoryUrl: "/#projects",
-  subcategory: "Project Details",
   title: "Ribbit",
   subtitle:
     "A feature-rich pixel-perfect clone of the social media site Reddit.com",
@@ -222,6 +221,13 @@ export default function RibbitNew({}: Props) {
             title="Ribbit Homepage"
             description={`The homepage of Ribbit, which shows the user's main feed.`}
           />
+          <div id="quick-facts">
+            <QuickFacts
+              demoLink={demoLink}
+              repoLink={repoLink}
+              features={features}
+            />
+          </div>
           <h2
             id="introduction"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8"
@@ -276,13 +282,6 @@ export default function RibbitNew({}: Props) {
           has since evolved into a full-fledged application. With a continually
           expanding list of over 15 features, Ribbit stands as the most
           extensive full-stack project in my portfolio.
-          <div id="quick-facts">
-            <QuickFacts
-              demoLink={demoLink}
-              repoLink={repoLink}
-              features={features}
-            />
-          </div>
           <h3 id="primary-objectives" className="text-2xl font-bold mt-16 mb-8">
             Primary Objectives
           </h3>

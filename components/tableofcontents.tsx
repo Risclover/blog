@@ -1,3 +1,4 @@
+import useHighlighted from "hooks/useHighlighted";
 import React, { useEffect, useRef, useState } from "react";
 import { PiArrowFatUpDuotone } from "react-icons/pi";
 
@@ -6,31 +7,31 @@ type Props = {
   headings: { slug: string; title: string; level: number }[];
 };
 
-function useHighlighted() {
-  const observer = useRef<IntersectionObserver | null>(null);
-  const [activeId, setActiveId] = useState("");
+// function useHighlighted() {
+//   const observer = useRef<IntersectionObserver | null>(null);
+//   const [activeId, setActiveId] = useState("");
 
-  useEffect(() => {
-    const handleObserver = (entries: any) => {
-      entries.forEach((entry: any) => {
-        if (entry?.isIntersecting) {
-          setActiveId(entry.target.id);
-        }
-      });
-    };
+//   useEffect(() => {
+//     const handleObserver = (entries: any) => {
+//       entries.forEach((entry: any) => {
+//         if (entry?.isIntersecting) {
+//           setActiveId(entry.target.id);
+//         }
+//       });
+//     };
 
-    observer.current = new IntersectionObserver(handleObserver, {
-      rootMargin: "10% 0% -50% 0%",
-      threshold: 0,
-    });
+//     observer.current = new IntersectionObserver(handleObserver, {
+//       rootMargin: "10% 0% -50% 0%",
+//       threshold: 0,
+//     });
 
-    const elements = document.querySelectorAll("h2, h3, h4");
-    elements.forEach((elem) => observer.current?.observe(elem));
-    return () => observer.current?.disconnect();
-  }, []);
+//     const elements = document.querySelectorAll("h2, h3, h4");
+//     elements.forEach((elem) => observer.current?.observe(elem));
+//     return () => observer.current?.disconnect();
+//   }, []);
 
-  return { activeId };
-}
+//   return { activeId };
+// }
 
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();

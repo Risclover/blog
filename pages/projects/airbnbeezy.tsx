@@ -3,19 +3,24 @@ import ImageModal from "@/components/imagemodal";
 import Layout from "@/components/layout";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
+import useTableOfContents from "hooks/useTableOfContents";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
-type Props = {};
+type Heading = {
+  id: string;
+  slug: string;
+  title: string;
+  level: number;
+};
 
-function Airbnbeezy({}: Props) {
+function Airbnbeezy() {
   const [showFeatures, setShowFeatures] = useState(false);
   const headingsRef = useRef(null);
   const [linkName, setLinkName] = useState("");
   const [secondLinkName, setSecondLinkName] = useState("");
-
   const onResize = () => {
     const width = window.innerWidth;
 
@@ -52,35 +57,36 @@ function Airbnbeezy({}: Props) {
   const postData = {
     category: "Projects",
     categoryUrl: "/#projects",
-    subcategory: "Project Details",
     title: "Airbnbeezy",
     subtitle: "An Airbnb clone with a focus on UI.",
   };
 
-  const fileContent = [
-    { id: 1, slug: "introduction", title: "Introduction", level: 2 },
-    { id: 2, slug: "project-goals", title: "Project Goals", level: 2 },
-    { id: 3, slug: "tech-stack", title: "Tech Stack", level: 2 },
-    { id: 4, slug: "features", title: "Features", level: 2 },
-    { id: 5, slug: "users", title: "Users", level: 3 },
-    { id: 6, slug: "property-listings", title: "Property Listings", level: 3 },
-    {
-      id: 7,
-      slug: "interactive-maps",
-      title: "Interactive Maps",
-      level: 3,
-    },
-    { id: 8, slug: "booking-process", title: "Booking Process", level: 3 },
-    { id: 9, slug: "image-uploads", title: "Image Uploads", level: 3 },
-    { id: 10, slug: "user-reviews", title: "User Reviews", level: 3 },
-    { id: 11, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
-    { id: 12, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
-  ];
+  // const fileContent = [
+  //   { id: 1, slug: "introduction", title: "Introduction", level: 2 },
+  //   { id: 2, slug: "project-goals", title: "Project Goals", level: 2 },
+  //   { id: 3, slug: "tech-stack", title: "Tech Stack", level: 2 },
+  //   { id: 4, slug: "features", title: "Features", level: 2 },
+  //   { id: 5, slug: "users", title: "Users", level: 3 },
+  //   { id: 6, slug: "property-listings", title: "Property Listings", level: 3 },
+  //   {
+  //     id: 7,
+  //     slug: "interactive-maps",
+  //     title: "Interactive Maps",
+  //     level: 3,
+  //   },
+  //   { id: 8, slug: "booking-process", title: "Booking Process", level: 3 },
+  //   { id: 9, slug: "image-uploads", title: "Image Uploads", level: 3 },
+  //   { id: 10, slug: "user-reviews", title: "User Reviews", level: 3 },
+  //   { id: 11, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
+  //   { id: 12, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
+  // ];
+
+  const fileContent = useTableOfContents();
 
   return (
     <Layout postData={postData}>
       <Head>
-        <title>Project Details: Ribbit</title>
+        <title>Sara Dunlop | Airbnbeezy</title>
       </Head>
       <MobileTableofContents headings={fileContent} headingsRef={headingsRef} />
       <div
@@ -90,36 +96,7 @@ function Airbnbeezy({}: Props) {
       >
         <TableofContents headings={fileContent} headingsRef={headingsRef} />
         <div className="max-w-6xl font-wotfard text-lg w-full mx-auto">
-          <h2
-            id="introduction"
-            className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8"
-          >
-            Introduction
-          </h2>
-          <div className="font-wotfard text-lg">
-            Airbnbeezy is a remarkable web application that mirrors the core
-            functionalities of Airbnb, a prominent online marketplace for
-            lodging and travel experiences. Crafted meticulously by a solo
-            developer (myself), this project encompasses a testament to my
-            expertise in software engineering and full-stack web development.
-          </div>
-          <ImageModal
-            imgSrc="/images/projects/airbnbeezy/airbnbeezy-home.png"
-            imgAlt="Airbnbeezy: Home"
-            title="Airbnbeezy: Home"
-            description="Homepage of Airbnbeezy"
-          />
-          <div className="font-wotfard text-lg">
-            {" "}
-            By leveraging a tech stack comprising React, Redux, Express, and
-            Sequelize, Airbnbeezy brings to life a platform that enables users
-            to discover accommodations, make bookings, leave reviews, and enjoy
-            a seamless travel planning experience. The integration of AWS S3 for
-            image uploads, Google Maps API for location services, and user
-            authentication further elevates the application's utility and
-            user-friendliness.
-          </div>
-          <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mt-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
+          <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mb-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
             <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
               <h3 className="text-2xl font-bold font-rubik leading-0 mt-1">
                 Quick Facts
@@ -148,7 +125,7 @@ function Airbnbeezy({}: Props) {
                         <HiChevronDown className="text-2xl" />
                       )}
                     </strong>{" "}
-                    <span className="text-sm">(click to show/hide)</span>
+                    <span className="text-sm">(click to toggle)</span>
                   </div>
 
                   <div className="quickfacts-list flex flex-wrap">
@@ -184,6 +161,35 @@ function Airbnbeezy({}: Props) {
                 </li>
               </ul>
             </div>
+          </div>
+          <h2
+            id="introduction"
+            className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8"
+          >
+            Introduction
+          </h2>
+          <div className="font-wotfard text-lg">
+            Airbnbeezy is a remarkable web application that mirrors the core
+            functionalities of Airbnb, a prominent online marketplace for
+            lodging and travel experiences. Crafted meticulously by a solo
+            developer (myself), this project encompasses a testament to my
+            expertise in software engineering and full-stack web development.
+          </div>
+          <ImageModal
+            imgSrc="/images/projects/airbnbeezy/airbnbeezy-home.png"
+            imgAlt="Airbnbeezy: Home"
+            title="Airbnbeezy: Home"
+            description="Homepage of Airbnbeezy"
+          />
+          <div className="font-wotfard text-lg">
+            {" "}
+            By leveraging a tech stack comprising React, Redux, Express, and
+            Sequelize, Airbnbeezy brings to life a platform that enables users
+            to discover accommodations, make bookings, leave reviews, and enjoy
+            a seamless travel planning experience. The integration of AWS S3 for
+            image uploads, Google Maps API for location services, and user
+            authentication further elevates the application's utility and
+            user-friendliness.
           </div>
           <h2
             id="project-goals"

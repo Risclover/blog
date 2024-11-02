@@ -42,10 +42,10 @@ export default function Category({
                       className="category-box cursor-pointer group h-full dark:bg-gray-800 dark:text-gray-50"
                     >
                       <div className="mb-3">
-                        <h2 className="text-[22px] font-bold text-gray-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mb-1 dark:text-gray-50">
+                        <h2 className="text-[22px] font-bold text-gray-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mb-1 dark:text-gray-50 leading-snug">
                           {post.data.title}
                         </h2>
-                        <span className="text-slate-700 dark:text-slate-400 leading-7 font-medium text-[17px]">
+                        <span className="text-slate-700 dark:text-slate-400 leading-snug font-medium text-[17px]">
                           {post?.data.subtitle !== "No subtitle given" &&
                             post.data.subtitle}
                         </span>

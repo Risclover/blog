@@ -28,7 +28,7 @@ export default function Layout({
   postData?: {
     date?: string;
     title: string;
-    subcategory?: string;
+    type?: string;
     categoryUrl?: string;
     contentHtml?: any;
     subtitle: string;
@@ -99,36 +99,41 @@ export default function Layout({
               </div>
             ) : (
               <div className="flex flex-col justify-end z-10 mx-auto max-w-6xl w-full lg:px-12 px-6 lg:mt-20 mt-6 pb-8 lg:pb-14">
-                <div className="mb-2 text-slate-50 capitalize text-sm lg:text-[16px]">
+                <div className="mb-2 text-slate-50 capitalize text-medium lg:text-[16px]">
                   <Link href="/" className="text-white hover:text-gray-400">
                     Home
                   </Link>
                   <span className="mx-5">&gt;</span>
-                  {postData?.category && postData.category.length > 0 && (
-                    <Link href="/blog">Blog</Link>
+                  {postData?.type === "Blog" && (
+                    <Link href="/blog" className="hover:text-gray-400">
+                      {postData?.type}
+                    </Link>
                   )}
-                  <span className="mx-5">&gt;</span>
+
+                  {postData?.category !== "Projects" && (
+                    <span className="mx-5">&gt;</span>
+                  )}
                   <Link
                     href={`${
-                      postData?.subcategory
+                      postData?.category
                         ? postData?.categoryUrl
-                        : `/categories/${postData?.category.toLowerCase()}`
+                        : `/categories/${postData?.category?.toLowerCase()}`
                     }`}
                     className="hover:text-gray-400"
                   >
                     {postData?.category}
                   </Link>
                 </div>
-                <h1 className="text-2xl lg:text-4xl font-medium leading-snug">
+                <h1 className="text-3xl lg:text-4xl font-medium leading-tight">
                   {postData?.title || projectData?.title}
                 </h1>
                 {postData?.subtitle && postData?.subtitle.length > 0 && (
-                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
+                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 leading-tight">
                     {postData?.subtitle}
                   </div>
                 )}
                 {projectData?.subtitle && projectData?.subtitle.length > 0 && (
-                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 text-sm">
+                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 leading-tight">
                     {projectData?.subtitle}
                   </div>
                 )}

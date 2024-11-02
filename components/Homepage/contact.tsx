@@ -6,6 +6,10 @@ import { BsArrowUpRight } from "react-icons/bs";
 type Props = {};
 
 export default function Contact({}: Props) {
+  const serviceId = process.env.serviceId;
+  const publicKey = process.env.publicKey;
+  const templateId = process.env.templateId;
+
   const form = useRef<any>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,10 +27,10 @@ export default function Contact({}: Props) {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_tg2e0lg",
-        "template_1zzzdnl",
+        serviceId as string,
+        templateId as string,
         form.current,
-        "URByaHKZYS0jACyrB"
+        publicKey
       )
       .then(
         (result) => {
@@ -48,9 +52,10 @@ export default function Contact({}: Props) {
       <div className="flex flex-col lg:flex-row mt-14 gap-12">
         <div data-aos="fade-up" className="flex flex-col lg:max-w-lg w-full">
           <div className="font-wotfard text-lg">
-            Need a developer, or perhaps just want to chat? Feel free to hit me
-            up! Messages sent through this contact form are sent straight to my
-            email address. You can also find me via my social links below.
+            Looking for a developer or simply want to have a conversation? I'd
+            be delighted to hear from you! Please feel free to reach out using
+            the contact form here - your message will go directly to my email.
+            You can also connect with me through my social media links provided.
           </div>
           <div className="sm:flex gap-12 mt-14 w-full">
             <div>

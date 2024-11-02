@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Avatar from "../../public/images/avatar2.png";
 
 type Props = {};
 
@@ -10,10 +11,8 @@ export default function Greetings({}: Props) {
         data-aos="zoom-in"
         data-aos-duration={400}
         data-aos-delay={400}
-        width={384}
-        height={226}
         className="w-96 mx-auto float-right mb-10 md:mb-14"
-        src="/images/avatar2.png"
+        src={Avatar}
         alt="Cartoon girl sitting with laptop and cat"
       />
       <h2
@@ -25,39 +24,37 @@ export default function Greetings({}: Props) {
       </h2>
       <div className="font-wotfard text-slate-900 text-lg font-medium leading-8 font-wotfard dark:text-gray-50 mb-16">
         <p data-aos="fade-up" data-aos-delay={800}>
-          I am a{" "}
-          <span className="text-pink-500"> fullstack software engineer</span>{" "}
-          from California. Welcome to my little corner of the internet!
+          Welcome to my little corner of the internet!
         </p>
 
         <p className="mt-4" data-aos="fade-up" data-aos-delay={1000}>
-          I have three main passions in life: writing, gaming, and software
-          engineering, the latter being my biggest by far. On any given day,
-          there's a great chance that I can be found working at my computer.
-          There's nothing I enjoy doing more than working on projects or
-          learning new things and honing my skills. Not only do I love the
-          creativity and joy I get from creating something out of virtually
-          nothing, but I also think one of the greatest feelings is the
-          happiness I feel when I manage to get stubbornly-broken code to work.
-          I also love collaborating with other engineers and combining our
-          respective skills to produce a quality product.
+          I’m a passionate{" "}
+          <span className="text-pink-500">full-stack software engineer</span>{" "}
+          based in California, and I’m excited to share my passion for
+          technology with you. Software engineering is more than just a
+          profession for me; it’s a creative outlet where I can transform ideas
+          into reality.
         </p>
         <p className="mt-4" data-aos="fade-up" data-aos-delay={1200}>
-          Needless to say, I think I've found my calling.
+          You can often find me at my computer, immersed in projects that ✨{" "}
+          <span className="text-pink-500">challenge</span> and{" "}
+          <span className="text-pink-500">inspire</span> ✨ me, and when I’m not
+          coding, you might find me diving into the latest games or writing
+          about tech. I love working with diverse teams, combining our unique
+          skills to build exceptional products. I’m always eager to learn from
+          others and share my knowledge in return.
         </p>
         <p className="mt-4" data-aos="fade-up" data-aos-delay={1400}>
-          Speaking of which:{" "}
-          <span className="text-pink-500 ">
-            I am eager to start my next adventure
+          I believe I’ve found my calling, and{" "}
+          <span className="text-pink-500">
+            I’m excited to embark on my next adventure
           </span>
-          ! Not only am I driven by my love for the field, but I also have a
-          natural love for learning, and I know how to play well with others. I
-          am ready to break into this industry at full force, so if you're in
-          need of an engineer on your team,{" "}
+          . Driven by an insatiable curiosity and a commitment to teamwork, I’m
+          ready to make a significant impact in the industry. If you’re looking
+          for a dedicated engineer to join your team,{" "}
           <a href="#contact" className="text-indigo-400">
-            let's have a chat
+            let's connect!
           </a>
-          !
         </p>
         <a
           href="https://drive.google.com/file/d/1Nz41Llc9eWQOKT35Wfsi9_6_NEdHQwo3/view?usp=sharing"

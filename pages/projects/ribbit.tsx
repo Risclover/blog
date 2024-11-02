@@ -15,7 +15,35 @@ import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import "yet-another-react-lightbox/styles.css";
 import ImageModal from "@/components/imagemodal";
 import QuickFacts from "@/components/quick-facts";
+import useTableOfContents from "hooks/useTableOfContents";
 
+const projectInfo = {
+  title: "Ribbit",
+  description: "A feature-rich pixel-perfect clone of Reddit.",
+  techStack:
+    "React, Redux, Flask, SQLAlchemy, socket.io, and various libraries and tools.",
+  features: [
+    "Users",
+    "Communities",
+    "Subscriptions",
+    "Posts",
+    "Comments",
+    "Post Votes",
+    "Comment Votes",
+    "Community Rules",
+    "Search",
+    "Recently Viewed Posts",
+    "Followers",
+    "Favorite Users",
+    "Favorite Communities",
+    "Messages",
+    "Notifications",
+    "Live Chat",
+    "Image Uploads",
+  ],
+  repo: "https://github.com/Risclover/ribbit",
+  demo: "https://ribbit-app.herokuapp.com",
+};
 const features = [
   "Users",
   "Communities",
@@ -65,95 +93,96 @@ export default function Ribbit() {
   const postData = {
     category: "Projects",
     categoryUrl: "/#projects",
-    subcategory: "Project Details",
     title: "Ribbit",
     subtitle:
       "A feature-rich pixel-perfect clone of the social media site Reddit.com",
   };
 
-  const fileContent = [
-    { id: 1, slug: "introduction", title: "Introduction", level: 2 },
-    { id: 2, slug: "project-goals", title: "Project Goals", level: 2 },
-    { id: 3, slug: "tech-stack", title: "Tech Stack", level: 2 },
-    { id: 4, slug: "features", title: "Features", level: 2 },
-    { id: 5, slug: "users", title: "Users", level: 3 },
-    { id: 6, slug: "communities", title: "Communities", level: 3 },
-    { id: 7, slug: "subscriptions", title: "Subscriptions", level: 3 },
-    { id: 8, slug: "community-rules", title: "Community Rules", level: 3 },
-    { id: 9, slug: "posts", title: "Posts", level: 3 },
-    { id: 10, slug: "comments", title: "Comments", level: 3 },
-    { id: 11, slug: "post-votes", title: "Post Votes", level: 3 },
-    { id: 12, slug: "comment-votes", title: "Comment Votes", level: 3 },
-    {
-      id: 13,
-      slug: "image-uploads",
-      title: "Image Uploads (AWS S3)",
-      level: 3,
-    },
-    { id: 14, slug: "followers", title: "Followers", level: 3 },
-    { id: 15, slug: "search", title: "Search", level: 3 },
-    { id: 16, slug: "favorite-users", title: "Favorite Users", level: 3 },
-    {
-      id: 17,
-      slug: "favorite-communities",
-      title: "Favorite Communities",
-      level: 3,
-    },
-    {
-      id: 18,
-      slug: "recently-viewed-posts",
-      title: "Recently Viewed Posts",
-      level: 3,
-    },
-    { id: 19, slug: "messaging", title: "Messaging", level: 3 },
-    { id: 20, slug: "notifications", title: "Notifications", level: 3 },
-    {
-      id: 21,
-      slug: "live-chat",
-      title: "Live Chat (Using Socket.io)",
-      level: 3,
-    },
-    { id: 22, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
-    { id: 23, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
-    {
-      id: 24,
-      slug: "ribbit-vs-reddit",
-      title: "Ribbit vs. Reddit: A Direct Comparison",
-      level: 2,
-    },
-    {
-      id: 25,
-      slug: "homepage",
-      title: "Homepage",
-      level: 3,
-    },
-    {
-      id: 26,
-      slug: "messages",
-      title: "Messages",
-      level: 3,
-    },
-    {
-      id: 27,
-      slug: "comparison-communities",
-      title: "Communities",
-      level: 3,
-    },
-  ];
+  // const fileContent = [
+  //   { id: 1, slug: "introduction", title: "Introduction", level: 2 },
+  //   { id: 2, slug: "project-goals", title: "Project Goals", level: 2 },
+  //   { id: 3, slug: "tech-stack", title: "Tech Stack", level: 2 },
+  //   { id: 4, slug: "features", title: "Features", level: 2 },
+  //   { id: 5, slug: "users", title: "Users", level: 3 },
+  //   { id: 6, slug: "communities", title: "Communities", level: 3 },
+  //   { id: 7, slug: "subscriptions", title: "Subscriptions", level: 3 },
+  //   { id: 8, slug: "community-rules", title: "Community Rules", level: 3 },
+  //   { id: 9, slug: "posts", title: "Posts", level: 3 },
+  //   { id: 10, slug: "comments", title: "Comments", level: 3 },
+  //   { id: 11, slug: "post-votes", title: "Post Votes", level: 3 },
+  //   { id: 12, slug: "comment-votes", title: "Comment Votes", level: 3 },
+  //   {
+  //     id: 13,
+  //     slug: "image-uploads",
+  //     title: "Image Uploads (AWS S3)",
+  //     level: 3,
+  //   },
+  //   { id: 14, slug: "followers", title: "Followers", level: 3 },
+  //   { id: 15, slug: "search", title: "Search", level: 3 },
+  //   { id: 16, slug: "favorite-users", title: "Favorite Users", level: 3 },
+  //   {
+  //     id: 17,
+  //     slug: "favorite-communities",
+  //     title: "Favorite Communities",
+  //     level: 3,
+  //   },
+  //   {
+  //     id: 18,
+  //     slug: "recently-viewed-posts",
+  //     title: "Recently Viewed Posts",
+  //     level: 3,
+  //   },
+  //   { id: 19, slug: "messaging", title: "Messaging", level: 3 },
+  //   { id: 20, slug: "notifications", title: "Notifications", level: 3 },
+  //   {
+  //     id: 21,
+  //     slug: "live-chat",
+  //     title: "Live Chat (Using Socket.io)",
+  //     level: 3,
+  //   },
+  //   { id: 22, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
+  //   { id: 23, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
+  //   {
+  //     id: 24,
+  //     slug: "ribbit-vs-reddit",
+  //     title: "Ribbit vs. Reddit: A Direct Comparison",
+  //     level: 2,
+  //   },
+  //   {
+  //     id: 25,
+  //     slug: "homepage",
+  //     title: "Homepage",
+  //     level: 3,
+  //   },
+  //   {
+  //     id: 26,
+  //     slug: "messages",
+  //     title: "Messages",
+  //     level: 3,
+  //   },
+  //   {
+  //     id: 27,
+  //     slug: "comparison-communities",
+  //     title: "Communities",
+  //     level: 3,
+  //   },
+  // ];
 
+  const fileContent = useTableOfContents();
   return (
     <Layout postData={postData}>
       <Head>
-        <title>Project Details: Ribbit</title>
+        <title>Sara Dunlop | Ribbit</title>
       </Head>
       <MobileTableofContents headings={fileContent} headingsRef={headingsRef} />
       <div
         id="about"
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
       >
         <TableofContents headings={fileContent} headingsRef={headingsRef} />
-        <div className="max-w-6xl font-wotfard text-lg w-full mx-auto">
+        <div className="max-w-6xl lg:max-w-3xl font-wotfard text-lg w-full lg:pl-6">
+          <QuickFacts projectInfo={projectInfo} />
           <h2
             id="introduction"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8"
@@ -181,11 +210,6 @@ export default function Ribbit() {
             socket.io, image uploads using AWS S3, and an extensive content
             submission system.
           </div>
-          <QuickFacts
-            linkName={linkName}
-            secondLinkName={secondLinkName}
-            features={features}
-          />
           <h2
             id="project-goals"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8 mt-16"

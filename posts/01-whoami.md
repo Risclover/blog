@@ -2,10 +2,12 @@
 title: whoami
 date: 06/20/23
 preview: Hello! I'm Sara, and this is a little introduction to me, the author of this here blog.
+type: Blog
 category: Personal
 subtitle: A bit about me, the person behind this blog and portfolio.
 description: Hi there! I'm Sara, and since this website is all about me, I figured I'd give a little introduction as to who I am.
 slug: 01-whoami
+categoryUrl: "/categories/personal"
 ---
 
 <a href="https://www.google.com" target="_blank">Welcome</a> to my blog! I'm Sara, your hostess for the evening and the voice behind said blog. This space is all about my adventures as a software engineer. I'll be sharing my thoughts, experiences, and insights on everything related to the world of coding. From my day-to-day projects to my takes on the latest trends, I aim to cover it all.

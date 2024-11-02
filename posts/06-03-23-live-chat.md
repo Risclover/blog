@@ -3,6 +3,7 @@ title: "Replicating Reddit: Live Chat Pt. 1"
 subtitle: Using React, Redux, Flask, SQLAlchemy, and WebSockets (flask-socketio) to create Reddit's live messaging feature.
 date: 06/21/23
 description: Join me as we take a deep dive into the code that powers Ribbit's live chat feature and discuss the project in its entirety, from the initial planning stages all the way to its completion.
+type: Blog
 category: Tutorial
 tags:
   - Replicating Reddit
@@ -85,11 +86,21 @@ Let's begin with the `user_chat_threads` association table to establish the rela
 ```python
 from .db import db
 
-user_chat_threads = db.Table('user_chat_threads',
-  db.Model.metadata,
-  db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-  db.Column('chat_thread_id', db.Integer, db.ForeignKey('chat_threads.id'),
-    primary_key=True),
+user_chat_threads = db.Table(
+    'user_chat_threads',
+    db.Model.metadata,
+    db.Column(
+        'user_id',
+        db.Integer,
+        db.ForeignKey('users.id'),
+        primary_key=True
+    ),
+    db.Column(
+        'chat_thread_id',
+        db.Integer,
+        db.ForeignKey('chat_threads.id'),
+        primary_key=True
+    ),
 )
 ```
 
@@ -100,16 +111,27 @@ Next, we have the `ChatThread` model to represent the chat thread between two us
 ```python
 from .db import db
 
-"""user_chat_threads"""
-
 class ChatThread(db.Model):
     __tablename__ = 'chat_threads'
-    id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, server_default.db.func.now())
-    messages = db.relationship('ChatMessage', back_populates = 'chat_thread',
-        cascade='all, delete')
-    chat_thread_users = db.relationship('User', back_populates='chat_threads',
-        secondary=user_chat_threads, lazy='joined')
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    created_at = db.Column(
+        db.DateTime,
+        server_default.db.func.now()
+    )
+    messages = db.relationship(
+        'ChatMessage',
+        back_populates = 'chat_thread',
+        cascade='all, delete'
+    )
+    chat_thread_users = db.relationship(
+        'User',
+        back_populates='chat_threads',
+        secondary=user_chat_threads,
+        lazy='joined'
+    )
 ```
 
 - `id` - primary key for the chat thread
@@ -132,20 +154,55 @@ user_chat_threads and ChatThread
 class ChatMessage(db.Model):
     __tablename__ = 'chat_messages'
 
-    id = db.Column(db.Integer, primary_key=True)
-    sender_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'),
-        nullable=False)
-    receiver_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    content = db.Column(db.String(10000), nullable=False)
-    thread_id = db.Column(db.Integer, db.ForeignKey('chat_threads.id'),
-        unique=False, nullable=False)
-    read = db.Column(db.Boolean, default=False, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    sender_id = db.Column(
+        db.Integer,
+        db.ForeignKey(
+            'users.id',
+            ondelete='CASCADE'),
+            nullable=False
+        )
+    receiver_id = db.Column(
+        db.Integer,
+        db.ForeignKey('users.id'),
+        nullable=False
+    )
+    content = db.Column(
+        db.String(10000),
+        nullable=False
+    )
+    thread_id = db.Column(
+        db.Integer,
+        db.ForeignKey('chat_threads.id'),
+        unique=False,
+        nullable=False
+    )
+    read = db.Column(
+        db.Boolean,
+        default=False,
+        nullable=False
+    )
+    created_at = db.Column(
+        db.DateTime,
+        server_default=db.func.now()
+    )
 
-    chat_thread = db.relationship('ChatThread', back_populates='messages')
-    sender = db.relationship('User', back_populates='user_chat_messages',
-        primaryjoin='User.id==ChatMessage.sender_id')
-    recipient = db.relationship('User', primaryjoin='User.id==ChatMessage.receiver_id')
+    chat_thread = db.relationship(
+        'ChatThread',
+        back_populates='messages'
+    )
+    sender = db.relationship(
+        'User',
+        back_populates='user_chat_messages',
+        primaryjoin='User.id==ChatMessage.sender_id'
+    )
+    recipient = db.relationship(
+        'User',
+        primaryjoin='User.id==ChatMessage.receiver_id'
+    )
 ```
 
 - `id` - primary key for the chat message
@@ -167,11 +224,19 @@ Here are the properties we need to add to the existing `User` model.
 # ...
 class User(db.Model):
     # ...
-    chat_threads = db.relationship('ChatThread', back_populates='chat_thread_users',
-        secondary=user_chat_threads, lazy='joined')
-    user_chat_messages = db.relationship('ChatMessage', back_populates='sender',
-        overlaps='recipient', primaryjoin='User.id==ChatMessage.receiver_id',
-        cascade='all, delete')
+    chat_threads = db.relationship(
+        'ChatThread',
+        back_populates='chat_thread_users',
+        secondary=user_chat_threads,
+        lazy='joined'
+    )
+    user_chat_messages = db.relationship(
+        'ChatMessage',
+        back_populates='sender',
+        overlaps='recipient',
+        primaryjoin='User.id==ChatMessage.receiver_id',
+        cascade='all, delete'
+    )
 ```
 
 #### Entire Code for Models
@@ -179,26 +244,76 @@ class User(db.Model):
 ```python
 from .db import db
 
-user_chat_threads = db.Table('user_chat_threads',
+user_chat_threads = db.Table(
+    'user_chat_threads',
     db.Model.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('chat_thread_id', db.Integer, db.ForeignKey('chat_message_threads.id'), primary_key=True),
+    db.Column(
+        'user_id',
+        db.Integer,
+        db.ForeignKey('users.id'),
+        primary_key=True
+    ),
+    db.Column(
+        'chat_thread_id',
+        db.Integer,
+        db.ForeignKey('chat_message_threads.id'),
+        primary_key=True
+    ),
 )
 
 class ChatMessage(db.Model):
     __tablename__ = "chat_messages"
 
-    id = db.Column(db.Integer, primary_key=True)
-    sender_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
-    receiver_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    content = db.Column(db.String(10000), nullable=False)
-    thread_id = db.Column(db.Integer, db.ForeignKey("chat_message_threads.id"), unique=False, nullable=False)
-    read = db.Column(db.Boolean, default=False, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    sender_id = db.Column(
+        db.Integer,
+        db.ForeignKey(
+            'users.id',
+            ondelete="CASCADE"
+        ),
+        nullable=False
+    )
+    receiver_id = db.Column(
+        db.Integer,
+        db.ForeignKey("users.id"),
+        nullable=False
+    )
+    content = db.Column(
+        db.String(10000),
+        nullable=False
+    )
+    thread_id = db.Column(
+        db.Integer,
+        db.ForeignKey("chat_message_threads.id"),
+        unique=False,
+        nullable=False
+    )
+    read = db.Column(
+        db.Boolean,
+        default=False,
+        nullable=False
+    )
+    created_at = db.Column(
+        db.DateTime,
+        server_default=db.func.now()
+    )
 
-    chat_message_thread = db.relationship('ChatMessageThread', back_populates="messages")
-    sender = db.relationship("User", back_populates="user_chat_messages", primaryjoin="User.id==ChatMessage.sender_id")
-    recipient = db.relationship("User", primaryjoin="User.id==ChatMessage.receiver_id")
+    chat_message_thread = db.relationship(
+        'ChatMessageThread',
+        back_populates="messages"
+    )
+    sender = db.relationship(
+        "User",
+        back_populates="user_chat_messages",
+        primaryjoin="User.id==ChatMessage.sender_id"
+    )
+    recipient = db.relationship(
+        "User",
+        primaryjoin="User.id==ChatMessage.receiver_id"
+    )
 
     def to_dict(self):
         return {

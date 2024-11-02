@@ -41,6 +41,7 @@ code {
   font-size: 16px;
   word-break: normal;
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .dark code {
@@ -69,7 +70,6 @@ code[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
   padding: 0;
-  max-height: 75vh;
   /* overflow-x: hidden !important; */
 }
 
