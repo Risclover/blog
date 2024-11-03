@@ -1,8 +1,52 @@
+// src/components/Toolkit.js
+
 import React from "react";
+import ToolkitTool from "../toolkit-tool"; // Ensure the path is correct
+
+type ToolkitSection = {
+  category: string;
+  technologies: string[];
+};
 
 type Props = {};
 
-export default function Toolkit({}: Props) {
+const Toolkit: React.FC<Props> = () => {
+  const toolkit: ToolkitSection[] = [
+    {
+      category: "Frontend",
+      technologies: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Redux",
+        "TailwindCSS",
+        "SASS",
+        "Bootstrap",
+        "jQuery",
+        "Jest",
+        "Mocha",
+        "Testing Library",
+        "Playwright",
+      ],
+    },
+    {
+      category: "Backend",
+      technologies: [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Flask",
+        "Express",
+        "SQLAlchemy",
+        "Sequelize",
+        "Node.js",
+      ],
+    },
+  ];
+
   return (
     <div className="bg-slate-900 text-gray-50 dark:text-gray-50 w-full py-40">
       <div className="lg:max-w-6xl mx-auto px-6 lg:px-12">
@@ -12,155 +56,24 @@ export default function Toolkit({}: Props) {
         >
           Toolkit
         </h2>
-        <h3
-          data-aos="fade-right"
-          className="uppercase text-base font-medium tracking-widest text-pink-500 mt-6"
-        >
-          Frontend
-        </h3>
-        <div className="skills-row flex my-4">
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            HTML
+        {toolkit.map((section) => (
+          <div key={section.category}>
+            <h3
+              data-aos="fade-right"
+              className="uppercase text-base font-medium tracking-widest text-pink-500 mt-6"
+            >
+              {section.category}
+            </h3>
+            <div className="skills-row flex flex-wrap my-4">
+              {section.technologies.map((technology) => (
+                <ToolkitTool key={technology} technology={technology} />
+              ))}
+            </div>
           </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            CSS
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            JavaScript
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            TypeScript
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            React
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Next.js
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Redux
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            TailwindCSS
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            SASS
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Bootstrap
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            jQuery
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Jest
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Mocha
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Testing Library
-          </div>
-        </div>
-        <h3
-          data-aos="fade-right"
-          className="uppercase text-base font-medium tracking-widest text-pink-500 mt-2"
-        >
-          Backend
-        </h3>
-        <div className="skills-row flex my-4">
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            JavaScript
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            TypeScript
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Python
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Flask
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Express
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            SQLAlchemy
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Sequelize
-          </div>
-          <div
-            data-aos="flip-right"
-            className="mb-2 mr-2 text-sm font-normal font-wotfard rounded-lg bg-slate-700 text-gray-50 dark:bg-slate-700 dark:text-white hover:bg-slate-600 dark:hover:bg-slate-600 w-fit px-3 py-1.5 cursor-pointer"
-          >
-            Node.js
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
-}
+};
+
+export default Toolkit;
