@@ -47,7 +47,7 @@ export default function Layout({
   return (
     <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-slate-800 flex flex-col bg-white relative">
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/blog-logo.ico" />
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"
