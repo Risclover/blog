@@ -6,7 +6,7 @@ type Props = {
   technology: string;
 };
 
-const ToolkitTool = ({ technology }: Props) => {
+const ToolkitTool: React.FC<Props> = ({ technology }) => {
   return (
     <div
       data-aos="flip-right"
