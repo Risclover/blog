@@ -16,6 +16,8 @@ import "yet-another-react-lightbox/styles.css";
 import ImageModal from "@/components/imagemodal";
 import QuickFacts from "@/components/quick-facts";
 import useTableOfContents from "hooks/useTableOfContents";
+import ArticleHeader from "@/components/article-header";
+import ArticleParagraph from "@/components/article-paragraph";
 
 const projectInfo = {
   title: "Ribbit",
@@ -190,9 +192,18 @@ export default function Ribbit() {
             Introduction
           </h2>
           <div className="font-wotfard text-lg">
-            Ribbit is a sophisticated web application developed to replicate the
-            core functionalities of Reddit, a popular social news aggregation
-            site and discussion platform.{" "}
+            Ever wondered what it takes to build a fully-fledged social platform
+            from the ground up? Introducing{" "}
+            <span className="text-pink-500">Ribbit</span>, a meticulously
+            crafted, pixel-perfect clone of Reddit that mirrors both its
+            functionality and appearance down to the finest detail. Developed
+            using React, Flask, SQLAlchemy, Redux, and Flask-SocketIO, Ribbit
+            isn't just a basic replica; it's a feature-rich application boasting
+            live chat, real-time interactions, customizable community settings,
+            and a host of interactive elements. This project stands as a
+            testament to my full-stack development skills and unwavering
+            dedication to delivering an authentic user experience that matches
+            the original platform in every aspect.
           </div>
 
           <ImageModal
@@ -258,12 +269,7 @@ export default function Ribbit() {
               content.
             </li>
           </ol>
-          <h2
-            id="tech-stack"
-            className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8 mt-16"
-          >
-            Tech Stack
-          </h2>
+          <ArticleHeader heading="Tech Stack" id="tech-stack" />
           <div className="font-wotfard text-lg mt-7">
             To achieve the goals for Ribbit, a robust tech stack was chosen,
             combining the best tools and technologies:
@@ -348,15 +354,15 @@ export default function Ribbit() {
           <h3 id="communities" className="text-2xl font-bold mb-8 mt-16">
             Communities
           </h3>
-          <div className="font-wotfard text-lg mt-7">
-            Referred to as 'subreddits' on Reddit, users have the ability to
+          <ArticleParagraph>
+            aaaReferred to as 'subreddits' on Reddit, users have the ability to
             create new communities dedicated to specific topics or interests.
             Community creators can define rules and guidelines for their
             respective communities, ensuring a safe and respectful environment
             for all members. They can also customize community information (such
             as the community's image and 'About' section), and have the power to
             delete the community.
-          </div>
+          </ArticleParagraph>
           <ImageModal
             imgSrc="/images/projects/ribbit/ribbit-community.png"
             imgAlt="Ribbit community"
