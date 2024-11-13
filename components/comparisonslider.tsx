@@ -25,31 +25,28 @@ const ComparisonSlider = ({
 
   const handleResize = useCallback(
     (e: any) => {
+      if (!isResizing) return; // Only proceed if this instance is resizing
+
+      // Existing code...
       if (e.clientX) {
         setPositioning(e.clientX);
       } else if (e.touches[0] && e.touches[0].clientX) {
         setPositioning(e.touches[0].clientX);
       }
     },
-    [setPositioning]
+    [isResizing, setPositioning]
   );
 
-  // Set initial positioning on component mount
-  useEffect(() => {
-    const { left, width } = topImageRef.current.getBoundingClientRect();
-    const handleWidth = handleRef.current.offsetWidth;
-
-    setPositioning(width / 2 + left - handleWidth / 2);
-  }, [setPositioning]);
-
   const handleResizeEnd = useCallback(() => {
+    if (!isResizing) return; // Only proceed if this instance is resizing
+
     setIsResizing(false);
 
     window.removeEventListener("mousemove", handleResize);
     window.removeEventListener("touchmove", handleResize);
     window.removeEventListener("mouseup", handleResizeEnd);
     window.removeEventListener("touchend", handleResizeEnd);
-  }, [handleResize]);
+  }, [isResizing, handleResize]);
 
   const onKeyDown = useCallback(
     (e: any) => {
@@ -81,10 +78,10 @@ const ComparisonSlider = ({
 
     return () => {
       window.removeEventListener("mousemove", handleResize);
-      window.addEventListener("touchmove", handleResize);
+      window.removeEventListener("touchmove", handleResize);
       window.removeEventListener("mouseup", handleResizeEnd);
       window.removeEventListener("touchend", handleResizeEnd);
-      window.removeEventListener("keyup", onKeyDown);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [isResizing, handleResize, handleResizeEnd, onKeyDown]);
 

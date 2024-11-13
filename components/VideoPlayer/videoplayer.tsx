@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { IoPauseCircle, IoPlayCircle } from "react-icons/io5";
+import { BsPlayCircle, BsPauseCircle } from "react-icons/bs";
 
 type Props = {
   src: string;
@@ -30,9 +31,9 @@ function VideoPlayer({ src }: Props) {
       <button
         className={`${
           !isPlaying && "show-btn"
-        } play-pause-btn cursor-pointer z-10 bg-white rounded`}
+        } play-pause-btn cursor-pointer z-9 rounded`}
       >
-        {isPlaying ? <IoPauseCircle /> : <IoPlayCircle />}
+        {isPlaying ? <BsPauseCircle /> : <BsPlayCircle />}
       </button>
       <video loop autoPlay muted ref={videoRef}>
         <source src={src} type="video/mp4"></source>
