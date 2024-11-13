@@ -14,6 +14,7 @@ type Props = {
 
 function ImageModal({ imgSrc, imgAlt, title, description }: Props) {
   const [open, setOpen] = useState(false);
+  const [showToggle, setShowToggle] = useState(true);
 
   const handleClick = () => {
     if (open) {
@@ -32,6 +33,7 @@ function ImageModal({ imgSrc, imgAlt, title, description }: Props) {
       </div>
       <Lightbox
         plugins={[Captions, Video]}
+        captions={{ showToggle }}
         open={open}
         close={handleClick}
         slides={[
