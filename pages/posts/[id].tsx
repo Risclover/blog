@@ -134,7 +134,7 @@ export default function Post({
   return (
     <Layout postData={postData}>
       <Head>
-        <title>{postData.title}</title>
+        <title>Sara Dunlop | Blog: {postData.title}</title>
       </Head>
       {fileContent.length > 0 && (
         <MobileTableofContents

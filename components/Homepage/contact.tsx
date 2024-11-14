@@ -10,6 +10,8 @@ export default function Contact({}: Props) {
   const publicKey = process.env.publicKey;
   const templateId = process.env.templateId;
 
+  console.log("publicKey:", publicKey);
+
   const form = useRef<any>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,7 +32,7 @@ export default function Contact({}: Props) {
         serviceId as string,
         templateId as string,
         form.current,
-        publicKey
+        publicKey as string
       )
       .then(
         (result) => {

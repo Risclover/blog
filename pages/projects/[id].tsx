@@ -126,11 +126,11 @@ export default function Project({
       link.setAttribute("target", "_blank");
     });
   }, []);
-  
+
   return (
     <Layout projectData={projectData}>
       <Head>
-        <title>{projectData.title}</title>
+        <title>Sara Dunlop | {projectData.title}</title>
       </Head>
       {fileContent.length > 0 && (
         <MobileTableofContents
