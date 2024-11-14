@@ -8,6 +8,7 @@ category: Tutorial
 tags:
   - Replicating Reddit
   - Testing
+categoryUrl: "/categories/tutorial"
 ---
 
 ## Introduction

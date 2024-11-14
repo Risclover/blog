@@ -171,6 +171,37 @@ export default function Ribbit() {
   // ];
 
   const fileContent = useTableOfContents();
+
+  const topImageProps = {
+    src: topImage.src,
+    alt: "Ribbit's version",
+  };
+
+  const bottomImageProps = {
+    src: bottomImage.src,
+    alt: "Reddit's version",
+  };
+
+  const ribbitComparison2Props = {
+    src: ribbitComparison2.src,
+    alt: "Ribbit's version",
+  };
+
+  const ribbitComparison3Props = {
+    src: ribbitComparison3.src,
+    alt: "Ribbit's version",
+  };
+
+  const redditComparison2Props = {
+    src: redditComparison2.src,
+    alt: "Reddit's version",
+  };
+
+  const redditComparison3Props = {
+    src: redditComparison3.src,
+    alt: "Reddit's version",
+  };
+
   return (
     <Layout postData={postData}>
       <Head>
@@ -617,13 +648,16 @@ export default function Ribbit() {
           <h3 id="homepage" className="text-2xl font-bold mt-16 mb-8">
             Homepage
           </h3>
-          <ComparisonSlider topImage={topImage} bottomImage={bottomImage} />
+          <ComparisonSlider
+            topImage={topImageProps}
+            bottomImage={bottomImageProps}
+          />
           <h3 id="messages" className="text-2xl font-bold mt-16 mb-8">
             Messages
           </h3>
           <ComparisonSlider
-            topImage={ribbitComparison2}
-            bottomImage={redditComparison2}
+            topImage={ribbitComparison2Props}
+            bottomImage={redditComparison2Props}
           />
           <h3
             id="comparison-communities"
@@ -632,8 +666,8 @@ export default function Ribbit() {
             Communities
           </h3>
           <ComparisonSlider
-            topImage={ribbitComparison3}
-            bottomImage={redditComparison3}
+            topImage={ribbitComparison3Props}
+            bottomImage={redditComparison3Props}
           />
         </div>
       </div>

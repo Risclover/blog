@@ -38,7 +38,7 @@ export default function MobileTableofContents(props: Props) {
   const containerRef = useRef(null);
 
   const scroll = useScrolling();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleToC = () => {
     setIsOpen(!isOpen);

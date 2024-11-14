@@ -6,6 +6,7 @@ description: In the fast-paced and ever-evolving world of software engineering, 
 type: Blog
 category: Personal
 slug: day-in-the-life
+categoryUrl: "/categories/personal"
 ---
 
 ## Introduction

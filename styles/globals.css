@@ -381,6 +381,15 @@ img {
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
+.tiny-avatar {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.toby-img {
+  width: 70%;
+  margin: 0 auto;
+}
 .projects-dropdown.open {
   visibility: visible;
   max-height: 500px;

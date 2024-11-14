@@ -1,13 +1,26 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-const ComparisonSlider = ({ topImage, bottomImage }) => {
+interface ImageProps {
+  src: string;
+  alt: string;
+}
+
+interface ComparisonSliderProps {
+  topImage: ImageProps;
+  bottomImage: ImageProps;
+}
+
+const ComparisonSlider: React.FC<ComparisonSliderProps> = ({
+  topImage,
+  bottomImage,
+}) => {
   const [isResizing, setIsResizing] = useState(false);
-  const topImageRef = useRef(null);
-  const handleRef = useRef(null);
-  const containerRef = useRef(null);
+  const topImageRef = useRef<HTMLDivElement>(null);
+  const handleRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Function to set the position of the slider
-  const setPositioning = useCallback((x) => {
+  const setPositioning = useCallback((x: number) => {
     if (!topImageRef.current || !handleRef.current) return;
 
     const { left, width } = topImageRef.current.getBoundingClientRect();
@@ -22,13 +35,13 @@ const ComparisonSlider = ({ topImage, bottomImage }) => {
 
   // Handle mouse and touch move events
   const handleMove = useCallback(
-    (e) => {
+    (e: MouseEvent | TouchEvent) => {
       if (!isResizing) return;
 
-      let clientX;
-      if (e.type === "mousemove") {
+      let clientX: number | undefined;
+      if (e instanceof MouseEvent) {
         clientX = e.clientX;
-      } else if (e.type === "touchmove") {
+      } else if (e instanceof TouchEvent) {
         clientX = e.touches[0].clientX;
       }
 
@@ -49,13 +62,11 @@ const ComparisonSlider = ({ topImage, bottomImage }) => {
   }, [handleMove]);
 
   // Handle keydown events for accessibility
-  const onKeyDown = useCallback((e) => {
+  const onKeyDown = useCallback((e: KeyboardEvent) => {
     if (!handleRef.current || !topImageRef.current) return;
 
     const handleElement = handleRef.current;
-    const { left, width } = topImageRef.current.getBoundingClientRect();
-    const handleWidth = handleElement.offsetWidth;
-    const currentLeft = parseFloat(handleElement.style.left) || 50; // Default to 50%
+    const currentLeft = parseFloat(handleElement.style.left || "50"); // Default to 50%
 
     let newLeft = currentLeft;
 
@@ -84,8 +95,15 @@ const ComparisonSlider = ({ topImage, bottomImage }) => {
       setPositioning(initialX);
     };
 
-    const topImg = topImageRef.current?.querySelector("img");
-    const bottomImg = topImageRef.current?.nextSibling?.querySelector("img");
+    const topImg = topImageRef.current?.querySelector(
+      "img"
+    ) as HTMLImageElement | null;
+    const nextSibling = topImageRef.current?.nextSibling;
+    let bottomImg: HTMLImageElement | null = null;
+
+    if (nextSibling && nextSibling instanceof Element) {
+      bottomImg = nextSibling.querySelector("img") as HTMLImageElement | null;
+    }
 
     if (topImg && bottomImg) {
       let imagesLoaded = 0;
@@ -105,8 +123,10 @@ const ComparisonSlider = ({ topImage, bottomImage }) => {
       if (bottomImg.complete) onLoad();
 
       return () => {
-        if (topImg) topImg.removeEventListener("load", onLoad);
-        if (bottomImg) bottomImg.removeEventListener("load", onLoad);
+        topImg.removeEventListener("load", onLoad);
+        if (bottomImg) {
+          bottomImg.removeEventListener("load", onLoad);
+        }
       };
     }
   }, [setPositioning]);
@@ -137,6 +157,11 @@ const ComparisonSlider = ({ topImage, bottomImage }) => {
     };
   }, [onKeyDown]);
 
+  // Calculate aria-valuenow
+  const leftStyle = handleRef.current?.style.left ?? "50%";
+  const numericLeft = parseFloat(leftStyle.replace(/[^\d.-]/g, "")) || 50;
+  const clampedValue = Math.min(Math.max(numericLeft, 0), 100);
+
   return (
     <div className="comparison-slider" ref={containerRef}>
       <div
@@ -149,7 +174,7 @@ const ComparisonSlider = ({ topImage, bottomImage }) => {
         role="slider"
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-valuenow={parseFloat(handleRef.current?.style.left) || 50}
+        aria-valuenow={clampedValue}
       >
         {/* Handle Icon */}
         <svg
