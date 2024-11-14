@@ -12,6 +12,7 @@ export default function Projects({}: Props) {
       description:
         "A feature-rich pixel-perfect clone of the social media site Reddit.com",
       url: "/projects/ribbit",
+      img_alt: "Ribbit (Reddit clone)",
     },
     {
       name: "Airbnbeezy",
@@ -19,6 +20,7 @@ export default function Projects({}: Props) {
       tech_stack: "React, Redux, Express, Sequelize",
       description: "An Airbnb clone with a focus on UI.",
       url: "/projects/airbnbeezy",
+      img_alt: "Airbnbeezy (Airbnb clone)",
     },
     {
       name: "Reduncrate",
@@ -27,6 +29,7 @@ export default function Projects({}: Props) {
       description:
         "A replication of the ecommerce site Uncrate.com created as a collaboration from a small team of engineers.",
       url: "/projects/reduncrate",
+      img_alt: "Reduncrate (Uncrate clone)",
     },
   ];
 
@@ -56,7 +59,11 @@ export default function Projects({}: Props) {
                 data-aos="fade-up"
               >
                 <div className="project rounded group w-full overflow-hidden cursor-pointer group-hover:scale-105 transition duration-500">
-                  <img src={project.hero_img} className="rounded" />
+                  <img
+                    src={project.hero_img}
+                    className="rounded"
+                    alt={project.img_alt}
+                  />
                 </div>
                 <div className="text-2xl font-wotfard font-bold mt-6 mb-4 dark:text-[#a5b4fc] text-[#4f4ef5]">
                   {project.name}
