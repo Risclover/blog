@@ -18,6 +18,20 @@ export default function Contact({}: Props) {
   const [message, setMessage] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [success, setSuccess] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    if (success) {
+      setShowMessage(true);
+
+      // Hide the message after 5 seconds
+      const timer = setTimeout(() => {
+        setShowMessage(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   useEffect(() => {
     if (name.length > 0 && email.length > 0 && message.length > 0) {
@@ -154,7 +168,15 @@ export default function Contact({}: Props) {
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
           </label>
-          {success && <div className="mt-2">Message sent successfully!</div>}
+          {success && (
+            <div
+              className={`mt-2 transition-opacity duration-500 ${
+                showMessage ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              Message sent successfully!
+            </div>
+          )}
           <button
             type="submit"
             className="hover:border-indigo-400 border border-2 w-[125px] px-4 py-1 rounded mt-5"
