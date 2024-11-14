@@ -3,14 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { BsArrowUpRight } from "react-icons/bs";
 
-type Props = {};
-
-export default function Contact({}: Props) {
+export default function Contact() {
   const serviceId = process.env.serviceId;
   const publicKey = process.env.publicKey;
   const templateId = process.env.templateId;
-
-  console.log("publicKey:", publicKey);
 
   const form = useRef<any>(null);
   const [name, setName] = useState("");
@@ -29,7 +25,14 @@ export default function Contact({}: Props) {
         setShowMessage(false);
       }, 3000);
 
-      return () => clearTimeout(timer);
+      const successTimer = setTimeout(() => {
+        setSuccess(false);
+      }, 3500);
+
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(successTimer);
+      };
     }
   }, [success]);
 
