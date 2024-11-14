@@ -1,9 +1,6 @@
 import React from "react";
-import { getSortedPostsData } from "lib/posts";
-import { GetStaticProps } from "next";
-import { HiMiniArrowRight } from "react-icons/hi2";
 import Link from "next/link";
-import Layout from "../layout";
+import { HiMiniArrowRight } from "react-icons/hi2";
 
 export default function BlogPreview({
   allPostsData,

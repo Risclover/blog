@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FiChevronUp } from "react-icons/fi";
 
-type Props = {};
-
-function BackToTop({}: Props) {
+function BackToTop() {
   const [showBtn, setShowBtn] = useState(false);
 
   useEffect(() => {

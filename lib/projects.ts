@@ -7,8 +7,6 @@ import prism from "remark-prism";
 
 const projectsDirectory = path.join(process.cwd(), "projects");
 
-console.log("PROJECTS DIRECTORY:", projectsDirectory);
-
 export function getProjectsData() {
   const fileNames = fs.readdirSync(projectsDirectory);
   const allProjectsData = fileNames.map((fileName) => {

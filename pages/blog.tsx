@@ -2,6 +2,7 @@ import Layout from "@/components/layout";
 import { getCategories } from "lib/categories";
 import { getSortedPostsData } from "lib/posts";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { HiMiniArrowRight } from "react-icons/hi2";
 
@@ -36,6 +37,9 @@ export default function Blog({
 
   return (
     <Layout home>
+      <Head>
+        <title>Sara Dunlop | Blog</title>
+      </Head>
       <div className="px-6 sm:px-12 py-24 dark:text-gray-50 font-sans flex flex-col lg:max-w-6xl w-full m-auto relative">
         <h2 className="uppercase text-base font-medium tracking-widest text-pink-500 mb-9">
           Categories

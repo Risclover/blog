@@ -4,7 +4,6 @@ import matter from "gray-matter";
 import { remark } from "remark";
 
 import { headingTree } from "./headings";
-console.log("heading tree:", headingTree);
 
 const postsDirectory = path.join(process.cwd(), "posts");
 

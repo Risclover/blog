@@ -36,7 +36,6 @@ function getHeadings(root: any) {
     transformNode(node, output, indexMap);
   });
 
-  console.log("OUTPUT:", output);
   return output;
 }
 

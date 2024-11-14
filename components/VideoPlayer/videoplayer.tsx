@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { IoPauseCircle, IoPlayCircle } from "react-icons/io5";
 import { BsPlayCircle, BsPauseCircle } from "react-icons/bs";
 
 type Props = {

@@ -1,10 +1,8 @@
-import Image from "next/image";
 import React from "react";
-import Avatar from "../../public/images/avatar2.png";
+import Image from "next/image";
+import Avatar from "public/images/avatar2.png";
 
-type Props = {};
-
-export default function Greetings({}: Props) {
+export default function Greetings() {
   return (
     <section className="lg:max-w-6xl mx-auto px-6 lg:px-12 flex flex-col py-20">
       <Image

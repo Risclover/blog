@@ -1,15 +1,11 @@
-import Layout from "../../components/layout";
-import {
-  getProjectData,
-  getAllProjectIds,
-  getProjectsData,
-} from "../../lib/projects";
-import Head from "next/head";
+import { useEffect, useRef } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
+import Head from "next/head";
 import { extractHeadings } from "extract-md-headings";
 import TableOfContents from "@/components/tableofcontents";
-import { useEffect, useRef } from "react";
+import Layout from "@/components/layout";
 import MobileTableofContents from "@/components/mobiletoc";
+import { getProjectData, getAllProjectIds } from "lib/projects";
 import markdownToHtml from "lib/markdown";
 
 export default function Project({

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import emailjs from "@emailjs/browser";
 import { BsArrowUpRight } from "react-icons/bs";
 
@@ -20,7 +20,6 @@ export default function Contact() {
     if (success) {
       setShowMessage(true);
 
-      // Hide the message after 5 seconds
       const timer = setTimeout(() => {
         setShowMessage(false);
       }, 3000);

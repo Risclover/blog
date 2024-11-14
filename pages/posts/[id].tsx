@@ -96,7 +96,6 @@ export default function Post({
         const className = block.className;
         if (className.startsWith("language")) {
           const [prefix, lang] = className.split("-");
-          console.log("prefix:", prefix);
           return lang;
         }
       }
@@ -176,11 +175,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPostsData = getSortedPostsData();
-
-  console.log("ALL POSTS DATA:", allPostsData);
   const postData = await getPostData(params?.id as string);
   const content = await markdownToHtml(postData.contentHtml || "");
   const mdxContent = extractHeadings(`posts/${params?.id}.md`);
+
   return {
     props: {
       allPostsData,

@@ -4,6 +4,7 @@ import { getCategories, getCategoryPosts } from "lib/categories";
 import { HiMiniArrowRight } from "react-icons/hi2";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 export default function Category({
   id,
@@ -24,6 +25,9 @@ export default function Category({
 }) {
   return (
     <Layout home>
+      <Head>
+        <title>Sara Dunlop | Blog: {id[0].toUpperCase() + id.slice(1)}</title>
+      </Head>
       <div className="w-full h-full bg-gray-200 dark:bg-slate-950 min-h-screen pt-16 sm:pt-32 px-8 pb-16">
         <div className="lg:max-w-6xl w-full m-auto">
           <h1 className="text-[38px] font-bold ml-8 mb-4 text-gray-900 dark:text-gray-50 capitalize">

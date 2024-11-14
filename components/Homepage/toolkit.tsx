@@ -1,16 +1,12 @@
-// src/components/Toolkit.js
-
 import React from "react";
-import ToolkitTool from "../toolkit-tool"; // Ensure the path is correct
+import ToolkitTool from "../toolkit-tool";
 
 type ToolkitSection = {
   category: string;
   technologies: string[];
 };
 
-type Props = {};
-
-const Toolkit: React.FC<Props> = () => {
+const Toolkit = () => {
   const toolkit: ToolkitSection[] = [
     {
       category: "Frontend",

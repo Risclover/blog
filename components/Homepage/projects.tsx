@@ -1,9 +1,7 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 
-type Props = {};
-
-export default function Projects({}: Props) {
+export default function Projects() {
   const projects = [
     {
       name: "Ribbit",

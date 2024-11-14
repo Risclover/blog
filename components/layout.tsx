@@ -1,19 +1,18 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "./header";
-import Avatar from "../public/images/avatar2.png";
 import Script from "next/script";
+import { ClickAwayListener } from "@mui/base";
+import Header from "./header";
 import { Providers } from "./providers";
-import { useState } from "react";
 import Nav from "./nav";
 import BackToTop from "./backtotop";
-import { useRouter } from "next/router";
 import MobileMenu from "./mobilemenu";
-import { ClickAwayListener } from "@mui/base";
+import Avatar from "public/images/avatar2.png";
 
-const name = "[Your Name]";
-export const siteTitle = "Next.js Sample Website";
+export const siteTitle = "Sara Dunlop Portfolio";
 
 export default function Layout({
   children,
@@ -85,6 +84,7 @@ export default function Layout({
           rel="stylesheet"
         />
         <Script src="storage.js" />
+        <title>Sara Dunlop | Portfolio</title>
       </Head>
       <Providers>
         <ClickAwayListener onClickAway={() => setMenu(false)}>

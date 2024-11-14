@@ -10,10 +10,6 @@ type Props = {
 
 function MobileMenu({ menu, setMenu }: Props) {
   useEffect(() => {
-    console.log("MENU: " + menu);
-  }, [menu]);
-
-  useEffect(() => {
     if (menu) {
       document.body.style.overflow = "hidden";
     } else {
