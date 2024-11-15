@@ -6,17 +6,21 @@ type Props = {
 };
 
 function VideoPlayer({ src }: Props) {
-  const videoRef = useRef<any>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
   const handlePlay = () => {
-    videoRef.current.play();
-    setIsPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
   const handlePause = () => {
-    videoRef.current.pause();
-    setIsPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
   };
 
   return (

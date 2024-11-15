@@ -1,5 +1,3 @@
-// src/components/toolkit-tool.js
-
 import React from "react";
 
 type Props = {

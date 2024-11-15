@@ -1,23 +1,13 @@
-import Layout from "@/components/layout";
 import React, { useEffect } from "react";
-import { motion, Variants } from "framer-motion";
-import Avatar from "../public/images/avatar2.png";
-import Image from "next/image";
-import ComparisonSlider from "@/components/comparisonslider";
-import topImage from "../public/images/ribbit-screen.png";
-import bottomImage from "../public/images/reddit-screen.png";
-import Nav from "@/components/nav";
 import Aos from "aos";
-import "aos/dist/aos.css";
-import Link from "next/link";
+import Layout from "@/components/layout";
 import Contact from "@/components/Homepage/contact";
 import Greetings from "@/components/Homepage/greetings";
 import Toolkit from "@/components/Homepage/toolkit";
 import Projects from "@/components/Homepage/projects";
+import "aos/dist/aos.css";
 
-type Props = {};
-
-const Blog = (props: Props) => {
+const Blog = () => {
   useEffect(() => {
     Aos.init({ duration: 800, disable: window.innerWidth < 768 });
   }, []);

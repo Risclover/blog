@@ -29,7 +29,7 @@ export default function Layout({
     title: string;
     type?: string;
     categoryUrl?: string;
-    contentHtml?: any;
+    contentHtml?: string;
     subtitle: string;
     category: string;
   };

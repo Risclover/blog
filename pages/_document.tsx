@@ -1,5 +1,5 @@
-import BackToTop from "@/components/backtotop";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import BackToTop from "@/components/backtotop";
 
 export default class MyDocument extends Document {
   render() {

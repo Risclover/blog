@@ -14,13 +14,11 @@ function useTableOfContents() {
     // Select all h2 and h3 elements on the page
     const headings = Array.from(document.querySelectorAll("h2, h3"));
 
-    // Map the headings to the format needed for fileContent, filtering out "Quick Facts" or any unwanted titles
     const dynamicContent = headings
       .map((heading, index) => {
         const element = heading as HTMLElement;
         const title = element.innerText;
 
-        // Exclude headings with "Quick Facts" title or any other title you want to filter out
         if (title === "Quick Facts") {
           return null;
         }
@@ -34,7 +32,6 @@ function useTableOfContents() {
       })
       .filter((heading): heading is Heading => heading !== null); // Remove null entries
 
-    // Update state with the dynamically generated fileContent
     setFileContent(dynamicContent);
   }, []);
 

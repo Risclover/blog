@@ -1,23 +1,22 @@
-import ComparisonSlider from "@/components/comparisonslider";
-import topImage from "../../public/images/comparison-ribbit-1.png";
-import bottomImage from "../../public/images/comparison-reddit-1.png";
-import ribbitComparison2 from "../../public/images/projects/ribbit/comparison-ribbit-2.png";
-import redditComparison2 from "../../public/images/projects/ribbit/comparison-reddit-2.png";
-import ribbitComparison3 from "../../public/images/projects/ribbit/comparison-ribbit-3.png";
-import redditComparison3 from "../../public/images/projects/ribbit/comparison-reddit-3.png";
-import Layout from "@/components/layout";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Head from "next/head";
+import ComparisonSlider from "@/components/comparisonslider";
+import Layout from "@/components/layout";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
-import VideoPlayer from "@/components/VideoPlayer/videoplayer";
-import { HiChevronDown, HiChevronUp } from "react-icons/hi";
-import "yet-another-react-lightbox/styles.css";
+import VideoPlayer from "@/components/videoplayer";
 import ImageModal from "@/components/imagemodal";
 import QuickFacts from "@/components/quick-facts";
-import useTableOfContents from "hooks/useTableOfContents";
 import ArticleHeader from "@/components/article-header";
 import ArticleParagraph from "@/components/article-paragraph";
+import useTableOfContents from "hooks/useTableOfContents";
+import topImage from "public/images/comparison-ribbit-1.png";
+import bottomImage from "public/images/comparison-reddit-1.png";
+import ribbitComparison2 from "public/images/projects/ribbit/comparison-ribbit-2.png";
+import redditComparison2 from "public/images/projects/ribbit/comparison-reddit-2.png";
+import ribbitComparison3 from "public/images/projects/ribbit/comparison-ribbit-3.png";
+import redditComparison3 from "public/images/projects/ribbit/comparison-reddit-3.png";
+import "yet-another-react-lightbox/styles.css";
 
 const projectInfo = {
   title: "Ribbit",
@@ -207,14 +206,14 @@ export default function Ribbit() {
       <Head>
         <title>Sara Dunlop | Ribbit</title>
       </Head>
-      <MobileTableofContents headings={fileContent} headingsRef={headingsRef} />
+      <MobileTableofContents headings={fileContent} />
       <div
         id="about"
         ref={headingsRef}
         className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
       >
-        <TableofContents headings={fileContent} headingsRef={headingsRef} />
-        <div className="max-w-6xl lg:max-w-3xl font-wotfard text-lg w-full lg:pl-6">
+        <TableofContents headings={fileContent} />
+        <div className="max-w-6xl lg:max-w-2xl xl:max-w-6xl font-wotfard text-lg w-full lg:pl-6">
           <QuickFacts projectInfo={projectInfo} />
           <h2
             id="introduction"

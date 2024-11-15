@@ -8,7 +8,8 @@ export default function Contact() {
   const publicKey = process.env.publicKey;
   const templateId = process.env.templateId;
 
-  const form = useRef<any>(null);
+  const form = useRef<HTMLFormElement>(null);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -41,13 +42,13 @@ export default function Contact() {
     }
   }, [name, email, message]);
 
-  const sendEmail = (e: any) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     emailjs
       .sendForm(
         serviceId as string,
         templateId as string,
-        form.current,
+        form.current!,
         publicKey as string
       )
       .then(

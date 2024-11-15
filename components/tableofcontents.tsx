@@ -1,45 +1,22 @@
 import useHighlighted from "hooks/useHighlighted";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { PiArrowFatUpDuotone } from "react-icons/pi";
 
+type Heading = { slug: string; title: string; level: number };
+
 type Props = {
-  headingsRef: any;
-  headings: { slug: string; title: string; level: number }[];
+  headings: Heading[];
 };
-
-// function useHighlighted() {
-//   const observer = useRef<IntersectionObserver | null>(null);
-//   const [activeId, setActiveId] = useState("");
-
-//   useEffect(() => {
-//     const handleObserver = (entries: any) => {
-//       entries.forEach((entry: any) => {
-//         if (entry?.isIntersecting) {
-//           setActiveId(entry.target.id);
-//         }
-//       });
-//     };
-
-//     observer.current = new IntersectionObserver(handleObserver, {
-//       rootMargin: "10% 0% -50% 0%",
-//       threshold: 0,
-//     });
-
-//     const elements = document.querySelectorAll("h2, h3, h4");
-//     elements.forEach((elem) => observer.current?.observe(elem));
-//     return () => observer.current?.disconnect();
-//   }, []);
-
-//   return { activeId };
-// }
 
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();
 
-  useEffect(() => {});
-
   useEffect(() => {
-    function setClasses(el: any) {
+    function setClasses(el: HTMLElement | null): void {
+      if (!el) {
+        return;
+      }
+
       const isScrollable = el.scrollHeight > el.clientHeight;
 
       // GUARD: If element is not scrollable, remove all classes
@@ -48,21 +25,28 @@ export default function TableofContents(props: Props) {
         return;
       }
 
-      // Otherwise, the element is overflowing!
-      // Now we just need to find out which direction it is overflowing to (can be both)
+      // The element is overflowing
       const isScrolledToBottom =
         el.scrollHeight <= el.clientHeight + el.scrollTop;
-      const isScrolledToTop = isScrolledToBottom ? false : el.scrollTop === 0;
+      const isScrolledToTop = el.scrollTop === 0;
       el.classList.toggle("is-bottom-overflowing", !isScrolledToBottom);
       el.classList.toggle("is-top-overflowing", !isScrolledToTop);
     }
 
-    document.querySelector(".toc-ul")?.addEventListener("scroll", (e) => {
-      const el = e.currentTarget;
-      setClasses(el);
-    });
+    const tocUl = document.querySelector<HTMLElement>(".toc-ul");
+    if (tocUl) {
+      const onScroll = (e: Event) => {
+        const el = e.currentTarget as HTMLElement;
+        setClasses(el);
+      };
 
-    setClasses(document.querySelector(".toc-ul"));
+      tocUl.addEventListener("scroll", onScroll);
+      setClasses(tocUl);
+
+      return () => {
+        tocUl.removeEventListener("scroll", onScroll);
+      };
+    }
   }, []);
 
   const scrollToTop = () => {
@@ -71,7 +55,7 @@ export default function TableofContents(props: Props) {
       behavior: "smooth",
     });
 
-    let toc = document.querySelector(".toc-ul");
+    const toc = document.querySelector<HTMLElement>(".toc-ul");
     toc?.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -80,65 +64,55 @@ export default function TableofContents(props: Props) {
 
   return (
     <div className="toc ml-10 hidden w-auto inline-block lg:block min-w-fit">
-      <h1 className="uppercase font-medium text-[18px] tracking-widest mb-1 text-slate-900 dark:text-gray-50 mb-[16px]">
+      <h1 className="uppercase font-medium text-[18px] tracking-widest mb-1 text-slate-900 dark:text-gray-50">
         Table of Contents
       </h1>
       <div className="toc-ul max-h-[60vh]">
         <ul>
-          {props.headings.map(
-            (
-              heading: { slug: string; title: string; level: number },
-              idx: number
-            ) =>
-              heading.level !== 1 && (
-                <a key={idx} href={`#${heading.slug}`}>
-                  {heading.level === 2 ? (
-                    <li
+          {props.headings.map((heading, idx) =>
+            heading.level !== 1 ? (
+              <li key={idx}>
+                <a href={`#${heading.slug}`}>
+                  {heading.level === 2 && (
+                    <div
                       className={`${
                         activeId === heading.slug
-                          ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
-                          : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                      } mt-[10px] leading-6`}
+                          ? "text-indigo-600 dark:text-indigo-300"
+                          : "text-slate-900 dark:text-gray-50"
+                      } text-[15px] hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300 leading-6`}
                     >
                       {heading.title}
-                    </li>
-                  ) : heading.level === 3 ? (
-                    <li className="">
-                      <ul className="ml-3">
-                        <li
-                          className={`${
-                            activeId === heading.slug
-                              ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
-                              : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                          } mt-[8px]`}
-                        >
-                          {heading.title}
-                        </li>
-                      </ul>
-                    </li>
-                  ) : heading.level === 4 ? (
-                    <li className="mt-0">
-                      <ul className="mb-0">
-                        <li>
-                          <ul className="mb-0  ml-5">
-                            <li
-                              className={`${
-                                activeId === heading.slug
-                                  ? "text-indigo-600 dark:text-indigo-300 text-[15px] hover:text-indigo-600"
-                                  : "text-slate-900 dark:text-gray-50 text-[15px] hover:text-indigo-600  dark:hover:text-indigo-300"
-                              } mt-[3px]`}
-                            >
-                              {heading.title}
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  ) : (
-                    ""
+                    </div>
+                  )}
+                  {heading.level === 3 && (
+                    <ul className="ml-3">
+                      <li
+                        className={`${
+                          activeId === heading.slug
+                            ? "text-indigo-600 dark:text-indigo-300"
+                            : "text-slate-900 dark:text-gray-50"
+                        } text-[15px] hover:text-indigo-600 mt-[8px] dark:hover:text-indigo-300`}
+                      >
+                        {heading.title}
+                      </li>
+                    </ul>
+                  )}
+                  {heading.level === 4 && (
+                    <ul className="ml-5">
+                      <li
+                        className={`${
+                          activeId === heading.slug
+                            ? "text-indigo-600 dark:text-indigo-300"
+                            : "text-slate-900 dark:text-gray-50"
+                        } text-[15px] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
+                      >
+                        {heading.title}
+                      </li>
+                    </ul>
                   )}
                 </a>
-              )
+              </li>
+            ) : null
           )}
         </ul>
         <div className="toc-fade"></div>

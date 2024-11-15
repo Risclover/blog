@@ -1,10 +1,10 @@
+import React, { useLayoutEffect, useRef, useState } from "react";
+import Head from "next/head";
+import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import ImageModal from "@/components/imagemodal";
 import Layout from "@/components/layout";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
-import Head from "next/head";
-import { HiChevronDown, HiChevronUp } from "react-icons/hi";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import useTableOfContents from "hooks/useTableOfContents";
 
 type Props = {};
@@ -90,14 +90,14 @@ function Reduncrate({}: Props) {
       <Head>
         <title>Sara Dunlop | Reduncrate</title>
       </Head>
-      <MobileTableofContents headings={fileContent} headingsRef={headingsRef} />
+      <MobileTableofContents headings={fileContent} />
       <div
         id="about"
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
       >
-        <TableofContents headings={fileContent} headingsRef={headingsRef} />
-        <div className="max-w-6xl font-wotfard text-lg w-full mx-auto">
+        <TableofContents headings={fileContent} />
+        <div className="max-w-6xl lg:max-w-2xl xl:max-w-6xl font-wotfard text-lg w-full lg:pl-6">
           <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mb-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
             <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
               <h3 className="text-2xl font-bold font-rubik leading-0 mt-1">

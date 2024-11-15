@@ -1,20 +1,14 @@
-import Link from "next/link";
 import React from "react";
-import { ClickAwayListener } from "@mui/base";
+import Link from "next/link";
 
 type Props = {
   dropdownStatus: string;
-  setDropdownStatus: any;
 };
 
-const Projects = (props: Props) => {
-  const handleClickAway = () => {
-    props.setDropdownStatus("");
-  };
-
+const Projects = ({ dropdownStatus }: Props) => {
   return (
     <div
-      className={`projects-dropdown ${props.dropdownStatus}border-t-4 dark:border-slate-950 border-indigo-400 w-[200px] bg-white absolute top-[40px] left-[0px] text-black overflow-hidden flex flex-col dark:bg-slate-800 dark:text-gray-50`}
+      className={`projects-dropdown ${dropdownStatus}border-t-4 dark:border-slate-950 border-indigo-400 w-[200px] bg-white absolute top-[40px] left-[0px] text-black overflow-hidden flex flex-col dark:bg-slate-800 dark:text-gray-50`}
     >
       <Link
         href="/projects/ribbit"

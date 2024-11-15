@@ -1,17 +1,16 @@
+import React, { SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
-import DarkModeToggle from "./DarkModeToggle";
-import { useEffect, useRef, useState } from "react";
 import { PiCaretDownFill } from "react-icons/pi";
-import Aos from "aos";
-import "aos/dist/aos.css";
-import Projects from "./projects";
-import { ClickAwayListener } from "@mui/base";
 import Hamburger from "hamburger-react";
-import MobileMenu from "./mobilemenu";
+import { ClickAwayListener } from "@mui/base";
+import Aos from "aos";
+import DarkModeToggle from "./DarkModeToggle";
+import Projects from "./projects";
+import "aos/dist/aos.css";
 
 type Props = {
   menu: boolean;
-  setMenu: any;
+  setMenu: React.Dispatch<SetStateAction<boolean>>;
 };
 
 export default function Nav({ menu, setMenu }: Props) {
@@ -19,7 +18,7 @@ export default function Nav({ menu, setMenu }: Props) {
 
   useEffect(() => {
     Aos.init({ duration: 800 });
-  }, []);                                                                                                                                                                                                                                                  
+  }, []);
 
   const handleMenu = () => {
     if (dropdownStatus === "open ") {
@@ -64,10 +63,7 @@ export default function Nav({ menu, setMenu }: Props) {
                   onClick={handleMenu}
                 >
                   <PiCaretDownFill />{" "}
-                  <Projects
-                    dropdownStatus={dropdownStatus}
-                    setDropdownStatus={setDropdownStatus}
-                  />
+                  <Projects dropdownStatus={dropdownStatus} />
                 </div>
               </ClickAwayListener>
             </div>

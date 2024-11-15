@@ -1,11 +1,10 @@
+import React, { SetStateAction, useEffect } from "react";
 import Link from "next/link";
-import React, { useEffect } from "react";
-import { PiCaretDownFill } from "react-icons/pi";
 import DarkModeToggle from "./DarkModeToggle";
 
 type Props = {
   menu: boolean;
-  setMenu: any;
+  setMenu: React.Dispatch<SetStateAction<boolean>>;
 };
 
 function MobileMenu({ menu, setMenu }: Props) {

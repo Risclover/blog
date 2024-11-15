@@ -1,10 +1,10 @@
-import Layout from "@/components/layout";
-import { getCategories } from "lib/categories";
-import { getSortedPostsData } from "lib/posts";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { HiMiniArrowRight } from "react-icons/hi2";
+import Layout from "@/components/layout";
+import { getCategories } from "lib/categories";
+import { getSortedPostsData } from "lib/posts";
 
 export default function Blog({
   allPostsData,

@@ -1,10 +1,10 @@
-import Layout from "../../components/layout";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { getCategories, getCategoryPosts } from "lib/categories";
-import { HiMiniArrowRight } from "react-icons/hi2";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Head from "next/head";
+import { motion } from "framer-motion";
+import { HiMiniArrowRight } from "react-icons/hi2";
+import { getCategories, getCategoryPosts } from "lib/categories";
+import Layout from "@/components/layout";
 
 export default function Category({
   id,

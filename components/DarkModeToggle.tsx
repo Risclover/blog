@@ -10,8 +10,9 @@ const DarkModeToggle: React.FC = () => {
   const handleToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
 
-    let tocElement: any = document.querySelector(".toc-ul");
-    let mobileElement: any = document.querySelector(".mobile-toc-scroll");
+    let tocElement: HTMLElement | null = document.querySelector(".toc-ul");
+    let mobileElement: HTMLElement | null =
+      document.querySelector(".mobile-toc-scroll");
 
     if (tocElement) {
       tocElement.style.overflow = "hidden";
