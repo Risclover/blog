@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
-import useScrolling from "./useScrolling";
+import useScrolling from "../hooks/useScrolling";
 import { useMobileHighlighted } from "hooks/useMobileHighlighted";
 
 type Heading = {

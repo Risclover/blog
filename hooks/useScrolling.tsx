@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
-const useScrolling = () => {
-  const [isScrolling, setIsScrolling] = useState(false);
+const useScrolling = (): boolean => {
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
 
   useEffect(() => {
-    let scrollTimeout;
+    let scrollTimeout: number | undefined;
 
     const handleScroll = () => {
       setIsScrolling(true);
 
       clearTimeout(scrollTimeout);
 
-      scrollTimeout = setTimeout(() => {
+      scrollTimeout = window.setTimeout(() => {
         setIsScrolling(false);
       }, 150);
     };
