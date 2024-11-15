@@ -19,7 +19,7 @@ I am the proud owner of the most adorable cat in the world. His name is Toby. Th
 
 I love Ben and Jerry's ice cream more than is probably healthy for me, I have an outrageously quick typing speed of ~140wpm, and, most importantly, I am **determined** to start a career as a software engineer.
 
-## Growing Up in a Digital Playground
+## Growing Up in a Digital Playground?
 
 You could say I was practically born with a keyboard in hand, thanks to my dad being a programmer who often worked from home. The first video game I ever played was Galaga on our home computer in the year 1996, and as soon as I was allowed to go onto the Internet, I quickly fell in love with the wide variety of activities available. By the time I turned 13, I preferred to spend most of my time at home on my computer, largely thanks to a bad case of introvertedness. (Don't worry - I was still well-socialized, and I wasn't a hermit.)
 

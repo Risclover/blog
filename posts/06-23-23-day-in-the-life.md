@@ -11,10 +11,16 @@ categoryUrl: "/categories/personal"
 
 ## Introduction
 
-<img src="https://i.imgur.com/HFDjmiz.jpg" alt="Header" />
 As an unemployed software engineer, my days are far from ordinary. Contrary to popular belief, being unemployed doesn't mean I'm lounging around waiting for opportunities to come knocking on my door. Instead, I embark on a relentless journey to stay competitive in an industry that demands continuous growth and adaptation. In this blog post, I'll take you through a typical day in my life, shedding light on the challenges I face and the steps I take to overcome them, all while striving to navigate a job market that often sets daunting requirements for entry-level positions.
+<img class="day-in-life-header" src="/images/blog-post-head.png" alt="Header" />
 
-## Daily Schedule
+## Morning Routine
+
+## Job Searching Activites Part 1
+
+## DS&A Studies and Practice
+
+## Language and Technology Studies and Practice
 
 <p><strong><u>8:30am - 9:00am: Morning Routine</u></strong></p>
 Each morning, I wake up a little early so that I have enough time to warm up to the day. After splashing water on my face and eating breakfast, I spend about a half hour at the computer checking my emails and social media accounts, as well as staying up-to-date on the latest industry news by browsing developer blogs. Sometimes, I'll finish off this half-hour period with a quick spout of gaming, which is my favorite way to start the day off on a fun and positive note.

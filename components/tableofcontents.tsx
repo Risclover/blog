@@ -1,6 +1,6 @@
-import useHighlighted from "hooks/useHighlighted";
 import React, { useEffect } from "react";
 import { PiArrowFatUpDuotone } from "react-icons/pi";
+import useHighlighted from "hooks/useHighlighted";
 
 type Heading = { slug: string; title: string; level: number };
 

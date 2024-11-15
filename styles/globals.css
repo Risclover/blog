@@ -390,6 +390,13 @@ img {
   width: 70%;
   margin: 0 auto;
 }
+
+.day-in-life-header {
+  border: 3px solid black;
+  border-radius: 8px;
+  margin: 40px auto;
+}
+
 .projects-dropdown.open {
   visibility: visible;
   max-height: 500px;
