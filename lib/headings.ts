@@ -69,7 +69,7 @@ function addID(node: Heading, nodes: { [id: string]: number }): void {
   const slug = `${id}${suffix}`.split(" ").join("-").toLowerCase();
 
   node.data = node.data || ({} as NodeData);
-  const data = node.data as NodeData;a
+  const data = node.data as NodeData;
 
   data.hProperties = data.hProperties || {};
   data.hProperties.id = slug;
