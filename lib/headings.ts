@@ -64,16 +64,12 @@ function getHeadings(root: Node): TransformedNode[] {
 function addID(node: Heading, nodes: { [id: string]: number }): void {
   const id = toString(node);
   nodes[id] = (nodes[id] || 0) + 1;
-  const suffix = nodes[id] > 1 ? `-${nodes[id] - 1}` : "";
+  const suffix = nodes[id] > 1 ? ` ${nodes[id] - 1}` : "";
 
-  // Generate the slug
-  const slug = `${id}${suffix}`
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-") // Replace non-alphanumeric characters with hyphens
-    .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
+  const slug = `${id}${suffix}`.split(" ").join("-").toLowerCase();
 
   node.data = node.data || ({} as NodeData);
-  const data = node.data as NodeData;
+  const data = node.data as NodeData;a
 
   data.hProperties = data.hProperties || {};
   data.hProperties.id = slug;

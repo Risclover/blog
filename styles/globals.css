@@ -382,7 +382,6 @@ img {
 }
 
 .tiny-avatar {
-  width: 70%;
   margin: 0 auto;
 }
 
@@ -836,7 +835,7 @@ pre {
 
 @media (min-width: 1024px) {
   .content.content-with-toc {
-    max-width: 600px;
+    /* max-width: 600px; */
   }
   .blog-post,
   .content {

@@ -18,10 +18,12 @@ function useHighlighted() {
 
       headings.forEach((heading) => {
         const rect = heading.getBoundingClientRect();
-        const headingCenter = rect.top + rect.height / 2;
-        const distance = viewportCenter - headingCenter;
+        const headingTop = rect.top;
 
-        if (distance >= 0 && distance < minDistance) {
+        // Adjust this threshold to prioritize headings near the top
+        const distance = Math.abs(headingTop);
+
+        if (headingTop <= viewportCenter && distance < minDistance) {
           minDistance = distance;
           currentActiveId = heading.id;
         }
@@ -39,6 +41,24 @@ function useHighlighted() {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Handle updates when a link is clicked
+    const handleLinkClick = (event: MouseEvent) => {
+      const target = event.target as HTMLAnchorElement;
+      const targetId = target.getAttribute("href")?.replace("#", "");
+
+      if (targetId) {
+        setActiveId(targetId);
+      }
+    };
+
+    document.addEventListener("click", handleLinkClick);
+
+    return () => {
+      document.removeEventListener("click", handleLinkClick);
     };
   }, []);
 

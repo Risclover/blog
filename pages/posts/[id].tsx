@@ -30,7 +30,13 @@ export default function Post({
 
     headings.forEach((heading) => {
       const textContent = heading.textContent?.toLowerCase() ?? "";
-      heading.setAttribute("id", textContent.split(" ").join("-"));
+      heading.setAttribute(
+        "id",
+        textContent
+          .replace(/[^a-zA-Z0-9_ ]/g, "")
+          .split(" ")
+          .join("-")
+      );
 
       if (textContent === "introduction") {
         heading.classList.add("opacity-0", "mt-[-34px]");
