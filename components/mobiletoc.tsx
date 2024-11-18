@@ -68,7 +68,7 @@ export default function MobileTableofContents(props: Props) {
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[15px] hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300`}
+                        } text-[16px] hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </div>
@@ -87,7 +87,7 @@ export default function MobileTableofContents(props: Props) {
                       </ul>
                     )}
                     {heading.level === 4 && (
-                      <ul className="mb-0 ml-4">
+                      <ul className="mb-0 ml-5">
                         <li className="list-none">
                           <ul className="mb-0">
                             <li
@@ -95,7 +95,7 @@ export default function MobileTableofContents(props: Props) {
                                 activeId === heading.slug
                                   ? "text-indigo-600 dark:text-indigo-300"
                                   : "text-slate-900 dark:text-gray-50"
-                              } text-[15px] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
+                              } text-[14px] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
                             >
                               {heading.title}
                             </li>

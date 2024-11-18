@@ -66,8 +66,8 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact" className="contact">
-      <h2 className="text-4xl font-bold">Let's talk!</h2>
+    <footer id="contact" className="contact">
+      <h2 className="text-4xl font-bold text-[#f9fafb]">Let's talk!</h2>
       <div className="flex flex-col lg:flex-row mt-14 gap-12">
         <div data-aos="fade-up" className="flex flex-col lg:max-w-lg w-full">
           <div className="font-wotfard text-lg">
@@ -189,6 +189,6 @@ export default function Contact() {
           </button>
         </form>
       </div>
-    </div>
+    </footer>
   );
 }

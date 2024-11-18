@@ -11,6 +11,7 @@ import Nav from "./nav";
 import BackToTop from "./backtotop";
 import MobileMenu from "./mobilemenu";
 import Avatar from "public/images/avatar2.png";
+import Contact from "./Homepage/contact";
 
 export const siteTitle = "Sara Dunlop Portfolio";
 
@@ -149,6 +150,11 @@ export default function Layout({
           {children}
           <BackToTop />
         </main>
+        <div className="w-full bg-slate-900 text-gray-50 dark:text-gray-50">
+          <div className="px-6 lg:px-12 lg:max-w-6xl mx-auto w-full py-20">
+            <Contact />
+          </div>
+        </div>
       </Providers>
     </div>
   );

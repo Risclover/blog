@@ -12,7 +12,7 @@ function useTableOfContents() {
 
   useEffect(() => {
     // Select all h2 and h3 elements on the page
-    const headings = Array.from(document.querySelectorAll("h2, h3"));
+    const headings = Array.from(document.querySelectorAll("h2, h3, h4"));
 
     const dynamicContent = headings
       .map((heading, index) => {
@@ -27,7 +27,8 @@ function useTableOfContents() {
           id: `heading-${index + 1}`,
           slug: element.id || `heading-${index + 1}`,
           title,
-          level: element.tagName === "H2" ? 2 : 3,
+          level:
+            element.tagName === "H2" ? 2 : element.tagName === "H3" ? 3 : 4,
         };
       })
       .filter((heading): heading is Heading => heading !== null); // Remove null entries

@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import "../fonts/wotfard-cufonfonts-webfont/style.css";
 import "@theme-toggles/react/css/Around.css";
 import "../styles/prism-theme.css";
+import "../styles/projects.css";
 
 import type { AppProps } from "next/app";
 

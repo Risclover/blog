@@ -1,0 +1,55 @@
+.project-details h2 {
+  --tx-text-opacity: 1;
+  color: rgb(79 70 229);
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  margin-top: 4rem;
+}
+
+.project-details h3 {
+  font-weight: 700;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.project-details h4 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.project-details p {
+  margin-bottom: 30px;
+  line-height: 1.375;
+}
+
+.project-details ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.375;
+  list-style-type: disc;
+}
+
+.project-details ol,
+.project-details ul {
+  margin-left: 30px;
+}
+
+.project-details p:has(+ ul) {
+  content: "";
+  display: block;
+  margin-bottom: 10px;
+}
+
+.project-details li > ul {
+  margin-top: 0.25rem;
+}
+
+.dark .project-details h2 {
+  color: rgb(165 180 252);
+}

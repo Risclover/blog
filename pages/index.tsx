@@ -21,11 +21,6 @@ const Blog = () => {
         <Greetings />
         <Toolkit />
         <Projects />
-        <div className="w-full bg-slate-900 text-gray-50 dark:text-gray-50">
-          <div className="px-6 lg:px-12 lg:max-w-6xl mx-auto w-full py-20">
-            <Contact />
-          </div>
-        </div>
       </div>
     </Layout>
   );

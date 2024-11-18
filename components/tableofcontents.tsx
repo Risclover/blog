@@ -79,7 +79,7 @@ export default function TableofContents(props: Props) {
                         activeId === heading.slug
                           ? "text-indigo-600 dark:text-indigo-300"
                           : "text-slate-900 dark:text-gray-50"
-                      } text-[15px] hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300 leading-6`}
+                      } text-[16px] hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300 leading-6`}
                     >
                       {heading.title}
                     </div>
@@ -91,20 +91,20 @@ export default function TableofContents(props: Props) {
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[15px] hover:text-indigo-600 mt-[8px] dark:hover:text-indigo-300`}
+                        } text-[15px] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </li>
                     </ul>
                   )}
                   {heading.level === 4 && (
-                    <ul className="ml-5">
+                    <ul className="ml-8">
                       <li
                         className={`${
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[15px] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
+                        } text-[14px] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </li>

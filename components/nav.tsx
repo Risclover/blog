@@ -60,7 +60,13 @@ export default function Nav({ menu, setMenu }: Props) {
               <ClickAwayListener onClickAway={() => setDropdownStatus("")}>
                 <div
                   className="ml-2 p-1 cursor-pointer hover:text-gray-400 transition-colors duration-300"
+                  tabIndex={0}
                   onClick={handleMenu}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleMenu();
+                    }
+                  }}
                 >
                   <PiCaretDownFill />{" "}
                   <Projects dropdownStatus={dropdownStatus} />

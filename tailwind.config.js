@@ -1,3 +1,5 @@
+const { addScaleCorrector } = require("framer-motion");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -15,7 +17,17 @@ module.exports = {
       rubik: ["Rubik", "sans-serif"],
       logo: ["Itim", "cursive"],
     },
-    extend: {},
+    extend: {
+      animation: {
+        "bounce-once": "bounce-once .6s ease-in-out forwards",
+      },
+      keyframes: {
+        "bounce-once": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+        },
+      },
+    },
   },
   plugins: [],
 };

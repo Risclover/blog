@@ -11,7 +11,7 @@ categoryUrl: "/categories/personal"
 
 ## Introduction
 
-<img class="w-[100%] lg:w-[80%] xl:w-[65%] tiny-avatar" src="/images/avatar2.png" alt="Me" />
+<img class="tiny-avatar" src="/images/avatar2.png" alt="Me" />
 
 Hey there! I'm Sara, the brains (and the heart 💖) behind this blog, and the person you see lounging with a laptop above (thanks to my incredibly talented fiancé for that awesome cartoon rendition!). I'm 32 years old and I live in sunny California, USA.
 
