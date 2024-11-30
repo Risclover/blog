@@ -3,11 +3,12 @@ import { BsPlayCircle, BsPauseCircle } from "react-icons/bs";
 
 type Props = {
   src: string;
+  subtitle?: string;
 };
 
-function VideoPlayer({ src }: Props) {
+function VideoPlayer({ src, subtitle }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlay = () => {
     if (videoRef.current) {
@@ -24,24 +25,29 @@ function VideoPlayer({ src }: Props) {
   };
 
   return (
-    <div
-      className="relative custom-video-player"
-      onClick={() => (isPlaying ? handlePause() : handlePlay())}
-    >
+    <>
       <div
-        className={`video-player-overlay ${isPlaying && "overlay-fade"}`}
-      ></div>
-      <button
-        className={`${
-          !isPlaying && "show-btn"
-        } play-pause-btn cursor-pointer z-9 rounded`}
+        className="relative custom-video-player"
+        onClick={() => (isPlaying ? handlePause() : handlePlay())}
       >
-        {isPlaying ? <BsPauseCircle /> : <BsPlayCircle />}
-      </button>
-      <video loop autoPlay muted ref={videoRef}>
-        <source src={src} type="video/mp4"></source>
-      </video>
-    </div>
+        <div
+          className={`video-player-overlay ${isPlaying && "overlay-fade"}`}
+        ></div>
+        <button
+          className={`${
+            !isPlaying && "show-btn"
+          } play-pause-btn cursor-pointer z-9 rounded`}
+        >
+          {isPlaying ? <BsPauseCircle /> : <BsPlayCircle />}
+        </button>
+        <video loop muted ref={videoRef}>
+          <source src={src} type="video/mp4"></source>
+        </video>{" "}
+      </div>
+      <div className="text-[16px] italic leading-snug mt-[-20px]">
+        {subtitle}
+      </div>
+    </>
   );
 }
 

@@ -86,6 +86,16 @@ export default function QuickFacts({ projectInfo }: Props) {
               Link
             </a>
           </li>
+          <li>
+            <strong>Tech docs:</strong>{" "}
+            <a
+              href={projectInfo.demo}
+              target="_blank"
+              className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
+            >
+              Download
+            </a>
+          </li>
         </ul>
       </div>
     </div>

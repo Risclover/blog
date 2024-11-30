@@ -1,15 +1,13 @@
 ---
 title: A Day in the Life of an Unemployed Software Engineer
 subtitle: Working a full-time job to get a full-time job
-date: 06/20/23
+date: 11/14/2024
 description: In the fast-paced and ever-evolving world of software engineering, being unemployed doesn't mean a software engineer's journey comes to a halt. Instead, it becomes a relentless pursuit of growth and competitiveness. Join us as we dive into the daily life of me, an unemployed software engineer, exploring the challenges I face and the proactive steps I take to navigate a demanding job market.
 type: Blog
 category: Personal
-slug: day-in-the-life
+slug: day-in-the-life-of-an-unemployed-software-engineer
 categoryUrl: "/categories/personal"
 ---
-
-## Introduction
 
 As an unemployed software engineer, my days are far from ordinary. Contrary to popular belief, being unemployed doesn't mean I'm lounging around waiting for opportunities to come knocking on my door. Instead, I embark on a relentless journey to stay competitive in an industry that demands continuous growth and adaptation. In this blog post, I'll take you through a typical day in my life, shedding light on the challenges I face and the steps I take to overcome them, all while striving to navigate a job market that often sets daunting requirements for entry-level positions.
 <img class="day-in-life-header" src="/images/blog-post-head.png" alt="Header" />

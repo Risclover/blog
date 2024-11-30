@@ -35,30 +35,33 @@ export default function Post({
         heading.setAttribute(
           "id",
           textContent
-            .replace(/[^a-zA-Z0-9_ ]/g, "")
+            .replace(/[^a-zA-Z0-9_\- ]/g, "")
             .split(" ")
             .join("-")
         );
 
+        // if (textContent === "introduction") {
+        //   heading.classList.add("opacity-0", "mt-[-34px]");
+        // } else {
         if (textContent === "introduction") {
-          heading.classList.add("opacity-0", "mt-[-34px]");
-        } else {
-          const nodeName = heading.nodeName.toLowerCase();
-          if (nodeName === "h2") {
-            heading.classList.add(
-              "text-3xl",
-              "font-bold",
-              "mt-16",
-              "text-indigo-600",
-              "dark:text-indigo-300",
-              "mb-8"
-            );
-          } else if (nodeName === "h3") {
-            heading.classList.add("text-2xl", "font-bold", "mt-16", "mb-8");
-          } else if (nodeName === "h4") {
-            heading.classList.add("text-xl", "font-bold", "mt-16", "mb-8");
-          }
+          heading.classList.add("mt-[0]");
         }
+        const nodeName = heading.nodeName.toLowerCase();
+        if (nodeName === "h2") {
+          heading.classList.add(
+            "text-3xl",
+            "font-bold",
+            "mt-16",
+            "text-indigo-600",
+            "dark:text-indigo-300",
+            "mb-8"
+          );
+        } else if (nodeName === "h3") {
+          heading.classList.add("text-2xl", "font-bold", "mt-16", "mb-8");
+        } else if (nodeName === "h4") {
+          heading.classList.add("text-xl", "font-bold", "mt-16", "mb-8");
+        }
+        // }
       });
     }
   }, []);

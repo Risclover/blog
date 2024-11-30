@@ -102,7 +102,7 @@ export default function Project({
         );
 
         if (textContent.toLowerCase() === "introduction") {
-          heading.classList.add("opacity-0", "mt-[-34px]");
+          heading.classList.add("opacity-0", "mt-[-34px] duration-75");
         } else {
           const nodeName = heading.nodeName.toLowerCase();
           if (nodeName === "h2") {

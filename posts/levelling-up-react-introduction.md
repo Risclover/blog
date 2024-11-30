@@ -1,0 +1,27 @@
+---
+title: "Levelling Up React: Introduction"
+date: 11/19/2024
+type: Blog
+category: Tutorial
+subtitle: Refactoring your way to cleaner, better code.
+description: Discover the power of clean code with this multi-part React blog series. Learn how to optimize performance, refactor messy logic, and unlock the true potential of React development.
+slug: levelling-up-react-introduction
+categoryUrl: "/categories/tutorial"
+---
+
+Once upon a time, I was new to React (and programming in general). Like many developers, I learned the ropes by building something tangible, using my full-stack Reddit clone, Ribbit, as a sandbox for exploration. Fast forward a few months, and while I’m now a much better developer, I can’t help but look back at where I started. Ribbit taught me the importance of refactoring, but let me tell you—it wasn’t pretty at first.
+
+Back then, my components were sprawling 500-line monsters with absolutely zero concept of separation of concerns. Custom hooks? I didn't even know they were a thing, let alone how to create or use them. And as for unit testing, forget it - I couldn't figure out _what_ to test, let alone how to do it effectively. Sure, my code worked, but it wasn't maintainable, scalable, or clean. It was functional, but far from professional.
+
+Sound familiar? If you've ever stared at your codebase and thought _"There has to be a better way"_, you're in good company. Welcome to **Levelling Up React**! This multi-part blog series is here to help intermediate React developers like you take your skills to the next level. We'll dive into the art of transforming messy, overcomplicated code into clean, modular solutions, explore performance optimization, and learn a thing or two about React's most underutilized tools. After all, writing great React code isn't just about making it work; it's about making it shine - code you'll be proud ot share, scale, and revisit.
+
+By the end of this series, you'll see how far concepts like "clean code" and structured thinking can take you - not just in React, but in your development journey as a whole. Ready to level up your code? Let's get started!
+
+Posts in this series:
+
+1. Unleashing the Power of a Great Folder Structure
+2. How to Clean Up Your Imports with Barrels and Aliases
+3. The Importance of Breaking Down Large Components
+4. Nifty Tips for Handling Props
+5. A Reminder to Declutter Your Code
+6. Using Effects Correctly

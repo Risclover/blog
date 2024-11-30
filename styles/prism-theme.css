@@ -11,8 +11,8 @@
 * General
 */
 pre::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 pre::-webkit-scrollbar-corner {
@@ -39,9 +39,6 @@ code {
   border-radius: 4px;
   padding: 4px 10px;
   font-size: 16px;
-  word-break: normal;
-  word-wrap: break-word;
-  white-space: pre-wrap;
 }
 
 .dark code {
@@ -53,7 +50,7 @@ code[class*="language-"] {
   position: relative;
   background: transparent;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 1rem;
   text-shadow: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   direction: ltr;
@@ -61,7 +58,7 @@ code[class*="language-"] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  line-height: 2;
+  line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
@@ -70,7 +67,6 @@ code[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
   padding: 0;
-  /* overflow-x: hidden !important; */
 }
 
 .remark-highlight {

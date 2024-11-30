@@ -6,7 +6,7 @@ type Props = {
 };
 
 function ArticleHeader({ heading, id }: Props) {
-  console.log(id.replace(/[^a-zA-Z ]/g, ""));
+  console.log(id.replace(/[^a-zA-Z- ]/g, ""));
   return (
     <h2
       id={id}

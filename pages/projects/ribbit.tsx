@@ -23,7 +23,7 @@ const projectInfo = {
   title: "Ribbit",
   description: "A feature-rich pixel-perfect clone of Reddit.",
   techStack:
-    "React, Redux, Flask, SQLAlchemy, socket.io, and various libraries and tools.",
+    "React, Redux, Flask, SQLAlchemy, Flask-SocketIO, and various libraries and tools.",
   features: [
     "Users",
     "Communities",
@@ -130,35 +130,33 @@ export default function Ribbit() {
           <QuickFacts projectInfo={projectInfo} />
           <div className="project-details">
             <h2 id="introduction">Introduction</h2>
-            <div className="font-wotfard text-lg">
+            <p>
               Ever wondered what it takes to build a fully-fledged social
               platform from the ground up? I know I did. Introducing{" "}
               <span className="text-pink-500">Ribbit</span>, a meticulously
               crafted, pixel-perfect clone of Reddit that mirrors both its
-              functionality and appearance down to the finest detail. Developed
-              using React, Flask, SQLAlchemy, Redux, and Flask-SocketIO, Ribbit
+              functionality and appearance down to the finest detail.
+            </p>
+            <ImageModal
+              imgSrc="/images/projects/ribbit/ribbit-homepage.png"
+              imgAlt="Ribbit homepage"
+              title="Ribbit Homepage"
+              description={`The homepage of Ribbit, which shows the user's main feed.`}
+            />
+            <p>
+              {" "}
+              Developed using <span className="text-pink-500">React</span>,{" "}
+              <span className="text-pink-500">Flask</span>,{" "}
+              <span className="text-pink-500">SQLAlchemy</span>,{" "}
+              <span className="text-pink-500">Redux</span>, and{" "}
+              <span className="text-pink-500">Flask-SocketIO</span>, Ribbit
               isn't just a basic replica; it's a feature-rich application
               boasting live chat, real-time interactions, customizable community
               settings, and a host of interactive elements. This project stands
               as a testament to my full-stack development skills and unwavering
               dedication to delivering an authentic user experience that matches
               the original platform in every aspect.
-            </div>
-            <ImageModal
-              imgSrc="/images/projects/ribbit/ribbit-main-shorter.png"
-              imgAlt="Ribbit homepage"
-              title="Ribbit Homepage"
-              description={`The homepage of Ribbit, which shows the user's main feed.`}
-            />
-            <div className="font-wotfard text-lg">
-              This project serves as a showcase of my expertise in software
-              engineering and full-stack web development, utilizing a tech stack
-              comprising of Flask, SQLAlchemy, React, and Redux. Ribbit aims to
-              provide users with a comprehensive social experience by
-              incorporating a wide array of features, including live chat using
-              socket.io, image uploads using AWS S3, and an extensive content
-              submission system.
-            </div>
+            </p>
             <h2 id="project-overview">Project Overview</h2>
             <h3 id="purpose-and-inspiration">Purpose and Inspiration</h3>
             <p>
@@ -251,8 +249,10 @@ export default function Ribbit() {
               title="Ribbit's database schema"
               description=""
             />
-            A diagram of Ribbit's database schema, which shows a visual of the
-            app's database and relationships between database tables.
+            This is a diagram of Ribbit's database schema, which shows a visual
+            of the app's database. Ribbit has become rather intricate, its
+            database containing over 15 tables and over 25 relationships between
+            them.
             <h2 id="key-features">Key Features</h2>
             <h3 id="user-management">User Management</h3>
             <p>
@@ -276,11 +276,11 @@ export default function Ribbit() {
                 available options:
                 <ul>
                   <li>
-                    Using their existing Google account (via Google's auth API)
+                    With their existing Google account (via Google's auth API)
                   </li>
                   <li>
                     Using the public demo account, provided specifically for
-                    briefly touring Ribbit's features
+                    temporary access to tour Ribbit's features
                   </li>
                   <li>
                     By signing up for and signing in with a unique Ribbit
@@ -291,7 +291,11 @@ export default function Ribbit() {
               <li>
                 <span className="text-pink-500">Secure authentication</span> -
                 Ribbit ensures that user sessions are managed securely through
-                the use of JSON Web Tokens (JWTs).
+                the use of the packages like{" "}
+                <span className="text-pink-500">Flask-Login</span> and{" "}
+                <span className="text-pink-500">WTForms</span> (for form
+                validation), password hashing, and CSRF protection, among
+                others.
               </li>
               <li>
                 <span className="text-pink-500">Password encryption</span> -
@@ -421,10 +425,129 @@ export default function Ribbit() {
             <p>
               Community owners have the complete freedom to style their
               communities from the community appearance settings. This includes
-              the community's icon, banner, background, and theme colors. A
-              preview of the community offers a look at what the community will
-              look like in real time before the user commits to the change.
+              the community's icon, banner, background, and theme colors, as
+              well as other small details. A preview of the community offers a
+              look at what the community will look like in real time before the
+              user commits to the change.
             </p>
+            <VideoPlayer
+              src="/images/projects/ribbit/ribbit-community-appearance-settings.mp4"
+              subtitle="Above is a video showing the community's appearance settings page. The community preview shows what the community will look like in real time as the user changes the community's colors. When the user clicks the 'Save' button and returns to the community's page, the changes are in effect."
+            />
+            <h3 id="content-creation">Content Creation</h3>
+            <h4 id="posting-texts-images-or-links">
+              Posting Text, Images, or Links
+            </h4>
+            <p>
+              Users have access to multiple kinds of post feeds across Ribbit.
+            </p>
+            <ul>
+              <li>
+                <span className="text-pink-500">Homepage feed</span> - A user's
+                homepage feed consists of posts from their followed users as
+                well as their subscribed communities, allowing them to curate
+                their feed to their own interests. Subscribing to the 'webdev'
+                community, for example, ensures that posts from webdev appear in
+                the homepage feed. Similarly, following the user 'Demo' makes it
+                so that Demo's posts are on the homepage feed as well.
+              </li>
+              <li>
+                <span className="text-pink-500">'All' feed</span> - The 'All'
+                feed is a universal feed that contains all of the posts across
+                Ribbit's many communities. As such, the 'All' feed is the same
+                for all users, regardless of personal taste.
+              </li>
+              <li>
+                <span className="text-pink-500">Community feed</span> - Each
+                community has its own post feed, consisting of nothing more than
+                the community's own posts. This feed is located on the
+                community's page.
+              </li>
+              <li>
+                <span className="text-pink-500">User feed</span> - User profiles
+                contain the user's posts, so the feed on the user profile is the
+                user feed.
+              </li>
+            </ul>
+            <p>
+              All of the above feeds are able to be sorted. When sorting by
+              'Top', posts with the most upvotes are at the top of the list.
+              Users can also sort by 'New', which is based on when the post was
+              posted, with newer posts coming before older posts in the feed.
+            </p>
+            <p>
+              In addition, there are 3 different kinds of formats that users can
+              choose between: Card, Classic, and Compact.
+            </p>
+            <p>There are three types of posts users are able to create:</p>
+            <ul>
+              <li>
+                <span className="text-pink-500">Text posts</span> - Within the
+                text post form is a rich text editor, giving users the ability
+                to stylize their posts with headers, bold text, italics, lists,
+                and more, enhancing readability and presentation. The rich text
+                edtior gives the user the ability to preview their post in real
+                time, ensuring accuracy and satisfaction.
+              </li>
+              <li>
+                <span className="text-pink-500">Image posts</span> - Integrated
+                with AWS S3, the image post form enables the user to upload an
+                image from their computer with ease.
+              </li>
+              <li>
+                <span className="text-pink-500">Link posts</span> - When all it
+                takes to convey a message or share information is a simple link,
+                users are able to utilize the link post type, which allows them
+                to post a URL with a title describing the link.
+              </li>
+            </ul>
+            <h4 id="commenting-system">Commenting System</h4>
+            <p>
+              Engaging conversations and collaborative discussions are
+              faciliated through Ribbit's robust commenting system, designed to
+              promote meaningful interactiosn within communities. Users are able
+              to edit their comments to refine their thoughts or correct
+              mistakes, ensuring clarity and coherence in discussions. They may
+              also delete their comments, allowing them to manage their
+              contributions and maintain the integrity of their interactions.
+            </p>
+            <h4 id="voting-system">Voting System</h4>
+            <p>
+              A robust voting mechanism is integral to Ribbit, enabling users to
+              express their opinions and influence the visibility of content
+              within the platform.
+            </p>
+            <ul>
+              <li>
+                <span className="text-pink-500">Content ranking</span> - Posts
+                and comments can be upvoted or downvoted, determining their
+                prominence within communities and feeds based on user engagement
+                and relevance.
+              </li>
+              <li>
+                <span className="text-pink-500">Score display</span> - Each post
+                and comment displays its current score, providing immediate
+                feedback on its popularitry and community reaction.
+              </li>
+              <li>
+                <span className="text-pink-500">Efficient state handling</span>-
+                Utilizing Redux ensures that voting statres are managed
+                consistently across the application, maintaining synchronization
+                between the frontend and backend.
+              </li>
+              <li>
+                <span className="text-pink-500">Optimistic UI updates</span> -
+                Votes are reflected instantly in the user interface, enhancing
+                responsiveness while backend confirmastions ensure data
+                integrity.
+              </li>
+            </ul>
+            <h3 id="user-to-user-communication">User-to-User Communication</h3>
+            <h4 id="real-time-live-chat-functionality">
+              Real-Time Live Chat Functionality
+            </h4>
+            <h4 id="messaging-between-users">Messaging Between Users</h4>
+            <h4 id="real-time-notifications">Real-Time Notifications</h4>
             <div className="font-wotfard text-lg mt-7">
               The primary objectives for Ribbit were as follows:
             </div>
