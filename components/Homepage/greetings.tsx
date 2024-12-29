@@ -4,7 +4,10 @@ import Avatar from "public/images/avatar2.png";
 
 export default function Greetings() {
   return (
-    <section className="lg:max-w-6xl mx-auto px-6 lg:px-12 flex flex-col py-20">
+    <section
+      className="lg:max-w-6xl mx-auto px-6 lg:px-12 flex flex-col py-20"
+      id="about"
+    >
       <Image
         data-aos="zoom-in"
         data-aos-duration={400}
@@ -28,29 +31,22 @@ export default function Greetings() {
         <p className="mt-4" data-aos="fade-up" data-aos-delay={1000}>
           I’m a passionate{" "}
           <span className="text-pink-500">full-stack software engineer</span>{" "}
-          based in California, and I’m excited to share my passion for
-          technology with you. Software engineering is more than just a
-          profession for me; it’s a creative outlet where I can transform ideas
-          into reality.
+          based in <span className="text-pink-500">California</span>, and I’m
+          excited to share my passion for technology with you. You can often
+          find me at my computer, immersed in projects that{" "}
+          <span className="text-pink-500">challenge</span> and{" "}
+          <span className="text-pink-500">inspire</span> me. When I’m not
+          coding, you might find me diving into my favorite video games or
+          writing for fun.
         </p>
         <p className="mt-4" data-aos="fade-up" data-aos-delay={1200}>
-          You can often find me at my computer, immersed in projects that ✨{" "}
-          <span className="text-pink-500">challenge</span> and{" "}
-          <span className="text-pink-500">inspire</span> ✨ me, and when I’m not
-          coding, you might find me diving into the latest games or writing
-          about tech. I love working with diverse teams, combining our unique
-          skills to build exceptional products. I’m always eager to learn from
-          others and share my knowledge in return.
-        </p>
-        <p className="mt-4" data-aos="fade-up" data-aos-delay={1400}>
-          I believe I’ve found my calling, and{" "}
-          <span className="text-pink-500">
-            I’m excited to embark on my next adventure
-          </span>
-          . Driven by an insatiable curiosity and a commitment to teamwork, I’m
+          Driven by an insatiable curiosity and a commitment to teamwork, I’m
           ready to make a significant impact in the industry. If you’re looking
           for a dedicated engineer to join your team,{" "}
-          <a href="#contact" className="text-indigo-400 hover:underline">
+          <a
+            href="#contact"
+            className="connect text-indigo-400 hover:underline"
+          >
             let's connect!
           </a>
         </p>

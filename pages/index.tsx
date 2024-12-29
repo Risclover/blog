@@ -14,10 +14,7 @@ const Blog = () => {
 
   return (
     <Layout home>
-      <div
-        className="frontpage dark:text-gray-50 font-sans flex flex-col min-h-screen h-full w-full m-auto"
-        id="about"
-      >
+      <div className="frontpage dark:text-gray-50 font-sans flex flex-col min-h-screen h-full w-full m-auto">
         <Greetings />
         <Toolkit />
         <Projects />

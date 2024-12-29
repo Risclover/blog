@@ -713,14 +713,13 @@ li a {
   transition: color 0ms ease 0s;
 }
 
-#about a {
-  text-decoration-color: transparent;
-  transition: 0.5s ease;
+.connect {
+  text-decoration: transparent;
+  transition: text-decoration 0.5s ease;
 }
 
-#about > div:last-child a:hover {
+.connect:hover {
   text-decoration: underline;
-  text-decoration-color: #4f4ef5;
 }
 
 pre {

@@ -6,12 +6,29 @@ import Layout from "@/components/layout";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
 import useTableOfContents from "hooks/useTableOfContents";
+import QuickFacts from "@/components/quick-facts";
 
 type Heading = {
   id: string;
   slug: string;
   title: string;
   level: number;
+};
+
+const projectInfo = {
+  title: "Airbnbeezy",
+  description: "An Airbnb clone with a focus on UI.",
+  techStack: "React, Redux, Express, and Sequelize",
+  features: [
+    "Users",
+    "Listings",
+    "Bookings",
+    "Reviews",
+    "Image uploads",
+    "Interactive maps (Google Maps API)",
+  ],
+  repo: "https://github.com/Risclover/airbnbeezy",
+  demo: "https://air-bnbeezy.herokuapp.com",
 };
 
 function Airbnbeezy() {
@@ -94,72 +111,8 @@ function Airbnbeezy() {
       >
         <TableofContents headings={fileContent} />
         <div className="max-w-6xl lg:max-w-2xl xl:max-w-6xl font-wotfard text-lg w-full lg:pl-6">
-          <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mb-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
-            <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
-              <h3 className="text-2xl font-bold font-rubik leading-0 mt-1">
-                Quick Facts
-              </h3>
-            </div>
-            <div className="px-[30px] py-[10px]">
-              <ul className="quickfacts break-normal mb-0">
-                <li>
-                  <strong>Project title:</strong> Airbnbeezy
-                </li>
-                <li>
-                  <strong>Description:</strong> An Airbnb clone with a focus on
-                  UI.
-                </li>
-                <li>
-                  <strong>Tech stack:</strong> React, Redux, Express, and
-                  Sequelize
-                </li>
-                <li onClick={handleFeatures} className="cursor-pointer w-fit">
-                  <div className="flex items-center">
-                    <strong className="flex items-center">
-                      Features{" "}
-                      {showFeatures ? (
-                        <HiChevronUp className="text-2xl" />
-                      ) : (
-                        <HiChevronDown className="text-2xl" />
-                      )}
-                    </strong>{" "}
-                    <span className="text-sm">(click to toggle)</span>
-                  </div>
+          <QuickFacts projectInfo={projectInfo} />
 
-                  <div className="quickfacts-list flex flex-wrap">
-                    <ul className="flex flex-wrap flex-col h-[100%] sm:max-h-[350px] inner-ul">
-                      <li>Users</li>
-                      <li>Listings</li>
-                      <li>Bookings</li>
-                      <li>Reviews</li>
-                      <li>Image uploads</li>
-                      <li>Interactive maps (Google Maps API)</li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <strong>Github Repo:</strong>{" "}
-                  <a
-                    href="https://www.github.com/Risclover/airbnbeezy"
-                    target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
-                  >
-                    {secondLinkName}
-                  </a>
-                </li>
-                <li>
-                  <strong>Live demo:</strong>{" "}
-                  <a
-                    href="https://air-bnbeezy.herokuapp.com"
-                    target="_blank"
-                    className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
-                  >
-                    {linkName}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
           <h2
             id="introduction"
             className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-8"
