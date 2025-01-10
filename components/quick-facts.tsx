@@ -28,13 +28,13 @@ export default function QuickFacts({ projectInfo }: Props) {
   };
 
   return (
-    <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mb-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
-      <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
+    <div className="quickfacts-div w-full rounded-[8px] mb-12 font-rubik text-base font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
+      <div className="bg-indigo-200 px-[1.5rem] py-[0.75rem] dark:bg-slate-800">
         <h3 className="text-2xl font-bold font-rubik leading-0 mt-1">
           Quick Facts
         </h3>
       </div>
-      <div className="px-[30px] py-[10px]">
+      <div className="px-[1.5rem] py-[0.75rem]">
         <ul className="quickfacts break-normal mb-0">
           <li>
             <strong>Project title:</strong> {projectInfo.title}
@@ -59,7 +59,7 @@ export default function QuickFacts({ projectInfo }: Props) {
             </div>
 
             <div className="quickfacts-list flex flex-wrap">
-              <ul className="flex flex-wrap flex-col h-[100%] sm:max-h-[350px] inner-ul">
+              <ul className="flex flex-wrap flex-col h-[100%] sm:max-h-[21.875rem] inner-ul">
                 {projectInfo.features.map((feature) => (
                   <li>{feature}</li>
                 ))}

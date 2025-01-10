@@ -38,9 +38,9 @@ export default function MobileTableofContents(props: Props) {
   }, [scroll]);
 
   return (
-    <div className="mobile-toc top-[71px] sticky z-10">
+    <div className="mobile-toc top-[3.7rem] sticky z-10">
       <div
-        className={`border-b border-slate-800 dark:text-white px-6 lg:px-12 py-3 w-full block lg:hidden flex items-center bg-white dark:bg-gray-950 dark:bg-opacity-90 backdrop-blur-sm text-slate-900 cursor-pointer`}
+        className={`max-w-6xl mx-auto border-b border-slate-800 dark:text-white px-6 lg:px-12 py-3 w-full block lg:hidden flex items-center bg-white dark:bg-gray-950 dark:bg-opacity-90 backdrop-blur-sm text-slate-900 cursor-pointer`}
         onClick={toggleToC}
         ref={containerRef}
       >
@@ -55,7 +55,7 @@ export default function MobileTableofContents(props: Props) {
         <div
           className={`${
             isOpen && "open"
-          } mobile-toc-scroll bg-white border-b border-slate-800 dark:bg-gray-950 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm text-white py-4 dark:border-slate-800 px-6 lg:px-12 lg:hidden`}
+          } mobile-toc-scroll max-w-6xl mx-auto bg-white border-b border-slate-800 dark:bg-gray-950 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm text-white py-4 dark:border-slate-800 px-6 lg:px-12 lg:hidden`}
         >
           <ul>
             {props.headings.map((heading, idx) =>
@@ -68,7 +68,7 @@ export default function MobileTableofContents(props: Props) {
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[16px] hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300`}
+                        } text-base hover:text-indigo-600 mt-[0.625rem] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </div>
@@ -80,7 +80,7 @@ export default function MobileTableofContents(props: Props) {
                             activeId === heading.slug
                               ? "text-indigo-600 dark:text-indigo-300"
                               : "text-slate-900 dark:text-gray-50"
-                          } text-[15px] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
+                          } text-[0.9rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
                         >
                           {heading.title}
                         </li>
@@ -95,7 +95,7 @@ export default function MobileTableofContents(props: Props) {
                                 activeId === heading.slug
                                   ? "text-indigo-600 dark:text-indigo-300"
                                   : "text-slate-900 dark:text-gray-50"
-                              } text-[14px] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
+                              } text-[0.8rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
                             >
                               {heading.title}
                             </li>

@@ -28,44 +28,7 @@ const projectInfo = {
 };
 
 function Reduncrate({}: Props) {
-  const [showFeatures, setShowFeatures] = useState(false);
   const headingsRef = useRef(null);
-
-  const [linkName, setLinkName] = useState("");
-  const [secondLinkName, setSecondLinkName] = useState("");
-
-  const onResize = () => {
-    const width = window.innerWidth;
-
-    if (width < 600) {
-      setLinkName("Link");
-      setSecondLinkName("Link");
-    } else {
-      setLinkName("https://reduncrate.herokuapp.com");
-      setSecondLinkName("https://www.github.com/Risclover/reduncrate");
-    }
-  };
-
-  useLayoutEffect(() => {
-    onResize();
-  }, []);
-
-  useLayoutEffect(() => {
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  const handleFeatures = () => {
-    setShowFeatures(!showFeatures);
-
-    const featuresList = document.querySelector(".quickfacts-list");
-
-    if (featuresList?.classList.contains("open")) {
-      featuresList?.classList.remove("open");
-    } else {
-      featuresList?.classList.add("open");
-    }
-  };
 
   const postData = {
     category: "Projects",
@@ -74,32 +37,6 @@ function Reduncrate({}: Props) {
     subtitle:
       "A replication of the ecommerce site Uncrate.com created as a collaboration from a small team of engineers.",
   };
-
-  // const fileContent = [
-  //   { id: 1, slug: "introduction", title: "Introduction", level: 2 },
-  //   { id: 2, slug: "project-goals", title: "Project Goals", level: 2 },
-  //   { id: 3, slug: "tech-stack", title: "Tech Stack", level: 2 },
-  //   { id: 4, slug: "features", title: "Features", level: 2 },
-  //   { id: 5, slug: "users", title: "Users", level: 3 },
-  //   { id: 6, slug: "product-listings", title: "Product Listings", level: 3 },
-  //   {
-  //     id: 7,
-  //     slug: "favorites",
-  //     title: "Favorites (User's Stash)",
-  //     level: 3,
-  //   },
-  //   { id: 8, slug: "search", title: "Search", level: 3 },
-  //   { id: 9, slug: "cart", title: "Cart", level: 3 },
-  //   { id: 10, slug: "order-history", title: "Order History", level: 3 },
-  //   { id: 11, slug: "challenges-faced", title: "Challenges Faced", level: 2 },
-  //   {
-  //     id: 12,
-  //     slug: "my-role",
-  //     title: "My Role: Project Accomplishments",
-  //     level: 2,
-  //   },
-  //   { id: 13, slug: "lessons-learned", title: "Lessons Learned", level: 2 },
-  // ];
 
   const fileContent = useTableOfContents();
 
@@ -110,12 +47,11 @@ function Reduncrate({}: Props) {
       </Head>
       <MobileTableofContents headings={fileContent} />
       <div
-        id="about"
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900 gap-14"
       >
         <TableofContents headings={fileContent} />
-        <div className="max-w-6xl lg:max-w-2xl xl:max-w-6xl font-wotfard text-lg w-full lg:pl-6">
+        <div className="font-wotfard text-lg w-full lg:pl-6 flex-1 min-w-0">
           <QuickFacts projectInfo={projectInfo} />
           <h2
             id="introduction"

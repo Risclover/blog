@@ -66,11 +66,11 @@ export default function Blog({
                   className="container py-2 mb-12 group cursor-pointer"
                 >
                   <div key={id}>
-                    <h3 className="text-[22px] font-bold leading-snug text-gray-950 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 dark:text-gray-50">
+                    <h3 className="text-[1.25rem] font-bold leading-snug text-gray-950 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 dark:text-gray-50">
                       {title}
                     </h3>
                     {subtitle !== "No subtitle given" && (
-                      <div className="text-slate-500 text-[17px] leading-snug font-medium dark:text-slate-400 mt-1">
+                      <div className="text-slate-500 text-base leading-snug font-medium dark:text-slate-400 mt-1">
                         {subtitle}
                       </div>
                     )}

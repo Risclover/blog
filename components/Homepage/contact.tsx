@@ -182,7 +182,7 @@ export default function Contact() {
           )}
           <button
             type="submit"
-            className="hover:border-indigo-400 border border-2 w-[125px] px-4 py-1 rounded mt-5"
+            className="hover:border-indigo-400 border border-2 w-[8rem] px-4 py-1 rounded mt-5"
             disabled={disabled}
           >
             Send

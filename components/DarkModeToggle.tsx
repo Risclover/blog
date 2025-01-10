@@ -77,9 +77,9 @@ const DarkModeToggle: React.FC = () => {
       aria-label="Toggle dark/light mode"
     >
       {theme === "dark" ? (
-        <BsSunFill className="text-gray-50 hover:text-yellow-500 transition-colors duration-300" />
+        <BsSunFill className="text-gray-50 text-base hover:text-yellow-500 transition-colors duration-300" />
       ) : (
-        <BsMoonFill className="text-gray-50 hover:text-yellow-500 transition-colors duration-300" />
+        <BsMoonFill className="text-gray-50 text-base hover:text-yellow-500 transition-colors duration-300" />
       )}
     </button>
   );

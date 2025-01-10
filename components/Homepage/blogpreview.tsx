@@ -40,11 +40,11 @@ export default function BlogPreview({
                   data-aos="fade-up"
                   data-aos-delay={200 * idx + 100}
                 >
-                  <h3 className="text-[22px] font-bold leading-8 group-hover:text-[#a5b4fc] transition duration-500">
+                  <h3 className="text-[1.25rem] font-bold leading-8 group-hover:text-[#a5b4fc] transition duration-500">
                     {title}
                   </h3>
                   {subtitle !== "No subtitle given" && (
-                    <div className="text-[17px] leading-8 font-medium text-slate-400">
+                    <div className="text-base leading-8 font-medium text-slate-400">
                       {subtitle}
                     </div>
                   )}
@@ -67,7 +67,7 @@ export default function BlogPreview({
         </div>
         <Link href="/blog">
           <div
-            className="resume-btn bg-indigo-400 rounded-full border border-2 text-[16px] border-transparent px-4 py-1 font-wotfard transition text-gray-50 mt-6 cursor-pointer w-fit leading-8"
+            className="resume-btn bg-indigo-400 rounded-full border border-2 text-base border-transparent px-4 py-1 font-wotfard transition text-gray-50 mt-6 cursor-pointer w-fit leading-8"
             data-aos="fade-right"
             data-aos-delay={500}
           >

@@ -63,8 +63,11 @@ export default function TableofContents(props: Props) {
   };
 
   return (
-    <div className="toc ml-10 hidden w-auto inline-block lg:block min-w-fit">
-      <h1 className="uppercase font-medium text-[18px] tracking-widest mb-1 text-slate-900 dark:text-gray-50">
+    <div
+      className="toc hidden w-auto inline-block lg:block flex-none
+    "
+    >
+      <h1 className="uppercase font-medium text-[1.05rem] tracking-widest mb-1 text-slate-900 dark:text-gray-50">
         Table of Contents
       </h1>
       <div className="toc-ul max-h-[60vh]">
@@ -79,7 +82,7 @@ export default function TableofContents(props: Props) {
                         activeId === heading.slug
                           ? "text-indigo-600 dark:text-indigo-300"
                           : "text-slate-900 dark:text-gray-50"
-                      } text-[16px] hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300 leading-6`}
+                      } text-base hover:text-indigo-600 mt-[10px] dark:hover:text-indigo-300 leading-6`}
                     >
                       {heading.title}
                     </div>
@@ -91,7 +94,7 @@ export default function TableofContents(props: Props) {
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[15px] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
+                        } text-[0.9rem] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </li>
@@ -104,7 +107,7 @@ export default function TableofContents(props: Props) {
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[14px] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
+                        } text-[0.8rem] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </li>

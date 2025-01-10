@@ -17,7 +17,7 @@ Reddit is a prominent social news aggregator and online community often referred
 
 Ribbit is a sophisticated web application developed to replicate the core functionalities of Reddit.com, specifically its desktop version. Although Ribbit originally began as my capstone project whilst attending App Academy, I have always treated it as a legitimate application. With over 15 features and counting, Ribbit has steadily grown to be the largest fullstack application I have ever built, and I continue to work on it to this day. Ribbit is a sophisticated web application that was developed to emulate the website Reddit.com, with a specific focus on replicating its desktop version. Initially conceived as my capstone project during my time at App Academy, Ribbit has since evolved into a full-fledged application. With a continually expanding list of over 15 features, Ribbit stands as the most extensive full-stack project in my portfolio.
 
- <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mt-12 font-rubik text-[16px] font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
+ <div className="quickfacts-div w-full max-w-[700px] rounded-[8px] mt-12 font-rubik text-base font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
       <div className="bg-indigo-200 px-[30px] py-[11px] dark:bg-slate-800">
         <h3 className="text-2xl font-bold font-rubik leading-0 mt-1">
           Quick Facts

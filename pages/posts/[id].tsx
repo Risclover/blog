@@ -154,7 +154,7 @@ export default function Post({
         ))}
       <div
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 fit-content lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 fit-content lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 gap-14"
       >
         {fileContent.length > 0 && <TableOfContents headings={fileContent} />}
         <div className="blog-post text-slate-900 font-medium text-lg leading-8 font-wotfard dark:text-gray-50">

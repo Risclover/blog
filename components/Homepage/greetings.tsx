@@ -57,7 +57,7 @@ export default function Greetings() {
           data-aos="zoom-in"
           data-aos-delay={400}
         >
-          <div className="resume-btn dark:hover:bg-indigo-600 dark:bg-indigo-500 rounded-full border border-2 text-[16px] border-transparent px-4 py-1 hover:bg-indigo-500 bg-indigo-600 font-wotfard transition text-gray-50 mt-6 cursor-pointer w-fit leading-8 hover:animate-bounce-once">
+          <div className="resume-btn dark:hover:bg-indigo-600 dark:bg-indigo-500 rounded-full border border-2 text-base border-transparent px-4 py-1 hover:bg-indigo-500 bg-indigo-600 font-wotfard transition text-gray-50 mt-6 cursor-pointer w-fit leading-8 hover:animate-bounce-once">
             Download resume
           </div>
         </a>

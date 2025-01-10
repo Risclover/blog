@@ -30,7 +30,7 @@ export default function Category({
       </Head>
       <div className="w-full h-full bg-gray-200 dark:bg-slate-950 min-h-screen pt-16 sm:pt-32 px-8 pb-16">
         <div className="lg:max-w-6xl w-full m-auto">
-          <h1 className="text-[38px] font-bold ml-8 mb-4 text-gray-900 dark:text-gray-50 capitalize">
+          <h1 className="text-[2rem] font-bold ml-8 mb-4 text-gray-900 dark:text-gray-50 capitalize">
             {id}
           </h1>
           <div className="categories-page">
@@ -46,10 +46,10 @@ export default function Category({
                       className="category-box cursor-pointer group h-full dark:bg-gray-800 dark:text-gray-50"
                     >
                       <div className="mb-3">
-                        <h2 className="text-[22px] font-bold text-gray-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mb-1 dark:text-gray-50 leading-snug">
+                        <h2 className="text-[1.25rem] font-bold text-gray-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mb-1 dark:text-gray-50 leading-snug">
                           {post.data.title}
                         </h2>
-                        <span className="text-slate-700 dark:text-slate-400 leading-snug font-medium text-[17px]">
+                        <span className="text-slate-700 dark:text-slate-400 leading-snug font-medium text-[1.05rem]">
                           {post?.data.subtitle !== "No subtitle given" &&
                             post.data.subtitle}
                         </span>

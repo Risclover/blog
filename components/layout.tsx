@@ -100,7 +100,7 @@ export default function Layout({
               </div>
             ) : (
               <div className="flex flex-col justify-end z-10 mx-auto max-w-6xl w-full lg:px-12 px-6 lg:mt-20 mt-6 pb-8 lg:pb-14">
-                <div className="mb-2 text-slate-50 capitalize text-medium lg:text-[16px]">
+                <div className="mb-2 text-slate-50 capitalize text-medium lg:text-base">
                   <Link href="/" className="text-white hover:text-gray-400">
                     Home
                   </Link>

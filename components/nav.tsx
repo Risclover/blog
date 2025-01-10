@@ -42,7 +42,7 @@ export default function Nav({ menu, setMenu }: Props) {
             <Link href="/">Sara Dunlop</Link>
           </div>
           <div className="flex mt-2 hidden sm:flex">
-            <div className="ml-12 text-[16px] font-wotfard text-gray-50">
+            <div className="ml-12 text-base font-wotfard text-gray-50">
               <Link
                 href="/"
                 className="hover:text-gray-400 transition-colors duration-300"
@@ -50,7 +50,7 @@ export default function Nav({ menu, setMenu }: Props) {
                 About
               </Link>
             </div>
-            <div className="ml-10 text-[16px] font-wotfard text-gray-50 flex items-center relative">
+            <div className="ml-10 text-base font-wotfard text-gray-50 flex items-center relative">
               <Link
                 href="/#projects"
                 className="hover:text-gray-400 transition-colors duration-300"
@@ -73,7 +73,7 @@ export default function Nav({ menu, setMenu }: Props) {
                 </div>
               </ClickAwayListener>
             </div>
-            <div className="ml-6 text-[16px] font-wotfard text-gray-50">
+            <div className="ml-6 text-base font-wotfard text-gray-50">
               <Link
                 href={`/blog`}
                 className="hover:text-gray-400 transition-colors duration-300"
@@ -83,7 +83,7 @@ export default function Nav({ menu, setMenu }: Props) {
             </div>
           </div>
         </div>
-        <div className="hidden sm:block text-[20px]">
+        <div className="hidden sm:block text-[1.25rem]">
           <DarkModeToggle />
         </div>
         <div className="block sm:hidden">

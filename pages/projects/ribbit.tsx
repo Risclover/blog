@@ -19,60 +19,8 @@ import redditComparison3 from "public/images/projects/ribbit/comparison-reddit-3
 import userProfile from "public/images/projects/ribbit/user-profile.png";
 import "yet-another-react-lightbox/styles.css";
 
-const projectInfo = {
-  title: "Ribbit",
-  description: "A feature-rich pixel-perfect clone of Reddit.",
-  techStack:
-    "React, Redux, Flask, SQLAlchemy, Flask-SocketIO, and various libraries and tools.",
-  features: [
-    "Users",
-    "Communities",
-    "Subscriptions",
-    "Posts",
-    "Comments",
-    "Post Votes",
-    "Comment Votes",
-    "Community Rules",
-    "Search",
-    "Recently Viewed Posts",
-    "Community Appearance",
-    "Followers",
-    "Favorite Users",
-    "Favorite Communities",
-    "Messages",
-    "Notifications",
-    "Live Chat",
-    "Image Uploads",
-  ],
-  repo: "https://github.com/Risclover/ribbit",
-  demo: "https://ribbit-app.herokuapp.com",
-};
-
 export default function Ribbit() {
   const headingsRef = useRef(null);
-  const [linkName, setLinkName] = useState("");
-  const [secondLinkName, setSecondLinkName] = useState("");
-
-  const onResize = () => {
-    const width = window.innerWidth;
-
-    if (width < 600) {
-      setLinkName("Link");
-      setSecondLinkName("Link");
-    } else {
-      setLinkName("https://ribbit-app.herokuapp.com");
-      setSecondLinkName("https://www.github.com/Risclover/ribbit");
-    }
-  };
-
-  useLayoutEffect(() => {
-    onResize();
-  }, []);
-
-  useLayoutEffect(() => {
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
 
   const postData = {
     category: "Projects",
@@ -84,34 +32,66 @@ export default function Ribbit() {
 
   const fileContent = useTableOfContents();
 
-  const topImageProps = {
-    src: topImage.src,
-    alt: "Ribbit's version",
+  const imageProps = {
+    homepage: {
+      ribbit: {
+        src: topImage.src,
+        alt: "Ribbit's version",
+      },
+      reddit: {
+        src: bottomImage.src,
+        alt: "Reddit's version",
+      },
+    },
+    messages: {
+      ribbit: {
+        src: ribbitComparison2.src,
+        alt: "Ribbit's version",
+      },
+      reddit: {
+        src: redditComparison2.src,
+        alt: "Reddit's version",
+      },
+    },
+    communities: {
+      ribbit: {
+        src: ribbitComparison3.src,
+        alt: "Ribbit's version",
+      },
+      reddit: {
+        src: redditComparison3.src,
+        alt: "Reddit's version",
+      },
+    },
   };
 
-  const bottomImageProps = {
-    src: bottomImage.src,
-    alt: "Reddit's version",
-  };
-
-  const ribbitComparison2Props = {
-    src: ribbitComparison2.src,
-    alt: "Ribbit's version",
-  };
-
-  const ribbitComparison3Props = {
-    src: ribbitComparison3.src,
-    alt: "Ribbit's version",
-  };
-
-  const redditComparison2Props = {
-    src: redditComparison2.src,
-    alt: "Reddit's version",
-  };
-
-  const redditComparison3Props = {
-    src: redditComparison3.src,
-    alt: "Reddit's version",
+  const projectInfo = {
+    title: "Ribbit",
+    description: "A feature-rich pixel-perfect clone of Reddit.",
+    techStack:
+      "React, Redux, Flask, SQLAlchemy, Flask-SocketIO, and various libraries and tools.",
+    features: [
+      "Users",
+      "Communities",
+      "Subscriptions",
+      "Posts",
+      "Comments",
+      "Post Votes",
+      "Comment Votes",
+      "Community Rules",
+      "Search",
+      "Recently Viewed Posts",
+      "Community Appearance",
+      "Followers",
+      "Favorite Users",
+      "Favorite Communities",
+      "Messages",
+      "Notifications",
+      "Live Chat",
+      "Image Uploads",
+    ],
+    repo: "https://github.com/Risclover/ribbit",
+    demo: "https://ribbit-app.herokuapp.com",
   };
 
   return (
@@ -121,12 +101,11 @@ export default function Ribbit() {
       </Head>
       <MobileTableofContents headings={fileContent} />
       <div
-        id="about"
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900 gap-14"
       >
         <TableofContents headings={fileContent} />
-        <div className="max-w-6xl lg:max-w-2xl xl:max-w-6xl font-wotfard text-lg w-full lg:pl-6">
+        <div className="font-wotfard text-lg w-full lg:pl-6 flex-1 min-w-0">
           <QuickFacts projectInfo={projectInfo} />
           <div className="project-details">
             <h2 id="introduction">Introduction</h2>
@@ -944,15 +923,15 @@ export default function Ribbit() {
               Homepage
             </h3>
             <ComparisonSlider
-              topImage={topImageProps}
-              bottomImage={bottomImageProps}
+              topImage={imageProps.homepage.ribbit}
+              bottomImage={imageProps.homepage.reddit}
             />
             <h3 id="messages" className="text-2xl font-bold mt-16 mb-8">
               Messages
             </h3>
             <ComparisonSlider
-              topImage={ribbitComparison2Props}
-              bottomImage={redditComparison2Props}
+              topImage={imageProps.messages.ribbit}
+              bottomImage={imageProps.messages.reddit}
             />
             <h3
               id="comparison-communities"
@@ -961,8 +940,8 @@ export default function Ribbit() {
               Communities
             </h3>
             <ComparisonSlider
-              topImage={ribbitComparison3Props}
-              bottomImage={redditComparison3Props}
+              topImage={imageProps.communities.ribbit}
+              bottomImage={imageProps.communities.reddit}
             />
           </div>
         </div>

@@ -44,9 +44,7 @@ function VideoPlayer({ src, subtitle }: Props) {
           <source src={src} type="video/mp4"></source>
         </video>{" "}
       </div>
-      <div className="text-[16px] italic leading-snug mt-[-20px]">
-        {subtitle}
-      </div>
+      <div className="text-base italic leading-snug mt-[-20px]">{subtitle}</div>
     </>
   );
 }
