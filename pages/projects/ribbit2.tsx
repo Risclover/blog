@@ -96,10 +96,10 @@ export default function Ribbit2() {
       <div
         id="about"
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900 gap-14"
       >
         <TableofContents headings={fileContent} />
-        <div className="max-w-6xl lg:max-w-2xl xl:max-w-6xl font-wotfard text-lg w-full lg:pl-6">
+        <div className="font-wotfard text-lg w-full lg:pl-6 flex-1 min-w-0">
           <QuickFacts projectInfo={projectInfo} />
 
           <div className="project-details">
@@ -335,34 +335,120 @@ export default function Ribbit2() {
             <h3 id="challenges">Challenges</h3>
 
             <h4 id="frontend-backend-integration">
-              1. Frontend-Backend Integration
+              Preventing Fragmented Architecture
             </h4>
-            <p className="text-pink-500 mb-2">
-              <strong>The Challenge</strong>
+            <p>
+              During Ribbit’s early development, I prioritized building multiple
+              backend features before tackling the frontend, which led to a
+              tangled codebase and challenging debugging. One week into the
+              project, I had to salvage only the stylesheets and start over—a
+              significant setback given the two-week completion window.
             </p>
-            <p className="mb-5">
-              In the initial stages, I approached development by sperately
-              building the backend for multiple features before tackling the
-              frontend. This siloed method led to a tangled codebase with
-              numerous bugs. The disconnect between backend functionalities and
-              frontend implementations made debugging arduous and inefficient,
-              and the codebase was so messy, I ended up having to make the
-              difficult decision to save the project's stylesheets and start
-              over from scratch about a week into development. Keep in mind that
-              I was given 2 weeks to complete the project, so this unfortunate
-              mistake left me with less-than-ideal time to complete the project.
+            <p>
+              Realizing the issue, I pivoted to a feature-driven approach,
+              developing each feature's backend and frontend simultaneously.
+              This change streamlined debugging, resulted in cleaner code, and
+              drastically reduced bugs. The lesson learned? That a cohesive
+              development strategy from the start is essential for building a
+              robust, feature-packed application like Ribbit.
             </p>
-            <p className="text-pink-500 mb-2">
-              <strong>The Resolution</strong>
+
+            <h4 id="battling-high-load-times">Battling High Load Times</h4>
+            <p>
+              As Ribbit grew, I introduced a large amount of seed data to mimic
+              a bustling community. This influx of data caused load times to
+              soar, and at one point the site was taking several minutes to
+              load, an obvious deal-breaker in regards to user experience.
             </p>
-            <p className="mb-5">
-              Recognizing the inefficiency, I shifted to a feature-driven
-              development approach. By fully developing both the backend and the
-              frontend for one feature at a time, I ensured seamless integration
-              and functionality. This iterative process reduced bugs, simplified
-              debugging, and enhanced overall code quality. This experience
-              underscored the importance of cohesive development practices when
-              creating a robust application.
+            <p>
+              I began tackling this issue by removing the recently-introduced
+              data. As it turned out, the root issue went beyond just having a
+              big dataset; inefficient coding practices were triggering
+              excessive re-renders and slowing everything down. I proceeded to
+              perform a detailed code review to pinpoint performance
+              bottlenecks, and after doing so, I eradicated the problem by
+              optimizing database queries, implementing lazy loading, and
+              cutting out unnecessary re-renders, all of which dramatically sped
+              up the site. I also used performance profiling tools to keep an
+              eye on the app’s responsiveness. Thanks to this ongoing
+              optimization, Ribbit has thankfully stayed fast and fluid, even as
+              the dataset continues to grow.
+            </p>
+
+            <h4 id="mastering-websockets">Mastering WebSockets</h4>
+            <p>
+              When it came time to add real-time features like live chat and
+              instant notifications, I found myself in uncharted territory.
+              WebSockets were new to me and introduced a steep learning curve.
+              Ensuring reliable, secure, and truly real-time communication meant
+              diving into asynchronous programming and event-driven
+              architecture—a challenge that was both exciting and daunting.
+            </p>
+            <p>
+              I invested significant time in learning the ins and outs of
+              WebSockets, reading tutorials, poring over documentation, and
+              taking extensive notes. Implementing Flask-SocketIO made it easier
+              to integrate these real-time capabilities with my Flask backend.
+              Through iterative testing and hands-on experimentation, I
+              successfully introduced real-time chats and notifications that
+              brought Ribbit to life. The process of implementing this feature
+              reinforced the importance of continuous learning and adaptability,
+              key ingredients for any modern web application.
+            </p>
+
+            <h4 id="overhauling-an-unwieldy-codebase">
+              Overhauling a Cumbersome Codebase
+            </h4>
+            <p>
+              Early on, I concentrated almost entirely on making Ribbit{" "}
+              <em>work</em>, without much attention to code quality. As Ribbit
+              evolved, the codebase ballooned into something unwieldy. Keeping
+              track of everything, maintaining code quality, and adding new
+              features turned into a major headache. The sheer volume of files
+              and modules made even small tweaks risky and time-consuming.
+            </p>
+            <p>
+              To tackle this, I made a conscious decision to up my game by
+              introducing a set of best practices, including:
+            </p>
+            <ul>
+              <li>
+                <strong className="text-pink-500">Modular Design:</strong> I
+                refactored the frontend into smaller, reusable components and
+                modules, making it simpler to manage and maintain.
+              </li>
+              <li>
+                <strong className="text-pink-500">
+                  Consistent Coding Standards:
+                </strong>{" "}
+                A unified style made the code more readable and cut down on
+                confusion across the board.
+              </li>
+              <li>
+                <strong className="text-pink-500">
+                  Comprehensive Documentation:
+                </strong>{" "}
+                Detailed notes ensured anyone, including myself, could quickly
+                find their way around, smoothing potential collaboration and
+                future attempts to continue work on Ribbit.
+              </li>
+              <li>
+                <strong className="text-pink-500">
+                  Version Control Strategies:
+                </strong>{" "}
+                Using clear Git branching methods and meaningful commit messages
+                kept changes organized and made reviews more efficient.
+              </li>
+              <li>
+                <strong className="text-pink-500">Barrels and Aliases:</strong>{" "}
+                By consolidating imports and reducing those extra-long paths, I
+                turned the codebase into a friendlier place to navigate.
+              </li>
+            </ul>
+            <p>
+              These steps transformed the chaotic sprawl into a well-structured,
+              maintainable system, making it far easier to introduce new
+              features and keep the project humming along.
             </p>
           </div>
         </div>

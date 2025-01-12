@@ -38,7 +38,7 @@ export default function MobileTableofContents(props: Props) {
   }, [scroll]);
 
   return (
-    <div className="mobile-toc top-[3.7rem] sticky z-10">
+    <div className="mobile-toc top-[4.4rem] sticky z-10">
       <div
         className={`max-w-6xl mx-auto border-b border-slate-800 dark:text-white px-6 lg:px-12 py-3 w-full block lg:hidden flex items-center bg-white dark:bg-gray-950 dark:bg-opacity-90 backdrop-blur-sm text-slate-900 cursor-pointer`}
         onClick={toggleToC}
@@ -80,7 +80,7 @@ export default function MobileTableofContents(props: Props) {
                             activeId === heading.slug
                               ? "text-indigo-600 dark:text-indigo-300"
                               : "text-slate-900 dark:text-gray-50"
-                          } text-[0.9rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
+                          } text-[0.95rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
                         >
                           {heading.title}
                         </li>
@@ -95,7 +95,7 @@ export default function MobileTableofContents(props: Props) {
                                 activeId === heading.slug
                                   ? "text-indigo-600 dark:text-indigo-300"
                                   : "text-slate-900 dark:text-gray-50"
-                              } text-[0.8rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
+                              } text-[0.925rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
                             >
                               {heading.title}
                             </li>

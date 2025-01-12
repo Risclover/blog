@@ -94,7 +94,7 @@ export default function TableofContents(props: Props) {
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[0.9rem] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
+                        } text-[0.95rem] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </li>
@@ -107,7 +107,7 @@ export default function TableofContents(props: Props) {
                           activeId === heading.slug
                             ? "text-indigo-600 dark:text-indigo-300"
                             : "text-slate-900 dark:text-gray-50"
-                        } text-[0.8rem] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
+                        } text-[0.925rem] hover:text-indigo-600 mt-[3px] dark:hover:text-indigo-300`}
                       >
                         {heading.title}
                       </li>

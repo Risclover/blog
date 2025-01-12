@@ -432,7 +432,7 @@ img {
 .categories-page {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 32px;
+  gap: 2rem;
 }
 
 .schema-img {
@@ -551,11 +551,11 @@ img {
 }
 
 .toc-ul.is-top-overflowing {
-  --top-mask-size: 48px !important;
+  --top-mask-size: 3rem !important;
 }
 
 .toc-ul.is-bottom-overflowing {
-  --bottom-mask-size: 48px !important;
+  --bottom-mask-size: 3rem !important;
 }
 
 .toc-ul::-webkit-scrollbar {
@@ -601,7 +601,7 @@ li a {
   margin-top: 0;
 }
 
-.content ul .content li {
+.content ul li {
   list-style-type: disc;
 }
 

@@ -45,7 +45,12 @@ export default function QuickFacts({ projectInfo }: Props) {
           <li>
             <strong>Tech stack:</strong> {projectInfo.techStack}
           </li>
-          <li onClick={handleFeatures} className="cursor-pointer w-fit">
+          <li
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && handleFeatures()}
+            onClick={handleFeatures}
+            className="cursor-pointer w-fit"
+          >
             <div className="flex items-center">
               <strong className="flex items-center">
                 Features{" "}

@@ -12,18 +12,18 @@ const Projects = ({ dropdownStatus }: Props) => {
     >
       <Link
         href="/projects/ribbit"
-        className="dark:hover:bg-slate-600 hover:bg-sky-100 py-1 px-4 w-full cursor-pointer block"
+        className="dark:hover:bg-slate-600 hover:bg-sky-100 py-2 px-4 w-full cursor-pointer block"
       >
         Ribbit
       </Link>
       <Link
-        className="dark:hover:bg-slate-600 hover:bg-sky-100 py-1 px-4 w-full cursor-pointer block"
+        className="dark:hover:bg-slate-600 hover:bg-sky-100 py-2 px-4 w-full cursor-pointer block"
         href="/projects/reduncrate"
       >
         Reduncrate
       </Link>
       <Link
-        className="dark:hover:bg-slate-600 hover:bg-sky-100 py-1 px-4 w-full cursor-pointer block"
+        className="dark:hover:bg-slate-600 hover:bg-sky-100 py-2 px-4 w-full cursor-pointer block"
         href="/projects/airbnbeezy"
       >
         Airbnbeezy
