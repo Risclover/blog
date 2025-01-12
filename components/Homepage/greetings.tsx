@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Avatar from "public/images/avatar2.png";
+import EnterAnimation from "./enter-animation";
 
 export default function Greetings() {
   return (
@@ -12,6 +13,7 @@ export default function Greetings() {
         data-aos="zoom-in"
         data-aos-duration={400}
         data-aos-delay={400}
+        data-aos-once="true"
         className="w-96 mx-auto float-right mb-10 md:mb-14"
         src={Avatar}
         alt="Cartoon girl sitting with laptop and cat"
@@ -19,6 +21,7 @@ export default function Greetings() {
       <h2
         data-aos="fade-up"
         data-aos-delay={600}
+        data-aos-once="true"
         className="font-bold leading-10 md:leading-20 text-slate-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 dark:text-gray-50 mb-4 md:mb-8 text-4xl md:text-5xl"
       >
         Hello! I'm <span className="text-pink-500">Sara Dunlop</span>.

@@ -20,7 +20,7 @@ function MobileMenu({ menu, setMenu }: Props) {
     <div
       className={`mobile-menu ${
         menu ? "open" : ""
-      } h-[100vh] w-[100%] p-20 backdrop-blur-sm text-4xl font-wotfard flex flex-col justify-between`}
+      } h-[100vh] w-[100%] p-20 backdrop-blur-sm text-4xl font-wotfard flex flex-col justify-between top-[3.8rem]`}
       onClick={() => setMenu(!menu)}
     >
       <div className="max-w-6xl mx-auto w-full lg:px-12">

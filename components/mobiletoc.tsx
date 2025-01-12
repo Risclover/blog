@@ -38,7 +38,7 @@ export default function MobileTableofContents(props: Props) {
   }, [scroll]);
 
   return (
-    <div className="mobile-toc top-[4.4rem] sticky z-10">
+    <div className="mobile-toc top-[4.4rem] sm:top-[3.7rem] sticky z-10">
       <div
         className={`max-w-6xl mx-auto border-b border-slate-800 dark:text-white px-6 lg:px-12 py-3 w-full block lg:hidden flex items-center bg-white dark:bg-gray-950 dark:bg-opacity-90 backdrop-blur-sm text-slate-900 cursor-pointer`}
         onClick={toggleToC}
