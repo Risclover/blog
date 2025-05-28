@@ -11,6 +11,7 @@ import Head from "next/head";
 import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
 import QuickFacts from "@/components/quick-facts";
+import ImageModal from "@/components/imagemodal";
 
 export default function Ribbit2() {
   const headingsRef = useRef(null);
@@ -61,8 +62,30 @@ export default function Ribbit2() {
   const projectInfo = {
     title: "Ribbit",
     description: "A feature-rich pixel-perfect clone of Reddit.",
-    techStack:
-      "React, Redux, Flask, SQLAlchemy, Flask-SocketIO, and various libraries and tools.",
+    techStack: (
+      <div className="flex w-full">
+        <img
+          className="w-[50px] mr-2"
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+        />
+        <img
+          className="w-[50px] mr-2"
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
+        />
+        <img
+          className="w-[50px] mr-2"
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
+        />
+        <img
+          className="w-[50px] mr-2"
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/socketio/socketio-original.svg"
+        />
+        <img
+          className="w-[50px]"
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlalchemy/sqlalchemy-plain.svg"
+        />
+      </div>
+    ),
     features: [
       "Users",
       "Communities",
@@ -100,31 +123,463 @@ export default function Ribbit2() {
       >
         <TableofContents headings={fileContent} />
         <div className="font-wotfard text-lg w-full lg:pl-6 flex-1 min-w-0">
+          <ImageModal
+            imgSrc="/images/projects/ribbit/ribbit-hero.png"
+            imgAlt="Ribbit homepage"
+            title="Ribbit Homepage"
+            description={`The homepage of Ribbit, which shows the user's main feed.`}
+          />
+          <p>
+            This is Ribbit, a fullstack, pixel-perfect clone of the popular
+            social media website Reddit. With over 15 features, a well-designed
+            UI, and an experience that feels complete for users, Ribbit looks
+            and feels just like the original, down to the smallest of details.
+            After months of development and hard work, Ribbit has transformed
+            into one of the best Reddit clones on the Internet.
+          </p>
           <QuickFacts projectInfo={projectInfo} />
-
           <div className="project-details">
             {/* --------- Introduction ---------- */}
             <h2 id="introduction">Introduction</h2>
+
+            <h2 id="about-ribbit">About Ribbit</h2>
+
+            <h3 id="background">Background</h3>
             <p>
-              Meet Ribbit, the Internet's best Reddit clone. Ribbit is a
-              fully-funcitoning app that I built from the ground up with the
-              intention to learn, experiment, and push my full-stack development
-              skills to the limit. If you've spent any time on Reddit, you'll
-              feel right at home: Ribbit has posts, comments, votes, live chat,
-              search, and much, much more. It also offers features that most
-              Reddit clones don't, like the sign up form's random username
-              generator, advanced community style settings, and a slick comment
-              search function, making the experience both refreshingly familiar
-              and exciting.
+              Ribbit has been in development for over a year. Initially the
+              result of a graduation requirement of the intensive software
+              engineering bootcamp I attended, it had just 6 core features when
+              I presented it to my cohort: Users, Posts, Comments, Communities,
+              Subscriptions, and Post Votes.
+            </p>
+            <p>
+              After graduation, I found myself enjoying the process of building
+              Ribbit so much that I proceeded to continue work on it. Over time,
+              Ribbit has been through many stages, and has been a steady source
+              of learning for me. It is easily the biggest project I've ever
+              built singlehandedly, and has evolved into something more than
+              "just another clone" that I couldn't be more proud to share with
+              you today.
+            </p>
+            <h3 id="technology-stack">Technology Stack</h3>
+            <p>
+              To bring Ribbit to life with the level of functionality and polish
+              envisioned, I employed the following tech stack:
+            </p>
+            <h4 id="frontend">Frontend</h4>
+            <ul>
+              <li>
+                <span className="text-pink-500">React</span> - Used for building
+                reusable components and creating a dynamic, responsive user
+                interface.
+              </li>
+              <li>
+                <span className="text-pink-500">React-Router</span> -
+                Facilitates smooth navigation between different views without
+                the need for full page reloads.
+              </li>
+              <li>
+                <span className="text-pink-500">Redux</span> - Manages the
+                application’s state in a predictable way, simplifying data flow
+                and state debugging.
+              </li>
+              <li>
+                <span className="text-pink-500">CSS3</span> - Utilizes modern
+                styling techniques to create a visually appealing and responsive
+                design across all devices, including the use of CSS variables.
+              </li>
+            </ul>
+            <h4 id="backend">Backend</h4>
+            <ul>
+              <li>
+                <span className="text-pink-500">Flask</span> - Chosen for its
+                lightweight and flexible nature, allowing rapid development and
+                easy customization to meet Ribbit’s specific backend needs.
+              </li>
+              <li>
+                <span className="text-pink-500">SQLAlchemy</span> - Provides a
+                powerful ORM that simplifies database interactions and
+                efficiently handles complex data relationships like users,
+                posts, and comments.
+              </li>
+              <li>
+                <span className="text-pink-500">Flask-SocketIO</span> -
+                Implemented to support real-time features such as live updates
+                and instant notifications, enhancing user engagement on Ribbit.
+              </li>
+            </ul>
+            <h4 id="testing">Testing</h4>
+            <ul>
+              <li>
+                <span className="text-pink-500">Jest</span> - Used for its fast
+                and reliable JavaScript testing capabilities, ensuring Ribbit’s
+                frontend code remains robust and error-free.
+              </li>
+              <li>
+                <span className="text-pink-500">React-Testing-Library</span> -
+                Facilitates testing of React components from the user’s
+                perspective, ensuring the interface behaves as expected.
+              </li>
+            </ul>
+
+            <h3 id="goals-and-inspiration">Goals and Inspiration</h3>
+            <p>
+              The development of Ribbit was driven by a few core goals and
+              inspirations, including:
+            </p>
+            <ol>
+              <li>
+                <span className="text-pink-500">A sandbox for learning</span> -
+                I’ve used Reddit for years, and as a user, I’ve always enjoyed
+                how seamlessly its UI handles everything. I wanted to replicate
+                many of its features - not by copying code, but by truly
+                understanding and implementing the logic. Ribbit gradually
+                evolved into my personal sandbox, a place where I could break
+                things, fix them, and come out the other side with a deeper
+                knowledge of full-stack development.
+              </li>
+              <li>
+                <span className="text-pink-500">
+                  Providing a complete user experience
+                </span>{" "}
+                - Although Ribbit is a demo of an existing website, one of my
+                primary goals was to provide enough functionality that it felt
+                like a real, independent entity. While I could have just
+                developed Reddit’s core features, I knew that expanding beyond
+                that would make the site feel more complete, as well as provide
+                the user with a better experience overall.
+              </li>
+              <li>
+                <span className="text-pink-500">Showcasing my skills</span> - I
+                don’t have years of professional experience or a formal degree,
+                so I wanted a project that could demonstrate my capabilities.
+                Ribbit wasn’t about building a minimal viable product; it was
+                about pushing myself to implement real features that people
+                actually use on a day-to-day basis. The more challenging a
+                feature, the more intrigued I was to try and build it.
+              </li>
+              <li>
+                <span className="text-pink-500">Polish and detail</span> - I
+                wanted to go beyond the standard “MVP clone” approach and really
+                nail the small stuff, including intuitive hover states,
+                informative tooltips, and a perfect replication of Reddit’s
+                interface.
+              </li>
+              <li>
+                <span className="text-pink-500">Future-proofing my skills</span>{" "}
+                - I knew this project could be a good chance to learn modern,
+                in-demand technologies. Instead of sticking to what I already
+                knew, I dove into frameworks, libraries, and APIs that were new
+                to me, sometimes struggling, but always eventually coming out on
+                top with more knowledge and experience than before. In doing so,
+                Ribbit evolved from a side project into a comprehensive learning
+                adventure, sharpening both my technical and problem-solving
+                skills in a real-world context.
+              </li>
+            </ol>
+            <p>
+              Ribbit wasn't just another clone project. It has served as my way
+              of experimenting, growing, and showcasing what I'm capable of as a
+              developer. Each piece of Ribbit was driven by a desire to learn,
+              to improve, and to create a platform that people genuinely enjoy
+              using, and I am proud to be able to present it to you here on my
+              website.
+            </p>
+            <h3 id="challenges">Challenges</h3>
+            <p>
+              Like all projects, Ribbit's development wasn't exactly a simple
+              walk in the park; in fact, there were quite a few trials and
+              tribulations that I had to face and figure out in order to produce
+              the result you see today. While it would be impossible to list all
+              of them, here are just some of the bigger ones.
+            </p>
+            <h4 id="preventing-fragmented-architecture">
+              Preventing Fragmented Architecture
+            </h4>
+            <code className="language-css">{`p { color: red }`}</code>
+            <p>
+              In the beginning of Ribbit’s development, I made a mistake in how
+              I was building my features. Rather than build each feature fully
+              before moving onto the next, I was splitting up my code by
+              frontend and backend. In other words, I would write the code for,
+              say, Users, Posts, and Communities in the backend, and then move
+              on to the frontend for all three. This inevitably led to a tangled
+              codebase that was extremely difficult to debug. The code was so
+              poorly structured and entangled that one week into the project, I
+              was forced to make a decision: the best course of action would be
+              to salvage only the stylesheets and start over, an unfortunate and
+              significant setback given the two-week completion window.
+            </p>
+            <p>
+              Realizing the issue, I pivoted to a feature-driven approach,
+              developing each feature's backend and frontend simultaneously
+              before moving onto the next. This change streamlined debugging,
+              resulted in cleaner code, and drastically reduced bugs. The lesson
+              learned? That a cohesive development strategy from the start is
+              essential for building a robust, feature-packed application like
+              Ribbit.
             </p>
 
-            <h3 id="the-internet's-best-reddit-clone">
-              "The Internet's Best Reddit Clone"
-            </h3>
+            <h4 id="battling-high-load-times">Battling High Load Times</h4>
             <p>
-              Despite appearing like a boastful claim, hear me out. I have yet
-              to see another Reddit clone that does each of the following:
+              As Ribbit grew, I introduced a large amount of seed data to mimic
+              a bustling community. This influx of data caused load times to
+              soar, and at one point the site was taking several minutes to
+              load, an obvious deal-breaker in regards to user experience.
             </p>
+            <p>
+              I began tackling this issue by removing the recently-introduced
+              data. As it turned out, the root issue went beyond just having a
+              big dataset; inefficient coding practices were triggering
+              excessive re-renders and slowing everything down. I proceeded to
+              perform a detailed code review to pinpoint performance
+              bottlenecks, and after doing so, I eradicated the problem by
+              optimizing database queries, implementing lazy loading, and
+              cutting out unnecessary re-renders, all of which dramatically sped
+              up the site. I also used performance profiling tools to keep an
+              eye on the app’s responsiveness. Thanks to this ongoing
+              optimization, Ribbit has thankfully stayed fast and fluid, even as
+              the dataset continues to grow.
+            </p>
+
+            <h4 id="mastering-websockets">Mastering WebSockets</h4>
+            <p>
+              When it came time to add real-time features like live chat and
+              instant notifications, I found myself in uncharted territory.
+              WebSockets were new to me and introduced a steep learning curve.
+              Ensuring reliable, secure, and truly real-time communication meant
+              diving into asynchronous programming and event-driven architectur
+              - a challenge that was both exciting and daunting.
+            </p>
+            <p>
+              I invested significant time in learning the ins and outs of
+              WebSockets, reading tutorials, poring over documentation, and
+              taking extensive notes. Implementing Flask-SocketIO made it easier
+              to integrate these real-time capabilities with my Flask backend.
+              Through iterative testing and hands-on experimentation, I
+              successfully introduced real-time chats and notifications that
+              brought Ribbit to life. The process of implementing this feature
+              reinforced the importance of continuous learning and adaptability,
+              key ingredients for any modern web application.
+            </p>
+
+            <h4 id="overhauling-an-unwieldy-codebase">
+              Overhauling a Cumbersome Codebase
+            </h4>
+            <p>
+              Early on, I concentrated almost entirely on making Ribbit{" "}
+              <em>work</em>, without much attention to code quality. As Ribbit
+              evolved, the codebase ballooned into something unwieldy. Keeping
+              track of everything, maintaining code quality, and adding new
+              features turned into a major headache. The sheer volume of files
+              and modules made even small tweaks risky and time-consuming.
+            </p>
+            <p>
+              To tackle this, I made a conscious decision to up my game by
+              introducing a set of best practices, including:
+            </p>
+            <ul>
+              <li>
+                <span className="text-pink-500">Modular Design:</span> I
+                refactored the frontend into smaller, reusable components and
+                modules, making it simpler to manage and maintain.
+              </li>
+              <li>
+                <span className="text-pink-500">
+                  Consistent Coding Standards:
+                </span>{" "}
+                A unified style made the code more readable and cut down on
+                confusion across the board.
+              </li>
+              <li>
+                <span className="text-pink-500">
+                  Comprehensive Documentation:
+                </span>{" "}
+                Detailed notes ensured anyone, including myself, could quickly
+                find their way around, smoothing potential collaboration and
+                future attempts to continue work on Ribbit.
+              </li>
+              <li>
+                <span className="text-pink-500">
+                  Version Control Strategies:
+                </span>{" "}
+                Using clear Git branching methods and meaningful commit messages
+                kept changes organized and made reviews more efficient.
+              </li>
+              <li>
+                <span className="text-pink-500">Barrels and Aliases:</span> By
+                consolidating imports and reducing those extra-long paths, I
+                turned the codebase into a friendlier place to navigate.
+              </li>
+            </ul>
+            <p>
+              These steps transformed the chaotic sprawl into a well-structured,
+              maintainable system, making it far easier to introduce new
+              features and keep the project humming along.
+            </p>
+            <h3 id="things-i-would-do-differently-lessons-learned">
+              Things I Would Do Differently (Lessons Learned)
+            </h3>
+            <h2 id="features">Features</h2>
+            <p>
+              Ribbit was in development for a bit longer than I originally
+              anticipated, resulting in me producing a wide array of features to
+              make the site feel complete.{" "}
+            </p>
+            <h3 id="multiple-ways-to-log-in">Multiple Ways to Log In</h3>
+            <p>
+              Site visitors (users not logged into an account) are able to
+              browse Ribbit's posts, community pages, and user profiles, and
+              that's about it. There are several features and pages that site
+              visitors aren't able to access, and they must log into an account
+              to fully experience Ribbit in its entirety.
+            </p>
+            <p>
+              Luckily, there are a few different ways that users can log in.
+            </p>
+            <h4 id="sign-up-for-an-account">Sign Up for an Account</h4>
+            <p>
+              Users can sign up for their own account on Ribbit by providing a
+              unique username, an email address not already associated with
+              another account, and a valid password.
+            </p>
+            <p>
+              The sign-up form includes a random username generator identical to
+              the one Ribbit offers. This tool provides suggestions for
+              usernames, assisting users that are struggling to pick a username
+              they like by providing funny, unique, or profound options on the
+              click of a button.
+            </p>
+            <h4 id="use-a-google-account">Use a Google Account</h4>
+            <p>
+              Ribbit offers users the option of signing in using their existing
+              Google account.
+            </p>
+            <h4 id="utilize-the-provided-demo-account">
+              Utilize the Provided Demo Account
+            </h4>
+            <p>
+              A demo account is available for the purposes of touring Ribbit and
+              checking out its features. It is publicly accessible by anyone who
+              visits the site, so it is strongly recommended that it is used
+              very briefly, and that users refrain from sharing any personal
+              information while logged into that account.
+            </p>
+            <p>
+              Accessing the demo account is as easy as clicking the "Log In as
+              Demo" button, found on both the Log In and Sign Up forms.
+            </p>
+            <h3 id="light-dark-mode-toggle">Light/Dark Mode Toggle</h3>
+            <p>
+              I know firsthand how important it is for websites to offer a
+              light/dark mode toggle, and made sure that Ribbit was no
+              different. This toggle can be found in the righthand dropdown menu
+              in the navbar. The user’s preference persists beyond refresh for a
+              better experience.
+            </p>
+            <h3 id="user-accounts-&-profiles">User Accounts & Profiles</h3>
+            <p>
+              Each user has their own profile page, where their post history can
+              be found as well as user info like their display name, bio, and
+              stats such as their follower count, karma, and join date. Profiles
+              also contain ways to interact with, and contact, the user,
+              including sending them a message or beginning a chat with them.
+            </p>
+            <p>
+              When a user visits their own profile, they have access to some
+              additional information, like a list of the users following them,
+              and their owned communities.
+            </p>
+            <h2 id="implementation-details">Implementation Details</h2>
+            <h3 id="stack-overview">Stack Overview</h3>
+            <div className="flex flex-col">
+              <div className="-m-1.5">
+                <div className="p-1.5 inline-block align-middle">
+                  <div className="overflow-hidden">
+                    <table className="divide-y divide-gray-200 dark:divide-neutral-700">
+                      <thead className="bg-gray-50 dark:bg-slate-800">
+                        <tr>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase dark:text-neutral-500"
+                          >
+                            Layer
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase dark:text-neutral-500"
+                          >
+                            Technology
+                          </th>
+                          <th
+                            scope="col"
+                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase dark:text-neutral-500"
+                          >
+                            Why It Matters
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            Backend
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            Flask, SQLAlchemy, Flask-SocketIO
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            Lightweight micro-framework, declarative ORM, shared
+                            session between HTTP and WebSockets.
+                          </td>
+                        </tr>
+
+                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            Frontend
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            React, Redux
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            Modern hooks API, batteries-included state slice
+                            pattern, lightning-fast dev server.
+                          </td>
+                        </tr>
+
+                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            Data
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            PostgreSQL
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            Reliable JSON + full-text search, easy Heroku/Render
+                            deploy.
+                          </td>
+                        </tr>
+
+                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            Tooling
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            Docker Compose
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                            <code className="text-xs">docker compose up</code>{" "}
+                            spins the whole stack — no "works on my machine"
+                            surprises.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 id="repository-layout">Repository Layout</h3>
             <ul>
               <li>
                 <span className="text-pink-500">Pixel-Perfect Interface</span>:

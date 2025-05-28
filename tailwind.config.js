@@ -18,6 +18,11 @@ module.exports = {
       logo: ["Itim", "cursive"],
     },
     extend: {
+      boxShadow: {
+        dark: "0 0 0 1px rgba(255,255,255,0.10), 0 4px 16px rgba(0,0,0,0.40)",
+        "dark-hover":
+          "0 0 0 1px rgba(255,255,255,0.15), 0 6px 24px 4px rgba(0,0,0,0.55)",
+      },
       animation: {
         "bounce-once": "bounce-once .6s ease-in-out forwards",
       },

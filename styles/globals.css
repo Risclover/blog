@@ -152,6 +152,7 @@ blockquote {
 .dark blockquote {
   background: #334155;
   border-left: 4px solid #a5b4fc;
+  color: #b688ff;
 }
 
 blockquote p:first-of-type {
@@ -173,7 +174,7 @@ img {
 }
 
 .project {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 0.5rem;
 }
 
 .comparison-slider {
@@ -438,6 +439,7 @@ img {
 .schema-img {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   width: 90%;
+  color: #010101;
 }
 
 .category-box {
@@ -447,12 +449,11 @@ img {
 }
 
 .projects {
-  display: flex;
-  flex-wrap: wrap;
   margin: 0 auto;
   margin-top: 40px;
-  grid-gap: 3rem;
-  padding: 10px;
+  grid-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
 }
 
 .custom-video-player {
@@ -733,6 +734,43 @@ pre {
   margin-bottom: 20px !important;
 }
 
+.sub-list-4 {
+  visibility: hidden;
+  transition: visibility 0.5s ease, max-height 0.5s ease;
+  max-height: 0;
+  overflow: hidden;
+  display: block;
+}
+
+.sub-list-4.expanded {
+  visibility: visible;
+  max-height: 999px; /* large enough to fit the biggest sub-list */
+}
+
+.curtain {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0;
+}
+
+.curtain.expanded {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.project-img img {
+  color: transparent;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1rem;
+  padding-inline-start: 1.5rem;
+  padding-inline-end: 1.5rem;
+}
+
 @media (min-width: 63.75rem) {
   :target {
     scroll-margin-top: 5.625rem;
@@ -867,7 +905,7 @@ pre {
 
 @media (max-width: 63.75rem) {
   .projects {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
   }
 
   .projects a,

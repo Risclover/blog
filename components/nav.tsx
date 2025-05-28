@@ -47,7 +47,7 @@ export default function Nav({ menu, setMenu }: Props) {
                 href="/"
                 className="hover:text-gray-400 transition-colors duration-300"
               >
-                About
+                Home
               </Link>
             </div>
             <div className="ml-10 text-base font-wotfard text-gray-50 flex items-center relative">

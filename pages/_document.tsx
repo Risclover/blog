@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="Sara Dunlop is a fullstack software engineer and web developer who is super passionate about her job. This is her personal website, where visitors can find examples of her work, her skill stack, and her blog, where she writes about software engineer-related things, and occasionally includes personal blog posts about her life."
+            content="Sara Dunlop is a passionate and talented fullstack software engineer and web developer. This is her portfolio site, where visitors can find her skill stack, her blog, and examples of her work."
           />
           <title>Sara Dunlop | Portfolio Website</title>
         </Head>

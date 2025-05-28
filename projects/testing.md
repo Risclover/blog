@@ -49,7 +49,6 @@ Ribbit is a sophisticated web application developed to replicate the core functi
               </strong>{" "}
               <span className="text-sm">(click to show/hide)</span>
             </div>
-
             <div className="quickfacts-list flex flex-wrap">
               <ul className="flex flex-wrap flex-col h-[100%] sm:max-h-[350px] inner-ul">
                 {features.map((feature) => (

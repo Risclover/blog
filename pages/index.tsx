@@ -6,6 +6,7 @@ import Greetings from "@/components/Homepage/greetings";
 import Toolkit from "@/components/Homepage/toolkit";
 import Projects from "@/components/Homepage/projects";
 import "aos/dist/aos.css";
+import { Projects2 } from "@/components/Homepage/projects2";
 
 const Blog = () => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const Blog = () => {
       <div className="frontpage dark:text-gray-50 font-sans flex flex-col min-h-screen h-full w-full m-auto">
         <Greetings />
         <Toolkit />
-        <Projects />
+        <Projects2 />
       </div>
     </Layout>
   );

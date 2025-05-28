@@ -18,7 +18,7 @@ const nextConfig = {
   env: {
     publicKey: process.env.PUBLIC_KEY, // pulls from .env file
     templateId: process.env.TEMPLATE_ID,
-    serviceId: process.env.SERVICE_ID
+    serviceId: process.env.SERVICE_ID,
   },
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
