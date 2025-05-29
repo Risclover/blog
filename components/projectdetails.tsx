@@ -5,7 +5,7 @@ type Props = {
   projectInfo: {
     title: string;
     description: string;
-    techStack: string;
+    techStack: JSX.Element | string;
     features: string[];
     repo: string;
     demo: string;

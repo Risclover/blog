@@ -18,6 +18,15 @@ import ribbitComparison3 from "public/images/projects/ribbit/comparison-ribbit-3
 import redditComparison3 from "public/images/projects/ribbit/comparison-reddit-3.png";
 import userProfile from "public/images/projects/ribbit/user-profile.png";
 import "yet-another-react-lightbox/styles.css";
+import {
+  FlaskIcon,
+  FlaskSocketIoIcon,
+  ReactIcon,
+  ReduxIcon,
+  SQLAIcon,
+  TypeScriptIcon,
+} from "@/components/icons";
+import { Badge } from "@/components/badge";
 
 export default function Ribbit() {
   const headingsRef = useRef(null);
@@ -68,8 +77,58 @@ export default function Ribbit() {
   const projectInfo = {
     title: "Ribbit",
     description: "A feature-rich pixel-perfect clone of Reddit.",
-    techStack:
-      "React, Redux, Flask, SQLAlchemy, Flask-SocketIO, and various libraries and tools.",
+    techStack: (
+      <div className="flex gap-2 flex-wrap my-2">
+        <Badge
+          svg={<ReactIcon />}
+          color="text-[#1a92b3]"
+          bgColor="bg-[#1a92b3]"
+          darkColor="dark:text-[#61DAFB]"
+          darkBgColor="dark:bg-[#61DAFB]"
+          title="React"
+        />
+        <Badge
+          svg={<TypeScriptIcon />}
+          title="TypeScript"
+          color="text-[#007acc]"
+          bgColor="bg-[#007acc]"
+          darkColor="dark:text-[#1291e6]"
+          darkBgColor="dark:bg-[#1291e6]"
+        />
+        <Badge
+          svg={<ReduxIcon />}
+          title="Redux"
+          bgColor="bg-[#764abc]"
+          color="text-[#764abc]"
+          darkColor="dark:text-[#b688ff]"
+          darkBgColor="dark:bg-[#b688ff]"
+        />
+        <Badge
+          svg={<FlaskIcon />}
+          title="Flask"
+          color="text-[#090909]"
+          bgColor="bg-[#090909]"
+          darkColor="dark:text-[#d4d4d4]"
+          darkBgColor="dark:bg-[#d4d4d4]"
+        />
+        <Badge
+          svg={<SQLAIcon />}
+          title="SQLAlchemy"
+          bgColor="bg-red-700"
+          color="text-red-700"
+          darkColor="dark:text-red-400"
+          darkBgColor="dark:bg-red-400"
+        />
+        <Badge
+          svg={<FlaskSocketIoIcon />}
+          title="Flask-SocketIO"
+          color="text-gray-500"
+          bgColor="bg-gray-500"
+          darkColor="dark:text-gray-300"
+          darkBgColor="dark:bg-gray-300"
+        />{" "}
+      </div>
+    ),
     features: [
       "Users",
       "Communities",

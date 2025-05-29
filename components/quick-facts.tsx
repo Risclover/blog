@@ -5,7 +5,7 @@ type Props = {
   projectInfo: {
     title: string;
     description: string;
-    techStack: string;
+    techStack: JSX.Element | string;
     features: string[];
     repo: string;
     demo: string;
@@ -28,7 +28,7 @@ export default function QuickFacts({ projectInfo }: Props) {
   };
 
   return (
-    <div className="quickfacts-div w-full rounded-[8px] mb-12 font-rubik text-base font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-700 mx-auto">
+    <div className="quickfacts-div w-full rounded-[8px] mb-12 font-rubik text-base font-medium text-slate-900 dark:text-gray-50 overflow-hidden dark:bg-slate-900 bg-opacity-0 dark:bg-opacity-50 mx-auto">
       <div className="bg-indigo-200 px-[1.5rem] py-[0.75rem] dark:bg-slate-800">
         <h3 className="text-2xl font-bold font-rubik leading-0 mt-1">
           Quick Facts

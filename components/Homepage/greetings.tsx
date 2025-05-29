@@ -54,7 +54,7 @@ export default function Greetings() {
           </a>
         </p>
         <a
-          href="https://drive.google.com/file/d/1Nz41Llc9eWQOKT35Wfsi9_6_NEdHQwo3/view?usp=sharing"
+          href="https://drive.google.com/file/d/1tcYNzLm2qYySRF-3IZHy0GTz8uU-sAgs/view?usp=sharing"
           target="_blank"
           className="resume-link"
           data-aos="zoom-in"

@@ -1,7 +1,7 @@
-import React, { SVGProps } from "react";
+import React from "react";
 
 type Props = {
-  svg: SVGProps<SVGSVGElement>;
+  svg: React.ReactNode;
   title: string;
   color: string;
   darkColor: string;
