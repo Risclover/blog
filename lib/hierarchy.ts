@@ -35,3 +35,4 @@ export function buildHierarchy(headings: Heading[]): Heading[] {
   }
   return result;
 }
+                                                                                                                                                                                                                                                                        

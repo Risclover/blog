@@ -65,6 +65,7 @@ export default function Layout({
           href="https://unpkg.com/prismjs@0.0.1/themes/prism-tomorrow.css"
           as="script"
         />
+
         <link
           rel="preload"
           href="https://unpkg.com/prismjs@0.0.1/themes/prism-coy.css"
@@ -84,6 +85,11 @@ export default function Layout({
           href={`https://unpkg.com/prismjs@0.0.1/themes/prism-${theme}.css`}
           rel="stylesheet"
         />
+        <link href="styles/prism-theme.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" />
+        <script src="https://app.unpkg.com/prismjs@1.30.0/files/components/prism-jsx.js" />
+        <script src="https://app.unpkg.com/prismjs@1.30.0/files/components/prism-bash.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js" />
         <Script src="storage.js" />
         <title>Sara Dunlop | Portfolio</title>
       </Head>

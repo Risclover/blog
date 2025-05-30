@@ -58,6 +58,7 @@ pre[class*="language-"] {
 .token.comment,
 .token.doctype,
 .token.prolog {
+  font-style: italic;
   color: #708090;
 }
 .token.punctuation {

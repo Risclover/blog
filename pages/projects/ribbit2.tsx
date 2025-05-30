@@ -12,6 +12,8 @@ import MobileTableofContents from "@/components/mobiletoc";
 import TableofContents from "@/components/tableofcontents";
 import QuickFacts from "@/components/quick-facts";
 import ImageModal from "@/components/imagemodal";
+import ResponsiveTable from "@/components/responsive-table";
+import Code from "@/components/code";
 
 export default function Ribbit2() {
   const headingsRef = useRef(null);
@@ -141,9 +143,7 @@ export default function Ribbit2() {
           <div className="project-details">
             {/* --------- Introduction ---------- */}
             <h2 id="introduction">Introduction</h2>
-
             <h2 id="about-ribbit">About Ribbit</h2>
-
             <h3 id="background">Background</h3>
             <p>
               Ribbit has been in development for over a year. Initially the
@@ -221,7 +221,6 @@ export default function Ribbit2() {
                 perspective, ensuring the interface behaves as expected.
               </li>
             </ul>
-
             <h3 id="goals-and-inspiration">Goals and Inspiration</h3>
             <p>
               The development of Ribbit was driven by a few core goals and
@@ -319,7 +318,6 @@ export default function Ribbit2() {
               essential for building a robust, feature-packed application like
               Ribbit.
             </p>
-
             <h4 id="battling-high-load-times">Battling High Load Times</h4>
             <p>
               As Ribbit grew, I introduced a large amount of seed data to mimic
@@ -341,7 +339,6 @@ export default function Ribbit2() {
               optimization, Ribbit has thankfully stayed fast and fluid, even as
               the dataset continues to grow.
             </p>
-
             <h4 id="mastering-websockets">Mastering WebSockets</h4>
             <p>
               When it came time to add real-time features like live chat and
@@ -362,7 +359,6 @@ export default function Ribbit2() {
               reinforced the importance of continuous learning and adaptability,
               key ingredients for any modern web application.
             </p>
-
             <h4 id="overhauling-an-unwieldy-codebase">
               Overhauling a Cumbersome Codebase
             </h4>
@@ -501,72 +497,72 @@ export default function Ribbit2() {
                         <tr>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase dark:text-neutral-500"
+                            className="p-2 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase"
                           >
                             Layer
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase dark:text-neutral-500"
+                            className="p-2 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase"
                           >
                             Technology
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase dark:text-neutral-500"
+                            className="p-2 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase"
                           >
                             Why It Matters
                           </th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
-                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                        <tr>
+                          <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                             Backend
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             Flask, SQLAlchemy, Flask-SocketIO
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             Lightweight micro-framework, declarative ORM, shared
                             session between HTTP and WebSockets.
                           </td>
                         </tr>
 
-                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                        <tr>
+                          <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                             Frontend
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             React, Redux
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             Modern hooks API, batteries-included state slice
                             pattern, lightning-fast dev server.
                           </td>
                         </tr>
 
-                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                        <tr>
+                          <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                             Data
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             PostgreSQL
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             Reliable JSON + full-text search, easy Heroku/Render
                             deploy.
                           </td>
                         </tr>
 
-                        <tr className="hover:bg-gray-100 dark:hover:bg-neutral-700">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                        <tr>
+                          <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                             Tooling
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             Docker Compose
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200">
+                          <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
                             <code className="text-xs">docker compose up</code>{" "}
                             spins the whole stack — no "works on my machine"
                             surprises.
@@ -578,8 +574,330 @@ export default function Ribbit2() {
                 </div>
               </div>
             </div>
+            <h3 id="codebase-structure">Codebase Structure</h3>
+            <Code
+              language="bash"
+              code={`ribbit/
+├─ app/
+│  ├─ api/              # Blueprints  (auth, posts, chat…)
+│  ├─ models/           # SQLAlchemy ORM classes
+│  ├─ forms/            # WTForms validators
+│  ├─ seeds/
+│  └─ socket.py         # Real-time event handlers
+└─ frontend/
+   └─ src/
+      ├─ assets/
+      ├─ components/
+      ├─ context/
+      ├─ features/      # Auth / Posts / Chat (self-contained)
+	  │  └─ Auth/
+	  │	    ├─ __tests__/
+	  │	    ├─ components/
+	  │	    ├─ data/
+	  │	    ├─ hooks/
+	  │	    ├─ styles/
+	  │	    └─ utils/
+      ├─ hooks/         # Reusable logic
+      ├─ layouts/
+      ├─ pages/
+      ├─ routes/
+      ├─ store/         # Redux slices
+      └─ utils/`}
+            />
+            <h3 id="repository-layout">Backend Highlights</h3>
+            <h4 id="backend-folder-structure">Backend Folder Structure</h4>
+            <p>Let's talk about the backend's folder structure for a moment.</p>
+            <Code
+              code={`app/
+├─ api/
+├─ models/
+├─ forms/
+├─ seeds/
+└─ socket.py`}
+              language="bash"
+            />
+            <ul>
+              <li>
+                <code>api/</code> - All Flask Blueprints go here, each Blueprint
+                exposing the endpoints for a specific feature area (users,
+                posts, comments, etc.).
+              </li>
+              <li>
+                <code>models/</code> - The entire data schema in one place:
+                SQLAlchemy models, relationships, and mixins.
+              </li>
+              <li>
+                <code>forms/</code> - Server-side validation via WTForms
+                classes; keeps input sanitising logic out of the routes.
+              </li>
+              <li>
+                <code>seeds/</code> - Seed scripts for populating the database.
+              </li>
+            </ul>
+            <h4 id="blueprint-example-posts">Blueprint Example (Posts)</h4>
+            <Code
+              language="python"
+              code={`post_routes = Blueprint("posts", __name__)
 
-            <h3 id="repository-layout">Repository Layout</h3>
+@posts_routes.route("/")
+def list_posts():
+    return {"posts": [p.to_dict() for p in Post.query.all()]}`}
+            />
+            <p>
+              This snippet registers a Blueprint called{" "}
+              <code>posts_routes</code>, giving every route inside its own URL
+              namespace (e.g., <code>/posts</code>). The single route,{" "}
+              <code>"/"</code>, handles <code>GET</code> requests by querying
+              every <code>Post</code> record, converting each to a plain-Python
+              dictionary with <code>to_dict()</code>, and wrapping the result in
+              a JSON-serializable object:
+            </p>
+            <h4 id="model-example-posts">Form Validation Example (Posts)</h4>
+            <Code
+              code={`# FORM FOR CREATING A POST
+class PostForm(FlaskForm):
+    title = TextAreaField(
+        "Title",
+        validators=[
+            DataRequired("Please give your post a title."),
+            Length(
+                min=1,
+                max=300,
+                message="Please give your post a title. Titles are limited to 300 characters."
+            ),
+        ],
+    )
+    content = TextAreaField(
+        "Content",
+        validators=[
+            Length(
+                max=40000,
+                message="Please give your post some content. Posts are limited to 40,000 characters.",
+            )
+        ],
+    )
+    communityId = IntegerField("CommunityId")
+    submit = SubmitField("Submit")`}
+              language="python"
+            />
+            <p>
+              <code>PostForm</code> is a Flask-WTF form that enforces basic
+              sanity checks before a new post ever hits the database:
+            </p>
+            <ResponsiveTable>
+              <table className="divide-y divide-gray-200 dark:divide-neutral-700">
+                <thead className="bg-gray-50 dark:bg-slate-800">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="p-2 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase "
+                    >
+                      Field
+                    </th>
+                    <th
+                      scope="col"
+                      className="p-2 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase "
+                    >
+                      Type
+                    </th>
+                    <th
+                      scope="col"
+                      className="p-2 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase "
+                    >
+                      Key Validators
+                    </th>
+                    <th
+                      scope="col"
+                      className="p-2 text-start text-xs font-medium text-gray-500 dark:text-[#FFF] uppercase "
+                    >
+                      Purpose
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+                  <tr>
+                    <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                      <code>"Title"</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      <code>TextAreaField</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      <code>DataRequired</code>, <code>Length(1-300)</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      Guarantees every post has a non-empty title capepd at 300
+                      characters.
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                      <code>"Content"</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      <code>TextAreaField</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      <code>Length(max=40000)</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      Optional body text, but limited so someone can't drop a
+                      novel in.
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                      <code>"CommunityId"</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      <code>IntegerField</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      —
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      Stores the chosen community's id, set by the user in the
+                      'choose a community' dropdown.
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="p-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                      <code>"Submit"</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      <code>SubmitField</code>
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      —
+                    </td>
+                    <td className="p-2 text-sm text-gray-800 dark:text-neutral-200">
+                      Renders the <em>Submit</em> button.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ResponsiveTable>
+            <p>
+              Using field-level validators keeps error messages specific and
+              user-friendly while centralising all post-creation rules in one
+              declarative class.
+            </p>
+            <h4 id="model-example-posts">Model Example (Viewed Posts)</h4>
+            <Code
+              language="python"
+              code={`from app.extensions import db
+from datetime import datetime, timezone
+
+class ViewedPost(db.Model):
+    # Name the table
+    __tablename__ = "viewed_posts"
+
+    # Table attributes
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
+    timestamp = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+
+    # Relationships with 'users' and 'posts'
+    user = db.relationship("User", back_populates="viewed_posts")
+    post = db.relationship("Post", back_populates="post_viewers")
+
+    # converts to dictionary for use in backend
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.user_id,
+            "postId": self.post_id,
+            "timestamp": self.timestamp,
+            "post": self.post.to_dict() if self.post is not None else None
+        }
+
+    # returns string form of table row, for debugging and logging purposes
+    def __repr__(self):
+        return f"<ViewedPost {self.id}: post id {self.post_id} by user id {self.user_id}>"
+`}
+            />
+            <p>
+              <code>ViewedPost</code> is a join table with extras; it logs every
+              time a user opens a post, and it timestamps the event to display
+              for the user.
+            </p>
+            <ul>
+              <li>
+                <span className="text-pink-500">Schema & relationships</span>:
+                Standard <code>id</code> primary key, plus two foreign keys (
+                <code>user_id</code> and <code>post_id</code>). Bidirectional
+                relationships (<code>user.viewed_posts</code> and{" "}
+                <code>post.post_viewers</code>) make it trivial to ask "which
+                posts has Alice seen?" or "who has viewed Post 42?".
+              </li>
+              <li>
+                <span className="text-pink-500">
+                  <code>timestamp</code> default
+                </span>
+                : Uses <code>datetime.now(timezone.utc)</code> via a{" "}
+                <code>lambda</code> so the timestamp is computed server-side{" "}
+                <em>at insert time</em>, not at import.
+              </li>
+              <li>
+                <span className="text-pink-500">Helper methods</span>:{" "}
+                <code>to_dict()</code> returns an API-ready payload, optionally
+                nesting the post's own dictionary, while <code>__repr__</code>{" "}
+                makes debugging output readable (
+                <code>&lt;ViewedPost 17: post 42 by user 3&gt;</code>).
+              </li>
+            </ul>
+            <p>
+              Since view events are isolated into their own model,{" "}
+              <code>posts</code> and <code>users</code> aren't bloated with
+              additional information.
+            </p>
+            <h4 id="model-example-posts">Seed Data Example (Posts)</h4>
+            <p>
+              This excerpt comes from <code>api/seeds/followers.py</code>.
+              First, we fetch the relevant users (ids 2 through 50) in a single
+              query. Next, we define <code>follow_map</code>, a concise
+              dictionary that pairs each user with the set of accounts they
+              should follow, keeping seed data readable without sprawling loops
+              or hard-coded statements.
+            </p>
+            <Code
+              code={`def seed_followers():
+    # Preload users 2‑50 once
+    users = {u.id: u for u in User.query.filter(User.id.in_(range(2, 51))).all()}
+
+    follow_map = {
+        2:  [3, 4, 7, 10, 14, 19, 23, 25, 30, 31, 38, 42, 44, 50],
+        3:  [2, 8, 11, 16, 21, 27, 33, 40, 46],
+    }
+
+    for follower_id, followed_ids in follow_map.items():
+        users[follower_id].followed.extend(users[uid] for uid in followed_ids)
+
+    db.session.commit()`}
+              language="python"
+            />
+            <p>
+              Once <code>follow_map</code> is defined, we loop over its items.
+              For each entry, the dictionary key represents the follower's user
+              id, while the value is a list of followed user ids. We use{" "}
+              <code>.extend()</code>
+              to append those target users to the follower's followed
+              relationship, then commit the session to persist everything in one
+              transaction.
+            </p>
+            <ul>
+              <li></li>
+            </ul>
+            <ul>
+              <li>
+                We set the table's name to <code>viewed_posts</code>, as this is
+                the model for the "Recently Viewed Posts" feature.
+              </li>
+            </ul>
             <ul>
               <li>
                 <span className="text-pink-500">Pixel-Perfect Interface</span>:
@@ -624,10 +942,8 @@ export default function Ribbit2() {
               clone I've seen, and it does so with serious attention to detail
               at every turn.
             </p>
-
             {/* --------- An Overview of Ribbit ---------- */}
             <h2 id="an-overview-of-ribbit">An Overview of Ribbit</h2>
-
             {/* --------- How It Began ---------- */}
             <h3 id="how-it-began">How It Began</h3>
             <p>
@@ -653,7 +969,6 @@ export default function Ribbit2() {
               fully-featured Reddit alternative, one that's taught me more about
               full-stack engineering than any textbook ever could.
             </p>
-
             {/* --------- Goals and Inspiration ---------- */}
             <h3 id="goals-and-inspiration">Goals and Inspiration</h3>
             <p>
@@ -724,7 +1039,6 @@ export default function Ribbit2() {
               learn, to improve, and to create a platform that people genuinely
               enjoy using.
             </p>
-
             {/* --------- Primary Technologies Used ---------- */}
             <h3 id="primary-technologies-used">Primary Technologies Used</h3>
             <p>
@@ -786,9 +1100,7 @@ export default function Ribbit2() {
                 perspective, ensuring the interface behaves as expected.
               </li>
             </ul>
-
             <h3 id="challenges">Challenges</h3>
-
             <h4 id="frontend-backend-integration">
               Preventing Fragmented Architecture
             </h4>
@@ -807,7 +1119,6 @@ export default function Ribbit2() {
               development strategy from the start is essential for building a
               robust, feature-packed application like Ribbit.
             </p>
-
             <h4 id="battling-high-load-times">Battling High Load Times</h4>
             <p>
               As Ribbit grew, I introduced a large amount of seed data to mimic
@@ -829,7 +1140,6 @@ export default function Ribbit2() {
               optimization, Ribbit has thankfully stayed fast and fluid, even as
               the dataset continues to grow.
             </p>
-
             <h4 id="mastering-websockets">Mastering WebSockets</h4>
             <p>
               When it came time to add real-time features like live chat and
@@ -850,7 +1160,6 @@ export default function Ribbit2() {
               reinforced the importance of continuous learning and adaptability,
               key ingredients for any modern web application.
             </p>
-
             <h4 id="overhauling-an-unwieldy-codebase">
               Overhauling a Cumbersome Codebase
             </h4>
