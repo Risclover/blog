@@ -1,33 +1,51 @@
 name: Build and Deploy
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Check out repo
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - name: Cache
+      # 2️⃣ Use a modern Node.js so Next.js understands ?? / ?.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # LTS ≥ 18 also works
+          cache: npm # caches node_modules automatically
+
+      # 3️⃣ Cache Next.js compilation artifacts (speeds incremental builds)
+      - name: Cache Next.js build cache
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/.next/cache
+          path: .next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install and Build
-        uses: actions/setup-node@v1
-      - run: npm install
-      - run: npm run build
-      - run: npm run export
+      # 4️⃣ Install deps, build, export
+      - name: Install dependencies
+        run: npm ci # reproducible, faster than `npm install`
+
+      - name: Build app
+        run: npm run build
+
+      - name: Export static site
         env:
           CI: true
-      - run: touch out/.nojekyll
+        run: npm run export
 
+      # 5️⃣ Keep GitHub Pages from running Jekyll
+      - name: Add .nojekyll
+        run: touch out/.nojekyll
+
+      # 6️⃣ Deploy to gh-pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
