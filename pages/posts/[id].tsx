@@ -14,7 +14,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { getAllPostIds, getPostData, getSortedPostsData } from "lib/posts";
 
 import Code from "@/components/code";
-import { ExternalLinkWiggle } from "@/components/external-link-demo";
+import { ExternalLinkWiggle } from "@/components/external-link-wiggle";
 
 interface PostProps {
   fileContent: { slug: string; title: string; level: number }[];

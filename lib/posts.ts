@@ -57,7 +57,7 @@ export async function getPostData(id: string) {
   // Compile MDX → serialisable JSON for <MDXRemote />
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm, prism],
+      remarkPlugins: [remarkGfm, prism as any],
       format: "mdx",
     },
     scope: data, // front-matter available inside MDX if you want it
