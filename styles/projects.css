@@ -29,9 +29,13 @@
   line-height: 1.375;
 }
 
-.project-details ul li {
-  margin-bottom: 0.5rem;
+.project-details ul li,
+.project-details ol li {
+  margin-bottom: 0.8rem;
   line-height: 1.375;
+}
+
+.project-details ul li {
   list-style-type: disc;
 }
 

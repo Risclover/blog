@@ -4,6 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 1️⃣  Tell the browser “--chevron” is an animatable <path> value   */
+@property --chevron {
+  syntax: "<path>";
+  inherits: false;
+  initial-value: "M5 7 L10 12 L15 7";
+}
+
+/* 2️⃣  Bridge Tailwind → CSS variable on every SVG */
+svg[d] {
+  /* the attribute selector is a hack; see “Tailwind trick” below */
+}
+
+/* 3️⃣  That’s all — no keyframes necessary, transition is in the classes */
+
 [data-color-scheme="dark"] {
   color-scheme: dark;
 }
@@ -164,7 +178,7 @@ blockquote p:first-of-type {
 }
 
 img {
-  width: 100%;
+  /* width: 100%; */
   height: auto;
   vertical-align: middle;
   -moz-user-select: none;
@@ -191,13 +205,36 @@ img {
 }
 
 .ribbit-main {
-  width: auto;
+  width: auto; /* keep small files small        */
+  max-width: min(
+    100%,
+    38.125rem
+  ); /* shrink on narrow screens, cap at ≈610 px */
+  height: auto;
   margin: 2.5rem auto;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .yarl__container {
-  background-color: rgba(0, 0, 0, 0.884) !important;
+  background-color: #0f172a !important;
+}
+
+.yarl__slide_captions_container {
+  background-color: rgba(15, 23, 42, 0.82) !important;
+}
+
+.yarl__thumbnails_container {
+  background-color: #0f172a !important;
+}
+
+.yarl__thumbnails_vignette {
+  background: linear-gradient(
+    to right,
+    #0f172a 0,
+    transparent 5%,
+    transparent 95%,
+    #0f172a 100%
+  ) !important;
 }
 
 .resume-btn {
@@ -242,6 +279,12 @@ img {
   background: white;
   border-radius: 8px;
   padding: 2px;
+}
+
+.github-icon svg,
+.github-icon img {
+  width: 20px;
+  height: 20px;
 }
 
 /* DEMO ONLY */
@@ -314,7 +357,8 @@ img {
 }
 
 .content a,
-.frontpage a {
+.frontpage a,
+.project-content a {
   color: #4f4ef5;
 }
 
@@ -333,14 +377,16 @@ img {
 }
 
 .dark .content a,
-.dark .frontpage a {
+.dark .frontpage a,
+.dark .project-content a {
   color: #a5b4fc;
 }
 .dark .contact a {
   color: inherit;
 }
 
-.content a:hover {
+.content a:hover,
+.project-content a:hover {
   text-decoration: underline;
 }
 
@@ -363,11 +409,11 @@ img {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
-.quickfacts-div li {
+.quickfacts-div ul > li {
   list-style-type: disc !important;
   margin-left: 1.5rem;
-  margin-bottom: 0.3125rem;
-  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 
 .quickfacts-list.open {
@@ -411,14 +457,14 @@ img {
   transition: visibility 0.5s ease, max-height 0.5s ease;
   max-height: 0;
   overflow: hidden;
-  width: 43.75rem;
 }
 
 .quickfacts-list li {
-  word-break: break-all;
+  /* word-break: break-all; */
   overflow-wrap: break-word;
   white-space: pre-wrap;
 }
+
 .inner-ul li {
   list-style-type: circle !important;
   padding-right: 2rem;
@@ -501,7 +547,7 @@ img {
 }
 
 .overlay-fade {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s;
 }
 
@@ -524,14 +570,14 @@ img {
 .toc {
   position: sticky;
   top: 6.125rem;
-  overflow: hidden;
   padding-bottom: 16px;
   border-radius: 8px;
-  max-height: 100vh;
+  width: 16.75rem;
 }
 
 .toc-ul {
   overflow-y: auto;
+  max-height: 80vh;
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0,
@@ -549,6 +595,21 @@ img {
   --top-mask-size: 0px;
   --bottom-mask-size: 0px;
   padding-right: 10px;
+  max-height: calc(100vh - 10rem);
+  padding-bottom: 1rem;
+}
+
+.toc-link {
+  opacity: 0.7;
+}
+
+.toc-link-purp {
+  opacity: 1;
+}
+
+.toc-link:hover {
+  opacity: 1;
+  transition: opacity 0s;
 }
 
 .toc-ul.is-top-overflowing {
@@ -582,7 +643,7 @@ ol li {
   margin-bottom: 10px;
 }
 
-.project-ul li {
+.project-ul ul > li {
   margin-left: 30px;
   margin-top: 10px;
   list-style-type: disc;
@@ -602,7 +663,7 @@ li a {
   margin-top: 0;
 }
 
-.content ul li {
+.content ul > li {
   list-style-type: disc;
 }
 
@@ -724,13 +785,12 @@ li a {
 }
 
 pre {
-  font-size: 14px !important;
-  background: lightblue;
-  overflow-y: auto !important;
-  white-space: pre-wrap !important;
+  font-size: 14px;
+  overflow-y: auto;
+  white-space: pre-wrap;
   height: auto;
-  padding-left: 20px !important;
-  margin-top: 20px !important;
+  padding-left: 20px;
+  margin-top: 20px;
   margin-bottom: 20px !important;
 }
 
@@ -769,6 +829,63 @@ pre {
   padding: 1rem;
   padding-inline-start: 1.5rem;
   padding-inline-end: 1.5rem;
+}
+
+.blog-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: max-content;
+  box-shadow: 0 1px 0 transparent;
+  line-height: 0;
+}
+
+.blog-external-link svg {
+  width: 12px;
+}
+
+.blog-external-link:hover {
+  box-shadow: 0 1px 0 #4f4ef5;
+  text-decoration: none !important;
+}
+
+.mindmap {
+  margin-bottom: 1.875rem;
+}
+
+.hero-img img {
+  max-width: 100%;
+}
+
+.hero-img-carousel {
+  padding: 20px;
+}
+
+/* Center the arrow’s transform box so it pivots naturally */
+.ext-link__arrow {
+  transform-box: fill-box; /* makes transform-origin use the path’s box */
+  transform-origin: center; /* pivot at its own center */
+}
+
+/* Trigger animation when the whole link is hovered */
+.ext-link:hover .ext-link__arrow {
+  animation: arrow-wiggle 0.4s ease-in-out infinite;
+}
+
+@keyframes arrow-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
 }
 
 @media (min-width: 63.75rem) {
@@ -818,6 +935,20 @@ pre {
     scroll-behavior: smooth;
   }
 
+  /* Light mode defaults */
+  html,
+  body,
+  #__next {
+    @apply bg-white text-slate-900;
+  }
+
+  /* Dark mode overrides – next-themes adds the .dark class for us */
+  html.dark,
+  html.dark body,
+  html.dark #__next {
+    @apply bg-slate-950 text-slate-100;
+  }
+
   img,
   picture,
   video,
@@ -825,9 +956,6 @@ pre {
   svg {
     display {
       @apply block;
-    }
-    max-width {
-      @apply max-w-full;
     }
   }
 
@@ -872,6 +1000,20 @@ pre {
   }
 }
 
+@media (max-width: 48rem) {
+  pre[class*="language-"],
+  code[class*="language-"] {
+    font-size: 0.8rem !important;
+  }
+
+  code {
+    font-size: 0.9rem !important;
+  }
+
+  .project-content {
+    font-size: 1rem;
+  }
+}
 @media (min-width: 64rem) {
   .content.content-with-toc {
     /* max-width: 600px; */

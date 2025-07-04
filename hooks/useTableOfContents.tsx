@@ -19,7 +19,7 @@ function useTableOfContents() {
         const element = heading as HTMLElement;
         const title = element.innerText;
 
-        if (title === "Quick Facts") {
+        if (title === "Quick Facts" || title === "Let's talk!") {
           return null;
         }
 

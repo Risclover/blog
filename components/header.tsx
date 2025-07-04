@@ -1,35 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { ReactNode } from "react";
 
-type Props = {
-  children: React.ReactNode;
-};
+type Props = { children: ReactNode };
 
-export const Header = (props: Props) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const storedMode = localStorage.getItem("theme");
-    const prefersDarkMode = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    if (storedMode) {
-      setIsDarkMode(storedMode === "dark");
-    } else {
-      setIsDarkMode(prefersDarkMode);
-    }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-  }, [isDarkMode]);
-
-  return (
-    <header className="w-full flex flex-col text-slate-50 bg-slate-900 ">
-      {props.children}
-    </header>
-  );
-};
+export const Header = ({ children }: Props) => (
+  <header className="w-full flex flex-col text-slate-50 bg-slate-900">
+    {children}
+  </header>
+);
 
 export default Header;

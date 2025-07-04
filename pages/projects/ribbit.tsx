@@ -155,6 +155,7 @@ export default function Ribbit() {
 
   return (
     <Layout postData={postData}>
+      {" "}
       <Head>
         <title>Sara Dunlop | Ribbit</title>
       </Head>
@@ -164,7 +165,7 @@ export default function Ribbit() {
         className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900 gap-14"
       >
         <TableofContents headings={fileContent} />
-        <div className="font-wotfard text-lg w-full lg:pl-6 flex-1 min-w-0">
+        <div className="project-content font-wotfard text-lg w-full lg:pl-6 flex-1 min-w-0">
           <QuickFacts projectInfo={projectInfo} />
           <div className="project-details">
             <h2 id="introduction">Introduction</h2>

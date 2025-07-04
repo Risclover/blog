@@ -6,6 +6,7 @@ export default class MyDocument extends Document {
     return (
       <Html className="scroll-smooth" suppressHydrationWarning lang="en">
         <Head>
+          <meta name="color-scheme" content="dark light" />
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
@@ -14,7 +15,6 @@ export default class MyDocument extends Document {
             name="description"
             content="Sara Dunlop is a passionate and talented fullstack software engineer and web developer. This is her portfolio site, where visitors can find her skill stack, her blog, and examples of her work."
           />
-          <title>Sara Dunlop | Portfolio Website</title>
         </Head>
         <body>
           <script

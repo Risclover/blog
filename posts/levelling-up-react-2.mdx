@@ -1,0 +1,227 @@
+---
+title: "Levelling Up React #2: Cleaning Up Your Imports with Barrels and Aliases"
+date: 11/22/2024
+type: Blog
+category: Tutorial
+subtitle: Irradicating long and unruly imports with barrels and aliases
+description: Barrels and aliases are a superpower. Learn how to use them in your projects to manage your imports with grace.
+slug: levelling-up-react-2
+categoryUrl: "/categories/tutorial"
+---
+
+Do you find yourself wincing every time you look at the imports at the top of your React files? How could you not when they look long and unruly, like this?
+
+<Code
+  language="javascript"
+  code={`import PostFeed from "../../features/Posts/components/PostFeed/PostFeed";
+import PostFeedBtn from "../../features/Posts/components/PostFeed/PostFeedBtn";
+import ScrollToTopBtn from "../../components/ScrollToTopBtn/ScrollToTopBtn";`}
+/>
+
+If you've ever found yourself squinting at a string of `../../../` in a React file, or hesitated to move a component for fear of breaking half the project, you already know how quickly import statements can sprawl. What starts as a few innocent, clean lines soon morphs into the longest path in the world, hurting readability as well as your will to refactor.
+
+The answer to your problems may just be barrels and aliases.
+
+## Why Should I Bother?
+
+The magic of utilizing barrels and aliases results in your import statements going from long, chaotic, and hard-to-read messes:
+
+<Code
+  language="javascript"
+  code={`import PostFeed from "../../features/Posts/components/PostFeed/PostFeed";
+import PostFeedBtn from "../../features/Posts/components/PostFeed/PostFeedBtn";
+import ScrollToTopBtn from "../../components/ScrollToTopBtn/ScrollToTopBtn";`}
+/>
+
+to being short, concise, and manageable angels:
+
+<Code
+  language="javascript"
+  code={`import { PostFeed, PostFeedBtn } from "@/features";
+import { ScrollToTopBtn } from "@/components";`}
+/>
+
+We're able to use one import statement for all of the components coming from the same directory, and our paths have been reduced considerably.
+
+## A Brief Warning
+
+Before we continue with this tutorial, I should mention that there are caveats to implementing this pattern. In recent years, other developers and engineers have published articles advising people to not use barrels, as doing so has the possibility of drastically increasing both the time it takes to start up your app as well as the size of your app's bundle. This is primarily a concern for large codebases.
+
+That being said, this isn't necessarily the case for a majority of projects out there, especially if you are building smaller projects for a portfolio or a friend. The bigger a project is, the more potential there is for this warning being the case. You have to decide for yourself whether the tradeoff is worth it.
+
+I highly recommend that you educate yourself on the matter. I particularly enjoyed <span className="external-link-container"><ExternalLinkWiggleDemo url="https://marvinh.dev/blog/speeding-up-javascript-ecosystem-part-7/" text='this blog post' /></span>, but there are several out there on the topic for you to read if you feel so inclined.
+
+## What is a Barrel?
+
+A <span class="text-pink-500">barrel</span> is simply an `index.ts` or `index.js` file that does nothing other than re-export everything else in that same directory.
+
+## What is an Alias?
+
+The other part of this equation is the <span class="text-pink-500">alias</span>. An alias is a build-tool mapping that tells the bundler (and TypeScript) how to translate shorthand paths. In doing so, it allows you to remove the _dot-dot_ ladder in front of your paths:
+
+<Code language='javascript' code={`// Turning this...
+import Card from "../../../features/components/Card";
+
+// ...into this:
+import { Card } from "@/features";`} />
+
+Above, we replace `../../../` with a simple `@/`. _That_ is the simple power of using an alias. It means that we don't have to figure out how many levels up we have to go with `../../` and can simply start our path with `@/` regardless of how nested something is.
+
+## Implementing Barrels
+
+Setting up barrels for your project is pretty easy, although perhaps a little time consuming if you have a lot of nested directories. Here's how to implement barrels in 3 steps.
+
+### Step 1: Create either an `index.ts` or an `index.js` file for each of your directories and subdirectories.
+
+Let's say we have a project with this folder, `components/`, that contains the following:
+
+<Code
+  language="bash"
+  code={`components/
+├─ Card/
+│  ├─ Card.js
+│  └─ CardBtn.js
+├─ Button.js
+└─ Spinner.js`}
+/>
+
+We can see two directories here, `components/` and `Card/`. Both of these directories would require us to create a barrel within them, like so:
+
+<Code
+  language="bash"
+  code={`components/
+├─ Card/
+│  ├─ Card.js
+│  ├─ CardBtn.js
+│  └─ index.js
+├─ Button.js
+├─ Spinner.js
+└─ index.js`}
+/>
+
+The barrels themselves contain export statements for the other files in that directory. The barrel for `components/`, for example, would look something like this:
+
+<Code
+  language="javascript"
+  code={`// components/index.js
+export * from "./Card";
+export { Button } from "./Button";
+export { Spinner } from "./Spinner";`}
+/>
+
+Above we have two types of export statements.
+
+- The first line, `export * from "./Card";`, exports _everything_ from the `Card/` directory, covering both `Card.js` and `CardBtn.js` in one short statement.
+- The other two exports both export a single component, `Button` and `Spinner`, respectively. Although technically you could use `export * from ...` for everything, you may want to call components out by name for better readability.
+
+As for the barrel in the `Card/` directory, it would therefore look like this:
+
+<Code
+  language="javascript"
+  code={`// components/Card/index.js
+export { Card } from "./Card";
+export { CardBtn } from "./CardBtn";`}
+/>
+
+It should be noted that you don't _have_ to export every single file in that directory; you only have to export the files you're using elsewhere in your codebase.
+
+### Step 2: Change your exports from default to named.
+
+<Code language='javascript' code={`// Change your default exports:
+export default function Card() {
+
+// ...to named exports:
+export function Card() {`} />
+
+### Step 3: Change your imports from default to named as well.
+
+<Code language='javascript' code={`// Change your default imports:
+import Card from "./Card";
+
+// ...to named imports:
+import { Card } from "./Card";`} />
+
+And that's it. You can now either fix all of your existing import statements, or leave them and just write concise import statements from now on. It's up to you.
+
+## Setting Up Aliases In Your Stack
+
+### React + Vite
+
+#### TypeScript / IDE
+
+<Code
+  language="javascript"
+  code={`// tsconfig.json
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": { "@/*": ["src/*"] }
+    }
+}`}
+/>
+
+#### Vite
+
+<Code language="javascript" code={`// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { resolve } from "path";
+
+export default defineConfig({
+    plugins: [react()],
+    resolve: {
+      alias: { "@": resolve(__dirname, "src") }
+    }
+});`} />
+
+#### Jest (optional)
+
+<Code
+  language="javascript"
+  code={`// jest.config.js
+module.exports = {
+    moduleNameMapper: { "^@/(.*)$": "<rootDir>/src/$1" }
+};`}
+/>
+
+### Create-React-App (no eject)
+
+If you're still using CRA (i.e. working on a project that hasn't moved to Vite), you can use the community package:
+
+<Code language="bash" code={`npm i -D craco`} />
+<Code
+  language="javascript"
+  code={`// craco.config.js
+const path = require("path");
+module.exports = {
+    webpack: {
+      alias: { "@": path.resolve(__dirname, "src") }
+    }
+};`}
+/>
+
+### Next.js (App Router)
+
+<Code
+  language="javascript"
+  code={`// jsconfig.json
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": { "@/*": ["src/*"] }
+    }
+}`}
+/>
+
+## Putting it All Together
+
+Once your barrels are set up and your settings have been changed for the usage of aliases, you can start importing your components like so:
+
+<Code
+  language="javascript"
+  code={`import { Card, CardBtn, CardHeader } from "@/components";
+import { Post, Comment, CommentSearch } from "@/features";
+import { useScrollToTop, useOutsideClick, useFocusTrap } from "@/hooks";`}
+/>
+
+If you find that this implementation has severely slowed things down for you, you may find that it's not worth it. For everyone else, however, enjoy your beautiful, short import statements!

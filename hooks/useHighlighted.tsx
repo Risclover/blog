@@ -6,7 +6,7 @@ function useHighlighted() {
   useEffect(() => {
     // Get all heading elements
     const headings = Array.from(
-      document.querySelectorAll("h2, h3, h4")
+      document.querySelectorAll("h2, h3")
     ) as HTMLElement[];
 
     function onScroll() {

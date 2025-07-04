@@ -1,5 +1,5 @@
 import React from "react";
-
+import GitHubCat from "./";
 type Props = {};
 
 export function GithubIcon({}: Props) {

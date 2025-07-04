@@ -45,7 +45,7 @@ export default function Layout({
   const router = useRouter();
 
   return (
-    <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-slate-800 flex flex-col bg-white relative">
+    <div className="smooth-scroll dark-mode min-h-screen font-rubik transition duration-200 dark:bg-slate-800 flex flex-col relative">
       <Head>
         <link rel="icon" href="/blog-logo.ico" />
         <meta
@@ -89,79 +89,78 @@ export default function Layout({
         <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" />
         <script src="https://app.unpkg.com/prismjs@1.30.0/files/components/prism-jsx.js" />
         <script src="https://app.unpkg.com/prismjs@1.30.0/files/components/prism-bash.js" />
+        <script src="https://app.unpkg.com/prismjs@1.30.0/files/components/prism-json.js" />
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js" />
-        <Script src="storage.js" />
         <title>Sara Dunlop | Portfolio</title>
       </Head>
-      <Providers>
-        <ClickAwayListener onClickAway={() => setMenu(false)}>
-          <MobileMenu menu={menu} setMenu={setMenu} />
-        </ClickAwayListener>
-        <Nav menu={menu} setMenu={setMenu} />
-        {router.pathname !== "/" && (
-          <Header>
-            {home ? (
-              <div className="mx-auto max-w-6xl flex flex-col justify-end mt-12">
-                <Image className="w-96 mx-auto" src={Avatar} alt="Me" />
-              </div>
-            ) : (
-              <div className="flex flex-col justify-end z-10 mx-auto max-w-6xl w-full lg:px-12 px-6 lg:mt-20 mt-6 pb-8 lg:pb-14">
-                <div className="mb-2 text-slate-50 capitalize text-medium lg:text-base">
-                  <Link href="/" className="text-white hover:text-gray-400">
-                    Home
+      <ClickAwayListener onClickAway={() => setMenu(false)}>
+        <MobileMenu menu={menu} setMenu={setMenu} />
+      </ClickAwayListener>
+      <Nav menu={menu} setMenu={setMenu} />
+      {router.pathname !== "/" && (
+        <Header>
+          {home ? (
+            <div className="mx-auto max-w-6xl flex flex-col justify-end mt-12">
+              <Image className="w-96 mx-auto" src={Avatar} alt="Me" />
+            </div>
+          ) : (
+            <div className="flex flex-col justify-end z-10 mx-auto max-w-6xl w-full lg:px-12 px-6 lg:mt-20 mt-6 pb-8 lg:pb-14">
+              <div className="mb-2 text-slate-50 capitalize text-medium lg:text-base">
+                <Link href="/" className="text-white hover:text-gray-400">
+                  Home
+                </Link>
+                <span className="mx-5">&gt;</span>
+                {postData?.type === "Blog" && (
+                  <Link href="/blog" className="hover:text-gray-400">
+                    {postData?.type}
                   </Link>
-                  <span className="mx-5">&gt;</span>
-                  {postData?.type === "Blog" && (
-                    <Link href="/blog" className="hover:text-gray-400">
-                      {postData?.type}
-                    </Link>
-                  )}
+                )}
 
-                  {postData?.category !== "Projects" && (
-                    <span className="mx-5">&gt;</span>
-                  )}
-                  <Link
-                    href={`${
-                      postData?.category
-                        ? postData?.categoryUrl
-                        : `/categories/${postData?.category?.toLowerCase()}`
-                    }`}
-                    className="hover:text-gray-400"
-                  >
-                    {postData?.category}
-                  </Link>
-                </div>
-                <h1 className="text-3xl lg:text-4xl font-medium leading-tight">
-                  {postData?.title || projectData?.title}
-                </h1>
-                {postData?.subtitle && postData?.subtitle.length > 0 && (
-                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 leading-tight">
-                    {postData?.subtitle}
-                  </div>
+                {postData?.category !== "Projects" && (
+                  <span className="mx-5">&gt;</span>
                 )}
-                {projectData?.subtitle && projectData?.subtitle.length > 0 && (
-                  <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 leading-tight">
-                    {projectData?.subtitle}
-                  </div>
-                )}
+                <Link
+                  href={`${
+                    postData?.category
+                      ? postData?.categoryUrl
+                      : `/categories/${postData?.category?.toLowerCase()}`
+                  }`}
+                  className="hover:text-gray-400"
+                >
+                  {postData?.category}
+                </Link>
               </div>
-            )}
-          </Header>
-        )}
-        <main
-          className={`${
-            bg === "grey" ? "bg-gray-100" : "bg-white"
-          } dark:bg-slate-950 relative`}
-        >
-          {children}
-          <BackToTop />
-        </main>
-        <div className="w-full bg-slate-900 text-gray-50 dark:text-gray-50">
-          <div className="px-6 lg:px-12 lg:max-w-6xl mx-auto w-full py-20">
-            <Contact />
-          </div>
+              <h1 className="text-3xl lg:text-4xl font-medium leading-tight">
+                {postData?.title || projectData?.title}
+              </h1>
+              {postData?.subtitle && postData?.subtitle.length > 0 && (
+                <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 leading-tight">
+                  {postData?.subtitle}
+                </div>
+              )}
+              {projectData?.subtitle && projectData?.subtitle.length > 0 && (
+                <div className="mt-2 text-medium lg:text-lg font-normal md:block text-slate-400 leading-tight">
+                  {projectData?.subtitle}
+                </div>
+              )}
+            </div>
+          )}
+        </Header>
+      )}
+      <main
+        className={`${
+          bg === "grey" ? "bg-gray-100" : "bg-white"
+        } dark:bg-slate-950 relative`}
+      >
+        {children}
+        <BackToTop />
+      </main>
+      <div className="w-full bg-slate-900 text-gray-50 dark:text-gray-50">
+        <div className="px-6 lg:px-12 lg:max-w-6xl mx-auto w-full py-20">
+          <Contact />
         </div>
-      </Providers>
+      </div>
     </div>
   );
 }

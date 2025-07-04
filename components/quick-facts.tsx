@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
+import Accordion from "./accordion";
 
 type Props = {
   projectInfo: {
@@ -54,17 +55,13 @@ export default function QuickFacts({ projectInfo }: Props) {
             <div className="flex items-center">
               <strong className="flex items-center">
                 Features{" "}
-                {showFeatures ? (
-                  <HiChevronUp className="text-2xl" />
-                ) : (
-                  <HiChevronDown className="text-2xl" />
-                )}
+                <Accordion setOpen={setShowFeatures} open={showFeatures} />
               </strong>{" "}
               <span className="text-sm">(click to toggle)</span>
             </div>
 
             <div className="quickfacts-list flex flex-wrap">
-              <ul className="flex flex-wrap flex-col h-[100%] sm:max-h-[21.875rem] inner-ul">
+              <ul className="flex flex-wrap flex-col h-[100%] md:max-h-[13rem] inner-ul">
                 {projectInfo.features.map((feature) => (
                   <li>{feature}</li>
                 ))}

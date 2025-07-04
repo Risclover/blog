@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PiArrowFatUpDuotone } from "react-icons/pi";
 import useHighlighted from "hooks/useHighlighted";
 import { buildHierarchy } from "lib/hierarchy";
+import BackToTopButton from "./backtotopbtn";
 
 type Heading = {
   slug: string;
@@ -16,14 +17,6 @@ type Props = {
 
 export default function TableofContents(props: Props) {
   const { activeId } = useHighlighted();
-  const [expandedHeadings, setExpandedHeadings] = useState<
-    Record<string, boolean>
-  >({});
-
-  const hierarchicalHeadings = React.useMemo(
-    () => buildHierarchy(props.headings),
-    [props.headings]
-  );
 
   useEffect(() => {
     function setClasses(el: HTMLElement | null): void {
@@ -76,6 +69,34 @@ export default function TableofContents(props: Props) {
     });
   };
 
+  const hierarchicalHeadings = React.useMemo(
+    () => buildHierarchy(props.headings),
+    [props.headings]
+  );
+
+  const defaultExpandedHeadings = React.useMemo<Record<string, boolean>>(() => {
+    const map: Record<string, boolean> = {};
+    hierarchicalHeadings.forEach((heading) => {
+      if (
+        heading.level === 2 &&
+        heading.children &&
+        heading.children.length > 0
+      ) {
+        map[heading.slug] = true;
+      }
+    });
+    return map;
+  }, [hierarchicalHeadings]);
+
+  const [expandedHeadings, setExpandedHeadings] = useState<
+    Record<string, boolean>
+  >({});
+
+  // Set the expanded headings once after first render
+  useEffect(() => {
+    setExpandedHeadings(defaultExpandedHeadings);
+  }, [defaultExpandedHeadings]);
+
   const toggleHeading = (slug: string) => {
     setExpandedHeadings((prev) => ({
       ...prev,
@@ -86,10 +107,32 @@ export default function TableofContents(props: Props) {
   const renderHeadings = (headings: Heading[], level: number) => {
     return headings.map((heading) => {
       if (heading.level === 2) {
+        const hasLevel3Children =
+          heading.children && heading.children.length > 0;
         return (
           <li key={heading.slug}>
-            <a href={`#${heading.slug}`}>
-              {/* level-2 styling */}
+            <div className="flex items-center">
+              <a
+                href={`#${heading.slug}`}
+                className={`${
+                  activeId === heading.slug
+                    ? "text-indigo-600 dark:text-indigo-300"
+                    : "text-slate-900 dark:text-gray-50"
+                } text-base hover:text-indigo-600  dark:hover:text-indigo-300`}
+              >
+                {heading.title}
+              </a>
+              {hasLevel3Children && (
+                <button
+                  onClick={() => toggleHeading(heading.slug)}
+                  className="ml-1 p-1"
+                  aria-label={`Toggle ${heading.title} subheadings`}
+                >
+                  {expandedHeadings[heading.slug] ? "▾" : "▸"}
+                </button>
+              )}
+            </div>
+            {/* <a href={`#${heading.slug}`}>
               <div
                 className={
                   activeId === heading.slug
@@ -99,10 +142,10 @@ export default function TableofContents(props: Props) {
               >
                 {heading.title}
               </div>
-            </a>
+            </a> */}
             {/* Render level-3 children below it, if any */}
-            {heading.children && heading.children.length > 0 && (
-              <ul className="ml-3">{renderHeadings(heading.children, 3)}</ul>
+            {hasLevel3Children && expandedHeadings[heading.slug] && (
+              <ul className="ml-3">{renderHeadings(heading.children!, 3)}</ul>
             )}
           </li>
         );
@@ -118,24 +161,23 @@ export default function TableofContents(props: Props) {
             <div className="flex items-center">
               <a
                 href={`#${heading.slug}`}
-                className={
+                className={`${
                   activeId === heading.slug
-                    ? "text-indigo-600 dark:text-indigo-300 text-[0.95rem] ..."
-                    : "text-slate-900 dark:text-gray-50 text-[0.95rem] ..."
-                }
+                    ? "text-indigo-600 dark:text-indigo-300"
+                    : "text-slate-900 dark:text-gray-50"
+                } text-[0.95rem] hover:text-indigo-600 list-none dark:hover:text-indigo-300`}
               >
                 {heading.title}
               </a>
-              {hasLevel4Children && (
+              {/* {hasLevel4Children && (
                 <button
                   onClick={() => toggleHeading(heading.slug)}
                   className="ml-1 p-1"
                   aria-label={`Toggle ${heading.title} subheadings`}
                 >
-                  {/* Show up/down arrow depending on state */}
                   {expandedHeadings[heading.slug] ? "▾" : "▸"}
                 </button>
-              )}
+              )} */}
             </div>
 
             {/* Only render the level-4 children if expanded */}
@@ -152,23 +194,23 @@ export default function TableofContents(props: Props) {
         );
       }
 
-      if (heading.level === 4) {
-        // Plainly render the level-4 item
-        return (
-          <li key={heading.slug}>
-            <a
-              href={`#${heading.slug}`}
-              className={
-                activeId === heading.slug
-                  ? "text-indigo-600 dark:text-indigo-300 text-[0.925rem] ..."
-                  : "text-slate-900 dark:text-gray-50 text-[0.925rem] ..."
-              }
-            >
-              {heading.title}
-            </a>
-          </li>
-        );
-      }
+      // if (heading.level === 4) {
+      //   // Plainly render the level-4 item
+      //   return (
+      //     <li key={heading.slug}>
+      //       <a
+      //         href={`#${heading.slug}`}
+      //         className={
+      //           activeId === heading.slug
+      //             ? "text-indigo-600 dark:text-indigo-300 text-[0.925rem] ..."
+      //             : "text-slate-900 dark:text-gray-50 text-[0.925rem] ..."
+      //         }
+      //       >
+      //         {heading.title}
+      //       </a>
+      //     </li>
+      //   );
+      // }
 
       return null;
     });
@@ -179,13 +221,11 @@ export default function TableofContents(props: Props) {
       <h1 className="uppercase font-medium text-[1.05rem] tracking-widest mb-1">
         Table of Contents
       </h1>
-      <div className="toc-ul max-h-[60vh] overflow-auto">
+      <div className="toc-ul overflow-auto">
         <ul>{renderHeadings(hierarchicalHeadings, 2)}</ul>
         {/* .toc-fade if needed */}
       </div>
-      <button className="mt-6 text-sm flex" onClick={scrollToTop}>
-        Back to Top <PiArrowFatUpDuotone className="ml-1 mt-[2px]" />
-      </button>
+      <BackToTopButton />
     </div>
   );
 }

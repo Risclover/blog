@@ -206,7 +206,7 @@ export function Projects2({}: Props) {
                 if (e.key === "Enter") router.push(project.url);
               }}
               tabIndex={0}
-              className="project rounded border border-slate-200 dark:border-slate-500 cursor-pointer shadow-md transition-transform duration-200 ease-in-out active:scale-95 transition:shadow dark:bg-slate-900 bg-opacity-70 dark:bg-opacity-30"
+              className="project rounded border border-slate-200 dark:border-slate-500 cursor-pointer shadow-md transition-transform duration-200 ease-in-out transition:shadow dark:bg-slate-900 bg-opacity-70 dark:bg-opacity-30"
             >
               <div className="project-img">
                 <img src={project.hero_img} />
@@ -215,7 +215,7 @@ export function Projects2({}: Props) {
                 <h3 className="project-title text-[1.5rem] font-medium flex items-center justify-between w-full">
                   <span>{project.name}</span>
                   <div className="flex items-center gap-3">
-                    <div className="transition-transform duration-200 ease-in-out hover:scale-125 active:scale-100">
+                    <div className="transition-transform duration-200 ease-in-out hover:scale-125 active:scale-90">
                       <Link
                         href={project.github_url}
                         target="_blank"

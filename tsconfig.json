@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,15 +16,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/pages/*": [
-        "pages/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ]
+      "@/components/*": ["components/*"],
+      "@/pages/*": ["pages/*"],
+      "@/styles/*": ["styles/*"]
     },
     "plugins": [
       {
@@ -41,12 +31,11 @@
     "**/*.ts",
     "**/*.tsx",
     "types.d.ts",
-    "public/storage.js",
-    ".next/types/**/*.ts"
-, "components/comparisonslider.js", "pages/projects/[id].mdx", "pages/projects/ribbit-new.mdx"  ]
+    ".next/types/**/*.ts",
+    "components/comparisonslider.js",
+    "pages/projects/[id].mdx",
+    "pages/projects/ribbit-new.mdx"
+  ],
   // "exclude": ["node_modules"]
-  ,
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

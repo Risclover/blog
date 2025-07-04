@@ -28,8 +28,12 @@ function ImageModal({ imgSrc, imgAlt, title, description }: Props) {
 
   return (
     <>
-      <div onClick={handleClick} className="cursor-pointer mx-auto w-[100%]">
-        <img src={imgSrc} alt={imgAlt} className="ribbit-main my-10" />
+      <div onClick={handleClick} className="cursor-pointer mx-auto">
+        <img
+          src={imgSrc}
+          alt={imgAlt}
+          className="ribbit-main my-10 rounded-lg"
+        />
       </div>
       <Lightbox
         plugins={[Captions, Video]}

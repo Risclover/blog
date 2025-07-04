@@ -86,7 +86,7 @@ export default function MobileTableofContents(props: Props) {
                         </li>
                       </ul>
                     )}
-                    {heading.level === 4 && (
+                    {/* {heading.level === 4 && (
                       <ul className="mb-0 ml-5">
                         <li className="list-none">
                           <ul className="mb-0">
@@ -102,7 +102,7 @@ export default function MobileTableofContents(props: Props) {
                           </ul>
                         </li>
                       </ul>
-                    )}
+                    )} */}
                   </a>
                 </li>
               ) : null
