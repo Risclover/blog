@@ -94,8 +94,9 @@ export default function Post({ postData, fileContent }: PostProps) {
       ))}
 
       <div
+        id="about"
         ref={headingsRef}
-        className="mx-auto max-w-6xl w-full px-6 lg:px-12 py-10 fit-content lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 gap-14"
+        className="mx-auto max-w-6xl w-full px-6 lg:px-5 py-10 lg:py-20 flex flex-row-reverse justify-between dark:text-gray-50 items-start text-slate-900 gap-14"
       >
         {fileContent.length > 0 && <TableOfContents headings={fileContent} />}
 

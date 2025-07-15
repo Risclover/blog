@@ -80,7 +80,7 @@ export default function MobileTableofContents(props: Props) {
                             activeId === heading.slug
                               ? "text-indigo-600 dark:text-indigo-300"
                               : "text-slate-900 dark:text-gray-50"
-                          } text-[0.95rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
+                          } text-[0.875rem] hover:text-indigo-600 mt-[3px] list-none dark:hover:text-indigo-300`}
                         >
                           {heading.title}
                         </li>

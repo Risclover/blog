@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import Accordion from "./accordion";
+import { ExternalLinkWiggle } from "./external-link-wiggle";
 
 type Props = {
   projectInfo: {
@@ -57,7 +58,9 @@ export default function QuickFacts({ projectInfo }: Props) {
                 Features{" "}
                 <Accordion setOpen={setShowFeatures} open={showFeatures} />
               </strong>{" "}
-              <span className="text-sm">(click to toggle)</span>
+              <span className="text-sm">
+                (click to {showFeatures ? "collapse" : "expand"})
+              </span>
             </div>
 
             <div className="quickfacts-list flex flex-wrap">
@@ -70,23 +73,11 @@ export default function QuickFacts({ projectInfo }: Props) {
           </li>
           <li>
             <strong>Github Repo:</strong>{" "}
-            <a
-              href={projectInfo.repo}
-              target="_blank"
-              className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
-            >
-              Link
-            </a>
+            <ExternalLinkWiggle url={projectInfo.repo} text="Link" />
           </li>
           <li>
             <strong>Live demo:</strong>{" "}
-            <a
-              href={projectInfo.demo}
-              target="_blank"
-              className="text-indigo-600 dark:text-indigo-300 hover:underline inline"
-            >
-              Link
-            </a>
+            <ExternalLinkWiggle url={projectInfo.demo} text="Link" />
           </li>
           <li>
             <strong>Tech docs:</strong>{" "}

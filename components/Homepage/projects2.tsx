@@ -80,7 +80,7 @@ export function Projects2({}: Props) {
       live_url: "https://ribbit-app.herokuapp.com",
       description:
         "This is Ribbit, a fullstack, pixel-perfect clone of Reddit.com. With over 15 features, an intuitive interactive interface, and beautifully-written code, Ribbit thrives as one of the best Reddit clones on the Internet.",
-      url: "/projects/ribbit2",
+      url: "/projects/ribbit",
       img_alt: "Ribbit (Reddit clone)",
     },
     {
@@ -206,7 +206,7 @@ export function Projects2({}: Props) {
                 if (e.key === "Enter") router.push(project.url);
               }}
               tabIndex={0}
-              className="project rounded border border-slate-200 dark:border-slate-500 cursor-pointer shadow-md transition-transform duration-200 ease-in-out transition:shadow dark:bg-slate-900 bg-opacity-70 dark:bg-opacity-30"
+              className="project rounded dark:border dark:border-slate-500 cursor-pointer transition-transform duration-200 ease-in-out transition:shadow dark:bg-slate-900 bg-opacity-70 dark:bg-opacity-30"
             >
               <div className="project-img">
                 <img src={project.hero_img} />

@@ -37,9 +37,11 @@ export default function Contact() {
   }, [success]);
 
   useEffect(() => {
-    if (name.length > 0 && email.length > 0 && message.length > 0) {
-      setDisabled(false);
-    }
+    setDisabled(
+      name.trim().length === 0 ||
+        email.trim().length === 0 ||
+        message.trim().length === 0
+    );
   }, [name, email, message]);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {

@@ -6,9 +6,9 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-import Photo1 from "../public/images/projects/ribbit/comparison-reddit-2.png";
-import Photo2 from "../public/images/projects/ribbit/features/auth-screenshot.png";
-import Photo3 from "../public/images/projects/ribbit/features/comment-search.png";
+import Photo1 from "../public/images/projects/ribbit/hero-carousel-img-1.png";
+import Photo2 from "../public/images/projects/ribbit/hero-carousel-img-2.png";
+import Photo3 from "../public/images/projects/ribbit/hero-carousel-img-3.png";
 import Photo4 from "../public/images/projects/ribbit/features/community-screenshot.png";
 
 type Props = {};
@@ -73,8 +73,8 @@ export default function HeroImageCarousel({}: Props) {
             aspectRatio: "5/3",
             margin: "2.5rem auto",
             boxShadow:
-              "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
-            borderRadius: "1rem",
+              "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+            borderRadius: "8px",
             overflow: "hidden",
           },
         }}

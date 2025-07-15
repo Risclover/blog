@@ -1,7 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import { motion } from "framer-motion";
 import { HiMiniArrowRight } from "react-icons/hi2";
 import { getCategories, getCategoryPosts } from "lib/categories";
 import Layout from "@/components/layout";
@@ -23,6 +22,10 @@ export default function Category({
     postId: string;
   }[];
 }) {
+  console.log(
+    "postId:",
+    categoryData.map((post) => post.postId)
+  );
   return (
     <Layout home>
       <Head>
@@ -37,14 +40,8 @@ export default function Category({
             {categoryData.map(
               (post, i) =>
                 post?.data.category.toLowerCase() === id && (
-                  <Link key={i} href={`/posts/${post?.postId}`}>
-                    <motion.div
-                      whileHover={{
-                        scale: 1.05,
-                        transition: { duration: 0.05 },
-                      }}
-                      className="category-box cursor-pointer group h-full dark:bg-gray-800 dark:text-gray-50"
-                    >
+                  <Link key={i} href={`/posts/${post?.postId.slice(0, -4)}`}>
+                    <div className="category-box cursor-pointer group h-full dark:bg-gray-800 dark:text-gray-50">
                       <div className="mb-3">
                         <h2 className="text-[1.25rem] font-bold text-gray-900 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mb-1 dark:text-gray-50 leading-snug">
                           {post.data.title}
@@ -61,7 +58,7 @@ export default function Category({
                         Read more{" "}
                         <HiMiniArrowRight className="ml-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:block hidden" />
                       </div>
-                    </motion.div>
+                    </div>
                   </Link>
                 )
             )}
