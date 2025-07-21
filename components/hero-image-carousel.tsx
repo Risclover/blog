@@ -59,28 +59,27 @@ export default function HeroImageCarousel({}: Props) {
       <Lightbox
         index={index}
         on={{ view: updateIndex(false), click: toggleOpen(true) }}
-        plugins={[Inline, Thumbnails, Captions, Fullscreen]}
+        plugins={[Inline, Fullscreen]}
         slides={slides}
         carousel={{
           padding: 10,
           spacing: 0,
-          imageFit: "contain",
+          imageFit: "cover",
         }}
         inline={{
           style: {
             width: "100%",
             maxWidth: "65rem",
-            aspectRatio: "5/3",
+            aspectRatio: "7/4",
             margin: "2.5rem auto",
-            boxShadow:
-              "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+            boxShadow: "rgba(0, 0, 0, 0.18) 0px 2px 4px-",
             borderRadius: "8px",
             overflow: "hidden",
           },
         }}
         captions={{ showToggle }}
       />
-      <Lightbox
+      {/* <Lightbox
         open={open}
         close={toggleOpen(false)}
         index={index}
@@ -88,7 +87,7 @@ export default function HeroImageCarousel({}: Props) {
         on={{ view: updateIndex(true) }}
         animation={{ fade: 60 }}
         // controller={{ closeOnPullDown: true, closeOnBackdropClick: true }}
-      />{" "}
+      />{" "} */}
     </div>
   );
 }

@@ -34,7 +34,7 @@ export function ExternalLinkWiggle({ url, text }: Props) {
   return (
     <Link
       href={url}
-      className="group inline-block text-inherit blog-external-link"
+      className="group text-inherit blog-external-link"
       target="_blank"
       rel="noreferrer noopener"
       onMouseEnter={handleEnter}

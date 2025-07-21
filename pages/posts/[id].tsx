@@ -3,6 +3,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { extractHeadings } from "extract-md-headings";
 
+/* ---------- Layout & UI ---------- */
 import Layout from "@/components/layout";
 import TableOfContents from "@/components/tableofcontents";
 import MobileTableofContents from "@/components/mobiletoc";
@@ -13,9 +14,17 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 /* ---------- Data helpers ---------- */
 import { getAllPostIds, getPostData, getSortedPostsData } from "lib/posts";
 
+/* ---------- Custom MDX components ---------- */
 import Code from "@/components/code";
 import { ExternalLinkWiggle } from "@/components/external-link-wiggle";
+import ComparisonSlider from "@/components/comparisonslider";
 
+/* ---------- STATIC IMAGES USED IN MDX ---------- */
+import ComparisonReddit2 from "../../public/images/projects/ribbit/comparison-reddit-2.png";
+import ComparisonRibbit2 from "../../public/images/projects/ribbit/comparison-ribbit-2.png";
+import Link from "next/link";
+
+/* ---------- Types ---------- */
 interface PostProps {
   fileContent: { slug: string; title: string; level: number }[];
   postData: {
@@ -32,7 +41,7 @@ interface PostProps {
 export default function Post({ postData, fileContent }: PostProps) {
   const headingsRef = useRef<HTMLDivElement | null>(null);
 
-  /* ---------- Existing heading styling logic stays intact ---------- */
+  /* ---------- Style generated headings ---------- */
   useEffect(() => {
     if (!headingsRef.current) return;
     const headings =
@@ -63,20 +72,19 @@ export default function Post({ postData, fileContent }: PostProps) {
     });
   }, []);
 
-  /* ---------- Force external links to open new tab ---------- */
-  useEffect(() => {
-    document
-      .querySelectorAll<HTMLAnchorElement>(".content a")
-      .forEach((link) => link.setAttribute("target", "_blank"));
-  }, []);
+  /* ---------- Force external links to open in new tab ---------- */
+  // useEffect(() => {
+  //   document
+  //     .querySelectorAll<HTMLAnchorElement>(".content a")
+  //     .forEach((link) => link.setAttribute("target", "_blank"));
+  // }, []);
 
-  /* ---------- Code-copy button logic (unchanged) ---------- */
-  // … (keep your existing initCodeCopy() effect) …
-
-  /* ---------- MDX component map ---------- */
+  /* ---------- Components exposed to MDX ---------- */
   const mdxComponents = {
-    ExternalLinkWiggleDemo: ExternalLinkWiggle, // add more custom comps here
+    ExternalLinkWiggle,
     Code,
+    ComparisonSlider,
+    Link
   };
 
   return (
@@ -106,8 +114,12 @@ export default function Post({ postData, fileContent }: PostProps) {
               fileContent.length > 0 ? "content content-with-toc" : "content"
             }`}
           >
-            {/* ⬇️ Render MDX instead of dangerouslySetInnerHTML */}
-            <MDXRemote {...postData.mdxSource} components={mdxComponents} />
+            {/* ⬇️ Inject the images via `scope` so MDX can reference them */}
+            <MDXRemote
+              {...postData.mdxSource}
+              components={mdxComponents}
+              scope={{ ComparisonReddit2, ComparisonRibbit2 }}
+            />
           </div>
         </div>
       </div>

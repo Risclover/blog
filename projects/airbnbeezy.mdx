@@ -1,0 +1,238 @@
+---
+title: Airbnbeezy
+subtitle: An Airbnb clone with a focus on UI
+---
+
+<QuickFacts
+  projectInfo={{
+    title: "Airbnbeezy",
+    description: "An Airbnb clone with a focus on UI.",
+    techStack: (
+      <div className="flex gap-2 flex-wrap my-2">
+        <Badge
+          svg={<ReactIcon />}
+          color="text-[#1a92b3]"
+          bgColor="bg-[#1a92b3]"
+          darkColor="dark:text-[#61DAFB]"
+          darkBgColor="dark:bg-[#61DAFB]"
+          title="React"
+        />
+        <Badge
+          svg={<ReduxIcon />}
+          title="Redux"
+          bgColor="bg-[#764abc]"
+          color="text-[#764abc]"
+          darkColor="dark:text-[#b688ff]"
+          darkBgColor="dark:bg-[#b688ff]"
+        />
+        <Badge
+          svg={<ExpressIcon />}
+          title="Express"
+          color="text-green-700"
+          bgColor="bg-green-700"
+          darkColor="dark:text-green-400"
+          darkBgColor="dark:bg-green-400"
+        />
+        <Badge
+          svg={<SequelizeIcon />}
+          title="Sequelize"
+          bgColor="bg-blue-500"
+          color="text-blue-500"
+          darkColor="dark:text-blue-400"
+          darkBgColor="dark:bg-blue-400"
+        />
+      </div>
+    ),
+    features: [
+      "Users",
+      "Listings",
+      "Bookings",
+      "Reviews",
+      "Image uploads",
+      "Interactive maps (Google Maps API)",
+    ],
+    repo: "https://github.com/Risclover/airbnbeezy",
+    demo: "https://air-bnbeezy.herokuapp.com",
+  }}
+/>
+<div className="project-details">
+## Introduction
+
+Airbnbeezy is a remarkable web application that mirrors the core functionalities of Airbnb, a prominent online marketplace for lodging and travel experiences. Crafted meticulously by a solo developer (myself), this project encompasses a testament to my expertise in software engineering and full-stack web development.
+
+<ImageModal
+  imgSrc="/images/projects/airbnbeezy/airbnbeezy-home.png"
+  imgAlt="Airbnbeezy: Home"
+  title="Airbnbeezy: Home"
+  description="Homepage of Airbnbeezy"
+/>
+
+By leveraging a tech stack comprising React, Redux, Express, and Sequelize, Airbnbeezy brings to life a platform that enables users to discover accommodations, make bookings, leave reviews, and enjoy a seamless travel planning experience. The integration of AWS S3 for image uploads, Google Maps API for location services, and user authentication further elevates the application's utility and user-friendliness.
+
+## Project Goals
+
+The primary objectives that steered the development of Airbnbeezy are outlined below:
+
+1. <span class="text-pink-500">Functionality replication</span>: The foremost
+   goal was to replicate Airbnb's core features, enabling users to search for
+   accommodations, view detailed listings, make bookings, and post reviews.
+2. <span class="text-pink-500">Database design</span>: The design and
+   implementation of a robust and efficient database schema using Sequelize
+   aimed to ensure optimal storage and retrieval of user, property, booking, and
+   review data. The very first version of this schema is shown below.
+3. <span class="text-pink-500">User‑centric UI design</span>: The user interface
+   (UI) design focused on creating an intuitive, visually pleasing, and
+   responsive layout to provide a delightful user experience.
+4. <span class="text-pink-500">Secure user authentication</span>: Implementing a
+   secure user authentication and authorization system to safeguard user data
+   and provide controlled access to application features.
+5. <span class="text-pink-500">Seamless image uploads (AWS S3)</span>: The
+   integration of AWS S3 for image uploads guarantees a smooth process of
+   uploading, storing, and displaying property images.
+6. <span class="text-pink-500">Streamlined booking process</span>: Developing a
+   simplified and efficient booking process for users to easily select dates,
+   make payments, and receive booking confirmations.
+7. <span class="text-pink-500">Empowering user reviews</span>: Enabling users to
+   leave reviews for properties, fostering transparency and aiding other users
+   in making informed decisions.
+8. <span class="text-pink-500">Location services (Google Maps API)</span>:
+   Leveraging the Google Maps API to provide accurate property locations and
+   assist users in understanding the surrounding area.
+
+## Tech Stack
+
+The technological choices underpinning Airbnbeezy's development are a testament to creating a robust and efficient application:
+
+- <span class="text-pink-500">Frontend</span>: Utilizing <span class="text-pink-500">
+    React.js
+  </span> and <span class="text-pink-500">Redux</span> for state management
+  ensured a dynamic and responsive user interface.
+- <span class="text-pink-500">Backend</span>:
+  <span class="text-pink-500">Express</span>, a minimalist Node.js web
+  application framework, facilitated routing, server setup, and API development.
+- <span class="text-pink-500">Database</span>: <span class="text-pink-500">
+    Sequelize
+  </span>, a promise-based Node.js ORM, enabled interactions with the MySQL database,
+  ensuring data integrity and efficiency.
+- <span class="text-pink-500">User authentication</span>:
+  <span class="text-pink-500">JSON Web Tokens (JWT)</span> were employed to secure
+  user authenticaiton and manage user sessions.
+- **Image uploads (AWS S3):** The integration with <span className="text-pink-500">
+  AWS S3
+  </span> allowed for efficient and secure storage of property images.
+- **Location services (Google Maps API):** Integration with the <span className="text-pink-500">
+  Google Maps API
+  </span> provided accurate and interactive property locations.
+- **Version control:** <span className="text-pink-500">Git</span> and <span className="text-pink-500">
+  Github
+  </span> for efficient version control and code management.
+
+<ImageModal
+  imgSrc="/images/projects/airbnbeezy/airbnbeezy-edit-listing.png"
+  imgAlt="Airbnbeezy edit listing page"
+  title="Airbnbeezy: Edit Listing Page"
+  description="Users who post listings can edit the listing details from this page."
+/>
+
+## Features
+
+Airbnbeezy is a feature-rich application designed to offer an immersive and convenient travel planning experience.
+
+### Users
+
+Users can register new accounts and log in to access personalized
+features and bookings. Registered users have profiles displaying
+their bookings, reviews, and account information. Secure
+authentication ensures user data protection and controlled access
+to features.
+
+### Property Listings
+
+Properties are displayed with detailed information, images,
+pricing, and availability calendars. Users have the ability to
+post their own listings with full customization, including images.
+
+<ImageModal
+  imgSrc="/images/projects/airbnbeezy/airbnbeezy-listing.png"
+  imgAlt="Airbnbeezy listing page"
+  title="Airbnbeezy: Listing Page"
+  description="An example of one of the many listing pages on Airbnbeezy"
+/>
+
+### Interactive Maps (Google Maps API)
+
+Property locations are displayed on interactive maps, enabling
+users to see what the surrounding area is like, and to use the map
+to explore the neighborhood.
+
+<ImageModal
+  imgSrc="/images/projects/airbnbeezy/airbnbeezy-map.png"
+  imgAlt="Airbnbeezy map"
+  title="Airbnbeezy: Interactive Map"
+  description="Each listing page on Airbnbeezy has an interactive map, courtesy of Google Maps API."
+/>
+
+### Booking Process
+
+Users can select available dates and receive booking
+confirmations. Extensive validation ensures that only valid and
+available dates are selected by users. Users can view and manage
+past and current bookings.
+
+<ImageModal
+  imgSrc="/images/projects/airbnbeezy/airbnbeezy-reserve.png"
+  imgAlt="Airbnbeezy: Reservation"
+  title="Airbnbeezy: Reservation Form"
+  description="The form to make a reservation on a listing on Airbnbeezy's listings pages"
+/>
+
+### Image Uploads
+
+Property owners can upload images of their listings, enhancing the
+visual appeal and attractiveness of properties. All users can
+upload a profile image, personalizing their profile for other
+users to see.
+
+### User Reviews
+
+Users can leave reviews for properties they have booked, offering
+valuable insights to future travelers.
+
+## Challenges Faced
+
+The journey of building Airbnbeezy was accompanied by several
+challenges, each fostering learning and growth:
+
+- **Integration of external APIs:** Incorporating the Google Maps API to accurately display property locations required understanding its usage and ensuring seamless integration.
+- **Complex booking logic:** Developing the booking process involved managing available dates, user selections, and real-time updates while maintaining data consistency.
+- **Image uploads with AWS S3:** Properly configuring AWS S3 for secure image uploads and handling user-generated content was crucial.
+- **Database relationships:** Establishing relationships between users, properties, bookings, and reviews in Sequelize demanded careful schema design and understanding of associations.
+- **Advanced styling:** Several components required advanced knowledge
+
+<ImageModal
+  imgSrc="/images/projects/airbnbeezy/airbnbeezy-manage-listings.png"
+  imgAlt="Airbnbeezy manage listings page"
+  title="Airbnbeezy: Manage Listings"
+  description="Users can view their listings on this listings management page."
+/>
+
+## Lessons Learned
+
+Ribbit provided invaluable insights into building complex and
+dynamic web applications. Some key takeaways include:
+
+- **Integration of real-time features:** Understanding the concepts
+  of websockets and event-driven architecture for implementing real-time features.
+- **AWS S3 integration:** Learning to use AWS S3 for secure image uploads
+  and storage, ensuring a seamless user experience.
+- **Scalability and optimization:** Designing a scalable architecture
+  and optimizing database interactions for increased user activity.
+- **Comprehensive messaging system:** Building a messaging system with
+  proper authentication, authorization, and secure communication required meticulous
+  planning and implementation. Understanding the intricacies of real-time communication
+  and secure messaging was essential.
+- **Folder structure and organiziation for large projects:** Deviating
+  from the default folder structure by organizing the project folder structure in
+  a way that makes sense for the project's size and specifications.
+
+</div>

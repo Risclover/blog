@@ -35,8 +35,6 @@ function Airbnbeezy() {
   const headingsRef = useRef(null);
 
   const postData = {
-    category: "Projects",
-    categoryUrl: "/#projects",
     title: "Airbnbeezy",
     subtitle: "An Airbnb clone with a focus on UI.",
   };
@@ -44,7 +42,7 @@ function Airbnbeezy() {
   const fileContent = useTableOfContents();
 
   return (
-    <Layout postData={postData}>
+    <Layout projectData={postData}>
       <Head>
         <title>Sara Dunlop | Airbnbeezy</title>
       </Head>

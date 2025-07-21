@@ -50,14 +50,9 @@ export default function Layout({
         <link rel="icon" href="/blog-logo.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Come check out the world and works of Sara Dunlop!"
         />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
+        <meta property="og:image" content={`/blog-logo.ico`} />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
         <link
@@ -111,25 +106,29 @@ export default function Layout({
                   Home
                 </Link>
                 <span className="mx-5">&gt;</span>
-                {postData?.type === "Blog" && (
-                  <Link href="/blog" className="hover:text-gray-400">
-                    {postData?.type}
-                  </Link>
-                )}
 
-                {postData?.category !== "Projects" && (
-                  <span className="mx-5">&gt;</span>
-                )}
                 <Link
-                  href={`${
-                    postData?.category
-                      ? postData?.categoryUrl
-                      : `/categories/${postData?.category?.toLowerCase()}`
-                  }`}
+                  href={postData?.type === "Blog" ? "/blog" : "/#projects"}
                   className="hover:text-gray-400"
                 >
-                  {postData?.category}
+                  {postData?.type === "Blog" ? postData?.type : "Projects"}
                 </Link>
+
+                {postData?.type === "Blog" && (
+                  <>
+                    <span className="mx-5">&gt;</span>
+                    <Link
+                      href={`${
+                        postData?.category
+                          ? postData?.categoryUrl
+                          : `/categories/${postData?.category?.toLowerCase()}`
+                      }`}
+                      className="hover:text-gray-400"
+                    >
+                      {postData?.category}
+                    </Link>
+                  </>
+                )}
               </div>
               <h1 className="text-3xl lg:text-4xl font-medium leading-tight">
                 {postData?.title || projectData?.title}

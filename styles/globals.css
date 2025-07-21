@@ -460,6 +460,10 @@ img {
   overflow: hidden;
 }
 
+.quickfacts-list ul {
+  margin-top: 0.25rem;
+}
+
 .quickfacts-list li {
   /* word-break: break-all; */
   overflow-wrap: break-word;
@@ -583,6 +587,7 @@ table {
 }
 
 .toc-ul {
+  width: 260px;
   overflow-y: auto;
   max-height: 80vh;
   -webkit-mask-image: linear-gradient(
@@ -659,7 +664,7 @@ ol li {
 li a {
   height: 100% !important;
   width: 100%;
-  line-height: 1.5;
+  line-height: 1.2;
 }
 
 .content p {
@@ -768,8 +773,7 @@ li a {
   list-style-type: none;
   margin-left: 0;
   margin-bottom: 0;
-  line-height: 1.5;
-  margin-top: 3px;
+  margin-top: 5px;
   max-width: 250px;
 }
 
@@ -865,10 +869,6 @@ pre {
 
 .hero-img img {
   max-width: 100%;
-}
-
-.hero-img-carousel {
-  padding: 20px;
 }
 
 /* Center the arrow’s transform box so it pivots naturally */
@@ -1017,7 +1017,7 @@ pre {
   }
 
   code {
-    font-size: 0.9rem !important;
+    font-size: inherit;
   }
 
   .project-content {

@@ -29,6 +29,10 @@
   line-height: 1.375;
 }
 
+/* .project-details p:has(+ p:last-of-type) {
+  margin-top: 1.875rem;
+} */
+
 .project-details ul li,
 .project-details ol li {
   margin-bottom: 0.8rem;

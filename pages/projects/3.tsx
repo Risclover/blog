@@ -1918,7 +1918,7 @@ import { useScrollToTop } from "@/hooks";`}
               <p>
                 State management is handled by Redux. Each major feature has its
                 own file in the <code>store/</code> directory, named after the
-                feature itself (e.g. the Posts feature's Redux file is{" "}
+                feature itself (i.e. the Posts feature's Redux file is{" "}
                 <code>posts.ts</code>). Let's look at an example using Posts -
                 and specifically, retrieving all posts - as said example.
               </p>
@@ -2768,7 +2768,64 @@ export default function postsReducer(state = initialState, action) {
                   />
                 </li>
               </ul>
-              <h3 id="a-tale-of-timestamps">A Tale of Timestamps</h3>
+              <h3 id="a-tale-of-timestamps">
+                Customizing Timestamps to Legitimize Data
+              </h3>
+              <p>
+                For a good portion of Ribbit's development, I failed to notice a
+                glaring problem that plagued the majority of the website's data:
+                all of the timestamps were identical.
+              </p>
+              <p>
+                Say there's a user with the username of Marnie. Marnie's profile
+                says that her account was created on 07/11/25. Upon checking out
+                her posts, you notice that all of her posts were also created on
+                07/11/25. You exit to check out the main feed. What's this? All
+                of the posts were created on 07/11/25. In fact, every community,
+                post, comment, and user claims to have been created at the exact
+                same time.
+              </p>
+              <p>
+                This is a problem. Not only does it hurt the image I am trying
+                to portray that Ribbit is a living, breathing website, but it
+                also makes it so that it's impossible to sort anything by
+                time-based criteria (e.g. "New").
+              </p>
+              <p>
+                Thus, I needed to ensure that all of the seeded data had unique
+                timestamps - not by hardcoding custom timestamps, but by writing
+                functions for each table's unique needs. Take, for example, the
+                function written for the Posts table:
+              </p>
+              <Code
+                language="Python"
+                code={`def generate_relative_timestamp(author_timestamp, community_timestamp, max_days_ago=7):
+    """
+    Generate a random datetime within the past \`max_days_ago\` days,
+    ensuring it is never before the author's creation date or the
+    community's creation date.
+    """
+    now = datetime.now()
+
+    # Earliest must be the latest of:
+    #   - the author's creation time
+    #   - the community's creation time
+    #   - (now - max_days_ago)
+    earliest_date = max(
+        author_timestamp,
+        community_timestamp,
+        now - timedelta(days=max_days_ago)
+    )
+
+    delta_seconds = int((now - earliest_date).total_seconds())
+    if delta_seconds < 0:
+        # If earliest_date is in the future (or no valid range), default to now
+        return now
+
+    # Choose a random offset between 0 and delta_seconds
+    random_offset = random.randint(0, delta_seconds)
+    return now - timedelta(seconds=random_offset)`}
+              />
             </>
           </div>
         </div>
