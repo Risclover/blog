@@ -1,0 +1,189 @@
+---
+title: Reduncrate
+subtitle: A replication of the ecommerce site Uncrate.com created as a collaboration from a small team of engineers.
+---
+
+<QuickFacts
+  projectInfo={{
+    title: "Reduncrate",
+    description:
+      "A replication of the ecommerce site Uncrate.com created as a collaboration from a small team of engineers.",
+    techStack: (
+      <div className="flex gap-2 flex-wrap my-2">
+        <Badge
+          svg={<ReactIcon />}
+          color="text-[#1a92b3]"
+          bgColor="bg-[#1a92b3]"
+          darkColor="dark:text-[#61DAFB]"
+          darkBgColor="dark:bg-[#61DAFB]"
+          title="React"
+        />
+        <Badge
+          svg={<ReduxIcon />}
+          title="Redux"
+          bgColor="bg-[#764abc]"
+          color="text-[#764abc]"
+          darkColor="dark:text-[#b688ff]"
+          darkBgColor="dark:bg-[#b688ff]"
+        />
+        <Badge
+          svg={<FlaskIcon />}
+          title="Flask"
+          color="text-[#090909]"
+          bgColor="bg-[#090909]"
+          darkColor="dark:text-[#d4d4d4]"
+          darkBgColor="dark:bg-[#d4d4d4]"
+        />
+        <Badge
+          svg={<SQLAIcon />}
+          title="SQLAlchemy"
+          bgColor="bg-red-700"
+          color="text-red-700"
+          darkColor="dark:text-red-400"
+          darkBgColor="dark:bg-red-400"
+        />
+      </div>
+    ),
+    features: [
+      "Users",
+      "Products",
+      'Favorites (User\'s "Stash")',
+      "Search",
+      "Cart",
+      "Order History",
+    ],
+    repo: "https://github.com/Risclover/reduncrate",
+    demo: "https://reduncrate.herokuapp.com/",
+  }}
+/>
+
+<div class="project-details">
+
+## Introduction
+
+Reduncrate stands as an impressive web application that closely emulates the essence of Uncrate.com, a renowned online magazine that curates and shares unique and noteworthy products across various categories. This project was brought to life through the collective efforts of a collaborative team comprising myself and three other skilled software engineers. The development involved a synergy of expertise in software engineering, full-stack development, and frontend design.
+
+<div className="w-[50%] mx-auto">
+  <ImageModal
+    imgSrc="/images/projects/reduncrate/reduncrate-home.png"
+    imgAlt="Reduncrate homepage"
+    title="Reduncrate: Home"
+    description="The homepage of Reduncrate"
+  />
+</div>
+
+Reduncrate, built using React, Redux, Flask, and SQLAlchemy, showcases an exceptional blend of technologies to offer users an immersive experience of discovering and exploring curated products. With a robust feature set that includes image uploads via AWS S3, product listings, user accounts, profiles, favorite products, cart, order history, and a responsive design, Reduncrate reflects the culmination of diverse skills and collaborative endeavors.
+
+## Project Goals
+
+The core goals that steered the development of Reduncrate encompassed a comprehensive replication of Uncrate.com's features while incorporating seamless user experience and collaboration among team members. The project's objectives were outlined as follows:
+
+1. **Functionality replication**: Reduncrate aimed to closely mirror Uncrate.com's features, allowing users to explore curated product listings, create accounts, manage profiles, and interact with the website's extensive range of functionalities.
+2. **Database design**: Implementing a robust and efficient database schema utilizing SQLAlchemy was crucial for seamless data storage and retrieval.
+3. **Responsive UI/UX design**: Crafting a responsive and visually appealing user interface design to ensure consistent user experiences across devices.
+4. **Secure user authentication**: Implementing a secure user authentication and authorization system to safeguard user data and provide controlled access to application features.
+5. **Collaborative development**: Collaborating with three other software engineers to develop different aspects of the application while ensuring harmonious integration.
+
+## Tech Stack
+
+Reduncrate's development hinged upon a well-rounded tech stack, chosen to cater to diverse needs and to uphold the application's robustness:
+
+- **Frontend**: Utilizing <span class="text-pink-500">React.js</span> and <span class="text-pink-500">Redux</span> for state management ensured dynamic, responsive, and interactive user interfaces.
+- **Backend**: Employing <span class="text-pink-500">Flask</span>, a lightweight Python web framework, facilitated server setup, routing, and API development.
+- **Database**: The integration of <span class="text-pink-500">SQLAlchemy</span>, a Python SQL toolkit, enabled efficient interactions with the MySQL database.
+- **User authentication**: User authentication was managed using secure techniques and <span class="text-pink-500">JWT tokens</span> to ensure user data protection.
+- **Collaboration tools**: Utilizing collaborative tools such as <span class="text-pink-500">Github</span> ensured efficient code management and version control.
+
+## Features
+
+My team and I carefully selected features that would help Reduncrate feel like Uncrate as much as possible whilst also providing as much value as possible:
+
+### Users
+
+Users can register new accounts and log in to access personalized features and bookings. Registered users have profiles displaying their bookings, reviews, and account information. Secure authentication ensures user data protection and controlled access to features.
+
+### Product Listings
+
+Properties are displayed with detailed information, images, pricing, and availability calendars. Users have the ability to post their own listings with full customization, including images.
+
+### Favorites (User's Stash)
+
+Property locations are displayed on interactive maps, enabling users to see what the surrounding area is like, and to use the map to explore the neighborhood.
+
+<ImageModal
+  imgSrc="/images/projects/reduncrate/reduncrate-stash.png"
+  imgAlt="Reduncrate's favorites page, or the user's stash"
+  title="Reduncrate: User Stash"
+  description="The user's stash, which is their customized list of favorite products."
+/>
+
+### Search
+
+Users can select available dates and receive booking confirmations. Extensive validation ensures that only valid and available dates are selected by users. Users can view and manage past and current bookings.
+
+### Cart
+
+Property owners can upload images of their listings, enhancing the visual appeal and attractiveness of properties. All users can upload a profile image, personalizing their profile for other users to see.
+
+<div className="mx-auto w-[70%]">
+  <ImageModal
+    imgSrc="/images/projects/reduncrate/reduncrate-cart.png"
+    imgAlt="Reduncrate's cart"
+    title="Reduncrate: Cart"
+    description="Reduncrate's shopping cart"
+  />
+</div>
+
+### Order History
+
+Users can leave reviews for properties they have booked, offering valuable insights to future travelers.
+
+## Challenges Faced
+
+Developing Reduncrate as a collaborative project presented various challenges, each contributing to the learning and growth of the team:
+
+- **Collaboration dynamics**: Collaborating with multiple team members required effective communication and coordination to integrate frontend and backend seamlessly.
+- **Complex UI components**: Designing and implementing the complex image carousel and "suggested products" section demanded a deep understanding of frontend technologies and user interaction.
+- **Responsive design**: Crafting a responsive design that provided consistent experiences across devices necessitated careful design considerations.
+
+<ImageModal
+  imgSrc="/images/projects/reduncrate/reduncrate-carousel.gif"
+  imgAlt="Reduncrate's product image carousel"
+  title="Reduncrate: Product Image Carousel"
+  description="The carousel on the Product page. Includes all ways to interact, including mouse click, mouse drag, touch, and keyboard."
+/>
+
+## My Role: Project Accomplishments
+
+As a core contributor to Reduncrate's development, my primary focus was on the frontend aspect, where I played a pivotal role in shaping the user interface and enhancing user experience. Here are the key areas where I made substantial contributions:
+
+1. **Single product page**: I took charge of designing and implementing the intricate user interface for the single product page. This included crafting a complex image carousel that not only seamlessly showcased multiple product images, but also allowed full interactivity including through mouse click, mouse drag, touch, and keyboard. The carousel enabled users to explore a product's various angles and appearance variations (i.e. color).
+   <div className="mx-auto w-[50%]">
+     <ImageModal
+       imgSrc="/images/projects/reduncrate/reduncrate-product.png"
+       imgAlt="Reduncrate's single product page"
+       title="Reduncrate: Single Product Page"
+       description="Reduncrate's product page"
+     />
+   </div>
+2. **Suggested products section**: To enhance user engagement, I replicated Uncrate's "suggested products" section which dynamically shuffled and presented related products upon page reload. This feature aimed to encourage users to explore more.
+3. **Responsive design**: Ensuring a consistent and visually appealing experience across devices was a significant endeavor. I meticulously designed the frontend to be resposnive, adapting to different screen sizes and orientations without comporomising functionality or aesthetics.
+4. **CSS-complex footer**: I implemented Uncrate's intricate footer, which added a touch of sophistication to the overall user interface. By thoughtfully incorporating my own take on the footer to best fit our site, the footer contributed to the website's visual appeal.
+   <ImageModal
+     imgSrc="/images/projects/reduncrate/reduncrate-footer.png"
+     imgAlt="Reduncrate's footer"
+     title="Reduncrate: Footer"
+     description="Reduncrate's footer"
+   />
+5. **Search feature**: Although most of my contribution to this project was on the frontend, I took charge of both the frontend and backend development of the search feature. This allowed users to explore products based on names and description keywords, enhancing their ability to discover items of interest.
+
+## Lessons Learned
+
+The development of Reduncrate paved the way for invaluable insights and takeaways:
+
+- **Collaborative synergy**: Effective collaboration across diverse roles is essential for the successful integration of various application components.
+- **Frontend design mastery**: Designing complex UI components and ensuring a responsive design underscores the importance of mastering frontend technologies.
+- **User-centric development**: Incorporating features like favorite products, cart, and order history enhances user experiences and engagement.
+- **Project management skills**: Utilizing collaborative tools like Git and GitHub streamlines code management and ensures version control.
+
+</div>
